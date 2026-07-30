@@ -5,6 +5,8 @@ import { getProductById } from "@/services/ProductService";
 import { clientEnv as env } from "@/lib/env.client";
 import { ProductPageClient } from "./ProductPageClient";
 import { Breadcrumb } from "@/components/atoms/Breadcrumb";
+import { AddToCompareButton } from "@/components/atoms/AddToCompareButton";
+import { CompareTray } from "@/components/molecules/CompareTray";
 import type { ProductResult } from "@/lib/api";
 
 interface ProductPageProps {
@@ -23,6 +25,8 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
   const description = `See what ${product.name} actually costs to make — raw materials, labor, and overhead. True cost revealed by TruePrice.`;
   const url = `${env.NEXT_PUBLIC_APP_URL}/product/${id}`;
 
+  const ogImageUrl = `${env.NEXT_PUBLIC_APP_URL}/api/og/product/${id}`;
+
   return {
     title,
     description,
@@ -32,14 +36,13 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
       url,
       siteName: "TruePrice",
       type: "website",
-      ...(product.imageUrl
-        ? { images: [{ url: product.imageUrl, alt: product.name }] }
-        : {}),
+      images: [{ url: ogImageUrl, width: 1200, height: 630, alt: title }],
     },
     twitter: {
-      card: "summary",
+      card: "summary_large_image",
       title,
       description,
+      images: [ogImageUrl],
     },
   };
 }
@@ -115,9 +118,12 @@ export default async function ProductPage({ params }: ProductPageProps) {
           {product.brand && (
             <p className="text-base text-muted-foreground">{product.brand}</p>
           )}
-          <span className="inline-block text-xs bg-muted text-muted-foreground px-2 py-0.5 rounded-full w-fit mt-1">
-            {product.category}
-          </span>
+          <div className="flex flex-wrap items-center gap-2 mt-1">
+            <span className="inline-block text-xs bg-muted text-muted-foreground px-2 py-0.5 rounded-full">
+              {product.category}
+            </span>
+            <AddToCompareButton productId={product.id} productName={product.name} />
+          </div>
         </div>
       </div>
 
@@ -195,6 +201,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
         </h2>
         <ProductPageClient product={productForClient} canonicalUrl={canonicalUrl} />
       </section>
+
+      {/* Comparison tray — fixed bottom bar */}
+      <CompareTray />
     </main>
   );
 }

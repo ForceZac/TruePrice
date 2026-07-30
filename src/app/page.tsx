@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ScanLine } from "lucide-react";
+import { ScanLine, Trophy } from "lucide-react";
 import { SearchInput } from "@/components/molecules/SearchInput";
 import { CategoryCard } from "@/components/molecules/CategoryCard";
 import { getAllCategories } from "@/services/CategoryService";
@@ -63,6 +63,30 @@ export default async function Home() {
           </div>
         </section>
       )}
+
+      {/* Hall of Shame teaser */}
+      <section aria-labelledby="leaderboard-heading" className="w-full max-w-2xl">
+        <Link
+          href="/leaderboard"
+          className="flex items-center gap-4 rounded-xl border border-border bg-card p-5 hover:bg-muted/50 transition group"
+        >
+          <Trophy className="h-8 w-8 text-primary shrink-0" aria-hidden="true" />
+          <div className="min-w-0">
+            <h2
+              id="leaderboard-heading"
+              className="font-semibold text-foreground group-hover:text-primary transition"
+            >
+              Hall of Shame
+            </h2>
+            <p className="text-sm text-muted-foreground mt-0.5">
+              The most marked-up products on TruePrice — ranked by markup %
+            </p>
+          </div>
+          <span className="ml-auto text-muted-foreground group-hover:text-foreground transition shrink-0">
+            →
+          </span>
+        </Link>
+      </section>
     </main>
   );
 }
