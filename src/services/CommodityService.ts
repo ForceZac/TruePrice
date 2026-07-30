@@ -102,15 +102,16 @@ export async function fetchPrices(): Promise<number> {
   const now = new Date();
   let refreshed = 0;
 
-  for (const mapping of COMMODITY_MAPPINGS) {
-    const material = await prisma.material.findUnique({
-      where: { name: mapping.materialName },
-    });
+  // Batch lookup: one query instead of one per material
+  const materialNames = COMMODITY_MAPPINGS.map((m) => m.materialName);
+  const dbMaterials = await prisma.material.findMany({
+    where: { name: { in: materialNames } },
+  });
+  const materialByName = new Map(dbMaterials.map((m) => [m.name, m]));
 
-    if (!material) {
-      // Material not yet seeded — skip silently
-      continue;
-    }
+  for (const mapping of COMMODITY_MAPPINGS) {
+    const material = materialByName.get(mapping.materialName);
+    if (!material) continue;
 
     let pricePerKgCents: number;
     let source: string;
@@ -251,12 +252,17 @@ export async function getAllCachedPrices(): Promise<PriceResult[]> {
  */
 export async function seedFallbackPrices(): Promise<number> {
   const now = new Date();
-  let seeded = 0;
 
+  // Batch lookup: one query instead of one per material
+  const materialNames = COMMODITY_MAPPINGS.map((m) => m.materialName);
+  const dbMaterials = await prisma.material.findMany({
+    where: { name: { in: materialNames } },
+  });
+  const materialByName = new Map(dbMaterials.map((m) => [m.name, m]));
+
+  let seeded = 0;
   for (const mapping of COMMODITY_MAPPINGS) {
-    const material = await prisma.material.findUnique({
-      where: { name: mapping.materialName },
-    });
+    const material = materialByName.get(mapping.materialName);
     if (!material) continue;
 
     const pricePerKgCents = rawPriceToCentsPerKg(mapping.fallbackUsdPerKg, 1);
