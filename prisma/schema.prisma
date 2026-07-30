@@ -114,6 +114,7 @@ model CostBreakdown {
   @@index([productId])
   @@index([calculatedAt])
   @@index([updatedAt])
+  @@index([markupPercent(sort: Desc)])
 }
 
 model LaborRate {
