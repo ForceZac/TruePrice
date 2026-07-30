@@ -19,6 +19,9 @@ const envSchema = z.object({
   NEXT_PUBLIC_ADSENSE_CLIENT: z.string().optional(),
   POSTHOG_API_KEY: z.string().optional(),
 
+  // Cron job protection
+  CRON_SECRET: z.string().optional(),
+
   // CI / Bots (optional in dev)
   GITHUB_TOKEN: z.string().optional(),
   DISCORD_BOT_TOKEN: z.string().optional(),
