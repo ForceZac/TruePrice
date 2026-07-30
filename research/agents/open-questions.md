@@ -1,6 +1,6 @@
 # Open Questions Parking Lot
 
-Last updated: 2026-07-30 (PM Run #3)
+Last updated: 2026-07-30 (PM Run #4)
 
 This file replaces the missing PROJECT_KEYS.md section 13. All unresolved product decisions go here. Answered questions are moved to the **Resolved** section below.
 
@@ -36,10 +36,7 @@ Which chart type for the cost breakdown?
 Who writes the 2–3 sentence unique blurb per category for SEO? Can be AI-drafted, but needs review. How many categories are seeded at this point?
 - **Owner:** Zach | **Blocking:** TRD for Goal 6
 
-**Q6-2: Pagination vs. load more**
-Paginated routes (`/category/[slug]?page=2`) are better for SEO (each page indexable). "Load more" is better UX. Given AdSense approval is the near-term goal, SEO pagination is likely preferable.
-- **Suggested answer:** Pagination with URL-based pages — prioritize indexability over UX convenience at this stage
-- **Owner:** Zach (confirm)
+**Q6-2: Pagination vs. load more** — *moved to Resolved (PM Run #4)*
 
 **Q6-3: Minimum product count for AdSense**
 How many products with estimates will TruePrice have seeded by Goal 6? If fewer than ~20 with real estimates, category pages may be too thin for AdSense approval.
@@ -52,10 +49,7 @@ How many products with estimates will TruePrice have seeded by Goal 6? If fewer 
 Has Zach created a Google AdSense account? Publisher ID (`ca-pub-XXXXXXXX`) needed before ads can serve. Review lag is typically 1–4 weeks after site submission.
 - **Owner:** Zach | **Blocking:** Goal 7 launch
 
-**Q7-2: Manual ad unit IDs**
-Manual ad units require unit IDs created in the AdSense dashboard. Should manual units be wired at launch (needs IDs now) or launch with auto-ads only?
-- **Suggested answer:** Launch with auto-ads only; add manual units after AdSense approves. Reduces pre-launch dependencies.
-- **Owner:** Zach (confirm)
+**Q7-2: Manual ad unit IDs** — *moved to Resolved (PM Run #4)*
 
 **Q7-3: Privacy Policy data scope**
 Does TruePrice store any user data beyond standard server logs? This determines what the Privacy Policy must disclose. For v1 with no user accounts, the answer is likely "server logs only + AdSense cookies."
@@ -77,6 +71,52 @@ All agent runs have failed to post to Discord (#main, #standup, #prs, #alerts, #
 - All Discord posts since 2026-07-30 project init have silently failed
 - **Action needed:** Zach runs `/discord:access` to configure allowlist
 - **Owner:** Zach | **Priority:** High (agents can't close the loop)
+
+### Goal 8 — Data Expansion & Accuracy Improvements
+
+**Q8-1: Live lookup latency budget**
+Live UPCitemdb lookups can take 1–3s. If the live lookup + estimation exceeds 500ms, should the product page return a "loading estimate" state and poll, or go fully synchronous?
+- Q4-4 resolution says go sync first — but that was for estimation only, not live external API calls
+- Suggested: return product data immediately; trigger estimation as a background job; poll via `GET /api/estimate/status/[productId]` until ready (202 + polling pattern)
+- **Owner:** Zach | **Blocking:** TRD for Goal 8
+
+**Q8-2: 100-product seed sourcing**
+Where does the expanded seed data (≥100 products) come from?
+- Option A: Bulk export from Open Food Facts filtered to common US UPCs (most scalable, needs one-time import script)
+- Option B: Zach manually curates a UPC list
+- Option C: Automated bulk lookup against a pre-defined list of popular product UPCs
+- Suggested: Option A for food products; Option C for non-food (electronics, clothing) using a known-popular-UPC list
+- **Owner:** Zach | **Blocking:** TRD for Goal 8
+
+**Q8-3: Subcategory field backfill** — *moved to Resolved (PM Run #4)*
+
+**Q8-4: Admin page access**
+`/admin/coverage` is internal-only but unauthenticated for v1. Acceptable given the site is public?
+- Risk: someone discovers the URL and sees aggregate stats (not sensitive)
+- Suggested: Acceptable for v1. Add basic auth (env-var password) before any launch if coverage data feels sensitive.
+- **Owner:** Zach (confirm)
+
+**Q8-5: Re-estimation TTL configurability** — *moved to Resolved (PM Run #4)*
+
+### Goal 9 — Product Comparison & Social Features
+
+**Q9-1: OG image design**
+What should the dynamic OG image look like for product pages and the compare page?
+- Option A: Bold text card — product name + "8× markup" in large type (simplest, most readable at thumbnail size)
+- Option B: Mini cost breakdown chart rendered in Satori
+- Option C: Stylized gradient card with key stats
+- Suggested: Option A for v1. Text-forward cards perform best in social feeds and are easiest to build in Satori.
+- **Owner:** Zach (confirm)
+
+**Q9-2: Compare page cold state** — *moved to Resolved (PM Run #4)*
+
+**Q9-3: Leaderboard confidence filter** — *moved to Resolved (PM Run #4)*
+
+**Q9-4: Copy-to-image scope**
+Should "Save as image" (html2canvas / dom-to-image) be included in Goal 9 v1 or deferred?
+- It's a "should-have" and adds bundle weight + known CSS edge cases with Tailwind
+- Suggested: Defer to Goal 10+. Focus Goal 9 on comparison, OG images, and leaderboard first.
+- **Owner:** Zach (confirm if cut is acceptable)
 
 ---
 
@@ -103,3 +143,29 @@ All agent runs have failed to post to Discord (#main, #standup, #prs, #alerts, #
 
 **Q5-5: OG image generation** — Plain meta tags for launch (Goal 5). Add dynamic OG image (`opengraph-image.tsx`) in Goal 9 (Social) when sharing becomes a focus. Reduces Goal 5 complexity.
 - **Resolved:** PM Run #2 (2026-07-30) — suggested answer accepted as working default
+
+### Goal 6
+
+**Q6-2: Pagination vs. load more** — Use URL-based pagination (`/category/[slug]?page=2`). Prioritize indexability over UX convenience at this stage; each page is independently crawlable, which is what AdSense approval requires.
+- **Resolved:** PM Run #4 (2026-07-30) — working default set; Zach can override before TRD is written
+
+### Goal 7
+
+**Q7-2: Manual ad unit IDs** — Launch with auto-ads only (`strategy="afterInteractive"` script in layout). Add manual ad units after AdSense approves and issues unit IDs. Reduces pre-launch dependencies and avoids hardcoding placeholder IDs.
+- **Resolved:** PM Run #4 (2026-07-30) — working default set; Zach can override before TRD is written
+
+### Goal 8
+
+**Q8-3: Subcategory field backfill** — Lazy fill. After the migration, `Product.subcategory` is null for existing products. The next re-estimation run selects the best subcategory profile based on ingredients/name. No migration-time inference needed; avoids complexity in the migration script.
+- **Resolved:** PM Run #4 (2026-07-30) — working default set
+
+**Q8-5: Re-estimation TTL configurability** — Use `REESTIMATION_TTL_DAYS` env var with default of 7. Cheap to add now; avoids a deploy to tune the window as catalog scales.
+- **Resolved:** PM Run #4 (2026-07-30) — working default set
+
+### Goal 9
+
+**Q9-2: Compare page cold state** — Show an informational prompt: "Add two products to compare from any product page." No redirect, no pre-built pairs for v1. Simple and honest.
+- **Resolved:** PM Run #4 (2026-07-30) — working default set
+
+**Q9-3: Leaderboard confidence filter** — Show all products with estimates on the leaderboard; display a confidence badge on each card (HIGH/MEDIUM/LOW). Don't filter by confidence — it would hide too many products early on and punish the product for having young data.
+- **Resolved:** PM Run #4 (2026-07-30) — working default set
