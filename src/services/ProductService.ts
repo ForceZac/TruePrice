@@ -23,6 +23,8 @@ export interface ProductResult {
   description?: string | null;
   imageUrl?: string | null;
   category: string;
+  /** URL-safe slug of the product's category — used for breadcrumbs and links. */
+  categorySlug?: string | null;
   ingredients?: string | null;
   weightGrams?: number | null;
   retailPriceCents?: number | null;
@@ -308,6 +310,7 @@ export async function getProductById(id: string): Promise<ProductResult | null> 
     description: product.description,
     imageUrl: product.imageUrl,
     category: product.category.name,
+    categorySlug: product.category.slug,
     ingredients: product.ingredients,
     weightGrams: product.weightGrams,
     retailPriceCents: product.retailPriceCents,

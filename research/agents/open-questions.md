@@ -1,6 +1,6 @@
 # Open Questions Parking Lot
 
-Last updated: 2026-07-30 (PM Run #2)
+Last updated: 2026-07-30 (PM Run #3)
 
 This file replaces the missing PROJECT_KEYS.md section 13. All unresolved product decisions go here. Answered questions are moved to the **Resolved** section below.
 
@@ -22,20 +22,6 @@ Default to US rate (conservative, highest) or global average (~$2–3/hr)?
 - Suggested default: China rate ($3.50/hr) as it covers the largest share of manufactured goods
 - **Owner:** Zach | **Blocking:** TRD for Goal 4
 
-**Q4-3: Manufacturing hour estimates**
-Are category-level defaults acceptable for launch, or do we need subcategory granularity?
-- e.g., "Clothing" is 1.5 hrs — but a basic t-shirt vs. a tailored suit differ wildly
-- Subcategory table adds complexity; category-level is defensible for v1 with a confidence hit
-- **Suggested answer:** Category-level for v1; add subcategory table in Goal 8 (Data Expansion)
-
-**Q4-4: Async vs sync estimation**
-If a product has many materials, estimation could take 1–2 seconds. Should the API be:
-- (a) Sync — optimize queries to stay under 500ms (batch fetches, indexed joins)
-- (b) Async — 202 + polling until done
-- **Suggested answer:** Go sync first; optimize with batch queries. Only go async if profiling shows >500ms at p95. Don't add async complexity prematurely.
-
----
-
 ### Goal 5 — Product Page & Cost Breakdown UI
 
 **Q5-1: Chart type — stacked bar vs. donut**
@@ -44,37 +30,41 @@ Which chart type for the cost breakdown?
 - Donut: more visually striking on mobile; better for "wow" factor
 - **Owner:** Zach | **Blocking:** TRD for Goal 5
 
-**Q5-2: "Calculate Cost" trigger — auto vs. button**
-When no estimate exists, auto-trigger on page load or wait for user button press?
-- Auto: smoother UX, estimate ready faster
-- Button: avoids compute on bot/crawler visits; clearer mental model ("I'm requesting this")
-- **Suggested answer:** Auto-trigger on page load for real users; add `?bot=1` bypass or check user-agent to skip bots
+### Goal 6 — Category Browsing & Landing Pages
 
-**Q5-3: Markup framing**
-Show markup as percentage ("400% markup") or multiplier ("retail is 5× the cost")?
-- Percentage: technically accurate, familiar
-- Multiplier: more visceral for high-markup products; better for sharing
-- **Suggested answer:** Show both — primary display as multiplier ("5× markup"), secondary as "retail price is 400% above manufacturing cost"
+**Q6-1: Category descriptions**
+Who writes the 2–3 sentence unique blurb per category for SEO? Can be AI-drafted, but needs review. How many categories are seeded at this point?
+- **Owner:** Zach | **Blocking:** TRD for Goal 6
 
-**Q5-4: Low-confidence display**
-When confidence < 0.3, what to show?
-- (a) Show estimate with prominent warning banner
-- (b) Hide chart, show "insufficient data" with explanation
-- (c) Show category averages with disclaimer ("estimated for [category] products")
-- **Suggested answer:** Option (c) — category averages with disclaimer. Never show empty state when we can give *something* useful.
+**Q6-2: Pagination vs. load more**
+Paginated routes (`/category/[slug]?page=2`) are better for SEO (each page indexable). "Load more" is better UX. Given AdSense approval is the near-term goal, SEO pagination is likely preferable.
+- **Suggested answer:** Pagination with URL-based pages — prioritize indexability over UX convenience at this stage
+- **Owner:** Zach (confirm)
 
-**Q5-5: OG image generation**
-Custom OG image via `opengraph-image.tsx` or plain text meta tags for launch?
-- Custom OG image makes shares more compelling (branded card with the key stats)
-- Adds complexity; requires image generation route
-- **Suggested answer:** Plain meta tags for launch (Goal 5); add dynamic OG image in Goal 9 (Social) when sharing becomes a focus
+**Q6-3: Minimum product count for AdSense**
+How many products with estimates will TruePrice have seeded by Goal 6? If fewer than ~20 with real estimates, category pages may be too thin for AdSense approval.
+- **Action needed:** Count seeded products with estimates; decide if more seed data is needed before AdSense submission
+- **Owner:** Zach | **Blocking:** Goal 7
 
----
+### Goal 7 — AdSense Integration
+
+**Q7-1: AdSense account & publisher ID**
+Has Zach created a Google AdSense account? Publisher ID (`ca-pub-XXXXXXXX`) needed before ads can serve. Review lag is typically 1–4 weeks after site submission.
+- **Owner:** Zach | **Blocking:** Goal 7 launch
+
+**Q7-2: Manual ad unit IDs**
+Manual ad units require unit IDs created in the AdSense dashboard. Should manual units be wired at launch (needs IDs now) or launch with auto-ads only?
+- **Suggested answer:** Launch with auto-ads only; add manual units after AdSense approves. Reduces pre-launch dependencies.
+- **Owner:** Zach (confirm)
+
+**Q7-3: Privacy Policy data scope**
+Does TruePrice store any user data beyond standard server logs? This determines what the Privacy Policy must disclose. For v1 with no user accounts, the answer is likely "server logs only + AdSense cookies."
+- **Owner:** Zach | **Blocking:** Privacy Policy content
 
 ### Infrastructure / Cross-cutting
 
 **Q-INFRA-1: PROJECT_KEYS.md missing**
-Multiple agent runs (TRD Watcher #1–#8, PM #2) have flagged that `PROJECT_KEYS.md` does not exist, despite the roadmap claiming it was generated from it.
+Multiple agent runs (TRD Watcher #1–#8, PM #2–#3) have flagged that `PROJECT_KEYS.md` does not exist, despite the roadmap claiming it was generated from it.
 - TRD Watcher instructions reference sections 3 (tech stack) and 10 (separation of concerns)
 - PM instructions reference sections 1, 2, 6, 7, 12, 13
 - This blocks full TRD validation
@@ -92,4 +82,24 @@ All agent runs have failed to post to Discord (#main, #standup, #prs, #alerts, #
 
 ## Resolved
 
-_(none yet)_
+### Goal 4
+
+**Q4-3: Manufacturing hour estimates** — Category-level defaults are acceptable for v1 launch. Subcategory granularity deferred to Goal 8 (Data Expansion). A confidence hit at category level is acceptable and disclosed to users.
+- **Resolved:** PM Run #2 (2026-07-30) — suggested answer accepted as working default
+
+**Q4-4: Async vs sync estimation** — Go sync first; optimize queries to stay under 500ms (batch fetches, indexed joins). Only introduce async (202 + polling) if profiling shows >500ms at p95. Don't add async complexity prematurely.
+- **Resolved:** PM Run #2 (2026-07-30) — suggested answer accepted as working default
+
+### Goal 5
+
+**Q5-2: "Calculate Cost" trigger** — Auto-trigger on page load for real users. Add `?bot=1` bypass or check user-agent to skip auto-trigger for known bot patterns. Avoids unnecessary compute from crawlers while keeping UX smooth.
+- **Resolved:** PM Run #2 (2026-07-30) — suggested answer accepted as working default
+
+**Q5-3: Markup framing** — Show both: primary display as multiplier ("5× markup"), secondary as "retail price is 400% above manufacturing cost." Multiplier is more visceral for sharing; percentage is technically precise.
+- **Resolved:** PM Run #2 (2026-07-30) — suggested answer accepted as working default
+
+**Q5-4: Low-confidence display** — Show category averages with disclaimer ("estimated for [category] products"). Never show empty state when we can give something useful. Prominent warning badge accompanies category-average estimates.
+- **Resolved:** PM Run #2 (2026-07-30) — suggested answer accepted as working default
+
+**Q5-5: OG image generation** — Plain meta tags for launch (Goal 5). Add dynamic OG image (`opengraph-image.tsx`) in Goal 9 (Social) when sharing becomes a focus. Reduces Goal 5 complexity.
+- **Resolved:** PM Run #2 (2026-07-30) — suggested answer accepted as working default
