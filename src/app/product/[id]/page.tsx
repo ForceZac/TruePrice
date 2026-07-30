@@ -4,6 +4,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft } from "lucide-react";
 import { getProductById } from "@/services/ProductService";
+import { env } from "@/lib/env";
+import { ProductPageClient } from "./ProductPageClient";
+import type { ProductResult } from "@/lib/api";
 
 interface ProductPageProps {
   params: Promise<{ id: string }>;
@@ -17,9 +20,28 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
     return { title: "Product Not Found — TruePrice" };
   }
 
+  const title = `${product.name} — TruePrice`;
+  const description = `See what ${product.name} actually costs to make — raw materials, labor, and overhead. True cost revealed by TruePrice.`;
+  const url = `${env.NEXT_PUBLIC_APP_URL}/product/${id}`;
+
   return {
-    title: `${product.name} — TruePrice`,
-    description: `See what ${product.name} actually costs to make — raw materials, labor, and overhead.`,
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      url,
+      siteName: "TruePrice",
+      type: "website",
+      ...(product.imageUrl
+        ? { images: [{ url: product.imageUrl, alt: product.name }] }
+        : {}),
+    },
+    twitter: {
+      card: "summary",
+      title,
+      description,
+    },
   };
 }
 
@@ -30,6 +52,26 @@ export default async function ProductPage({ params }: ProductPageProps) {
   if (!product) {
     notFound();
   }
+
+  const canonicalUrl = `${env.NEXT_PUBLIC_APP_URL}/product/${id}`;
+
+  // Map ServiceResult → API-level ProductResult shape expected by the client component.
+  // retailPriceCents is passed through so the stats row can show the retail price.
+  const productForClient: ProductResult & { retailPriceCents?: number | null } = {
+    id: product.id,
+    name: product.name,
+    brand: product.brand,
+    description: product.description,
+    imageUrl: product.imageUrl,
+    category: product.category,
+    ingredients: product.ingredients,
+    weightGrams: product.weightGrams,
+    countryOfOrigin: product.countryOfOrigin,
+    upc: product.upc,
+    ean: product.ean,
+    source: product.source,
+    retailPriceCents: product.retailPriceCents,
+  };
 
   return (
     <main className="flex flex-col min-h-screen px-4 py-10 max-w-2xl mx-auto w-full gap-6">
@@ -134,20 +176,15 @@ export default async function ProductPage({ params }: ProductPageProps) {
         </section>
       )}
 
-      {/* Cost breakdown placeholder */}
+      {/* Cost breakdown — client component handles fetch / trigger / display */}
       <section aria-labelledby="cost-heading">
         <h2
           id="cost-heading"
           className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-3"
         >
-          Cost Breakdown
+          True Cost
         </h2>
-        <div className="rounded-xl border border-dashed border-border p-6 text-center text-muted-foreground">
-          <p className="text-sm">Cost breakdown coming in Goal 4.</p>
-          <p className="text-xs mt-1">
-            We&apos;ll calculate raw material, labor, and overhead costs based on product data.
-          </p>
-        </div>
+        <ProductPageClient product={productForClient} canonicalUrl={canonicalUrl} />
       </section>
     </main>
   );
