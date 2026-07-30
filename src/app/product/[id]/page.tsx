@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { getProductById } from "@/services/ProductService";
-import { env } from "@/lib/env";
+import { clientEnv as env } from "@/lib/env.client";
 import { ProductPageClient } from "./ProductPageClient";
 import { Breadcrumb } from "@/components/atoms/Breadcrumb";
 import { AdSlot } from "@/components/atoms/AdSlot";

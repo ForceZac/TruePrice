@@ -4,10 +4,9 @@
  * Never use raw fetch in components. Use TanStack Query hooks that call these helpers.
  */
 
-// NEXT_PUBLIC_APP_URL is inlined by Next.js at build time for client bundles.
-// Do NOT import from @/lib/env here — env.ts validates DATABASE_URL which
-// is server-only and will throw when this module is loaded in the browser.
-const BASE_URL = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
+import { clientEnv } from "@/lib/env.client";
+
+const BASE_URL = clientEnv.NEXT_PUBLIC_APP_URL;
 
 // ─── Typed API error ──────────────────────────────────────────────────────────
 
