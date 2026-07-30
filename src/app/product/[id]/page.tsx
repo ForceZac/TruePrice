@@ -7,6 +7,7 @@ import { ProductPageClient } from "./ProductPageClient";
 import { Breadcrumb } from "@/components/atoms/Breadcrumb";
 import { AddToCompareButton } from "@/components/atoms/AddToCompareButton";
 import { CompareTray } from "@/components/molecules/CompareTray";
+import { AdSlot } from "@/components/atoms/AdSlot";
 import type { ProductResult } from "@/lib/api";
 
 interface ProductPageProps {
@@ -201,6 +202,15 @@ export default async function ProductPage({ params }: ProductPageProps) {
         </h2>
         <ProductPageClient product={productForClient} canonicalUrl={canonicalUrl} />
       </section>
+
+      {/* Ad unit — below cost breakdown */}
+      {env.NEXT_PUBLIC_ADSENSE_CLIENT && env.NEXT_PUBLIC_ADSENSE_SLOT_PRODUCT && (
+        <AdSlot
+          publisherId={env.NEXT_PUBLIC_ADSENSE_CLIENT}
+          slotId={env.NEXT_PUBLIC_ADSENSE_SLOT_PRODUCT}
+          format="rectangle"
+        />
+      )}
 
       {/* Comparison tray — fixed bottom bar */}
       <CompareTray />

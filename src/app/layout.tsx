@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { QueryProvider } from "@/components/providers/QueryProvider";
 import { Footer } from "@/components/layout/Footer";
+import { CookieConsent } from "@/components/molecules/CookieConsent";
+import { AdSenseLoader } from "@/components/layout/AdSenseLoader";
+import { clientEnv } from "@/lib/env.client";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -25,6 +28,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const adSensePublisherId = clientEnv.NEXT_PUBLIC_ADSENSE_CLIENT;
+
   return (
     <html
       lang="en"
@@ -33,6 +38,10 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         <QueryProvider>{children}</QueryProvider>
         <Footer />
+        <CookieConsent />
+        {adSensePublisherId && (
+          <AdSenseLoader publisherId={adSensePublisherId} />
+        )}
       </body>
     </html>
   );

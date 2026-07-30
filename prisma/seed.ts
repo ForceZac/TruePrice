@@ -492,7 +492,7 @@ async function main() {
   await upsertProduct("000000000302", {
     name: "Wireless Earbuds",
     brand: "SoundCore",
-    subcategory: "cable",
+    subcategory: "earbuds",
     categoryId: electronics.id,
     description: "True wireless earbuds with charging case.",
     retailPriceCents: 4999,
@@ -532,7 +532,7 @@ async function main() {
   await upsertProduct("000000000312", { name: "Ring Light (10-inch)", brand: "LitUp", subcategory: "charger", categoryId: electronics.id, retailPriceCents: 2999, weightGrams: 600, countryOfOrigin: "CN" });
   await upsertProduct("000000000313", { name: "Webcam (1080p)", brand: "ClearView", subcategory: "laptop", categoryId: electronics.id, retailPriceCents: 5999, weightGrams: 150, countryOfOrigin: "CN" });
   await upsertProduct("000000000314", { name: "Power Bank (20000mAh)", brand: "ChargePack", subcategory: "charger", categoryId: electronics.id, retailPriceCents: 4999, weightGrams: 440, countryOfOrigin: "CN" });
-  await upsertProduct("000000000315", { name: "Screen Protector (2-pack)", brand: "ClearGuard", subcategory: "cable", categoryId: electronics.id, retailPriceCents: 999, weightGrams: 10, countryOfOrigin: "CN" });
+  await upsertProduct("000000000315", { name: "Screen Protector (2-pack)", brand: "ClearGuard", categoryId: electronics.id, retailPriceCents: 999, weightGrams: 10, countryOfOrigin: "CN" });
   await upsertProduct("000000000316", { name: "Smart Plug (2-pack)", brand: "HomePower", subcategory: "charger", categoryId: electronics.id, retailPriceCents: 1999, weightGrams: 130, countryOfOrigin: "CN" });
 
   // ─── Products — Cosmetics & Personal Care (20 products, 4 with materials)

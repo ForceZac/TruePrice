@@ -12,6 +12,18 @@ export function Footer() {
           <Trophy className="h-3.5 w-3.5" aria-hidden="true" />
           Hall of Shame
         </Link>
+        <Link href="/about" className="hover:text-foreground transition">
+          About
+        </Link>
+        <Link href="/privacy" className="hover:text-foreground transition">
+          Privacy Policy
+        </Link>
+        <Link href="/terms" className="hover:text-foreground transition">
+          Terms
+        </Link>
+        <Link href="/contact" className="hover:text-foreground transition">
+          Contact
+        </Link>
         <span className="text-muted-foreground/50">
           © {new Date().getFullYear()} TruePrice
         </span>
