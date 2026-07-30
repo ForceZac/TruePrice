@@ -83,3 +83,53 @@ export async function getProduct(id: string): Promise<ProductResult | null> {
   );
   return data.product;
 }
+
+// ─── Cost estimate types ──────────────────────────────────────────────────────
+
+export interface CostBreakdownResult {
+  id: string;
+  productId: string;
+  materialCostCents: number;
+  laborCostCents: number;
+  overheadCostCents: number;
+  shippingCostCents: number;
+  totalCostCents: number;
+  retailPriceCents: number | null;
+  markupPercent: number | null;
+  confidenceScore: number;
+  confidenceReason: string;
+  methodology: string;
+  calculatedAt: string; // ISO 8601
+}
+
+// ─── Cost estimate endpoints ──────────────────────────────────────────────────
+
+/**
+ * GET /api/products/[id]/estimate
+ *
+ * Returns the most recent cached cost breakdown. Throws if none exists yet
+ * (the caller should treat a 404-shaped error as "not estimated yet").
+ */
+export async function getEstimate(
+  productId: string
+): Promise<CostBreakdownResult> {
+  const data = await apiFetch<{ breakdown: CostBreakdownResult }>(
+    `/api/products/${encodeURIComponent(productId)}/estimate`
+  );
+  return data.breakdown;
+}
+
+/**
+ * POST /api/products/[id]/estimate
+ *
+ * Triggers (or returns cached) cost estimation. Returns the breakdown.
+ */
+export async function triggerEstimate(
+  productId: string
+): Promise<CostBreakdownResult> {
+  const data = await apiFetch<{ breakdown: CostBreakdownResult }>(
+    `/api/products/${encodeURIComponent(productId)}/estimate`,
+    { method: "POST" }
+  );
+  return data.breakdown;
+}

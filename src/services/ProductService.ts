@@ -25,6 +25,7 @@ export interface ProductResult {
   category: string;
   ingredients?: string | null;
   weightGrams?: number | null;
+  retailPriceCents?: number | null;
   countryOfOrigin?: string | null;
   upc?: string | null;
   ean?: string | null;
@@ -309,6 +310,7 @@ export async function getProductById(id: string): Promise<ProductResult | null> 
     category: product.category.name,
     ingredients: product.ingredients,
     weightGrams: product.weightGrams,
+    retailPriceCents: product.retailPriceCents,
     countryOfOrigin: product.countryOfOrigin,
     upc: product.upc,
     ean: product.ean,
