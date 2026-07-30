@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Link from "next/link";
 import Image from "next/image";
+import { ArrowLeft } from "lucide-react";
 import { getProductById } from "@/services/ProductService";
 import { env } from "@/lib/env";
 import { ProductPageClient } from "./ProductPageClient";
-import { Breadcrumb } from "@/components/atoms/Breadcrumb";
 import type { ProductResult } from "@/lib/api";
 
 interface ProductPageProps {
@@ -54,21 +55,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
   const canonicalUrl = `${env.NEXT_PUBLIC_APP_URL}/product/${id}`;
 
-  // Build breadcrumb items
-  const breadcrumbItems = [
-    { label: "Home", href: "/" },
-    ...(product.categorySlug
-      ? [
-          { label: "Categories", href: "/categories" },
-          {
-            label: product.category,
-            href: `/category/${product.categorySlug}`,
-          },
-        ]
-      : []),
-    { label: product.name, href: `/product/${id}` },
-  ];
-
   // Map ServiceResult → API-level ProductResult shape expected by the client component.
   // retailPriceCents is passed through so the stats row can show the retail price.
   const productForClient: ProductResult & { retailPriceCents?: number | null } = {
@@ -89,8 +75,13 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
   return (
     <main className="flex flex-col min-h-screen px-4 py-10 max-w-2xl mx-auto w-full gap-6">
-      {/* Breadcrumb */}
-      <Breadcrumb items={breadcrumbItems} baseUrl={env.NEXT_PUBLIC_APP_URL} />
+      <Link
+        href="/search"
+        className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition w-fit"
+      >
+        <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+        Back to search
+      </Link>
 
       {/* Product header */}
       <div className="flex gap-4 items-start">
