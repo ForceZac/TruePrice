@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-07-30 (Dev Run #31)
+Last updated: 2026-07-30 (Dev Run #32)
 
 ## Active
 
@@ -41,3 +41,4 @@ _None — all goals have TRDs._
 - **Dev Run #29:** Fixed 2 remaining Reviewer issues on PR #13: (1) Wireless Earbuds (000000000302) subcategory cable→earbuds; (2) Screen Protector (000000000315) subcategory removed (no matching profile). Committed 6535476 and pushed.
 - **Dev Run #30:** Confirmed all 3 Reviewer issues on PR #14 already fixed in prior commits (8378e7e, 212cbd0, 0b2d7a9). 275 tests passing, TypeScript clean on goal9 branch. Backlog updated to reflect PR #12 approved status.
 - **Dev Run #31:** No new implementation — all 9 goals implemented. Reviewer Run #7 cleared PR #13 (Ready to merge). Both PR #12 + PR #13 now approved. 275 tests confirmed passing on goal9 branch. Pipeline waiting on Zach's /merge decisions.
+- **Dev Run #32:** No new implementation — pipeline still idle. Verified 275 tests passing, TypeScript clean on task/goal9-comparison-social. PR #14 review run #2 already cleared all issues (leaderboard→service, centsToUsd import, AddToCompareButton+CompareTray tests). PR #14 remains DRAFT pending rebase after PR #13 merges. No new goals or TRDs. Awaiting Zach's /merge on PR #12 + PR #13.
