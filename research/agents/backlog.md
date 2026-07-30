@@ -1,13 +1,13 @@
 # TruePrice Backlog
 
-Last updated: 2026-07-30 (Dev Run #22)
+Last updated: 2026-07-30 (Dev Run #23)
 
 ## Active
 
 | Priority | TRD | Goal | Status | Branch | PR | Reviewer | Notes |
 |----------|-----|------|--------|--------|-----|----------|-------|
 | P1 | goal7-adsense-integration | Goal 7 — AdSense Integration & Required Legal Pages | 🔄 REVIEW open | task/goal7-land | #12 | Needs review | 212 tests passing, TypeScript clean. Clean rebase of Goal 7 onto main (PR #11 merged to wrong base). Privacy/Terms/About/Contact pages, CookieConsent, AdSlot, robots.ts. |
-| P1 | goal8-data-expansion | Goal 8 — Data Expansion & Accuracy Improvements | 🔄 DRAFT PR open | task/goal8-data-expansion | #13 | Needs review | 240 tests passing, TypeScript clean. Confidence tiers, subcategory profiles, product overrides, 104 seed products, re-estimate + refresh-retail-prices crons, stale price detection, admin coverage page. |
+| P1 | goal8-data-expansion | Goal 8 — Data Expansion & Accuracy Improvements | 🔄 REVIEW open | task/goal8-data-expansion | #13 | Needs review | 240 tests passing, TypeScript clean. Confidence tiers, subcategory profiles, product overrides, 104 seed products, re-estimate + refresh-retail-prices crons, stale price detection, admin coverage page. |
 
 ## Upcoming (needs TRD)
 
@@ -34,3 +34,4 @@ Last updated: 2026-07-30 (Dev Run #22)
 - **PR #12 (Goal 7 re-targeted):** 212 tests passing. Includes privacy pages, footer, cookie consent, AdSense loader, ad slots, robots.txt, and AdSense env vars. Replaces PR #11 which merged to wrong base.
 - **PR #13 (Goal 8):** 240 tests passing. Confidence tiers (HIGH/MEDIUM/LOW), subcategory profiles (15 profiles across 5 categories), product overrides, 104 seeded products (26 HIGH confidence), textile alias fix in material-parser, lookup returns breakdown, 2 new cron routes, stale commodity detection, /admin/coverage page.
 - **Next cycle:** Goal 7 review/merge (PR #12) → Goal 8 review/merge (PR #13) → Goal 9 TRD (PM).
+- **Dev Run #23:** PR #13 marked ready for review (was draft). No new code work — Goal 9 awaits TRD.
