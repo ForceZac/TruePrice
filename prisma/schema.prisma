@@ -1,0 +1,121 @@
+// This is your Prisma schema file.
+// Learn more: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ─── Enums ─────────────────────────────────────────────────────────────────
+
+// (none yet — using string fields for flexibility in v1)
+
+// ─── Models ────────────────────────────────────────────────────────────────
+
+model ProductCategory {
+  id              String    @id @default(cuid())
+  name            String    @unique
+  slug            String    @unique
+  overheadPercent Float
+  description     String?
+  createdAt       DateTime  @default(now())
+
+  products        Product[]
+}
+
+model Product {
+  id               String          @id @default(cuid())
+  name             String
+  brand            String?
+  upc              String?         @unique
+  ean              String?         @unique
+  category         ProductCategory @relation(fields: [categoryId], references: [id])
+  categoryId       String
+  description      String?
+  imageUrl         String?
+  retailPriceCents Int?
+  weightGrams      Float?
+  countryOfOrigin  String?
+  ingredients      String?
+  source           String
+  sourceId         String?
+  lastLookedUp     DateTime?
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt
+
+  materials        ProductMaterial[]
+  costBreakdowns   CostBreakdown[]
+}
+
+model Material {
+  id           String    @id @default(cuid())
+  name         String    @unique
+  commodityKey String?
+  unit         String
+  categoryTag  String?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  productLinks     ProductMaterial[]
+  commodityPrices  CommodityPrice[]
+}
+
+model ProductMaterial {
+  id          String   @id @default(cuid())
+  productId   String
+  product     Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  materialId  String
+  material    Material @relation(fields: [materialId], references: [id])
+  percentage  Float?
+  weightGrams Float?
+  source      String
+
+  @@index([productId])
+  @@index([materialId])
+}
+
+model CommodityPrice {
+  id              String   @id @default(cuid())
+  materialId      String
+  material        Material @relation(fields: [materialId], references: [id])
+  pricePerKgCents Int
+  source          String
+  fetchedAt       DateTime
+  createdAt       DateTime @default(now())
+
+  @@index([materialId])
+  @@index([fetchedAt])
+}
+
+model CostBreakdown {
+  id                 String   @id @default(cuid())
+  productId          String
+  product            Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  materialCostCents  Int
+  laborCostCents     Int
+  overheadCostCents  Int
+  shippingCostCents  Int
+  totalCostCents     Int
+  retailPriceCents   Int?
+  markupPercent      Float?
+  confidenceScore    Float
+  confidenceReason   String
+  methodology        String
+  calculatedAt       DateTime
+  createdAt          DateTime @default(now())
+
+  @@index([productId])
+  @@index([calculatedAt])
+}
+
+model LaborRate {
+  id              String   @id @default(cuid())
+  countryCode     String   @unique
+  countryName     String
+  hourlyRateCents Int
+  source          String
+  lastUpdated     DateTime
+}
