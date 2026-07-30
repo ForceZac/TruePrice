@@ -90,7 +90,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
   return (
     <main className="flex flex-col min-h-screen px-4 py-10 max-w-2xl mx-auto w-full gap-6">
       {/* Breadcrumb */}
-      <Breadcrumb items={breadcrumbItems} />
+      <Breadcrumb items={breadcrumbItems} baseUrl={env.NEXT_PUBLIC_APP_URL} />
 
       {/* Product header */}
       <div className="flex gap-4 items-start">

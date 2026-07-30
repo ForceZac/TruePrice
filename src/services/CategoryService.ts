@@ -114,26 +114,7 @@ export async function getCategoryBySlug(slug: string): Promise<CategoryDetail | 
       ? markups.reduce((sum, m) => sum + m, 0) / markups.length
       : null;
 
-  // Fetch top product (highest markupPercent)
-  const topProductRow = await prisma.product.findFirst({
-    where: {
-      categoryId: cat.id,
-      costBreakdowns: { some: { markupPercent: { not: null } } },
-    },
-    orderBy: { costBreakdowns: { _count: "desc" } },
-    include: {
-      costBreakdowns: {
-        orderBy: { calculatedAt: "desc" },
-        take: 1,
-        select: {
-          totalCostCents: true,
-          markupPercent: true,
-        },
-      },
-    },
-  });
-
-  // Re-query sorted by markup to get the actual top
+  // Fetch top product by markup %
   const topByMarkup = await prisma.costBreakdown.findFirst({
     where: {
       product: { categoryId: cat.id },
@@ -165,9 +146,6 @@ export async function getCategoryBySlug(slug: string): Promise<CategoryDetail | 
       }
     : null;
 
-  // suppress unused variable warning
-  void topProductRow;
-
   return {
     id: cat.id,
     name: cat.name,
@@ -182,6 +160,9 @@ export async function getCategoryBySlug(slug: string): Promise<CategoryDetail | 
 /**
  * Returns products in a category, sorted by markup % descending.
  * Products without a CostBreakdown are listed last (markupPercent: null).
+ *
+ * Fetches all products first, sorts in memory, then paginates — ensures
+ * the sort is global across the full category, not within a single page.
  */
 export async function getCategoryProducts(
   categorySlug: string,
@@ -195,12 +176,9 @@ export async function getCategoryProducts(
 
   if (!cat) return { products: [], total: 0 };
 
-  const total = await prisma.product.count({
-    where: { categoryId: cat.id },
-  });
-
-  // Fetch all products in category with their latest cost breakdown
-  const products = await prisma.product.findMany({
+  // Fetch all products with their latest cost breakdown (no skip/take here —
+  // must sort globally before paginating)
+  const allProducts = await prisma.product.findMany({
     where: { categoryId: cat.id },
     select: {
       id: true,
@@ -217,12 +195,10 @@ export async function getCategoryProducts(
         take: 1,
       },
     },
-    skip: (page - 1) * perPage,
-    take: perPage,
   });
 
   // Sort: estimated products by markup desc, unestimated last
-  const items: CategoryProductItem[] = products.map((p) => ({
+  const allItems: CategoryProductItem[] = allProducts.map((p) => ({
     id: p.id,
     name: p.name,
     brand: p.brand,
@@ -234,14 +210,17 @@ export async function getCategoryProducts(
       p.costBreakdowns.length > 0 ? p.costBreakdowns[0].markupPercent : null,
   }));
 
-  items.sort((a, b) => {
+  allItems.sort((a, b) => {
     if (a.markupPercent === null && b.markupPercent === null) return 0;
     if (a.markupPercent === null) return 1;
     if (b.markupPercent === null) return -1;
     return b.markupPercent - a.markupPercent;
   });
 
-  return { products: items, total };
+  const total = allItems.length;
+  const products = allItems.slice((page - 1) * perPage, page * perPage);
+
+  return { products, total };
 }
 
 /**

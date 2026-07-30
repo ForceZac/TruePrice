@@ -56,13 +56,23 @@ describe("Breadcrumb", () => {
     expect(parsed.itemListElement[ITEMS.length - 1].position).toBe(ITEMS.length);
   });
 
-  it("JSON-LD item hrefs match provided hrefs", () => {
+  it("JSON-LD item hrefs match provided hrefs when no baseUrl", () => {
     const { container } = render(<Breadcrumb items={ITEMS} />);
     const script = container.querySelector('script[type="application/ld+json"]');
     const parsed = JSON.parse(script!.textContent ?? "{}");
     ITEMS.forEach((item, i) => {
       expect(parsed.itemListElement[i].item).toBe(item.href);
       expect(parsed.itemListElement[i].name).toBe(item.label);
+    });
+  });
+
+  it("JSON-LD item hrefs are absolute when baseUrl is provided", () => {
+    const baseUrl = "https://trueprice.com";
+    const { container } = render(<Breadcrumb items={ITEMS} baseUrl={baseUrl} />);
+    const script = container.querySelector('script[type="application/ld+json"]');
+    const parsed = JSON.parse(script!.textContent ?? "{}");
+    ITEMS.forEach((item, i) => {
+      expect(parsed.itemListElement[i].item).toBe(`${baseUrl}${item.href}`);
     });
   });
 

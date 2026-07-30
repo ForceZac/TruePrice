@@ -8,6 +8,13 @@ export interface BreadcrumbItem {
 
 interface BreadcrumbProps {
   items: BreadcrumbItem[];
+  /**
+   * Base URL used to build absolute hrefs in the BreadcrumbList JSON-LD.
+   * Google requires absolute URLs; omitting this falls back to relative paths
+   * which produce invalid structured data.
+   * Example: "https://trueprice.com"
+   */
+  baseUrl?: string;
 }
 
 /**
@@ -15,8 +22,9 @@ interface BreadcrumbProps {
  *
  * Items are rendered in order; the last item is the current page (no link).
  * Includes a <script type="application/ld+json"> with BreadcrumbList schema.
+ * Pass `baseUrl` so JSON-LD item hrefs are absolute (required by Google).
  */
-export function Breadcrumb({ items }: BreadcrumbProps) {
+export function Breadcrumb({ items, baseUrl }: BreadcrumbProps) {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -24,7 +32,7 @@ export function Breadcrumb({ items }: BreadcrumbProps) {
       "@type": "ListItem",
       position: index + 1,
       name: item.label,
-      item: item.href,
+      item: baseUrl ? `${baseUrl}${item.href}` : item.href,
     })),
   };
 
