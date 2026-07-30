@@ -1,4 +1,6 @@
-import { Search } from "lucide-react";
+import Link from "next/link";
+import { ScanLine } from "lucide-react";
+import { SearchInput } from "@/components/molecules/SearchInput";
 
 export default function Home() {
   return (
@@ -12,19 +14,21 @@ export default function Home() {
           paying above that.
         </p>
 
-        <div className="relative w-full mt-4">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-          <input
-            type="search"
-            placeholder="Search for a product or scan a barcode..."
-            className="w-full rounded-full border border-input bg-background pl-12 pr-6 py-4 text-base shadow-sm outline-none focus:ring-2 focus:ring-ring transition"
-            aria-label="Product search"
-            disabled
-          />
+        <div className="flex items-center gap-3 w-full mt-4">
+          <div className="flex-1">
+            <SearchInput placeholder="Search for a product or enter a name…" />
+          </div>
+          <Link
+            href="/scan"
+            aria-label="Scan barcode"
+            className="flex items-center justify-center h-14 w-14 rounded-full border border-input bg-background text-foreground shadow-sm hover:bg-muted transition shrink-0"
+          >
+            <ScanLine className="h-6 w-6" aria-hidden="true" />
+          </Link>
         </div>
 
         <p className="text-sm text-muted-foreground">
-          Full search coming soon. Stay tuned.
+          Search for any product by name, or scan the barcode to look it up.
         </p>
       </div>
     </main>
