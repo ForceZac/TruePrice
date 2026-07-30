@@ -199,7 +199,11 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
       {/* Ad unit — below cost breakdown */}
       {env.NEXT_PUBLIC_ADSENSE_CLIENT && (
-        <AdSlot slotId="product-page-rectangle" format="rectangle" />
+        <AdSlot
+          publisherId={env.NEXT_PUBLIC_ADSENSE_CLIENT}
+          slotId="product-page-rectangle"
+          format="rectangle"
+        />
       )}
     </main>
   );

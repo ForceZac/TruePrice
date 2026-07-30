@@ -210,7 +210,11 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                   }
                 />
                 {index === 5 && env.NEXT_PUBLIC_ADSENSE_CLIENT && (
-                  <AdSlot slotId="category-page-leaderboard" format="leaderboard" />
+                  <AdSlot
+                    publisherId={env.NEXT_PUBLIC_ADSENSE_CLIENT}
+                    slotId="category-page-leaderboard"
+                    format="leaderboard"
+                  />
                 )}
               </React.Fragment>
             ))}
