@@ -1,6 +1,6 @@
 import { type NextRequest } from "next/server";
 import { fetchPrices } from "@/services/CommodityService";
-import { env } from "@/lib/env";
+import { serverEnv as env } from "@/lib/env.server";
 
 /**
  * GET /api/cron/refresh-prices

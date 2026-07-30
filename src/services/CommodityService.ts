@@ -14,7 +14,7 @@
  */
 
 import { prisma } from "@/lib/db";
-import { env } from "@/lib/env";
+import { serverEnv as env } from "@/lib/env.server";
 import { rawPriceToCentsPerKg } from "@/lib/unit-conversion";
 import {
   COMMODITY_MAPPINGS,

@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft } from "lucide-react";
 import { getProductById } from "@/services/ProductService";
-import { env } from "@/lib/env";
+import { clientEnv as env } from "@/lib/env.client";
 import { ProductPageClient } from "./ProductPageClient";
 import type { ProductResult } from "@/lib/api";
 

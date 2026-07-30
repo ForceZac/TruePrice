@@ -1,11 +1,12 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 
-// Mock env before BarcodeService imports it
-vi.mock("@/lib/env", () => ({
-  env: {
-    NEXT_PUBLIC_APP_URL: "http://localhost:3000",
+// Mock server env before BarcodeService imports it
+vi.mock("@/lib/env.server", () => ({
+  serverEnv: {
     NODE_ENV: "test",
     DATABASE_URL: "postgresql://test:test@localhost/test",
+    UPCITEMDB_API_KEY: undefined,
+    GO_UPC_API_KEY: undefined,
   },
 }));
 
