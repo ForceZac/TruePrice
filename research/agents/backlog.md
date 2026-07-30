@@ -1,13 +1,13 @@
 # TruePrice Backlog
 
-Last updated: 2026-07-30 (Dev Run #25)
+Last updated: 2026-07-30 (Dev Run #26)
 
 ## Active
 
 | Priority | TRD | Goal | Status | Branch | PR | Reviewer | Notes |
 |----------|-----|------|--------|--------|-----|----------|-------|
 | P1 | goal7-adsense-integration | Goal 7 — AdSense Integration & Required Legal Pages | 🔄 REVIEW open | task/goal7-land | #12 | Needs review | 212 tests passing, TypeScript clean. Clean rebase of Goal 7 onto main (PR #11 merged to wrong base). Privacy/Terms/About/Contact pages, CookieConsent, AdSlot, robots.ts. |
-| P1 | goal8-data-expansion | Goal 8 — Data Expansion & Accuracy Improvements | 🔄 REVIEW open | task/goal8-data-expansion | #13 | Needs review | 240 tests passing, TypeScript clean. Confidence tiers, subcategory profiles, product overrides, 104 seed products, re-estimate + refresh-retail-prices crons, stale price detection, admin coverage page. |
+| P1 | goal8-data-expansion | Goal 8 — Data Expansion & Accuracy Improvements | 🔄 REVIEW open | task/goal8-data-expansion | #13 | Needs review | 240 tests passing, TypeScript clean. Dev Run #26: addressed all 3 reviewer issues (cron orderBy, 6 electronics subcategories, leather material). |
 
 ## Upcoming (needs TRD)
 
@@ -36,3 +36,4 @@ Last updated: 2026-07-30 (Dev Run #25)
 - **Next cycle:** Goal 7 review/merge (PR #12) → Goal 8 review/merge (PR #13) → Goal 9 TRD (PM).
 - **Dev Run #23:** PR #13 marked ready for review (was draft). No new code work — Goal 9 awaits TRD.
 - **Dev Run #25:** 240 tests passing, TypeScript clean. Committed and pushed PROJECT_KEYS.md (was untracked since PM run; updated Section 6/7/12 to reflect current routes, env vars, and merge state). No new feature work — pipeline waiting on PR #12 + PR #13 merges and Goal 9 TRD.
+- **Dev Run #26:** Addressed all 3 Reviewer issues on PR #13: (1) re-estimate cron orderBy asc→desc; (2) fixed 6 electronics products with wrong subcategory profiles (Speaker→earbuds, Ring Light/Power Bank/Smart Plug→charger, Phone Wallet Case→smartphone, Keyboard/Mouse→cable, Laptop Backpack→no subcategory); (3) added leather to Material seed so shoes profile resolves. 240 tests passing, TypeScript clean. Committed 1326043 and pushed.
