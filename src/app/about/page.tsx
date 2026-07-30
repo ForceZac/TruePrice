@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { env } from "@/lib/env";
+import { clientEnv } from "@/lib/env.client";
 
 export const metadata: Metadata = {
   title: "About TruePrice — What Products Actually Cost",
@@ -13,7 +13,7 @@ export default function AboutPage() {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "TruePrice",
-    url: env.NEXT_PUBLIC_APP_URL,
+    url: clientEnv.NEXT_PUBLIC_APP_URL,
     description:
       "TruePrice reveals the true manufacturing cost of consumer products using commodity prices and industry-standard cost models.",
   };

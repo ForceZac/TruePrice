@@ -4,7 +4,7 @@ import { QueryProvider } from "@/components/providers/QueryProvider";
 import { Footer } from "@/components/layout/Footer";
 import { CookieConsent } from "@/components/molecules/CookieConsent";
 import { AdSenseLoader } from "@/components/layout/AdSenseLoader";
-import { env } from "@/lib/env";
+import { clientEnv } from "@/lib/env.client";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -28,7 +28,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const adSensePublisherId = env.NEXT_PUBLIC_ADSENSE_CLIENT;
+  const adSensePublisherId = clientEnv.NEXT_PUBLIC_ADSENSE_CLIENT;
 
   return (
     <html

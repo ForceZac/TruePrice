@@ -2,9 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-
-const CONSENT_KEY = "cookie_consent";
-const CONSENT_EVENT = "cookie-consent-change";
+import { CONSENT_KEY, CONSENT_EVENT } from "@/lib/consent";
 
 type ConsentValue = "accepted" | "declined";
 
@@ -42,7 +40,6 @@ export function CookieConsent() {
     <div
       role="dialog"
       aria-label="Cookie consent"
-      aria-modal="true"
       aria-live="polite"
       className="fixed bottom-0 inset-x-0 z-50 p-4"
     >

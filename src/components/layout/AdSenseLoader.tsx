@@ -2,9 +2,7 @@
 
 import Script from "next/script";
 import { useEffect, useState } from "react";
-
-const CONSENT_KEY = "cookie_consent";
-const CONSENT_EVENT = "cookie-consent-change";
+import { CONSENT_KEY, CONSENT_EVENT } from "@/lib/consent";
 
 interface AdSenseLoaderProps {
   publisherId: string;
