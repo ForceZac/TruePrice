@@ -169,33 +169,35 @@ async function linkMaterials(
   category?: string
 ): Promise<void> {
   const parsed = parseMaterials(ingredientText, category);
+  if (parsed.length === 0) return;
 
-  for (const entry of parsed) {
-    // Find the matching Material row
-    const material = await prisma.material.findFirst({
-      where: { name: { equals: entry.name, mode: "insensitive" } },
-    });
-    if (!material) continue;
+  // Batch lookup: one query instead of one per ingredient
+  const names = parsed.map((e) => e.name.toLowerCase());
+  const dbMaterials = await prisma.material.findMany({
+    where: { name: { in: names, mode: "insensitive" } },
+  });
+  const materialByName = new Map(dbMaterials.map((m) => [m.name.toLowerCase(), m]));
 
-    // Upsert (avoid duplicates on re-cache)
-    const existing = await prisma.productMaterial.findFirst({
-      where: { productId, materialId: material.id },
-    });
+  const toCreate = parsed
+    .map((entry) => {
+      const material = materialByName.get(entry.name.toLowerCase());
+      if (!material) return null;
+      return {
+        productId,
+        materialId: material.id,
+        percentage: entry.percentage ?? null,
+        weightGrams:
+          entry.percentage && entry.productWeightGrams
+            ? entry.percentage * entry.productWeightGrams
+            : null,
+        source: "label",
+      };
+    })
+    .filter((x): x is NonNullable<typeof x> => x !== null);
 
-    if (!existing) {
-      await prisma.productMaterial.create({
-        data: {
-          productId,
-          materialId: material.id,
-          percentage: entry.percentage ?? null,
-          weightGrams:
-            entry.percentage && entry.productWeightGrams
-              ? entry.percentage * entry.productWeightGrams
-              : null,
-          source: "label",
-        },
-      });
-    }
+  if (toCreate.length > 0) {
+    // skipDuplicates relies on @@unique([productId, materialId]) in schema
+    await prisma.productMaterial.createMany({ data: toCreate, skipDuplicates: true });
   }
 }
 

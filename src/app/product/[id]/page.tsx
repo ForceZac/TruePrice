@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft } from "lucide-react";
 import { getProductById } from "@/services/ProductService";
 
@@ -43,11 +44,12 @@ export default async function ProductPage({ params }: ProductPageProps) {
       {/* Product header */}
       <div className="flex gap-4 items-start">
         {product.imageUrl ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
+          <Image
             src={product.imageUrl}
             alt={product.name}
-            className="h-24 w-24 rounded-xl object-contain bg-muted shrink-0"
+            width={96}
+            height={96}
+            className="rounded-xl object-contain bg-muted shrink-0"
           />
         ) : (
           <div className="h-24 w-24 rounded-xl bg-muted shrink-0 flex items-center justify-center text-4xl">

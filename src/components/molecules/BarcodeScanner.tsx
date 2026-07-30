@@ -38,8 +38,9 @@ export function BarcodeScanner({ onScan, onError }: BarcodeScannerProps) {
   async function startScanner() {
     // Dynamic import to avoid SSR errors
     let Html5Qrcode: typeof import("html5-qrcode")["Html5Qrcode"];
+    let Html5QrcodeSupportedFormats: typeof import("html5-qrcode")["Html5QrcodeSupportedFormats"];
     try {
-      ({ Html5Qrcode } = await import("html5-qrcode"));
+      ({ Html5Qrcode, Html5QrcodeSupportedFormats } = await import("html5-qrcode"));
     } catch {
       handleError("Failed to load barcode scanner library.");
       return;
@@ -57,9 +58,10 @@ export function BarcodeScanner({ onScan, onError }: BarcodeScannerProps) {
       fps: 10,
       qrbox: { width: 250, height: 150 },
       formatsToSupport: [
-        // html5-qrcode format constants (numbers)
-        // UPC_A=12, UPC_E=13, EAN_13=0, EAN_8=1, CODE_39=8, CODE_128=10
-        0, 1, 12, 13,
+        Html5QrcodeSupportedFormats.EAN_13,
+        Html5QrcodeSupportedFormats.EAN_8,
+        Html5QrcodeSupportedFormats.UPC_A,
+        Html5QrcodeSupportedFormats.UPC_E,
       ],
     };
 
