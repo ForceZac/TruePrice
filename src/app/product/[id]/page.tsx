@@ -5,6 +5,7 @@ import { getProductById } from "@/services/ProductService";
 import { env } from "@/lib/env";
 import { ProductPageClient } from "./ProductPageClient";
 import { Breadcrumb } from "@/components/atoms/Breadcrumb";
+import { AdSlot } from "@/components/atoms/AdSlot";
 import type { ProductResult } from "@/lib/api";
 
 interface ProductPageProps {
@@ -195,6 +196,17 @@ export default async function ProductPage({ params }: ProductPageProps) {
         </h2>
         <ProductPageClient product={productForClient} canonicalUrl={canonicalUrl} />
       </section>
+
+      {/* Ad unit — below cost breakdown.
+          NEXT_PUBLIC_ADSENSE_SLOT_PRODUCT must be the numeric slot ID from the
+          AdSense dashboard (e.g. "1234567890"). Placeholder strings won't serve ads. */}
+      {env.NEXT_PUBLIC_ADSENSE_CLIENT && env.NEXT_PUBLIC_ADSENSE_SLOT_PRODUCT && (
+        <AdSlot
+          publisherId={env.NEXT_PUBLIC_ADSENSE_CLIENT}
+          slotId={env.NEXT_PUBLIC_ADSENSE_SLOT_PRODUCT}
+          format="rectangle"
+        />
+      )}
     </main>
   );
 }
