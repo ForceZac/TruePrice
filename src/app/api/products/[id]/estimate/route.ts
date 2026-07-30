@@ -17,10 +17,6 @@ export async function POST(
 ) {
   const { id } = await params;
 
-  if (!id) {
-    return Response.json({ error: "Missing product id." }, { status: 400 });
-  }
-
   try {
     const breakdown = await estimateCost(id);
 
@@ -46,7 +42,7 @@ export async function POST(
  *
  * Response:
  *   200 { breakdown: CostBreakdownResult }
- *   404 { breakdown: null }
+ *   404 { error: "No estimate cached yet." }
  *   500 { error: "..." }
  */
 export async function GET(
@@ -55,15 +51,11 @@ export async function GET(
 ) {
   const { id } = await params;
 
-  if (!id) {
-    return Response.json({ error: "Missing product id." }, { status: 400 });
-  }
-
   try {
     const breakdown = await getCachedBreakdown(id);
 
     if (!breakdown) {
-      return Response.json({ breakdown: null }, { status: 404 });
+      return Response.json({ error: "No estimate cached yet." }, { status: 404 });
     }
 
     return Response.json({ breakdown }, { status: 200 });

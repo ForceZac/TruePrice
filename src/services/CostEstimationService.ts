@@ -188,8 +188,9 @@ export async function estimateCost(
     weightKnown,
   });
 
-  // 8. Persist
+  // 8. Persist — delete stale rows first so only one breakdown exists per product.
   const now = new Date();
+  await prisma.costBreakdown.deleteMany({ where: { productId } });
   const breakdown = await prisma.costBreakdown.create({
     data: {
       productId,

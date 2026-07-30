@@ -5,11 +5,13 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 const {
   mockProductFindUnique,
   mockCostBreakdownCreate,
+  mockCostBreakdownDeleteMany,
   mockCostBreakdownFindFirst,
   mockLaborRateFindUnique,
 } = vi.hoisted(() => ({
   mockProductFindUnique: vi.fn(),
   mockCostBreakdownCreate: vi.fn(),
+  mockCostBreakdownDeleteMany: vi.fn().mockResolvedValue({ count: 0 }),
   mockCostBreakdownFindFirst: vi.fn(),
   mockLaborRateFindUnique: vi.fn(),
 }));
@@ -29,6 +31,7 @@ vi.mock("@/lib/db", () => ({
     },
     costBreakdown: {
       create: mockCostBreakdownCreate,
+      deleteMany: mockCostBreakdownDeleteMany,
       findFirst: mockCostBreakdownFindFirst,
     },
     laborRate: {
