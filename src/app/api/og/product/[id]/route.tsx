@@ -1,5 +1,6 @@
 import { ImageResponse } from "next/og";
 import { prisma } from "@/lib/db";
+import { centsToUsd } from "@/lib/format";
 
 export const runtime = "nodejs";
 
@@ -34,15 +35,6 @@ export async function GET(
     breakdown?.markupPercent != null
       ? (breakdown.markupPercent / 100 + 1).toFixed(1)
       : null;
-
-  function centsToUsd(cents: number) {
-    return new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
-    }).format(cents / 100);
-  }
 
   return new ImageResponse(
     (

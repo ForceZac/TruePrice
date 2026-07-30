@@ -1,5 +1,6 @@
 import { ImageResponse } from "next/og";
 import { prisma } from "@/lib/db";
+import { centsToUsd } from "@/lib/format";
 
 export const runtime = "nodejs";
 
@@ -41,15 +42,6 @@ export async function GET(req: Request) {
 
   const bkA = productA.costBreakdowns[0] ?? null;
   const bkB = productB.costBreakdowns[0] ?? null;
-
-  function centsToUsd(cents: number) {
-    return new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
-    }).format(cents / 100);
-  }
 
   function multiplierLabel(markupPercent: number | null | undefined) {
     if (markupPercent == null) return "—";
