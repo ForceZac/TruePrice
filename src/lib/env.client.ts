@@ -14,11 +14,17 @@ import { z } from "zod";
 const clientEnvSchema = z.object({
   NEXT_PUBLIC_APP_URL: z.string().url().default("http://localhost:3000"),
   NEXT_PUBLIC_ADSENSE_CLIENT: z.string().optional(),
+  // AdSense ad unit slot IDs (numeric IDs from the AdSense dashboard).
+  // Set these after AdSense account is approved — placeholder strings won't serve real ads.
+  NEXT_PUBLIC_ADSENSE_SLOT_PRODUCT: z.string().optional(),
+  NEXT_PUBLIC_ADSENSE_SLOT_CATEGORY: z.string().optional(),
 });
 
 const _clientEnv = clientEnvSchema.safeParse({
   NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL,
   NEXT_PUBLIC_ADSENSE_CLIENT: process.env.NEXT_PUBLIC_ADSENSE_CLIENT,
+  NEXT_PUBLIC_ADSENSE_SLOT_PRODUCT: process.env.NEXT_PUBLIC_ADSENSE_SLOT_PRODUCT,
+  NEXT_PUBLIC_ADSENSE_SLOT_CATEGORY: process.env.NEXT_PUBLIC_ADSENSE_SLOT_CATEGORY,
 });
 
 if (!_clientEnv.success) {
