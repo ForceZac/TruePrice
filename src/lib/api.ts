@@ -4,9 +4,22 @@
  * Never use raw fetch in components. Use TanStack Query hooks that call these helpers.
  */
 
-import { env } from "@/lib/env";
+import { clientEnv } from "@/lib/env.client";
 
-const BASE_URL = env.NEXT_PUBLIC_APP_URL;
+const BASE_URL = clientEnv.NEXT_PUBLIC_APP_URL;
+
+// ─── Typed API error ──────────────────────────────────────────────────────────
+
+/** Thrown by apiFetch when the server returns a non-2xx status. */
+export class ApiError extends Error {
+  constructor(
+    public readonly status: number,
+    message: string
+  ) {
+    super(message);
+    this.name = "ApiError";
+  }
+}
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -54,7 +67,7 @@ async function apiFetch<T>(
 
   if (!res.ok) {
     const body = await res.text();
-    throw new Error(`API ${path} failed (${res.status}): ${body}`);
+    throw new ApiError(res.status, `API ${path} failed (${res.status}): ${body}`);
   }
 
   return res.json() as Promise<T>;
@@ -82,4 +95,54 @@ export async function getProduct(id: string): Promise<ProductResult | null> {
     `/api/products/${encodeURIComponent(id)}`
   );
   return data.product;
+}
+
+// ─── Cost estimate types ──────────────────────────────────────────────────────
+
+export interface CostBreakdownResult {
+  id: string;
+  productId: string;
+  materialCostCents: number;
+  laborCostCents: number;
+  overheadCostCents: number;
+  shippingCostCents: number;
+  totalCostCents: number;
+  retailPriceCents: number | null;
+  markupPercent: number | null;
+  confidenceScore: number;
+  confidenceReason: string;
+  methodology: string;
+  calculatedAt: string; // ISO 8601
+}
+
+// ─── Cost estimate endpoints ──────────────────────────────────────────────────
+
+/**
+ * GET /api/products/[id]/estimate
+ *
+ * Returns the most recent cached cost breakdown. Throws if none exists yet
+ * (the caller should treat a 404-shaped error as "not estimated yet").
+ */
+export async function getEstimate(
+  productId: string
+): Promise<CostBreakdownResult> {
+  const data = await apiFetch<{ breakdown: CostBreakdownResult }>(
+    `/api/products/${encodeURIComponent(productId)}/estimate`
+  );
+  return data.breakdown;
+}
+
+/**
+ * POST /api/products/[id]/estimate
+ *
+ * Triggers (or returns cached) cost estimation. Returns the breakdown.
+ */
+export async function triggerEstimate(
+  productId: string
+): Promise<CostBreakdownResult> {
+  const data = await apiFetch<{ breakdown: CostBreakdownResult }>(
+    `/api/products/${encodeURIComponent(productId)}/estimate`,
+    { method: "POST" }
+  );
+  return data.breakdown;
 }
