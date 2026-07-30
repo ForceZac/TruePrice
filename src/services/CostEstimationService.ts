@@ -15,6 +15,8 @@
  */
 
 import { prisma } from "@/lib/db";
+import { getSubcategoryProfile } from "@/data/subcategory-profiles";
+import { getProductOverride } from "@/data/product-overrides";
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
@@ -61,6 +63,8 @@ const STALENESS_THRESHOLD_MS = 48 * 60 * 60 * 1000;
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
+export type ConfidenceTier = "HIGH" | "MEDIUM" | "LOW";
+
 export interface CostBreakdownResult {
   id: string;
   productId: string;
@@ -73,6 +77,8 @@ export interface CostBreakdownResult {
   markupPercent: number | null;
   confidenceScore: number;
   confidenceReason: string;
+  /** Categorical confidence tier: HIGH = product-specific data, MEDIUM = subcategory profile, LOW = category average. */
+  confidence: ConfidenceTier;
   methodology: string;
   calculatedAt: Date;
 }
@@ -126,46 +132,93 @@ export async function estimateCost(
     if (allFresh) return toResult(cached);
   }
 
-  // ── Compute fresh breakdown ───────────────────────────────────────────────
+  // ── Resolve product override (applied over DB data without modifying DB) ──
+
+  const override = getProductOverride(product.upc, product.ean);
+  const effectiveRetailPriceCents =
+    override?.retailPriceCents ?? product.retailPriceCents ?? null;
+  const effectiveSubcategory = override?.subcategory ?? product.subcategory ?? null;
+
+  // ── Resolve material source: DB materials → override materials → subcategory profile ──
 
   const categorySlug = product.category.slug;
-  const weightGrams = product.weightGrams ?? DEFAULT_WEIGHT_GRAMS;
+  const subcategoryProfile = getSubcategoryProfile(categorySlug, effectiveSubcategory);
+
+  // When an override has explicit materials, we treat them as synthetic ProductMaterial rows
+  // for cost computation. These are not linked to real DB Material records with prices;
+  // instead we compute material cost from the subcategory profile path.
+  const hasMaterialRows = product.materials.length > 0 && !override?.materials;
+  const hasOverrideMaterials = (override?.materials?.length ?? 0) > 0;
+
+  const weightGrams = product.weightGrams ?? subcategoryProfile?.defaultWeightGrams ?? DEFAULT_WEIGHT_GRAMS;
   const weightKnown = product.weightGrams != null;
 
-  // 1. Material cost
-  const materialCalc = computeMaterialCost(
-    product.materials,
-    weightGrams,
-    categorySlug
-  );
+  // ── Determine confidence tier ────────────────────────────────────────────
+
+  let confidenceTier: ConfidenceTier;
+  if (hasMaterialRows || hasOverrideMaterials) {
+    confidenceTier = "HIGH";
+  } else if (subcategoryProfile) {
+    confidenceTier = "MEDIUM";
+  } else {
+    confidenceTier = "LOW";
+  }
+
+  // ── 1. Material cost ─────────────────────────────────────────────────────
+
+  let materialCalc: MaterialCostResult;
+
+  if (hasMaterialRows) {
+    materialCalc = computeMaterialCost(product.materials, weightGrams, categorySlug);
+  } else if (hasOverrideMaterials || subcategoryProfile) {
+    // Build synthetic material list from override or subcategory profile
+    const profileMix = hasOverrideMaterials
+      ? override!.materials!
+      : subcategoryProfile!.defaultMaterialMix;
+
+    materialCalc = await computeProfileMaterialCost(profileMix, weightGrams, categorySlug);
+  } else {
+    materialCalc = computeMaterialCost([], weightGrams, categorySlug);
+  }
+
   const { materialCostCents, pricedCount, totalCount, stalePriceCount, unpricedNames, usedCategoryAvg } =
     materialCalc;
 
-  // 2. Labor cost
-  const laborCalc = await computeLaborCost(product.countryOfOrigin, categorySlug);
+  // ── 2. Labor cost ────────────────────────────────────────────────────────
+
+  const effectiveLaborHours = subcategoryProfile?.defaultLaborHours ?? null;
+  const laborCalc = await computeLaborCost(
+    product.countryOfOrigin,
+    categorySlug,
+    effectiveLaborHours
+  );
   const { laborCostCents, usedFallbackLabor } = laborCalc;
 
-  // 3. Overhead
+  // ── 3. Overhead ──────────────────────────────────────────────────────────
+
   const overheadCostCents = Math.round(
     materialCostCents * product.category.overheadPercent
   );
 
-  // 4. Shipping
+  // ── 4. Shipping ──────────────────────────────────────────────────────────
+
   const shippingCostCents = computeShippingCents(
     weightGrams,
     product.countryOfOrigin
   );
 
-  // 5. Total + markup
+  // ── 5. Total + markup ────────────────────────────────────────────────────
+
   const totalCostCents =
     materialCostCents + laborCostCents + overheadCostCents + shippingCostCents;
 
   const markupPercent =
-    product.retailPriceCents != null
-      ? ((product.retailPriceCents - totalCostCents) / totalCostCents) * 100
+    effectiveRetailPriceCents != null
+      ? ((effectiveRetailPriceCents - totalCostCents) / totalCostCents) * 100
       : null;
 
-  // 6. Confidence
+  // ── 6. Numeric confidence score (kept for backward compat) ───────────────
+
   const { score, reason } = computeConfidence({
     totalCount,
     pricedCount,
@@ -176,7 +229,8 @@ export async function estimateCost(
     usedFallbackLabor,
   });
 
-  // 7. Methodology
+  // ── 7. Methodology string ────────────────────────────────────────────────
+
   const methodology = buildMethodology({
     totalCount,
     pricedCount,
@@ -186,9 +240,12 @@ export async function estimateCost(
     usedFallbackLabor,
     weightGrams,
     weightKnown,
+    confidenceTier,
+    subcategory: effectiveSubcategory,
   });
 
-  // 8. Persist — delete stale rows first so only one breakdown exists per product.
+  // ── 8. Persist ───────────────────────────────────────────────────────────
+
   const now = new Date();
   await prisma.costBreakdown.deleteMany({ where: { productId } });
   const breakdown = await prisma.costBreakdown.create({
@@ -199,17 +256,18 @@ export async function estimateCost(
       overheadCostCents,
       shippingCostCents,
       totalCostCents,
-      retailPriceCents: product.retailPriceCents ?? null,
+      retailPriceCents: effectiveRetailPriceCents ?? null,
       markupPercent: markupPercent ?? null,
       confidenceScore: score,
       confidenceReason: reason,
+      confidence: confidenceTier,
       methodology,
       calculatedAt: now,
     },
   });
 
   console.log(
-    `[CostEstimationService] productId=${productId} total=${totalCostCents}¢ confidence=${score.toFixed(2)}`
+    `[CostEstimationService] productId=${productId} total=${totalCostCents}¢ confidence=${confidenceTier} score=${score.toFixed(2)}`
   );
 
   return toResult(breakdown);
@@ -310,6 +368,80 @@ function computeMaterialCost(
   };
 }
 
+// ─── Internal: profile-based material cost ────────────────────────────────────
+
+/**
+ * Compute material cost from a subcategory profile or override material mix.
+ * Looks up DB commodity prices for each named material; falls back to
+ * category average when no prices are found.
+ */
+async function computeProfileMaterialCost(
+  mix: Array<{ materialName: string; percentage: number }>,
+  productWeightGrams: number,
+  categorySlug: string
+): Promise<MaterialCostResult> {
+  const names = mix.map((m) => m.materialName.toLowerCase());
+
+  // Fetch materials and their latest commodity prices in one query
+  const dbMaterials = await prisma.material.findMany({
+    where: { name: { in: names, mode: "insensitive" } },
+    include: {
+      commodityPrices: {
+        orderBy: { fetchedAt: "desc" },
+        take: 1,
+      },
+    },
+  });
+
+  const materialByName = new Map(dbMaterials.map((m) => [m.name.toLowerCase(), m]));
+
+  const productWeightKg = productWeightGrams / 1000;
+  let materialCostCents = 0;
+  let pricedCount = 0;
+  let stalePriceCount = 0;
+  const unpricedNames: string[] = [];
+  const totalCount = mix.length;
+
+  for (const entry of mix) {
+    const dbMat = materialByName.get(entry.materialName.toLowerCase());
+    const latestPrice = dbMat?.commodityPrices[0];
+
+    if (!latestPrice) {
+      unpricedNames.push(entry.materialName);
+      continue;
+    }
+
+    const ageMs = Date.now() - latestPrice.fetchedAt.getTime();
+    if (ageMs > STALENESS_THRESHOLD_MS) stalePriceCount++;
+
+    const matWeightKg = entry.percentage * productWeightKg;
+    materialCostCents += Math.round(matWeightKg * latestPrice.pricePerKgCents);
+    pricedCount++;
+  }
+
+  // If we couldn't price anything, fall back to category average
+  if (pricedCount === 0) {
+    return {
+      materialCostCents:
+        CATEGORY_AVG_MATERIAL_COST_CENTS[categorySlug] ?? DEFAULT_AVG_MATERIAL_COST_CENTS,
+      pricedCount: 0,
+      totalCount,
+      stalePriceCount,
+      unpricedNames,
+      usedCategoryAvg: true,
+    };
+  }
+
+  return {
+    materialCostCents,
+    pricedCount,
+    totalCount,
+    stalePriceCount,
+    unpricedNames,
+    usedCategoryAvg: false,
+  };
+}
+
 // ─── Internal: labor cost ─────────────────────────────────────────────────────
 
 interface LaborCostResult {
@@ -319,10 +451,11 @@ interface LaborCostResult {
 
 async function computeLaborCost(
   countryOfOrigin: string | null,
-  categorySlug: string
+  categorySlug: string,
+  laborHoursOverride: number | null = null
 ): Promise<LaborCostResult> {
   const mfgHours =
-    MANUFACTURING_HOURS[categorySlug] ?? DEFAULT_MANUFACTURING_HOURS;
+    laborHoursOverride ?? MANUFACTURING_HOURS[categorySlug] ?? DEFAULT_MANUFACTURING_HOURS;
 
   if (!countryOfOrigin) {
     return {
@@ -449,6 +582,8 @@ interface MethodologyInput {
   usedFallbackLabor: boolean;
   weightGrams: number;
   weightKnown: boolean;
+  confidenceTier: ConfidenceTier;
+  subcategory: string | null;
 }
 
 function buildMethodology(input: MethodologyInput): string {
@@ -461,13 +596,23 @@ function buildMethodology(input: MethodologyInput): string {
     usedFallbackLabor,
     weightGrams,
     weightKnown,
+    confidenceTier,
+    subcategory,
   } = input;
 
   const parts: string[] = [];
 
-  if (usedCategoryAvg) {
+  if (confidenceTier === "HIGH") {
     parts.push(
-      `Material cost: category-average for "${categoryName}" (no materials linked).`
+      `Material cost: commodity prices × product-specific material weights (${pricedCount}/${totalCount} materials priced). [HIGH confidence]`
+    );
+  } else if (confidenceTier === "MEDIUM") {
+    parts.push(
+      `Material cost: commodity prices × subcategory profile defaults (${subcategory ?? "unknown subcategory"}, ${pricedCount}/${totalCount} materials priced). [MEDIUM confidence]`
+    );
+  } else if (usedCategoryAvg) {
+    parts.push(
+      `Material cost: category-average for "${categoryName}" (no materials linked). [LOW confidence]`
     );
   } else {
     parts.push(
@@ -505,6 +650,7 @@ function toResult(record: {
   markupPercent: number | null;
   confidenceScore: number;
   confidenceReason: string;
+  confidence: string;
   methodology: string;
   calculatedAt: Date;
 }): CostBreakdownResult {
@@ -520,6 +666,7 @@ function toResult(record: {
     markupPercent: record.markupPercent,
     confidenceScore: record.confidenceScore,
     confidenceReason: record.confidenceReason,
+    confidence: (record.confidence as ConfidenceTier) || "LOW",
     methodology: record.methodology,
     calculatedAt: record.calculatedAt,
   };
