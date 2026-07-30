@@ -73,6 +73,7 @@ model ProductMaterial {
   weightGrams Float?
   source      String
 
+  @@unique([productId, materialId])
   @@index([productId])
   @@index([materialId])
 }
@@ -118,4 +119,6 @@ model LaborRate {
   hourlyRateCents Int
   source          String
   lastUpdated     DateTime
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
 }
