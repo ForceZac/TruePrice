@@ -1,13 +1,13 @@
 # TruePrice Backlog
 
-Last updated: 2026-07-30 (Dev Run #21)
+Last updated: 2026-07-30 (Dev Run #22)
 
 ## Active
 
 | Priority | TRD | Goal | Status | Branch | PR | Reviewer | Notes |
 |----------|-----|------|--------|--------|-----|----------|-------|
-| P1 | goal6-category-browsing | Goal 6 — Category Browsing & Landing Pages | 🔄 DRAFT PR open | task/goal6-category-browsing | #9 | Needs review | 169 tests passing, TypeScript clean. Reviewer bugs fixed (sort-before-paginate, absolute breadcrumb hrefs) |
-| P1 | goal7-adsense-integration | Goal 7 — AdSense Integration & Required Pages | 🔄 DRAFT PR open | task/goal7-adsense | #10 | Needs review | 198 tests passing, TypeScript clean. Targets #9 branch; re-target after Goal 6 merge |
+| P1 | goal6-category-browsing | Goal 6 — Category Browsing & Landing Pages | 🔄 DRAFT PR open | task/goal6-category-browsing | #10 | Needs review | 169 tests passing, TypeScript clean. Reviewer bugs fixed (sort-before-paginate, absolute breadcrumb hrefs) |
+| P1 | goal7-adsense-integration | Goal 7 — AdSense Integration & Required Pages | 🔄 DRAFT PR open (2 variants) | task/goal7-adsense + task/goal7-clean | #11, #9 | Needs review | 198 tests passing, TypeScript clean. PR #11 targets Goal 6 branch; PR #9 on main as clean version. Re-target after Goal 6 merge |
 
 ## Upcoming (needs TRD)
 
@@ -29,7 +29,8 @@ Last updated: 2026-07-30 (Dev Run #21)
 
 ## Notes
 
-- **Pipeline status:** Goals 1–5 + env-split merged. Goal 6 DRAFT (PR #9, reviewer-ready). Goal 7 DRAFT (PR #10, targets Goal 6 branch).
-- **PR #9 (Goal 6):** 169 tests passing. Reviewer fixes: sort-before-paginate in getCategoryProducts; Breadcrumb JSON-LD absolute URLs via baseUrl; dead topProductRow query removed.
-- **PR #10 (Goal 7):** 198 tests passing. AdSlot publisherId/data-ad-client; aria-modal; AdSenseLoader tests. Targets task/goal6-category-browsing; re-target to main after Goal 6 merges.
-- **Next cycle:** Goal 6 review/merge → Goal 7 re-target/merge → Goals 8/9 TRDs (PM).
+- **Pipeline status:** Goals 1–5 + env-split merged. Goal 6 DRAFT → ready for review (PR #10). Goal 7 has 2 variants: PR #11 (complete, targets Goal 6 branch) + PR #9 (clean rebase targeting main, reviewer-cleared).
+- **PR #10 (Goal 6):** 169 tests passing. Reviewer fixes: sort-before-paginate in getCategoryProducts; Breadcrumb JSON-LD absolute URLs via baseUrl; dead topProductRow query removed. Converted to ready for review (Dev Run #22).
+- **PR #11 (Goal 7, complete):** 198 tests passing. AdSlot publisherId/data-ad-client; aria-modal; AdSenseLoader tests. Targets task/goal6-category-browsing; re-target to main after Goal 6 merges.
+- **PR #9 (Goal 7, clean):** Reviewer-cleared OPEN PR targeting main directly. Missing category-page AdSlot (Goal 6 not merged). Prefer PR #11 after Goal 6 merge; close #9.
+- **Next cycle:** `/merge` PR #10 (Goal 6) → re-target PR #11 (Goal 7) → review/merge → Goals 8/9 TRDs (PM).
