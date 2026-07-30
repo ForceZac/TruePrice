@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-07-30 (Dev Run #26)
+Last updated: 2026-07-30 (Dev Run #28)
 
 ## Active
 
@@ -8,12 +8,11 @@ Last updated: 2026-07-30 (Dev Run #26)
 |----------|-----|------|--------|--------|-----|----------|-------|
 | P1 | goal7-adsense-integration | Goal 7 — AdSense Integration & Required Legal Pages | 🔄 REVIEW open | task/goal7-land | #12 | Needs review | 212 tests passing, TypeScript clean. Clean rebase of Goal 7 onto main (PR #11 merged to wrong base). Privacy/Terms/About/Contact pages, CookieConsent, AdSlot, robots.ts. |
 | P1 | goal8-data-expansion | Goal 8 — Data Expansion & Accuracy Improvements | 🔄 REVIEW open | task/goal8-data-expansion | #13 | Needs review | 240 tests passing, TypeScript clean. Dev Run #26: addressed all 3 reviewer issues (cron orderBy, 6 electronics subcategories, leather material). |
+| P2 | goal9-comparison-social | Goal 9 — Product Comparison & Social Features | 🔄 DRAFT open | task/goal9-comparison-social | #14 | Needs review | 257 tests passing, TypeScript clean. Full Goal 9 implementation: CompareStore, AddToCompareButton, CompareTray, LeaderboardCard, /leaderboard, /compare, OG image routes, product page wiring, Hall of Shame home section, Footer. Base: task/goal8-data-expansion (rebases onto main after PR #13 merges). |
 
 ## Upcoming (needs TRD)
 
-| Priority | Goal | Status | Blocker |
-|----------|------|--------|---------|
-| P2 | Goal 9 — Product Comparison & Social Features | needs TRD | Awaiting PM to write TRD |
+_None — all goals have TRDs._
 
 ## Completed
 
@@ -30,10 +29,12 @@ Last updated: 2026-07-30 (Dev Run #26)
 
 ## Notes
 
-- **Pipeline status:** Goals 1–6 + env-split merged to main. Goal 7 re-targeted PR #12 awaiting review. Goal 8 DRAFT (PR #13, 240 tests). Goal 9 awaiting TRD.
+- **Pipeline status:** Goals 1–6 + env-split merged to main. Goal 7 PR #12 in review. Goal 8 PR #13 in review. Goal 9 DRAFT PR #14 open (based on goal8).
 - **PR #12 (Goal 7 re-targeted):** 212 tests passing. Includes privacy pages, footer, cookie consent, AdSense loader, ad slots, robots.txt, and AdSense env vars. Replaces PR #11 which merged to wrong base.
 - **PR #13 (Goal 8):** 240 tests passing. Confidence tiers (HIGH/MEDIUM/LOW), subcategory profiles (15 profiles across 5 categories), product overrides, 104 seeded products (26 HIGH confidence), textile alias fix in material-parser, lookup returns breakdown, 2 new cron routes, stale commodity detection, /admin/coverage page.
-- **Next cycle:** Goal 7 review/merge (PR #12) → Goal 8 review/merge (PR #13) → Goal 9 TRD (PM).
+- **PR #14 (Goal 9):** 257 tests passing, TypeScript clean. Full Goal 9: CompareStore (Zustand persist), AddToCompareButton, CompareTray, LeaderboardCard, /leaderboard, /compare, OG image routes (/api/og/product/[id] + /api/og/compare), product page og:image + AddToCompare wiring, Hall of Shame home page section, Footer with Leaderboard link, markupPercent DESC DB index. Needs rebase onto main after PR #13 merges.
+- **Next cycle:** Goal 7 review/merge (PR #12) → Goal 8 review/merge (PR #13) → rebase Goal 9 onto main → Goal 9 review/merge (PR #14).
 - **Dev Run #23:** PR #13 marked ready for review (was draft). No new code work — Goal 9 awaits TRD.
 - **Dev Run #25:** 240 tests passing, TypeScript clean. Committed and pushed PROJECT_KEYS.md (was untracked since PM run; updated Section 6/7/12 to reflect current routes, env vars, and merge state). No new feature work — pipeline waiting on PR #12 + PR #13 merges and Goal 9 TRD.
 - **Dev Run #26:** Addressed all 3 Reviewer issues on PR #13: (1) re-estimate cron orderBy asc→desc; (2) fixed 6 electronics products with wrong subcategory profiles (Speaker→earbuds, Ring Light/Power Bank/Smart Plug→charger, Phone Wallet Case→smartphone, Keyboard/Mouse→cable, Laptop Backpack→no subcategory); (3) added leather to Material seed so shoes profile resolves. 240 tests passing, TypeScript clean. Committed 1326043 and pushed.
+- **Dev Run #28:** Full Goal 9 implementation committed and pushed. Draft PR #14 opened against task/goal8-data-expansion. 257 tests passing (+17 from new compareStore + LeaderboardCard tests), TypeScript clean.
