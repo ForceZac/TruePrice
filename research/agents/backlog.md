@@ -1,20 +1,18 @@
 # TruePrice Backlog
 
-Last updated: 2026-07-30 (PM Standup Run #3, 10:02 UTC)
+Last updated: 2026-07-30 (Dev Run #21)
 
 ## Active
 
 | Priority | TRD | Goal | Status | Branch | PR | Reviewer | Notes |
 |----------|-----|------|--------|--------|-----|----------|-------|
-| P0 | goal4-cost-estimation-engine | Goal 4 — Cost Estimation Engine | ✅ All warnings fixed, reviewers cleared | task/goal4-cost-estimation | #4 | ✅ Ready | 120 tests passing, TypeScript clean. Awaiting human `/merge` approval |
-| P1 | goal5-product-page-ui | Goal 5 — Product Page & Cost Breakdown UI | ✅ All blockers resolved, reviewers cleared | task/goal5-product-page-ui | #5 | ✅ Ready | 139 tests passing; env import fixed (commit 08a97e3). Awaiting Goal 4 merge to re-target |
+| P1 | goal6-category-browsing | Goal 6 — Category Browsing & Landing Pages | 🔄 DRAFT PR open | task/goal6-category-browsing | #9 | Needs review | 169 tests passing, TypeScript clean. Reviewer bugs fixed (sort-before-paginate, absolute breadcrumb hrefs) |
+| P1 | goal7-adsense-integration | Goal 7 — AdSense Integration & Required Pages | 🔄 DRAFT PR open | task/goal7-adsense | #10 | Needs review | 198 tests passing, TypeScript clean. Targets #9 branch; re-target after Goal 6 merge |
 
 ## Upcoming (needs TRD)
 
 | Priority | Goal | Status | Blocker |
 |----------|------|--------|---------|
-| P1 | Goal 6 — Category Browsing & Landing Pages | needs TRD | Goal 5 merge |
-| P1 | Goal 7 — AdSense Integration & Required Pages | needs TRD | Goal 6 merge |
 | P2 | Goal 8 — Data Expansion & Accuracy Improvements | needs TRD | Goal 7 merge |
 | P2 | Goal 9 — Product Comparison & Social Features | needs TRD | Goal 5 merge |
 
@@ -25,11 +23,13 @@ Last updated: 2026-07-30 (PM Standup Run #3, 10:02 UTC)
 | Goal 1 — Project Scaffold & Data Model | #1 | 2026-07-30 | 1e23896 |
 | Goal 2 — Commodity Price Integration | #2 | 2026-07-30 | (merged in batch) |
 | Goal 3 — Product Lookup (Search + Barcode) | #3 | 2026-07-30 | 500c75d |
+| Goal 4 — Cost Estimation Engine | #4 | 2026-07-30 | 74221a2 |
+| Goal 5 — Product Page & Cost Breakdown UI | #5 | 2026-07-30 | (merged in cascade) |
+| chore: env-split | #6 | 2026-07-30 | c0f8c2d |
 
 ## Notes
 
-- **Pipeline status:** Goals 1–3 complete (merged 08:12 UTC). Goal 4 ready for human `/merge` approval.
-- **PR #4 (Goal 4):** All reviewer warnings fixed (commits 961e5c0, 19d826c). Ready for merge.
-- **PR #5 (Goal 5):** All blockers resolved (commit 87404dd). Fragment key fix, typed ApiError, centsToUsd extracted, MaterialCostList renamed. Awaiting re-review after #4 merges.
-- **Developer notes:** 91 tests passing on Goal 5; all acceptance criteria met. Build fully passing when DB available.
-- **Next cycle:** Goal 4 `/merge` → Goal 5 re-review → Goal 6 TRD (PM) → Goal 6 implementation.
+- **Pipeline status:** Goals 1–5 + env-split merged. Goal 6 DRAFT (PR #9, reviewer-ready). Goal 7 DRAFT (PR #10, targets Goal 6 branch).
+- **PR #9 (Goal 6):** 169 tests passing. Reviewer fixes: sort-before-paginate in getCategoryProducts; Breadcrumb JSON-LD absolute URLs via baseUrl; dead topProductRow query removed.
+- **PR #10 (Goal 7):** 198 tests passing. AdSlot publisherId/data-ad-client; aria-modal; AdSenseLoader tests. Targets task/goal6-category-browsing; re-target to main after Goal 6 merges.
+- **Next cycle:** Goal 6 review/merge → Goal 7 re-target/merge → Goals 8/9 TRDs (PM).
