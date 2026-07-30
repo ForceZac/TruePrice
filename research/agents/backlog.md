@@ -1,14 +1,14 @@
 # TruePrice Backlog
 
-Last updated: 2026-07-30 (PM Run #1)
+Last updated: 2026-07-30 (Dev Run #4)
 
 ## Active
 
-| Priority | TRD | Goal | Status | Branch | Assignee |
-|----------|-----|------|--------|--------|----------|
-| P0 | goal1-project-scaffold | Goal 1 — Project Scaffold & Data Model | ready | task/goal1-scaffold | developer |
-| P0 | goal2-commodity-prices | Goal 2 — Commodity Price Integration | ready (blocked by Goal 1) | task/goal2-commodity-prices | developer |
-| P0 | goal3-product-lookup | Goal 3 — Product Lookup (Search + Barcode) | ready (blocked by Goal 1) | task/goal3-product-lookup | developer |
+| Priority | TRD | Goal | Status | Branch | PR | Assignee |
+|----------|-----|------|--------|--------|-----|----------|
+| P0 | goal1-project-scaffold | Goal 1 — Project Scaffold & Data Model | PR drafted (reviewer fixes pushed) | task/goal1-scaffold | #1 | developer |
+| P0 | goal2-commodity-prices | Goal 2 — Commodity Price Integration | PR drafted | task/goal2-commodity-prices | #2 | developer |
+| P0 | goal3-product-lookup | Goal 3 — Product Lookup (Search + Barcode) | PR drafted | task/goal3-product-lookup | #3 | developer |
 
 ## Upcoming (needs TRD)
 
