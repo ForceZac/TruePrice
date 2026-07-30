@@ -83,7 +83,57 @@ export interface CostBreakdownResult {
   calculatedAt: Date;
 }
 
+// ─── Leaderboard Types ────────────────────────────────────────────────────────
+
+export interface LeaderboardEntry {
+  id: string;
+  totalCostCents: number;
+  retailPriceCents: number | null;
+  markupPercent: number | null;
+  confidenceScore: number;
+  confidence: ConfidenceTier;
+  confidenceReason: string;
+  product: {
+    id: string;
+    name: string;
+    category: { name: string };
+  };
+}
+
 // ─── Public API ───────────────────────────────────────────────────────────────
+
+/**
+ * Return the top N products ranked by markup percentage (highest first).
+ * Only products with a non-null markupPercent are included.
+ */
+export async function getTopMarkupProducts(limit: number): Promise<LeaderboardEntry[]> {
+  const rows = await prisma.costBreakdown.findMany({
+    where: { markupPercent: { not: null } },
+    orderBy: { markupPercent: "desc" },
+    take: limit,
+    select: {
+      id: true,
+      totalCostCents: true,
+      retailPriceCents: true,
+      markupPercent: true,
+      confidenceScore: true,
+      confidence: true,
+      confidenceReason: true,
+      product: {
+        select: {
+          id: true,
+          name: true,
+          category: { select: { name: true } },
+        },
+      },
+    },
+  });
+
+  return rows.map((r) => ({
+    ...r,
+    confidence: (r.confidence as ConfidenceTier) || "LOW",
+  }));
+}
 
 /**
  * Estimate (or return cached) cost breakdown for a product.

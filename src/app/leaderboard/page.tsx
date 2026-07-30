@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Trophy } from "lucide-react";
-import { prisma } from "@/lib/db";
+import { getTopMarkupProducts } from "@/services/CostEstimationService";
 import { LeaderboardCard } from "@/components/molecules/LeaderboardCard";
 
 export const revalidate = 3600;
@@ -13,27 +13,7 @@ export const metadata: Metadata = {
 };
 
 export default async function LeaderboardPage() {
-  const rows = await prisma.costBreakdown.findMany({
-    where: { markupPercent: { not: null } },
-    orderBy: { markupPercent: "desc" },
-    take: 20,
-    select: {
-      id: true,
-      totalCostCents: true,
-      retailPriceCents: true,
-      markupPercent: true,
-      confidenceScore: true,
-      confidence: true,
-      confidenceReason: true,
-      product: {
-        select: {
-          id: true,
-          name: true,
-          category: { select: { name: true } },
-        },
-      },
-    },
-  });
+  const rows = await getTopMarkupProducts(20);
 
   return (
     <main className="flex flex-col min-h-screen px-4 py-10 max-w-2xl mx-auto w-full gap-8">
