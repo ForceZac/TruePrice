@@ -133,6 +133,7 @@ async function main() {
     copper: { unit: "kg", categoryTag: "metal", commodityKey: "COPPER" },
     steel: { unit: "kg", categoryTag: "metal", commodityKey: "STEEL" },
     glass: { unit: "kg", categoryTag: "mineral" },
+    leather: { unit: "kg", categoryTag: "material" },
     rubber: { unit: "kg", categoryTag: "material" },
     silicone: { unit: "kg", categoryTag: "material" },
     lithium: { unit: "kg", categoryTag: "metal", commodityKey: "LITHIUM" },
@@ -519,19 +520,20 @@ async function main() {
   ]);
 
   // Electronics without materials
-  await upsertProduct("000000000304", { name: "Portable Bluetooth Speaker", brand: "BassBoom", subcategory: "smartphone", categoryId: electronics.id, retailPriceCents: 3999, weightGrams: 500, countryOfOrigin: "CN" });
+  // Subcategory assignments: earbuds≈small speaker, charger≈powered accessories, cable≈passive accessories
+  await upsertProduct("000000000304", { name: "Portable Bluetooth Speaker", brand: "BassBoom", subcategory: "earbuds", categoryId: electronics.id, retailPriceCents: 3999, weightGrams: 500, countryOfOrigin: "CN" });
   await upsertProduct("000000000305", { name: "Smart Watch", brand: "TimeTech", subcategory: "smartphone", categoryId: electronics.id, retailPriceCents: 19999, weightGrams: 52, countryOfOrigin: "CN" });
-  await upsertProduct("000000000306", { name: "Laptop Backpack", brand: "TravelTech", subcategory: "laptop", categoryId: electronics.id, retailPriceCents: 5999, weightGrams: 900, countryOfOrigin: "CN" });
-  await upsertProduct("000000000307", { name: "Mechanical Keyboard", brand: "TypeMaster", subcategory: "laptop", categoryId: electronics.id, retailPriceCents: 12999, weightGrams: 1100, countryOfOrigin: "CN" });
+  await upsertProduct("000000000306", { name: "Laptop Backpack", brand: "TravelTech", categoryId: electronics.id, retailPriceCents: 5999, weightGrams: 900, countryOfOrigin: "CN" });
+  await upsertProduct("000000000307", { name: "Mechanical Keyboard", brand: "TypeMaster", subcategory: "cable", categoryId: electronics.id, retailPriceCents: 12999, weightGrams: 1100, countryOfOrigin: "CN" });
   await upsertProduct("000000000308", { name: "HDMI Cable (10ft)", brand: "DisplayLink", subcategory: "cable", categoryId: electronics.id, retailPriceCents: 1499, weightGrams: 120, countryOfOrigin: "CN" });
-  await upsertProduct("000000000309", { name: "Wireless Mouse", brand: "ClickPro", subcategory: "laptop", categoryId: electronics.id, retailPriceCents: 3499, weightGrams: 90, countryOfOrigin: "CN" });
-  await upsertProduct("000000000310", { name: "Phone Wallet Case", brand: "SlimCarry", subcategory: "cable", categoryId: electronics.id, retailPriceCents: 2499, weightGrams: 40, countryOfOrigin: "CN" });
+  await upsertProduct("000000000309", { name: "Wireless Mouse", brand: "ClickPro", subcategory: "cable", categoryId: electronics.id, retailPriceCents: 3499, weightGrams: 90, countryOfOrigin: "CN" });
+  await upsertProduct("000000000310", { name: "Phone Wallet Case", brand: "SlimCarry", subcategory: "smartphone", categoryId: electronics.id, retailPriceCents: 2499, weightGrams: 40, countryOfOrigin: "CN" });
   await upsertProduct("000000000311", { name: "USB Hub (7-port)", brand: "ConnectAll", subcategory: "cable", categoryId: electronics.id, retailPriceCents: 3999, weightGrams: 200, countryOfOrigin: "CN" });
-  await upsertProduct("000000000312", { name: "Ring Light (10-inch)", brand: "LitUp", subcategory: "smartphone", categoryId: electronics.id, retailPriceCents: 2999, weightGrams: 600, countryOfOrigin: "CN" });
+  await upsertProduct("000000000312", { name: "Ring Light (10-inch)", brand: "LitUp", subcategory: "charger", categoryId: electronics.id, retailPriceCents: 2999, weightGrams: 600, countryOfOrigin: "CN" });
   await upsertProduct("000000000313", { name: "Webcam (1080p)", brand: "ClearView", subcategory: "laptop", categoryId: electronics.id, retailPriceCents: 5999, weightGrams: 150, countryOfOrigin: "CN" });
-  await upsertProduct("000000000314", { name: "Power Bank (20000mAh)", brand: "ChargePack", subcategory: "smartphone", categoryId: electronics.id, retailPriceCents: 4999, weightGrams: 440, countryOfOrigin: "CN" });
+  await upsertProduct("000000000314", { name: "Power Bank (20000mAh)", brand: "ChargePack", subcategory: "charger", categoryId: electronics.id, retailPriceCents: 4999, weightGrams: 440, countryOfOrigin: "CN" });
   await upsertProduct("000000000315", { name: "Screen Protector (2-pack)", brand: "ClearGuard", subcategory: "cable", categoryId: electronics.id, retailPriceCents: 999, weightGrams: 10, countryOfOrigin: "CN" });
-  await upsertProduct("000000000316", { name: "Smart Plug (2-pack)", brand: "HomePower", subcategory: "smartphone", categoryId: electronics.id, retailPriceCents: 1999, weightGrams: 130, countryOfOrigin: "CN" });
+  await upsertProduct("000000000316", { name: "Smart Plug (2-pack)", brand: "HomePower", subcategory: "charger", categoryId: electronics.id, retailPriceCents: 1999, weightGrams: 130, countryOfOrigin: "CN" });
 
   // ─── Products — Cosmetics & Personal Care (20 products, 4 with materials)
 

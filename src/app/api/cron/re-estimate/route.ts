@@ -36,7 +36,7 @@ export async function GET(request: NextRequest) {
       where: { updatedAt: { lt: staleDate } },
       distinct: ["productId"],
       select: { productId: true },
-      orderBy: { updatedAt: "asc" },
+      orderBy: { updatedAt: "desc" },
     });
 
     const productIds = staleBreakdowns.map((b) => b.productId);
