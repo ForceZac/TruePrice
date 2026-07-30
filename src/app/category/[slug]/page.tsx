@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { cache } from "react";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import React from "react";
 import {
   getCategoryBySlug as _getCategoryBySlug,
   getCategoryProducts,
@@ -13,6 +14,7 @@ import {
 const getCategoryBySlug = cache(_getCategoryBySlug);
 import { getCategoryDescription } from "@/data/category-descriptions";
 import { CategoryProductCard } from "@/components/molecules/ProductCard";
+import { AdSlot } from "@/components/atoms/AdSlot";
 import { env } from "@/lib/env";
 
 export const revalidate = 3600;
@@ -212,15 +214,19 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
           </p>
         ) : (
           <div className="flex flex-col gap-3">
-            {products.map((product) => (
-              <CategoryProductCard
-                key={product.id}
-                product={product}
-                isTop={
-                  category.topProduct?.id === product.id &&
-                  product.markupPercent !== null
-                }
-              />
+            {products.map((product, index) => (
+              <React.Fragment key={product.id}>
+                <CategoryProductCard
+                  product={product}
+                  isTop={
+                    category.topProduct?.id === product.id &&
+                    product.markupPercent !== null
+                  }
+                />
+                {index === 5 && env.NEXT_PUBLIC_ADSENSE_CLIENT && (
+                  <AdSlot slotId="category-page-leaderboard" format="leaderboard" />
+                )}
+              </React.Fragment>
             ))}
           </div>
         )}

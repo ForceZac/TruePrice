@@ -5,6 +5,7 @@ import { getProductById } from "@/services/ProductService";
 import { clientEnv as env } from "@/lib/env.client";
 import { ProductPageClient } from "./ProductPageClient";
 import { Breadcrumb } from "@/components/atoms/Breadcrumb";
+import { AdSlot } from "@/components/atoms/AdSlot";
 import type { ProductResult } from "@/lib/api";
 
 interface ProductPageProps {
@@ -195,6 +196,11 @@ export default async function ProductPage({ params }: ProductPageProps) {
         </h2>
         <ProductPageClient product={productForClient} canonicalUrl={canonicalUrl} />
       </section>
+
+      {/* Ad unit — below cost breakdown */}
+      {env.NEXT_PUBLIC_ADSENSE_CLIENT && (
+        <AdSlot slotId="product-page-rectangle" format="rectangle" />
+      )}
     </main>
   );
 }
