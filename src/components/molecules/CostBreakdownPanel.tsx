@@ -3,23 +3,16 @@
 import { useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import type { CostBreakdownResult } from "@/lib/api";
-
-// ─── Helpers ──────────────────────────────────────────────────────────────────
-
-function centsToUsd(cents: number): string {
-  return new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-    minimumFractionDigits: 2,
-  }).format(cents / 100);
-}
+import { centsToUsd } from "@/lib/format";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
 /**
- * Per-material cost entry returned by the estimate API.
- * The Cost Estimation Service doesn't expose line items in v1 — we show the
- * rolled-up material total and note how it was calculated from the methodology.
+ * Expandable panel showing the full cost breakdown by category (Materials,
+ * Labor, Overhead, Shipping) plus the methodology disclosure string.
+ *
+ * Note: the Cost Estimation Service does not expose per-material line items in
+ * v1 — this panel shows rolled-up category totals only.
  */
 interface Props {
   breakdown: CostBreakdownResult;
@@ -27,7 +20,7 @@ interface Props {
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
-export function MaterialCostList({ breakdown }: Props) {
+export function CostBreakdownPanel({ breakdown }: Props) {
   const [expanded, setExpanded] = useState(false);
 
   return (
@@ -38,10 +31,10 @@ export function MaterialCostList({ breakdown }: Props) {
         className="flex items-center justify-between w-full px-4 py-3 text-sm font-medium text-left hover:bg-muted/50 transition"
         aria-expanded={expanded}
       >
-        <span>Material costs</span>
+        <span>Cost details</span>
         <div className="flex items-center gap-2">
           <span className="text-muted-foreground font-normal tabular-nums">
-            {centsToUsd(breakdown.materialCostCents)}
+            {centsToUsd(breakdown.totalCostCents)}
           </span>
           {expanded ? (
             <ChevronUp className="h-4 w-4 text-muted-foreground shrink-0" aria-hidden="true" />

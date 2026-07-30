@@ -1,5 +1,6 @@
 "use client";
 
+import { Fragment } from "react";
 import {
   PieChart,
   Pie,
@@ -9,6 +10,7 @@ import {
   Legend,
 } from "recharts";
 import type { CostBreakdownResult } from "@/lib/api";
+import { centsToUsd } from "@/lib/format";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -24,16 +26,6 @@ const SEGMENTS = [
   { key: "overheadCostCents", label: "Overhead",  color: "#f59e0b" },
   { key: "shippingCostCents", label: "Shipping",  color: "#3b82f6" },
 ] as const;
-
-// ─── Formatter ────────────────────────────────────────────────────────────────
-
-function centsToUsd(cents: number): string {
-  return new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-    minimumFractionDigits: 2,
-  }).format(cents / 100);
-}
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
@@ -92,8 +84,8 @@ export function CostBreakdownChart({ breakdown }: Props) {
       {/* Total + breakdown summary below chart */}
       <dl className="grid grid-cols-2 gap-x-6 gap-y-1.5 text-sm mt-3">
         {data.map(({ name, value, color }) => (
-          <>
-            <dt key={`dt-${name}`} className="flex items-center gap-1.5 text-muted-foreground">
+          <Fragment key={name}>
+            <dt className="flex items-center gap-1.5 text-muted-foreground">
               <span
                 className="inline-block h-2 w-2 rounded-full shrink-0"
                 style={{ backgroundColor: color }}
@@ -101,10 +93,10 @@ export function CostBreakdownChart({ breakdown }: Props) {
               />
               {name}
             </dt>
-            <dd key={`dd-${name}`} className="text-right font-medium tabular-nums">
+            <dd className="text-right font-medium tabular-nums">
               {centsToUsd(value)}
             </dd>
-          </>
+          </Fragment>
         ))}
         <dt className="col-span-2 border-t border-border pt-1.5 mt-0.5 font-semibold">
           Total estimated cost

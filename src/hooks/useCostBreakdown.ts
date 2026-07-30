@@ -1,7 +1,7 @@
 "use client";
 
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { getEstimate, triggerEstimate } from "@/lib/api";
+import { getEstimate, triggerEstimate, ApiError } from "@/lib/api";
 import type { CostBreakdownResult } from "@/lib/api";
 
 export type { CostBreakdownResult };
@@ -27,7 +27,7 @@ export function useCostBreakdown(productId: string) {
       } catch (err) {
         // 404 means "not estimated yet" — return null instead of throwing so
         // the component can show the trigger button instead of an error state.
-        if (err instanceof Error && err.message.includes("(404)")) {
+        if (err instanceof ApiError && err.status === 404) {
           return null;
         }
         throw err;

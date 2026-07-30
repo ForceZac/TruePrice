@@ -4,9 +4,10 @@ import { AlertTriangle } from "lucide-react";
 import { useCostBreakdown, useTriggerEstimate } from "@/hooks/useCostBreakdown";
 import { CostBreakdownChart } from "@/components/molecules/CostBreakdownChart";
 import { ConfidenceBadge } from "@/components/molecules/ConfidenceBadge";
-import { MaterialCostList } from "@/components/molecules/MaterialCostList";
+import { CostBreakdownPanel } from "@/components/molecules/CostBreakdownPanel";
 import { EstimateSkeleton } from "@/components/molecules/EstimateSkeleton";
 import { ShareButton } from "@/components/atoms/ShareButton";
+import { centsToUsd } from "@/lib/format";
 import type { ProductResult } from "@/lib/api";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -15,14 +16,6 @@ import type { ProductResult } from "@/lib/api";
 type ProductProp = ProductResult & { retailPriceCents?: number | null };
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
-
-function centsToUsd(cents: number): string {
-  return new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-    minimumFractionDigits: 2,
-  }).format(cents / 100);
-}
 
 function formatMarkup(percent: number): string {
   return `${Math.round(percent)}% markup`;
@@ -134,8 +127,8 @@ export function ProductPageClient({ product, canonicalUrl }: Props) {
         <CostBreakdownChart breakdown={breakdown} />
       </section>
 
-      {/* Material / detail list */}
-      <MaterialCostList breakdown={breakdown} />
+      {/* Cost detail panel */}
+      <CostBreakdownPanel breakdown={breakdown} />
 
       {/* Confidence + share row */}
       <div className="flex flex-wrap items-center justify-between gap-3">

@@ -8,6 +8,19 @@ import { env } from "@/lib/env";
 
 const BASE_URL = env.NEXT_PUBLIC_APP_URL;
 
+// ─── Typed API error ──────────────────────────────────────────────────────────
+
+/** Thrown by apiFetch when the server returns a non-2xx status. */
+export class ApiError extends Error {
+  constructor(
+    public readonly status: number,
+    message: string
+  ) {
+    super(message);
+    this.name = "ApiError";
+  }
+}
+
 // ─── Types ───────────────────────────────────────────────────────────────────
 
 export interface ProductResult {
@@ -54,7 +67,7 @@ async function apiFetch<T>(
 
   if (!res.ok) {
     const body = await res.text();
-    throw new Error(`API ${path} failed (${res.status}): ${body}`);
+    throw new ApiError(res.status, `API ${path} failed (${res.status}): ${body}`);
   }
 
   return res.json() as Promise<T>;
