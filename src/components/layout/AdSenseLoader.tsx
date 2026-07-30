@@ -29,6 +29,10 @@ export function AdSenseLoader({ publisherId }: AdSenseLoaderProps) {
 
   if (consent !== "accepted") return null;
 
+  // Note: revoking consent (setting consent to "declined") removes this
+  // component from the React tree, but the AdSense <script> DOM node remains
+  // active for the remainder of the session. The script stops loading on the
+  // next full page reload. This is a known v1 limitation.
   return (
     <Script
       async

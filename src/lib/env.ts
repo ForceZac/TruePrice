@@ -17,6 +17,10 @@ const envSchema = z.object({
   GOOGLE_ANALYTICS_ID: z.string().optional(),
   ADSENSE_PUBLISHER_ID: z.string().optional(),
   NEXT_PUBLIC_ADSENSE_CLIENT: z.string().optional(),
+  // AdSense ad unit slot IDs (numeric IDs from the AdSense dashboard).
+  // Set these after AdSense account is approved — placeholder strings won't serve real ads.
+  NEXT_PUBLIC_ADSENSE_SLOT_PRODUCT: z.string().optional(),
+  NEXT_PUBLIC_ADSENSE_SLOT_CATEGORY: z.string().optional(),
   POSTHOG_API_KEY: z.string().optional(),
 
   // Cron job protection

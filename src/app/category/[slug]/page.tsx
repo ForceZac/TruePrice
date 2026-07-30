@@ -209,10 +209,12 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                     product.markupPercent !== null
                   }
                 />
-                {index === 5 && env.NEXT_PUBLIC_ADSENSE_CLIENT && (
+                {/* NEXT_PUBLIC_ADSENSE_SLOT_CATEGORY must be the numeric slot ID
+                    from the AdSense dashboard (e.g. "1234567890"). */}
+                {index === 5 && env.NEXT_PUBLIC_ADSENSE_CLIENT && env.NEXT_PUBLIC_ADSENSE_SLOT_CATEGORY && (
                   <AdSlot
                     publisherId={env.NEXT_PUBLIC_ADSENSE_CLIENT}
-                    slotId="category-page-leaderboard"
+                    slotId={env.NEXT_PUBLIC_ADSENSE_SLOT_CATEGORY}
                     format="leaderboard"
                   />
                 )}

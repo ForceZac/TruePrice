@@ -197,11 +197,13 @@ export default async function ProductPage({ params }: ProductPageProps) {
         <ProductPageClient product={productForClient} canonicalUrl={canonicalUrl} />
       </section>
 
-      {/* Ad unit — below cost breakdown */}
-      {env.NEXT_PUBLIC_ADSENSE_CLIENT && (
+      {/* Ad unit — below cost breakdown.
+          NEXT_PUBLIC_ADSENSE_SLOT_PRODUCT must be the numeric slot ID from the
+          AdSense dashboard (e.g. "1234567890"). Placeholder strings won't serve ads. */}
+      {env.NEXT_PUBLIC_ADSENSE_CLIENT && env.NEXT_PUBLIC_ADSENSE_SLOT_PRODUCT && (
         <AdSlot
           publisherId={env.NEXT_PUBLIC_ADSENSE_CLIENT}
-          slotId="product-page-rectangle"
+          slotId={env.NEXT_PUBLIC_ADSENSE_SLOT_PRODUCT}
           format="rectangle"
         />
       )}

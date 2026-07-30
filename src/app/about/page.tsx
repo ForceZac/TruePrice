@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { env } from "@/lib/env";
 
 export const metadata: Metadata = {
   title: "About TruePrice — What Products Actually Cost",
@@ -7,16 +8,16 @@ export const metadata: Metadata = {
     "TruePrice breaks down the real manufacturing cost of consumer products — raw materials, labor, and overhead — so you know the markup you're paying.",
 };
 
-const organizationJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "TruePrice",
-  url: "https://trueprice.app",
-  description:
-    "TruePrice reveals the true manufacturing cost of consumer products using commodity prices and industry-standard cost models.",
-};
-
 export default function AboutPage() {
+  const organizationJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "TruePrice",
+    url: env.NEXT_PUBLIC_APP_URL,
+    description:
+      "TruePrice reveals the true manufacturing cost of consumer products using commodity prices and industry-standard cost models.",
+  };
+
   return (
     <main className="flex flex-col min-h-screen px-4 py-12 max-w-2xl mx-auto w-full gap-8">
       <script
