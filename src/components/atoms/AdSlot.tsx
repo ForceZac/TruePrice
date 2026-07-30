@@ -3,6 +3,8 @@
 import { useEffect, useRef } from "react";
 
 interface AdSlotProps {
+  /** AdSense publisher ID (ca-pub-XXXXXXXXXXXXXXXX) */
+  publisherId: string;
   /** AdSense ad unit slot ID */
   slotId: string;
   /** Ad format — auto for responsive, rectangle or leaderboard for fixed units */
@@ -16,7 +18,7 @@ declare global {
   }
 }
 
-export function AdSlot({ slotId, format = "auto", className }: AdSlotProps) {
+export function AdSlot({ publisherId, slotId, format = "auto", className }: AdSlotProps) {
   const pushed = useRef(false);
 
   useEffect(() => {
@@ -41,6 +43,7 @@ export function AdSlot({ slotId, format = "auto", className }: AdSlotProps) {
       <ins
         className="adsbygoogle block"
         style={{ display: "block" }}
+        data-ad-client={publisherId}
         data-ad-slot={slotId}
         data-ad-format={format === "auto" ? "auto" : undefined}
         data-full-width-responsive={format === "auto" ? "true" : undefined}
