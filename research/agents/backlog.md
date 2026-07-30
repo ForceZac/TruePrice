@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-07-30 (Dev Run #23)
+Last updated: 2026-07-30 (Dev Run #25)
 
 ## Active
 
@@ -35,3 +35,4 @@ Last updated: 2026-07-30 (Dev Run #23)
 - **PR #13 (Goal 8):** 240 tests passing. Confidence tiers (HIGH/MEDIUM/LOW), subcategory profiles (15 profiles across 5 categories), product overrides, 104 seeded products (26 HIGH confidence), textile alias fix in material-parser, lookup returns breakdown, 2 new cron routes, stale commodity detection, /admin/coverage page.
 - **Next cycle:** Goal 7 review/merge (PR #12) → Goal 8 review/merge (PR #13) → Goal 9 TRD (PM).
 - **Dev Run #23:** PR #13 marked ready for review (was draft). No new code work — Goal 9 awaits TRD.
+- **Dev Run #25:** 240 tests passing, TypeScript clean. Committed and pushed PROJECT_KEYS.md (was untracked since PM run; updated Section 6/7/12 to reflect current routes, env vars, and merge state). No new feature work — pipeline waiting on PR #12 + PR #13 merges and Goal 9 TRD.
