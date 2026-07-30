@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { CategoryCard, CategoryCardSkeleton } from "../CategoryCard";
-import type { CategorySummary } from "@/services/CategoryService";
+import type { CategorySummary } from "@/lib/types";
 
 const CATEGORY: CategorySummary = {
   id: "cat-1",

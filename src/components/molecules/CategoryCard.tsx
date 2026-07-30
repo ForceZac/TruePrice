@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { CategorySummary } from "@/services/CategoryService";
+import type { CategorySummary } from "@/lib/types";
 
 /** Emoji icons keyed by category slug. */
 const CATEGORY_ICONS: Record<string, string> = {

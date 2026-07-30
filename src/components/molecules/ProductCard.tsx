@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { ProductResult } from "@/lib/api";
-import type { CategoryProductItem } from "@/services/CategoryService";
+import type { CategoryProductItem } from "@/lib/types";
 
 // ─── Search result card (existing) ───────────────────────────────────────────
 

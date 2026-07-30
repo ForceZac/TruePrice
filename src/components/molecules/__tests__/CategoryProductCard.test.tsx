@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { CategoryProductCard } from "../ProductCard";
-import type { CategoryProductItem } from "@/services/CategoryService";
+import type { CategoryProductItem } from "@/lib/types";
 
 const WITH_ESTIMATE: CategoryProductItem = {
   id: "prod-1",

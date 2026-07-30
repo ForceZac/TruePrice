@@ -1,11 +1,16 @@
 import type { Metadata } from "next";
+import { cache } from "react";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import {
-  getCategoryBySlug,
+  getCategoryBySlug as _getCategoryBySlug,
   getCategoryProducts,
   getAllCategorySlugs,
 } from "@/services/CategoryService";
+
+// Deduplicate the two getCategoryBySlug calls (generateMetadata + page) per
+// request so only one DB round-trip is made.
+const getCategoryBySlug = cache(_getCategoryBySlug);
 import { getCategoryDescription } from "@/data/category-descriptions";
 import { CategoryProductCard } from "@/components/molecules/ProductCard";
 import { env } from "@/lib/env";
@@ -14,6 +19,7 @@ export const revalidate = 3600;
 
 interface CategoryPageProps {
   params: Promise<{ slug: string }>;
+  searchParams: Promise<{ page?: string }>;
 }
 
 export async function generateStaticParams() {
@@ -51,12 +57,17 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
   };
 }
 
-export default async function CategoryPage({ params }: CategoryPageProps) {
+export default async function CategoryPage({ params, searchParams }: CategoryPageProps) {
   const { slug } = await params;
+  const { page: pageParam } = await searchParams;
+  // v1: pagination via ?page=N. Categories with >12 products require explicit
+  // page navigation. Full pagination UI (prev/next) is a v2 enhancement.
+  const page = Math.max(1, parseInt(pageParam ?? "1", 10) || 1);
+  const perPage = 12;
 
   const [category, { products, total }] = await Promise.all([
     getCategoryBySlug(slug),
-    getCategoryProducts(slug),
+    getCategoryProducts(slug, page, perPage),
   ]);
 
   if (!category) {
@@ -87,6 +98,9 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   };
 
   const hasEstimates = products.some((p) => p.markupPercent !== null);
+  const totalPages = Math.ceil(total / perPage);
+  const hasPrev = page > 1;
+  const hasNext = page < totalPages;
 
   return (
     <main className="flex flex-col min-h-screen px-4 py-10 max-w-4xl mx-auto w-full gap-8">
@@ -209,6 +223,35 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
               />
             ))}
           </div>
+        )}
+
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <nav aria-label="Pagination" className="flex items-center justify-between pt-4">
+            {hasPrev ? (
+              <Link
+                href={`/category/${slug}?page=${page - 1}`}
+                className="text-sm text-primary hover:underline"
+              >
+                ← Previous
+              </Link>
+            ) : (
+              <span />
+            )}
+            <p className="text-sm text-muted-foreground">
+              Page {page} of {totalPages}
+            </p>
+            {hasNext ? (
+              <Link
+                href={`/category/${slug}?page=${page + 1}`}
+                className="text-sm text-primary hover:underline"
+              >
+                Next →
+              </Link>
+            ) : (
+              <span />
+            )}
+          </nav>
         )}
       </section>
     </main>
