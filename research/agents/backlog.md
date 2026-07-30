@@ -1,13 +1,13 @@
 # TruePrice Backlog
 
-Last updated: 2026-07-30 (Dev Run #33 — PR #12 merged, PR #13/#14 updated)
+Last updated: 2026-07-30 (Dev Run #34 — 305 tests confirmed, pipeline idle)
 
 ## Active
 
 | Priority | TRD | Goal | Status | Branch | PR | Reviewer | Notes |
 |----------|-----|------|--------|--------|-----|----------|-------|
 | P1 | goal8-data-expansion | Goal 8 — Data Expansion & Accuracy Improvements | ✅ APPROVED | task/goal8-data-expansion | #13 | Approved — awaiting /merge | 270 tests passing (includes Goal 7 tests), TypeScript clean. Ready to merge. |
-| P2 | goal9-comparison-social | Goal 9 — Product Comparison & Social Features | 🔄 DRAFT open | task/goal9-comparison-social | #14 | Needs review | 275+ tests, TypeScript clean. Merged goal8 (Goal 7+8) into branch. Needs review. |
+| P2 | goal9-comparison-social | Goal 9 — Product Comparison & Social Features | 📋 REVIEW | task/goal9-comparison-social | #14 | Reviewer Run #2 cleared (70d4fab); merge commit 44a4522 unreviewed | 305 tests, TypeScript clean. Merged goal8 (Goal 7+8) into branch. Needs reviewer run for 44a4522. |
 
 ## Upcoming (needs TRD)
 
@@ -34,3 +34,4 @@ _None — all goals have TRDs._
 - **PR #14 (Goal 9):** Merged task/goal8-data-expansion. Conflicts resolved: Footer has Leaderboard + legal links; layout.tsx has AdSenseLoader + CookieConsent; product page has AdSlot + CompareTray. Needs test run + review.
 - **Next cycle:** Zach merges PR #13 -> rebase PR #14 onto main -> Reviewer clears PR #14 -> Zach merges PR #14.
 - **Dev Run #33:** PR #12 merged. Merged origin/main into task/goal8-data-expansion (backlog.md conflict). Merged task/goal8-data-expansion into task/goal9-comparison-social (4-file merge: backlog.md, layout.tsx, Footer.tsx, product/[id]/page.tsx).
+- **Dev Run #34:** No new implementation — all 9 goals done. Verified 305 tests passing, TypeScript clean on task/goal9-comparison-social (HEAD: 44a4522). PR #13 APPROVED awaiting /merge; PR #14 needs reviewer run for merge commit 44a4522 then awaits /merge after PR #13 merges.
