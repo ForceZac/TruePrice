@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-07-30 (PM Standup Run #3, 10:02 UTC)
+Last updated: 2026-07-30 (PM Standup Run #5, 10:59 UTC)
 
 ## Active
 
@@ -8,6 +8,7 @@ Last updated: 2026-07-30 (PM Standup Run #3, 10:02 UTC)
 |----------|-----|------|--------|--------|-----|----------|-------|
 | P0 | goal4-cost-estimation-engine | Goal 4 — Cost Estimation Engine | ✅ All warnings fixed, reviewers cleared | task/goal4-cost-estimation | #4 | ✅ Ready | 120 tests passing, TypeScript clean. Awaiting human `/merge` approval |
 | P1 | goal5-product-page-ui | Goal 5 — Product Page & Cost Breakdown UI | ✅ All blockers resolved, reviewers cleared | task/goal5-product-page-ui | #5 | ✅ Ready | 139 tests passing; env import fixed (commit 08a97e3). Awaiting Goal 4 merge to re-target |
+| P2 | — | Chore — Env Split | 🔄 In progress | chore/env-split | #6 | DRAFT | TypeScript env.ts split into server/client modules; improves type safety |
 
 ## Upcoming (needs TRD)
 
@@ -28,8 +29,9 @@ Last updated: 2026-07-30 (PM Standup Run #3, 10:02 UTC)
 
 ## Notes
 
-- **Pipeline status:** Goals 1–3 complete (merged 08:12 UTC). Goal 4 ready for human `/merge` approval.
+- **Pipeline status:** Goals 1–3 complete (merged 08:12 UTC). Goal 4 ready for human `/merge` approval. Goal 5 ready, awaiting Goal 4 merge.
 - **PR #4 (Goal 4):** All reviewer warnings fixed (commits 961e5c0, 19d826c). Ready for merge.
 - **PR #5 (Goal 5):** All blockers resolved (commit 87404dd). Fragment key fix, typed ApiError, centsToUsd extracted, MaterialCostList renamed. Awaiting re-review after #4 merges.
-- **Developer notes:** 91 tests passing on Goal 5; all acceptance criteria met. Build fully passing when DB available.
+- **PR #6 (Chore):** Env split refactor in draft — improves server/client type separation (commit bb588b5).
+- **Developer notes:** 139 tests passing on Goal 5; all acceptance criteria met. Build fully passing when DB available.
 - **Next cycle:** Goal 4 `/merge` → Goal 5 re-review → Goal 6 TRD (PM) → Goal 6 implementation.
