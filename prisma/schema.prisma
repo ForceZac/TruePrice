@@ -51,6 +51,7 @@ model Product {
   costBreakdowns   CostBreakdown[]
   savedByUsers     SavedProduct[]
   recentlyViewedBy RecentlyViewed[]
+  alertLogs        AlertLog[]
 }
 
 model Material {
@@ -133,18 +134,22 @@ model LaborRate {
 // ─── Auth (NextAuth v5 / Auth.js) ──────────────────────────────────────────
 
 model User {
-  id            String    @id @default(cuid())
-  name          String?
-  email         String?   @unique
-  emailVerified DateTime?
-  image         String?
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
+  id                 String    @id @default(cuid())
+  name               String?
+  email              String?   @unique
+  emailVerified      DateTime?
+  image              String?
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+  // Price alert preferences
+  alertThresholdPct  Int?      // null = 10% default; 0 = any change; 5 | 10 | 20
+  alertsEnabled      Boolean   @default(true)
 
   accounts       Account[]
   sessions       Session[]
   savedProducts  SavedProduct[]
   recentlyViewed RecentlyViewed[]
+  alertLogs      AlertLog[]
 }
 
 model Account {
@@ -189,7 +194,11 @@ model VerificationToken {
 model SavedProduct {
   userId    String
   productId String
-  savedAt   DateTime @default(now())
+  savedAt   DateTime  @default(now())
+  // Price alert tracking
+  costAtWatchCents     Int?      // estimated cost (cents) when user saved the product
+  lastAlertedCostCents Int?      // cost at last alert fire; baseline for next comparison
+  lastAlertedAt        DateTime? // rate-limit anchor — no second alert within 24 h
 
   user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
   product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
@@ -209,4 +218,23 @@ model RecentlyViewed {
   @@id([userId, productId])
   @@index([userId])
   @@index([viewedAt])
+}
+
+// ─── Price Alerts ───────────────────────────────────────────────────────────
+
+model AlertLog {
+  id            String   @id @default(cuid())
+  userId        String
+  productId     String
+  oldCostCents  Int
+  newCostCents  Int
+  deltaPercent  Float
+  sentAt        DateTime @default(now())
+
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([userId, productId])
+  @@index([sentAt])
 }
