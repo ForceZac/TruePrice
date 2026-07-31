@@ -18,6 +18,8 @@ export async function GET(request: NextRequest) {
   const authHeader = request.headers.get("authorization");
   const expectedToken = env.CRON_SECRET;
 
+  // Note: if CRON_SECRET is not set, the guard is skipped and the endpoint is open.
+  // In production, CRON_SECRET must be set — Vercel sets it automatically for cron routes.
   if (expectedToken && authHeader !== `Bearer ${expectedToken}`) {
     return Response.json({ error: "Unauthorized." }, { status: 401 });
   }
