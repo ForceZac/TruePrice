@@ -1,7 +1,6 @@
 import { type NextRequest } from "next/server";
-import { fetchPrices } from "@/services/CommodityService";
+import { fetchPrices, detectStalePrices } from "@/services/CommodityService";
 import { serverEnv as env } from "@/lib/env.server";
-import { prisma } from "@/lib/db";
 import { execFile } from "child_process";
 
 /**
@@ -32,18 +31,13 @@ export async function GET(request: NextRequest) {
     console.log(`[cron/refresh-prices] Refreshed ${count} prices in ${elapsed}ms`);
 
     // ── Stale price detection ─────────────────────────────────────────────
-    // Query for any CommodityPrice rows whose fetchedAt is older than 25 hours.
-    const staleThreshold = new Date(Date.now() - 25 * 60 * 60 * 1000);
-    const stalePrices = await prisma.commodityPrice.findMany({
-      where: { fetchedAt: { lt: staleThreshold } },
-      include: { material: { select: { name: true } } },
-    });
+    // 25h window: any row not refreshed in this cron cycle is flagged.
+    const CRON_STALE_THRESHOLD_MS = 25 * 60 * 60 * 1000;
+    const staleNames = await detectStalePrices(CRON_STALE_THRESHOLD_MS);
+    const staleCount = staleNames.length;
 
-    let staleCount = 0;
-    if (stalePrices.length > 0) {
-      staleCount = stalePrices.length;
-      const names = [...new Set(stalePrices.map((p) => p.material.name))].join(", ");
-      const alertMsg = `⚠️ Stale commodity prices detected: ${staleCount} row(s) older than 25h — materials: ${names}`;
+    if (staleCount > 0) {
+      const alertMsg = `⚠️ Stale commodity prices detected: ${staleCount} material(s) older than 25h — ${staleNames.join(", ")}`;
       console.warn(`[cron/refresh-prices] ${alertMsg}`);
 
       // Post to Discord #alerts if bot token is available
