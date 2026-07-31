@@ -16,7 +16,16 @@ export async function GET(request: NextRequest) {
   const authHeader = request.headers.get("authorization");
   const expectedToken = env.CRON_SECRET;
 
-  if (expectedToken && authHeader !== `Bearer ${expectedToken}`) {
+  if (!expectedToken) {
+    // CRON_SECRET must be set — an open endpoint would allow anyone to trigger
+    // bulk emails to all watchlist users.
+    console.error(
+      "[cron/weekly-digest] CRON_SECRET is not set. Refusing request to prevent unauthorized email sends."
+    );
+    return Response.json({ error: "Unauthorized." }, { status: 401 });
+  }
+
+  if (authHeader !== `Bearer ${expectedToken}`) {
     return Response.json({ error: "Unauthorized." }, { status: 401 });
   }
 
