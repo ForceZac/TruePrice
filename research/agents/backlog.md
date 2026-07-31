@@ -46,3 +46,4 @@ _None — all goals have TRDs._
 - **PM Run #78 (2026-07-31):** Backlog groomed. All 9 goals shipped, 347 tests, TS clean. PR #15 (fix/stale-price) reviewer-approved, awaiting `/merge`. No TRD updates needed. Posted standup to #standup.
 - **Dev Run #56 (2026-07-31):** No new TRDs. All 9 goals complete. 347 tests passing, TS clean. PR #15 still open, awaiting `/merge`. No new work.
 - **Dev Run #57 (2026-07-31):** No new TRDs. All 9 goals complete. 347 tests passing, TS clean. PR #15 still open, awaiting `/merge`. No new work.
+- **Dev Run #58 (2026-07-31):** No new TRDs. All 9 goals complete. 347 tests passing, TS clean. PR #15 still open, awaiting `/merge`. No new work.
