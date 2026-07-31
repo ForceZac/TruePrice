@@ -1,6 +1,6 @@
 # Open Questions Parking Lot
 
-Last updated: 2026-07-31 (PM Run #78)
+Last updated: 2026-07-31 (PM Run #79)
 
 This file replaces the missing PROJECT_KEYS.md section 13. All unresolved product decisions go here. Answered questions are moved to the **Resolved** section below.
 
@@ -60,6 +60,23 @@ All agent runs have failed to post to Discord (#main, #standup, #prs, #alerts, #
 **Q8-4: Admin page access** — *moved to Resolved (PM Run #78)*
 
 **Q8-5: Re-estimation TTL configurability** — *moved to Resolved (PM Run #4)*
+
+### Goal 10 — User Accounts & Personalization (Proposed)
+
+**Q10-1: NextAuth version** — v5 (App Router native) vs v4 (stable). See PRD Goal 10.
+- **Owner:** PM/Dev | **Blocking:** TRD writing
+
+**Q10-2: Auth providers** — Google + magic-link email sufficient, or add GitHub OAuth?
+- **Owner:** Zach | **Blocking:** TRD writing
+
+**Q10-3: Watchlist cap** — 50 products (proposed). Too low? Unlimited?
+- **Owner:** Zach | **Blocking:** TRD writing
+
+**Q10-4: Digest opt-in vs. opt-out** — opt-in safer; opt-out maximizes engagement.
+- **Owner:** Zach | **Blocking:** TRD writing
+
+**Q10-5: Recently viewed merge strategy on sign-in** — merge + deduplicate + cap at 10 (proposed).
+- **Owner:** PM | **Blocking:** TRD writing
 
 ### Goal 9 — Product Comparison & Social Features
 

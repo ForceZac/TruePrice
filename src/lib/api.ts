@@ -146,3 +146,51 @@ export async function triggerEstimate(
   );
   return data.breakdown;
 }
+
+// ─── Watchlist endpoints ──────────────────────────────────────────────────────
+
+/** GET /api/user/watchlist — returns the current user's saved product IDs. */
+export async function fetchWatchlist(): Promise<string[]> {
+  try {
+    const data = await apiFetch<{ watchlist: Array<{ productId: string }> }>(
+      "/api/user/watchlist"
+    );
+    return data.watchlist.map((w) => w.productId);
+  } catch (err) {
+    // 401 = not signed in — return empty rather than throwing
+    if (err instanceof ApiError && err.status === 401) return [];
+    throw err;
+  }
+}
+
+/** POST /api/user/watchlist — saves a product. Returns true if newly saved; false if already saved. */
+export async function saveToWatchlist(productId: string): Promise<boolean> {
+  try {
+    await apiFetch("/api/user/watchlist", {
+      method: "POST",
+      body: JSON.stringify({ productId }),
+    });
+    return true;
+  } catch (err) {
+    if (err instanceof ApiError && err.status === 409) return false;
+    throw err;
+  }
+}
+
+/** DELETE /api/user/watchlist/[productId] — removes a product from the watchlist. */
+export async function unsaveFromWatchlist(productId: string): Promise<void> {
+  await apiFetch(`/api/user/watchlist/${encodeURIComponent(productId)}`, {
+    method: "DELETE",
+  });
+}
+
+/** POST /api/user/recent — records a product view (and optionally merges localStorage IDs). */
+export async function recordRecentView(
+  productId: string,
+  localIds?: string[]
+): Promise<void> {
+  await apiFetch("/api/user/recent", {
+    method: "POST",
+    body: JSON.stringify({ productId, ...(localIds ? { localIds } : {}) }),
+  });
+}
