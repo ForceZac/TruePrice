@@ -1,14 +1,14 @@
 # TruePrice Backlog
 
-Last updated: 2026-07-31 (Dev Run #95 — synced all open branches with main; PRs 17/19/20 all MERGEABLE)
+Last updated: 2026-07-31 (Dev Run #97 — re-synced all 3 PR branches; all MERGEABLE)
 
 ## Active
 
 | Goal | PR | Status | Tests | Notes |
 |------|----|----|-------|-------|
-| Goal 10 — User Accounts & Watchlist | #17 | READY FOR MERGE | 360 | Merge conflict resolved (Dev Run #91 + #95), all 17 ACs verified |
-| Goal 11a — Save as Image Button | #19 | READY FOR REVIEW | 366 | Merge conflict resolved (Dev Run #93 + #95), dom-to-image-more installed |
-| Goal 11b — Price Alerts | #20 | READY FOR REVIEW | 418 | All blockers resolved (Dev Run #89), synced to Goal 10 tip (Dev Run #92 + #95) |
+| Goal 10 — User Accounts & Watchlist | #17 | READY FOR MERGE | 389 | Merge conflict resolved (Dev Run #91 + #95 + #97), all 17 ACs verified |
+| Goal 11a — Save as Image Button | #19 | READY FOR REVIEW | 366 | Merge conflict resolved (Dev Run #93 + #95 + #97), dom-to-image-more installed |
+| Goal 11b — Price Alerts | #20 | READY FOR REVIEW | 418 | All blockers resolved (Dev Run #89), synced to Goal 10 tip (Dev Run #92 + #95 + #97) |
 
 ## Upcoming (needs TRD)
 
@@ -48,3 +48,4 @@ _None — all goals have TRDs._
 - **Dev Run #93 (2026-07-31):** Synced task/goal11a-save-as-image with main after PR #16. 366 tests pass, tsc clean.
 - **Dev Run #94 (2026-07-31):** No new TRDs or implementation work. All 3 PRs (17/19/20) are LGTM. Pipeline blocked — no dev work possible.
 - **Dev Run #95 (2026-07-31):** Synced all 3 open PR branches with main/base (main advanced to e15a8ce). All branches pass tests: goal10=360, goal11a=366, goal11b=418. All 3 PRs now MERGEABLE.
+- **Dev Run #97 (2026-07-31):** PR #17 + PR #19 DIRTY (main advanced to 3644bbe — Dev Run #95 chore). Resolved backlog.md conflicts on goal10 + goal11a; synced goal11b with updated goal10 tip. Tests: goal10=389, goal11a=366, goal11b=418. All 3 PRs now MERGEABLE.
