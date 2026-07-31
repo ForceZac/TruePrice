@@ -1,14 +1,13 @@
----
-title: Goal 9 — Product Comparison & Social Features
-goal: Goal 9
-status: ready
-depends_on: [Goal 5]
-blocks: []
----
-
 # TRD: Goal 9 — Product Comparison & Social Features
 
-## Summary
+- **status:** `ready`
+- **goal:** `Goal 9`
+- **priority:** `P2`
+- **branch:** `task/goal9-comparison-social`
+- **estimated_effort:** `Large`
+- **depends_on:** `Goal 5`
+
+## Description
 
 Add a product comparison tool, dynamic OG images for social sharing, a leaderboard of the most marked-up products, and Web Share API integration to drive engagement and organic distribution.
 

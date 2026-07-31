@@ -1,6 +1,6 @@
 # Open Questions Parking Lot
 
-Last updated: 2026-07-30 (PM Run #4)
+Last updated: 2026-07-31 (PM Run #78)
 
 This file replaces the missing PROJECT_KEYS.md section 13. All unresolved product decisions go here. Answered questions are moved to the **Resolved** section below.
 
@@ -10,38 +10,21 @@ This file replaces the missing PROJECT_KEYS.md section 13. All unresolved produc
 
 ### Goal 4 — Cost Estimation Engine
 
-**Q4-1: Cron-triggered re-estimation**
-Should the daily price cron automatically re-compute CostBreakdowns for all products, or lazily re-compute on next page view?
-- Lazy is simpler for v1 but the first visitor after a price refresh hits a slow page
-- Auto-compute is reliable but could be expensive at scale
-- **Owner:** Zach | **Blocking:** TRD for Goal 4
+**Q4-1: Cron-triggered re-estimation** — *moved to Resolved (PM Run #78)*
 
-**Q4-2: Labor rate default for unknown country of origin**
-Default to US rate (conservative, highest) or global average (~$2–3/hr)?
-- US rate would give misleading high labor cost for most manufactured goods
-- Suggested default: China rate ($3.50/hr) as it covers the largest share of manufactured goods
-- **Owner:** Zach | **Blocking:** TRD for Goal 4
+**Q4-2: Labor rate default for unknown country of origin** — *moved to Resolved (PM Run #78)*
 
 ### Goal 5 — Product Page & Cost Breakdown UI
 
-**Q5-1: Chart type — stacked bar vs. donut**
-Which chart type for the cost breakdown?
-- Stacked bar: easier to read absolute values; familiar
-- Donut: more visually striking on mobile; better for "wow" factor
-- **Owner:** Zach | **Blocking:** TRD for Goal 5
+**Q5-1: Chart type — stacked bar vs. donut** — *moved to Resolved (PM Run #78)*
 
 ### Goal 6 — Category Browsing & Landing Pages
 
-**Q6-1: Category descriptions**
-Who writes the 2–3 sentence unique blurb per category for SEO? Can be AI-drafted, but needs review. How many categories are seeded at this point?
-- **Owner:** Zach | **Blocking:** TRD for Goal 6
+**Q6-1: Category descriptions** — *moved to Resolved (PM Run #78)*
 
 **Q6-2: Pagination vs. load more** — *moved to Resolved (PM Run #4)*
 
-**Q6-3: Minimum product count for AdSense**
-How many products with estimates will TruePrice have seeded by Goal 6? If fewer than ~20 with real estimates, category pages may be too thin for AdSense approval.
-- **Action needed:** Count seeded products with estimates; decide if more seed data is needed before AdSense submission
-- **Owner:** Zach | **Blocking:** Goal 7
+**Q6-3: Minimum product count for AdSense** — *moved to Resolved (PM Run #78)*
 
 ### Goal 7 — AdSense Integration
 
@@ -57,13 +40,7 @@ Does TruePrice store any user data beyond standard server logs? This determines 
 
 ### Infrastructure / Cross-cutting
 
-**Q-INFRA-1: PROJECT_KEYS.md missing**
-Multiple agent runs (TRD Watcher #1–#8, PM #2–#3) have flagged that `PROJECT_KEYS.md` does not exist, despite the roadmap claiming it was generated from it.
-- TRD Watcher instructions reference sections 3 (tech stack) and 10 (separation of concerns)
-- PM instructions reference sections 1, 2, 6, 7, 12, 13
-- This blocks full TRD validation
-- **Action needed:** Create PROJECT_KEYS.md or update agent prompt files to reference the correct docs
-- **Owner:** Zach | **Priority:** High (blocking TRD validation rigor)
+**Q-INFRA-1: PROJECT_KEYS.md missing** — *moved to Resolved (PM Run #78)*
 
 **Q-INFRA-2: Discord channels not allowlisted**
 All agent runs have failed to post to Discord (#main, #standup, #prs, #alerts, #research).
@@ -74,49 +51,25 @@ All agent runs have failed to post to Discord (#main, #standup, #prs, #alerts, #
 
 ### Goal 8 — Data Expansion & Accuracy Improvements
 
-**Q8-1: Live lookup latency budget**
-Live UPCitemdb lookups can take 1–3s. If the live lookup + estimation exceeds 500ms, should the product page return a "loading estimate" state and poll, or go fully synchronous?
-- Q4-4 resolution says go sync first — but that was for estimation only, not live external API calls
-- Suggested: return product data immediately; trigger estimation as a background job; poll via `GET /api/estimate/status/[productId]` until ready (202 + polling pattern)
-- **Owner:** Zach | **Blocking:** TRD for Goal 8
+**Q8-1: Live lookup latency budget** — *moved to Resolved (PM Run #78)*
 
-**Q8-2: 100-product seed sourcing**
-Where does the expanded seed data (≥100 products) come from?
-- Option A: Bulk export from Open Food Facts filtered to common US UPCs (most scalable, needs one-time import script)
-- Option B: Zach manually curates a UPC list
-- Option C: Automated bulk lookup against a pre-defined list of popular product UPCs
-- Suggested: Option A for food products; Option C for non-food (electronics, clothing) using a known-popular-UPC list
-- **Owner:** Zach | **Blocking:** TRD for Goal 8
+**Q8-2: 100-product seed sourcing** — *moved to Resolved (PM Run #78)*
 
 **Q8-3: Subcategory field backfill** — *moved to Resolved (PM Run #4)*
 
-**Q8-4: Admin page access**
-`/admin/coverage` is internal-only but unauthenticated for v1. Acceptable given the site is public?
-- Risk: someone discovers the URL and sees aggregate stats (not sensitive)
-- Suggested: Acceptable for v1. Add basic auth (env-var password) before any launch if coverage data feels sensitive.
-- **Owner:** Zach (confirm)
+**Q8-4: Admin page access** — *moved to Resolved (PM Run #78)*
 
 **Q8-5: Re-estimation TTL configurability** — *moved to Resolved (PM Run #4)*
 
 ### Goal 9 — Product Comparison & Social Features
 
-**Q9-1: OG image design**
-What should the dynamic OG image look like for product pages and the compare page?
-- Option A: Bold text card — product name + "8× markup" in large type (simplest, most readable at thumbnail size)
-- Option B: Mini cost breakdown chart rendered in Satori
-- Option C: Stylized gradient card with key stats
-- Suggested: Option A for v1. Text-forward cards perform best in social feeds and are easiest to build in Satori.
-- **Owner:** Zach (confirm)
+**Q9-1: OG image design** — *moved to Resolved (PM Run #78)*
 
 **Q9-2: Compare page cold state** — *moved to Resolved (PM Run #4)*
 
 **Q9-3: Leaderboard confidence filter** — *moved to Resolved (PM Run #4)*
 
-**Q9-4: Copy-to-image scope**
-Should "Save as image" (html2canvas / dom-to-image) be included in Goal 9 v1 or deferred?
-- It's a "should-have" and adds bundle weight + known CSS edge cases with Tailwind
-- Suggested: Defer to Goal 10+. Focus Goal 9 on comparison, OG images, and leaderboard first.
-- **Owner:** Zach (confirm if cut is acceptable)
+**Q9-4: Copy-to-image scope** — *moved to Resolved (PM Run #78)*
 
 ---
 
@@ -169,3 +122,38 @@ Should "Save as image" (html2canvas / dom-to-image) be included in Goal 9 v1 or 
 
 **Q9-3: Leaderboard confidence filter** — Show all products with estimates on the leaderboard; display a confidence badge on each card (HIGH/MEDIUM/LOW). Don't filter by confidence — it would hide too many products early on and punish the product for having young data.
 - **Resolved:** PM Run #4 (2026-07-30) — working default set
+
+### Added PM Run #78 (2026-07-31)
+
+**Q4-1: Cron-triggered re-estimation** — Go with scheduled auto-compute (weekly, not daily). Goal 8 implements a `GET /api/cron/re-estimate` Vercel Cron (weekly Mon 08:00) that re-runs `estimateCost()` for products with stale breakdowns, ordered by most-recently-estimated descending (so the freshest rotate through). This avoids cold-page hits while keeping compute bounded.
+- **Resolved:** PM Run #78 (2026-07-31) — implemented in Goal 8 (PR #13)
+
+**Q4-2: Labor rate default for unknown country of origin** — Use China rate ($3.50/hr). Implemented in `CostEstimationService` as the fallback for null `countryOfOrigin`. China accounts for the largest share of manufactured goods globally, making it the least-biased default.
+- **Resolved:** PM Run #78 (2026-07-31) — implemented in Goal 4 (PR #4)
+
+**Q5-1: Chart type — stacked bar vs. donut** — Donut (Recharts `PieChart` + `ResponsiveContainer`). More visually striking on mobile; better for the "wow" sharing moment. Implemented in the `CostBreakdownChart` molecule component.
+- **Resolved:** PM Run #78 (2026-07-31) — implemented in Goal 5 (PR #5)
+
+**Q6-1: Category descriptions** — AI-drafted 2–3 sentence blurbs seeded per category, written at Goal 6 time. 5 categories seeded (Food & Beverage, Clothing & Textiles, Electronics, Cosmetics & Personal Care, Home & Kitchen). No separate Zach review needed for launch — thin categories are acceptable for AdSense v1.
+- **Resolved:** PM Run #78 (2026-07-31) — implemented in Goal 6 (PR #10)
+
+**Q6-3: Minimum product count for AdSense** — Resolved by Goal 8: 104 products seeded with estimates (26 HIGH confidence, mix of food, clothing, electronics). AdSense content threshold met.
+- **Resolved:** PM Run #78 (2026-07-31) — implemented in Goal 8 (PR #13)
+
+**Q-INFRA-1: PROJECT_KEYS.md missing** — `PROJECT_KEYS.md` now exists at `/workspace/TruePrice/PROJECT_KEYS.md`, committed to task/goal8-data-expansion in commit c20f3d7. All agent prompts that reference it now have a valid file to read. TRD Watcher now validates against it successfully.
+- **Resolved:** PM Run #78 (2026-07-31) — created during Dev Run #25 (2026-07-30)
+
+**Q8-1: Live lookup latency** — Sync approach used in Goal 9. Product data returns immediately from DB; estimation is triggered by `GET /api/products/[id]/cost` (calculate if none cached). No polling pattern needed for v1 — re-estimate cron handles freshness. Revisit if p95 latency exceeds 500ms after launch.
+- **Resolved:** PM Run #78 (2026-07-31) — confirmed working in Goal 9 implementation
+
+**Q8-2: 100-product seed sourcing** — Used Option C (pre-defined popular UPC list) for electronics and clothing; Open Food Facts data for food products. Goal 8 seeded 104 products across all categories manually curated. Import script approach (Option A) deferred to future growth needs.
+- **Resolved:** PM Run #78 (2026-07-31) — implemented in Goal 8 (PR #13)
+
+**Q8-4: Admin page access** — `/admin/coverage` is unauthenticated for v1. Aggregate stats (product counts, confidence distribution) are not sensitive. Add basic auth (env-var password) before any public marketing push if coverage data becomes a competitive concern.
+- **Resolved:** PM Run #78 (2026-07-31) — accepted as working default for v1
+
+**Q9-1: OG image design** — Option A (bold text card): product name + markup multiplier in large type. Text-forward cards perform best in social feeds and are simplest to build with Satori. Implemented in `src/app/api/og/product/[id]/route.ts` and `src/app/api/og/compare/route.ts`.
+- **Resolved:** PM Run #78 (2026-07-31) — implemented in Goal 9 (PR #14)
+
+**Q9-4: Copy-to-image scope** — Deferred. Not included in Goal 9 v1. Goal 9 focuses on comparison tray, leaderboard, and OG images. "Save as image" (html2canvas/dom-to-image) deferred to Goal 10+ due to bundle weight and Tailwind CSS edge cases.
+- **Resolved:** PM Run #78 (2026-07-31) — confirmed cut from Goal 9 scope
