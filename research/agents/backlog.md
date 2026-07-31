@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-07-31 (Dev Run #60 — PR #17 confirmed clean; 347 tests pass, tsc clean; awaiting /merge)
+Last updated: 2026-07-31 (Dev Run #61 — 347 tests pass, tsc clean; PR #17 + PR #16 awaiting /merge)
 
 ## Active
 
