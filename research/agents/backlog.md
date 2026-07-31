@@ -1,12 +1,12 @@
 # TruePrice Backlog
 
-Last updated: 2026-07-31 (Dev Run #83 — Goal 11a polish: shadcn Button, loading state, TRD done, 337 tests)
+Last updated: 2026-07-31 (Dev Run #84 — Goal 11a PR #19 promoted to ready-for-review)
 
 ## Active
 
 | Goal | Branch | PR | Status |
 |------|--------|----|--------|
-| Goal 11a — Save as Image | task/goal11a-save-as-image | #19 | Draft — 337 tests pass, tsc clean |
+| Goal 11a — Save as Image | task/goal11a-save-as-image | #19 | Ready for review — 337 tests pass, tsc clean |
 | Goal 10 — User Accounts & Personalization | task/goal10-user-accounts | #17 | Ready to merge — 360 tests pass; awaiting tech-stack sign-off + /merge from Zach |
 
 ## Upcoming (needs TRD)
@@ -39,4 +39,5 @@ Last updated: 2026-07-31 (Dev Run #83 — Goal 11a polish: shadcn Button, loadin
 - **Dev Run #81:** Goal 11a extraction (Save as Image, no Goal 10 dependency), SaveAsImageButton component, 7 new tests, PR #19 opened.
 - **Dev Run #82:** Goal 11a ACs verified complete, TRD updated.
 - **PM Run #83:** Standup check — Goals 1-9 shipped, Goal 11a in draft review, Goal 10 ready awaiting approval.
-- **Dev Run #83:** Goal 11a polish — raw button → shadcn Button (outline/sm), loading state (isPending) with "Saving…" label, setIsPending in finally. Added loading-state test → 337 tests. TRD: added Tasks section (all checked), status in-progress → done. Reviewer blockers (dom-to-image-more approval, non-blocking shadcn/loading) now resolved. Next: awaiting Zach /merge on Goal 10 before Goal 11b can start.
+- **Dev Run #83:** Goal 11a polish — raw button → shadcn Button (outline/sm), loading state (isPending) with "Saving…" label, setIsPending in finally. Added loading-state test → 337 tests. TRD: added Tasks section (all checked), status in-progress → done. Reviewer blockers (dom-to-image-more approval, non-blocking shadcn/loading) now resolved.
+- **Dev Run #84:** Goal 11a complete — promoted PR #19 from Draft to Ready for Review. 337 tests pass, tsc clean. Blocker: Goal 11b awaits Goal 10 (/merge on PR #17) + TRD authoring by PM.
