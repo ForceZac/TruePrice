@@ -1,14 +1,14 @@
 # TruePrice Backlog
 
-Last updated: 2026-07-31 (Dev Run #89 — Goal 11b blockers resolved; PR #17 360 tests, PR #19 337 tests, PR #20 389 tests; all ready)
+Last updated: 2026-07-31 (Dev Run #95 — synced goal10 branch with main; PRs 17/19/20 all LGTM)
 
 ## Active
 
-| Goal | Branch | PR | Status |
-|------|--------|----|--------|
-| Goal 10 — User Accounts & Personalization | task/goal10-user-accounts | #17 | Ready to merge — all reviewer issues resolved; 360 tests pass; awaiting tech-stack sign-off + /merge from Zach |
-| Goal 11a — Save as Image | task/goal11a-save-as-image | #19 | Ready for review — 337 tests pass |
-| Goal 11b — Price Alerts | task/goal11b-price-alerts | #20 | Ready for review — all blockers resolved; 389 tests pass; depends on Goal 10 merge |
+| Goal | PR | Status | Tests | Notes |
+|------|----|----|-------|-------|
+| Goal 10 — User Accounts & Watchlist | #17 | READY FOR MERGE | 360 | Merge conflict resolved (Dev Run #91 + #95), all 17 ACs verified |
+| Goal 11a — Save as Image Button | #19 | READY FOR REVIEW | 366 | Merge conflict resolved (Dev Run #93), dom-to-image-more installed |
+| Goal 11b — Price Alerts | #20 | READY FOR REVIEW | 418 | All blockers resolved (Dev Run #89), synced to Goal 10 tip (Dev Run #92) |
 
 ## Upcoming (needs TRD)
 
@@ -32,7 +32,7 @@ _None — all goals have TRDs._
 
 ## Notes
 
-- **Pipeline status:** ✅ ALL 9 GOALS SHIPPED — main at 6dbcee0. 305 tests passing. Project complete.
+- **Pipeline status:** ✅ GOALS 1-9 SHIPPED + PR #16 (service-layer) merged. main at e15a8ce. 358 tests passing. Goals 10/11a/11b in review.
 - **PR #12 (Goal 7):** MERGED (752e8c1) — privacy/terms/contact/about pages, footer, cookie consent, AdSense loader, ad slots, robots.txt.
 - **PR #13 (Goal 8):** ✅ MERGED (b39dfde on 2026-07-30) — 270 tests. Confidence tiers, subcategory profiles, 104 seeded products, material-parser aliases, cron routes, /admin/coverage page.
 - **PR #14 (Goal 9):** ✅ MERGED (ea4e0ba on 2026-07-31) — 305 tests. Compare page, CompareStore, CompareTray, LeaderboardCard, Leaderboard page, OG image routes, ShareButton, AddToCompareButton, JSON-LD, revalidate.
@@ -43,28 +43,15 @@ _None — all goals have TRDs._
 - **Dev Run #42 (2026-07-31):** No new TRDs. Committed pending backlog.md + two missing PRDs (goal1, goal2) that were untracked. Project remains complete.
 - **Dev Run #43 (2026-07-31):** Post-completion service-layer refactoring — moving Prisma violations from routes to service layer. 5 commits staged on task/fix-service-layer-to-main. PR #16 opened (DRAFT).
 - **Dev Run #54 (2026-07-31):** Applied reviewer JSDoc fix on `forceReEstimate` (returns null, not throws). 358/358 tests passing, tsc clean. PR #16 marked ready for review.
-- **Remaining Zach actions:** Q7-1 (AdSense publisher ID), Q7-3 (Privacy Policy data scope), Q-INFRA-2 (Discord allowlist — run `/discord:access`).
+- **Remaining Zach actions:** /merge PR #17, tech-stack sign-off (next-auth + resend for PR #17; dom-to-image-more for PR #19), /approve PROPOSAL-001 (PR #18), Q7-1 (AdSense publisher ID), Q7-3 (Privacy Policy data scope), Q-INFRA-2 (Discord allowlist — run `/discord:access`).
 - **Dev Run #63 (2026-07-31):** 347 tests pass, tsc clean. No new TRDs. Updated PROJECT_KEYS.md to document Goal 10 additions (next-auth, @auth/prisma-adapter, resend in Section 3; new env vars in Section 7; UserService in Section 10; Goal 10 in Section 12 roadmap). Committed e814e20 to task/goal10-user-accounts. PR #17 ready to merge; PR #16 (service-layer) also awaiting /merge.
-- **Dev Run #64 (2026-07-31):** 347 tests pass, tsc clean. All Goal 10 acceptance criteria verified against implementation. No new TRDs. PR #17 already open (not draft). No new work — pipeline blocked on Zach's tech-stack sign-off (next-auth, resend, @auth/prisma-adapter) + /merge.
-- **Dev Run #65 (2026-07-31):** 347 tests pass, tsc clean. No new TRDs or work. Pipeline still blocked on Zach: PR #16 + PR #17 awaiting /merge; tech-stack approval required for next-auth, @auth/prisma-adapter, resend. Discord post failed (channel not allowlisted — needs `/discord:access`).
-- **Dev Run #66 (2026-07-31):** Project Manager standup run. Status unchanged: 347 tests pass, tsc clean. Goal 10 (PR #17) + service-layer fixes (PR #16) both ready to merge, awaiting Zach's tech-stack approval + /merge authorization.
-- **Dev Run #67 (2026-07-31):** Developer run. 347 tests pass, tsc clean. No new TRDs. Pipeline still blocked on Zach: PR #16 + PR #17 awaiting tech-stack sign-off (next-auth, @auth/prisma-adapter, resend) + /merge. No new implementation work.
-- **Dev Run #68 (2026-07-31):** Developer run. 347 tests pass, tsc clean. No new TRDs. Pipeline still blocked on Zach: PR #16 + PR #17 awaiting tech-stack sign-off (next-auth, @auth/prisma-adapter, resend) + /merge. No new implementation work.
-- **Dev Run #69 (2026-07-31):** Developer run. 347 tests pass, tsc clean. No new TRDs. Pipeline still blocked on Zach: PR #16 + PR #17 awaiting tech-stack sign-off (next-auth, @auth/prisma-adapter, resend) + /merge. No new implementation work.
-- **PM Run #70 (2026-07-31):** Project Manager standup. Status snapshot: Goals 1–9 complete (305 tests from Goal 9), Goal 10 in-progress (PR #17 open, all acceptance criteria met, 347 tests pass, tsc clean). Pipeline blocked: awaiting Zach tech-stack approval (next-auth, @auth/prisma-adapter, resend) + `/merge` authorization for PR #16 (service-layer) and PR #17 (Goal 10).
-- **Dev Run #71 (2026-07-31):** Developer run. 347 tests pass, tsc clean. No new TRDs. Pushed 2 backlog-update commits to origin. Pipeline still blocked on Zach: PR #16 + PR #17 awaiting tech-stack sign-off (next-auth, @auth/prisma-adapter, resend) + /merge. No new implementation work available.
-- **Dev Run #72 (2026-07-31):** Implemented missing acceptance criterion 8 — localStorage recently-viewed sync on sign-in (c0491ec). Added: `recentlyViewedLocal.ts` (localStorage utils), `AuthProvider.tsx` (SessionProvider wrapper), `PostSigninSync.tsx` (detects auth, calls merge, clears localStorage), `mergeLocalRecent()` in `api.ts`. Updated `POST /api/user/recent` to make `productId` optional for local-only merges. `ProductPageClient` now writes to localStorage for unauthenticated users and merges on first authenticated view. 347 tests pass, tsc clean. Pushed to task/goal10-user-accounts; PR #17 updated.
-- **PM Run #71 (2026-07-31):** Project Manager standup. Status: Goals 1–9 complete, Goal 10 ready for merge (all acceptance criteria verified, 347 tests pass, tsc clean). PR #17 and PR #16 both open and ready. Pipeline blocked on Zach: tech-stack approval (next-auth, @auth/prisma-adapter, resend) + `/merge` authorization. Posted standup to #standup (1494239168954503358).
-- **Dev Run #73 (2026-07-31):** Developer run. Full audit of Goal 10 implementation — all 17 acceptance criteria confirmed implemented (auth.ts, NextAuth route, UserService, all API routes, SaveButton, useWatchlist hook, login/dashboard/settings pages, PostSigninSync, AuthProvider, recentlyViewedLocal). 347 tests pass, tsc clean. No new TRDs. Pipeline still blocked on Zach: PR #16 + PR #17 awaiting tech-stack sign-off (next-auth, @auth/prisma-adapter, resend) + /merge. No new implementation work.
-- **Dev Run #74 (2026-07-31):** Developer run. 347 tests pass, tsc clean. No new TRDs. All Goal 10 files confirmed in place (auth.ts, SaveButton, useWatchlist, UserService, all API routes, dashboard/login/settings pages, weekly-digest cron). Pipeline still blocked on Zach: PR #16 + PR #17 awaiting tech-stack sign-off (next-auth, @auth/prisma-adapter, resend) + /merge. No new implementation work.
-- **Dev Run #75 (2026-07-31):** Developer run. 347 tests pass, tsc clean. No new TRDs. All Goal 10 files confirmed in place. PRs #16 + #17 open and ready. Pipeline blocked on Zach: tech-stack sign-off (next-auth, @auth/prisma-adapter, resend) + /merge. No new implementation work.
-- **Dev Run #76 (2026-07-31):** Developer run. 347 tests pass, tsc clean. No new TRDs. PRs #16 (service-layer) + #17 (Goal 10) both open and ready to merge. Pipeline still blocked on Zach: tech-stack approval (next-auth, @auth/prisma-adapter, resend) + /merge. No new implementation work.
-- **PM Run #77 (2026-07-31):** Project Manager standup. Backlog grooming: Goals 1–9 complete and merged. Goal 10 (PR #17) + service-layer fixes (PR #16) both open and ready to merge; all acceptance criteria verified, 347 tests pass, tsc clean. Pipeline blocked: awaiting Zach's tech-stack approval for next-auth, @auth/prisma-adapter, resend + `/merge` authorization. No new TRDs.
-- **Dev Run #78 (2026-07-31):** Developer run. 347 tests pass, tsc clean. No new TRDs. PRs #16 (service-layer) + #17 (Goal 10) both open and ready to merge. Pipeline still blocked on Zach: tech-stack approval (next-auth, @auth/prisma-adapter, resend) + /merge. No new implementation work.
-- **PM Run #79 (2026-07-31):** Project Manager standup. Backlog grooming: Goals 1–9 complete and merged. Goal 10 (PR #17) + service-layer fixes (PR #16) both open and ready to merge; all 17 acceptance criteria fully implemented and verified, 347 tests pass, tsc clean. Pipeline blocked: awaiting Zach's tech-stack approval for next-auth, @auth/prisma-adapter, resend + `/merge` authorization. Draft PR #18 (labor-rates-2026 fix). No new TRDs.
-- **Dev Run #80 (2026-07-31):** Addressed reviewer follow-ups on PR #17. (1) Fixed P2002 race condition in `addToWatchlist` — `create` now wrapped in try-catch; P2002 unique-constraint errors returned as `alreadySaved: true` instead of throwing. (2) Created `src/lib/__tests__/recentlyViewedLocal.test.ts` — 10 tests covering addLocalRecentView, getLocalRecentIds, clearLocalRecentIds. (3) Added 2 new UserService tests: P2002 race case and non-P2002 re-throw. 360 tests pass (was 347), tsc clean. Pushed 86e9cc5 to task/goal10-user-accounts. PR #17 now fully addresses all reviewer items.
-- **Dev Run #86 (2026-07-31):** Implemented Goal 11b — Price Alerts. Full implementation: schema (AlertLog model, User/SavedProduct alert fields), migration 20260731000002, AlertService (checkWatchlistAlerts, getAlertHistory, threshold/rate-limit helpers), PATCH /api/user/alert-settings, GET /api/user/alerts, AlertSettingsForm component, /dashboard/settings Alert Settings section. 25 new AlertService tests. 385 tests pass, tsc clean. Opened draft PR #20 (base: task/goal10-user-accounts).
+- **Dev Run #80 (2026-07-31):** Addressed reviewer follow-ups on PR #17. Fixed P2002 race condition in `addToWatchlist`; created recentlyViewedLocal tests; added 2 new UserService tests. 360 tests pass (was 347), tsc clean. Pushed 86e9cc5 to task/goal10-user-accounts. PR #17 now fully addresses all reviewer items.
+- **Dev Run #86 (2026-07-31):** Implemented Goal 11b — Price Alerts. Full implementation: schema (AlertLog model, User/SavedProduct alert fields), migration 20260731000002, AlertService, PATCH /api/user/alert-settings, GET /api/user/alerts, AlertSettingsForm, /dashboard/settings Alert Settings section. 25 new AlertService tests. 385 tests pass, tsc clean. Opened draft PR #20.
 - **Dev Run #87 (2026-07-31):** PR #20 promoted draft → ready for review. 385 tests pass, tsc clean.
 - **Dev Run #88 (2026-07-31):** Resolved merge conflict in task/goal10-user-accounts — PR #16 (service-layer) confirmed merged to main (06cc5d9). Backlog updated to reflect PR #16 complete. 360 tests pass, tsc clean.
-- **Dev Run #89 (2026-07-31):** Fixed Goal 11b non-blockers — extracted `updateAlertSettings` into `AlertService` to eliminate direct Prisma calls in route. 389 tests pass (was 385), tsc clean. PR #20 now fully clean, all reviewer issues resolved.
-- **PM Run #90 (2026-07-31):** Project Manager standup — groomed backlog. Status: Goals 1–9 complete, PR #16 merged. Goal 10 (PR #17, 360 tests) ready to merge, awaiting /merge + tech-stack approval. Goal 11a (PR #19, 337 tests) + Goal 11b (PR #20, 389 tests) both ready for review. Pipeline blocked on Zach: /merge PR #17 + tech-stack approval (next-auth, @auth/prisma-adapter, resend). Posted standup.
+- **Dev Run #89 (2026-07-31):** Fixed Goal 11b non-blockers — extracted `updateAlertSettings` into `AlertService` to eliminate direct Prisma calls in route. 389 tests pass (was 385), tsc clean. PR #20 now fully clean.
+- **Dev Run #91 (2026-07-31):** PR #17 merge conflict resolved (main diverged after PR #16). 360 tests pass, tsc clean. All PRs clean.
+- **Dev Run #92 (2026-07-31):** PR #20 synced with updated goal10 tip (goal10 had 2 new commits). 418 tests pass, tsc clean.
+- **Dev Run #93 (2026-07-31):** PR #19 merge conflict resolved (main diverged after PR #16). 366 tests pass, tsc clean.
+- **Dev Run #94 (2026-07-31):** No new TRDs or implementation work. All 3 PRs (17/19/20) are LGTM. Pipeline blocked — no dev work possible.
+- **Dev Run #95 (2026-07-31):** Resolved merge conflict on task/goal10-user-accounts (main advanced to e15a8ce after Dev Run #94 backlog chore). 360 tests pass, tsc clean.
