@@ -9,6 +9,8 @@ const {
   mockProductCreate,
   mockCategoryFindFirst,
   mockCategoryFindUnique,
+  mockCategoryFindMany,
+  mockCostBreakdownFindMany,
   mockMaterialFindMany,
   mockProductMaterialCreateMany,
 } = vi.hoisted(() => ({
@@ -20,6 +22,8 @@ const {
   mockProductCreate: vi.fn(),
   mockCategoryFindFirst: vi.fn(),
   mockCategoryFindUnique: vi.fn(),
+  mockCategoryFindMany: vi.fn(),
+  mockCostBreakdownFindMany: vi.fn(),
   mockMaterialFindMany: vi.fn(),
   mockProductMaterialCreateMany: vi.fn(),
 }));
@@ -45,7 +49,11 @@ vi.mock("@/lib/db", () => ({
     productCategory: {
       findFirst: mockCategoryFindFirst,
       findUnique: mockCategoryFindUnique,
+      findMany: mockCategoryFindMany,
       create: vi.fn().mockResolvedValue({ id: "cat-other", name: "Other", slug: "other" }),
+    },
+    costBreakdown: {
+      findMany: mockCostBreakdownFindMany,
     },
     material: {
       findMany: mockMaterialFindMany,
@@ -71,6 +79,8 @@ import {
   getProductById,
   getStaleRetailProducts,
   updateRetailPrice,
+  getProductWithBreakdown,
+  getCoverageData,
 } from "@/services/ProductService";
 
 // ─── Fixtures ─────────────────────────────────────────────────────────────────
@@ -368,5 +378,113 @@ describe("updateRetailPrice", () => {
     expect(call.where.id).toBe("prod-2");
     expect(call.data).not.toHaveProperty("retailPriceCents");
     expect(call.data.lastLookedUp).toBeInstanceOf(Date);
+  });
+});
+
+// ─── getProductWithBreakdown ──────────────────────────────────────────────────
+
+describe("getProductWithBreakdown", () => {
+  beforeEach(() => {
+    mockProductFindUnique.mockReset();
+  });
+
+  it("returns null when the product does not exist", async () => {
+    mockProductFindUnique.mockResolvedValue(null);
+    const result = await getProductWithBreakdown("nonexistent");
+    expect(result).toBeNull();
+  });
+
+  it("returns product with name, category, and costBreakdowns", async () => {
+    const breakdown = { totalCostCents: 500, retailPriceCents: 1999, markupPercent: 299.8 };
+    mockProductFindUnique.mockResolvedValue({
+      id: "prod-1",
+      name: "Test Product",
+      category: { name: "Electronics" },
+      costBreakdowns: [breakdown],
+    });
+
+    const result = await getProductWithBreakdown("prod-1");
+    expect(result).not.toBeNull();
+    expect(result!.name).toBe("Test Product");
+    expect(result!.category.name).toBe("Electronics");
+    expect(result!.costBreakdowns[0].totalCostCents).toBe(500);
+    expect(result!.costBreakdowns[0].markupPercent).toBeCloseTo(299.8);
+  });
+
+  it("queries by id with correct select shape", async () => {
+    mockProductFindUnique.mockResolvedValue(null);
+    await getProductWithBreakdown("prod-99");
+    const call = mockProductFindUnique.mock.calls[0][0];
+    expect(call.where.id).toBe("prod-99");
+    expect(call.select.costBreakdowns).toBeDefined();
+    expect(call.select.category).toBeDefined();
+  });
+});
+
+// ─── getCoverageData ──────────────────────────────────────────────────────────
+
+describe("getCoverageData", () => {
+  beforeEach(() => {
+    mockProductFindMany.mockReset();
+    mockCostBreakdownFindMany.mockReset();
+    mockCategoryFindMany.mockReset();
+  });
+
+  it("returns zero totals when no products exist", async () => {
+    mockProductFindMany.mockResolvedValue([]);
+    mockCostBreakdownFindMany.mockResolvedValue([]);
+    mockCategoryFindMany.mockResolvedValue([]);
+
+    const result = await getCoverageData();
+    expect(result.total).toBe(0);
+    expect(result.tiers).toEqual({ HIGH: 0, MEDIUM: 0, LOW: 0, none: 0 });
+    expect(result.categories).toEqual([]);
+  });
+
+  it("counts tier distribution correctly", async () => {
+    mockProductFindMany.mockResolvedValue([
+      { id: "p1", categoryId: "cat-1" },
+      { id: "p2", categoryId: "cat-1" },
+      { id: "p3", categoryId: "cat-1" },
+      { id: "p4", categoryId: "cat-1" },
+    ]);
+    mockCostBreakdownFindMany.mockResolvedValue([
+      { productId: "p1", confidence: "HIGH" },
+      { productId: "p2", confidence: "MEDIUM" },
+      { productId: "p3", confidence: "LOW" },
+      // p4 has no breakdown → none
+    ]);
+    mockCategoryFindMany.mockResolvedValue([
+      { id: "cat-1", name: "Electronics", slug: "electronics" },
+    ]);
+
+    const result = await getCoverageData();
+    expect(result.total).toBe(4);
+    expect(result.tiers.HIGH).toBe(1);
+    expect(result.tiers.MEDIUM).toBe(1);
+    expect(result.tiers.LOW).toBe(1);
+    expect(result.tiers.none).toBe(1);
+  });
+
+  it("groups products by category correctly", async () => {
+    mockProductFindMany.mockResolvedValue([
+      { id: "p1", categoryId: "cat-1" },
+      { id: "p2", categoryId: "cat-2" },
+    ]);
+    mockCostBreakdownFindMany.mockResolvedValue([
+      { productId: "p1", confidence: "HIGH" },
+    ]);
+    mockCategoryFindMany.mockResolvedValue([
+      { id: "cat-1", name: "Electronics", slug: "electronics" },
+      { id: "cat-2", name: "Food", slug: "food-beverage" },
+    ]);
+
+    const result = await getCoverageData();
+    const elec = result.categories.find((c) => c.slug === "electronics")!;
+    const food = result.categories.find((c) => c.slug === "food-beverage")!;
+    expect(elec.total).toBe(1);
+    expect(elec.high).toBe(1);
+    expect(food.total).toBe(1);
+    expect(food.noEstimate).toBe(1);
   });
 });

@@ -1,7 +1,6 @@
 import { type NextRequest } from "next/server";
-import { prisma } from "@/lib/db";
 import { serverEnv as env } from "@/lib/env.server";
-import { estimateCost } from "@/services/CostEstimationService";
+import { getStaleBreakdownProductIds, forceReEstimate } from "@/services/CostEstimationService";
 
 const BATCH_SIZE = 50;
 
@@ -27,19 +26,8 @@ export async function GET(request: NextRequest) {
   try {
     const startedAt = new Date();
     const ttlDays = env.RE_ESTIMATION_TTL_DAYS;
-    const staleDate = new Date(Date.now() - ttlDays * 24 * 60 * 60 * 1000);
 
-    // Find products whose most recent breakdown is older than TTL.
-    // We join through CostBreakdown to only touch products that have at least
-    // one existing breakdown and it is stale.
-    const staleBreakdowns = await prisma.costBreakdown.findMany({
-      where: { updatedAt: { lt: staleDate } },
-      distinct: ["productId"],
-      select: { productId: true },
-      orderBy: { updatedAt: "desc" },
-    });
-
-    const productIds = staleBreakdowns.map((b) => b.productId);
+    const productIds = await getStaleBreakdownProductIds(ttlDays);
 
     console.log(
       `[cron/re-estimate] ${productIds.length} products with stale breakdowns (TTL=${ttlDays}d)`
@@ -55,10 +43,7 @@ export async function GET(request: NextRequest) {
       await Promise.all(
         batch.map(async (productId) => {
           try {
-            // Force re-estimate by deleting the cached breakdown first.
-            // estimateCost() will detect no cached breakdown and recompute.
-            await prisma.costBreakdown.deleteMany({ where: { productId } });
-            await estimateCost(productId);
+            await forceReEstimate(productId);
             reEstimated++;
           } catch (err) {
             console.error(`[cron/re-estimate] Error for productId=${productId}:`, err);
