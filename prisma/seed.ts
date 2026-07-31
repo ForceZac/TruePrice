@@ -65,35 +65,38 @@ async function main() {
   console.log("Categories seeded:", categories.map((c) => c.name).join(", "));
 
   // ─── Labor Rates ──────────────────────────────────────────────────────────
+  // Sources:
+  //   2026 CN/VN/BD/IN rates: VinaSources & Talent Net Group 2026 surveys
+  //   All others: ILO World Employment and Social Outlook 2024
 
-  const laborData = [
-    { code: "US", name: "United States", cents: 2500 },
-    { code: "CN", name: "China", cents: 350 },
-    { code: "VN", name: "Vietnam", cents: 180 },
-    { code: "BD", name: "Bangladesh", cents: 110 },
-    { code: "MX", name: "Mexico", cents: 350 },
-    { code: "IN", name: "India", cents: 200 },
-    { code: "TH", name: "Thailand", cents: 280 },
-    { code: "ID", name: "Indonesia", cents: 175 },
-    { code: "DE", name: "Germany", cents: 2200 },
-    { code: "CH", name: "Switzerland", cents: 3500 },
-    { code: "JP", name: "Japan", cents: 1800 },
-    { code: "KR", name: "South Korea", cents: 1400 },
-    { code: "TW", name: "Taiwan", cents: 1000 },
-    { code: "IT", name: "Italy", cents: 2000 },
-    { code: "FR", name: "France", cents: 2100 },
+  const laborData: { code: string; name: string; cents: number; source: string; updated: string }[] = [
+    { code: "US", name: "United States",  cents: 2500, source: "ILO World Employment and Social Outlook 2024", updated: "2024-01-01" },
+    { code: "CN", name: "China",          cents: 650,  source: "VinaSources Manufacturing Cost Report 2026",  updated: "2026-01-01" },
+    { code: "VN", name: "Vietnam",        cents: 300,  source: "VinaSources Manufacturing Cost Report 2026",  updated: "2026-01-01" },
+    { code: "BD", name: "Bangladesh",     cents: 84,   source: "Talent Net Group Compensation Report 2026",   updated: "2026-01-01" },
+    { code: "MX", name: "Mexico",         cents: 350,  source: "ILO World Employment and Social Outlook 2024", updated: "2024-01-01" },
+    { code: "IN", name: "India",          cents: 115,  source: "Talent Net Group Compensation Report 2026",   updated: "2026-01-01" },
+    { code: "TH", name: "Thailand",       cents: 280,  source: "ILO World Employment and Social Outlook 2024", updated: "2024-01-01" },
+    { code: "ID", name: "Indonesia",      cents: 175,  source: "ILO World Employment and Social Outlook 2024", updated: "2024-01-01" },
+    { code: "DE", name: "Germany",        cents: 2200, source: "ILO World Employment and Social Outlook 2024", updated: "2024-01-01" },
+    { code: "CH", name: "Switzerland",    cents: 3500, source: "ILO World Employment and Social Outlook 2024", updated: "2024-01-01" },
+    { code: "JP", name: "Japan",          cents: 1800, source: "ILO World Employment and Social Outlook 2024", updated: "2024-01-01" },
+    { code: "KR", name: "South Korea",    cents: 1400, source: "ILO World Employment and Social Outlook 2024", updated: "2024-01-01" },
+    { code: "TW", name: "Taiwan",         cents: 1000, source: "ILO World Employment and Social Outlook 2024", updated: "2024-01-01" },
+    { code: "IT", name: "Italy",          cents: 2000, source: "ILO World Employment and Social Outlook 2024", updated: "2024-01-01" },
+    { code: "FR", name: "France",         cents: 2100, source: "ILO World Employment and Social Outlook 2024", updated: "2024-01-01" },
   ];
 
   for (const lr of laborData) {
     await prisma.laborRate.upsert({
       where: { countryCode: lr.code },
-      update: { hourlyRateCents: lr.cents },
+      update: { hourlyRateCents: lr.cents, source: lr.source, lastUpdated: new Date(lr.updated) },
       create: {
         countryCode: lr.code,
         countryName: lr.name,
         hourlyRateCents: lr.cents,
-        source: "ILO World Employment and Social Outlook 2024",
-        lastUpdated: new Date("2024-01-01"),
+        source: lr.source,
+        lastUpdated: new Date(lr.updated),
       },
     });
   }
