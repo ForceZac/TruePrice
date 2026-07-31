@@ -324,6 +324,30 @@ export async function estimateCost(
 }
 
 /**
+ * Return the IDs of products whose latest CostBreakdown.updatedAt is older
+ * than staleDays days. Used by the cron/re-estimate route to build its queue.
+ */
+export async function getStaleBreakdownProductIds(staleDays: number): Promise<string[]> {
+  const staleDate = new Date(Date.now() - staleDays * 24 * 60 * 60 * 1000);
+  const staleBreakdowns = await prisma.costBreakdown.findMany({
+    where: { updatedAt: { lt: staleDate } },
+    distinct: ["productId"],
+    select: { productId: true },
+    orderBy: { updatedAt: "desc" },
+  });
+  return staleBreakdowns.map((b) => b.productId);
+}
+
+/**
+ * Force re-estimation for a product: delete its cached breakdown and recompute.
+ * Throws if the product does not exist.
+ */
+export async function forceReEstimate(productId: string): Promise<CostBreakdownResult | null> {
+  await prisma.costBreakdown.deleteMany({ where: { productId } });
+  return estimateCost(productId);
+}
+
+/**
  * Return the most recent cached breakdown without recomputing.
  * Returns null if no estimate has been computed yet.
  */

@@ -292,6 +292,172 @@ export async function searchProducts(query: string, limit = 20): Promise<Product
   }));
 }
 
+// ─── Retail price refresh helpers ────────────────────────────────────────────
+
+const RETAIL_STALE_DAYS = 30;
+
+/**
+ * Returns products that have a UPC but no retail price, or whose retail price
+ * hasn't been refreshed in more than 30 days.
+ *
+ * Used by the cron/refresh-retail-prices route to build its refresh queue.
+ */
+export async function getStaleRetailProducts(): Promise<Array<{ id: string; upc: string }>> {
+  const staleDate = new Date(Date.now() - RETAIL_STALE_DAYS * 24 * 60 * 60 * 1000);
+  const products = await prisma.product.findMany({
+    where: {
+      upc: { not: null },
+      OR: [
+        { retailPriceCents: null },
+        { lastLookedUp: { lt: staleDate } },
+        { lastLookedUp: null },
+      ],
+    },
+    select: { id: true, upc: true },
+  });
+  return products.filter((p): p is { id: string; upc: string } => p.upc !== null);
+}
+
+/**
+ * Update the retail price for a product and touch lastLookedUp.
+ * Pass null for priceCents to record that the lookup ran but returned no price,
+ * which prevents the product from being re-queried on the next cron cycle.
+ */
+export async function updateRetailPrice(
+  productId: string,
+  priceCents: number | null
+): Promise<void> {
+  await prisma.product.update({
+    where: { id: productId },
+    data: {
+      ...(priceCents !== null ? { retailPriceCents: priceCents } : {}),
+      lastLookedUp: new Date(),
+    },
+  });
+}
+
+// ─── Coverage dashboard helpers ───────────────────────────────────────────────
+
+export interface CoverageTierCounts {
+  HIGH: number;
+  MEDIUM: number;
+  LOW: number;
+  none: number;
+}
+
+export interface CoverageCategoryRow {
+  name: string;
+  slug: string;
+  total: number;
+  high: number;
+  medium: number;
+  low: number;
+  noEstimate: number;
+}
+
+export interface CoverageData {
+  total: number;
+  tiers: CoverageTierCounts;
+  categories: CoverageCategoryRow[];
+}
+
+/**
+ * Aggregate product coverage statistics for the admin dashboard.
+ * Returns total product count, tier counts, and a per-category breakdown.
+ */
+export async function getCoverageData(): Promise<CoverageData> {
+  const [products, breakdowns, categories] = await Promise.all([
+    prisma.product.findMany({ select: { id: true, categoryId: true } }),
+    prisma.costBreakdown.findMany({
+      distinct: ["productId"],
+      orderBy: { calculatedAt: "desc" },
+      select: { productId: true, confidence: true },
+    }),
+    prisma.productCategory.findMany({
+      select: { id: true, name: true, slug: true },
+      orderBy: { name: "asc" },
+    }),
+  ]);
+
+  const confidenceByProduct = new Map<string, string>(
+    breakdowns.map((b) => [b.productId, b.confidence])
+  );
+
+  const tiers: CoverageTierCounts = { HIGH: 0, MEDIUM: 0, LOW: 0, none: 0 };
+  for (const p of products) {
+    const tier = confidenceByProduct.get(p.id);
+    if (tier === "HIGH") tiers.HIGH++;
+    else if (tier === "MEDIUM") tiers.MEDIUM++;
+    else if (tier === "LOW") tiers.LOW++;
+    else tiers.none++;
+  }
+
+  const productsByCategory = new Map<string, string[]>();
+  for (const p of products) {
+    const arr = productsByCategory.get(p.categoryId) ?? [];
+    arr.push(p.id);
+    productsByCategory.set(p.categoryId, arr);
+  }
+
+  const categoryRows: CoverageCategoryRow[] = categories.map((cat) => {
+    const ids = productsByCategory.get(cat.id) ?? [];
+    const row: CoverageCategoryRow = {
+      name: cat.name,
+      slug: cat.slug,
+      total: ids.length,
+      high: 0,
+      medium: 0,
+      low: 0,
+      noEstimate: 0,
+    };
+    for (const id of ids) {
+      const tier = confidenceByProduct.get(id);
+      if (tier === "HIGH") row.high++;
+      else if (tier === "MEDIUM") row.medium++;
+      else if (tier === "LOW") row.low++;
+      else row.noEstimate++;
+    }
+    return row;
+  });
+
+  return { total: products.length, tiers, categories: categoryRows };
+}
+
+// ─── OG image helpers ─────────────────────────────────────────────────────────
+
+export interface ProductWithBreakdown {
+  id: string;
+  name: string;
+  category: { name: string };
+  costBreakdowns: Array<{
+    totalCostCents: number;
+    retailPriceCents: number | null;
+    markupPercent: number | null;
+  }>;
+}
+
+/**
+ * Fetch a product with its latest cost breakdown — used by OG image routes.
+ * Returns null if the product does not exist.
+ */
+export async function getProductWithBreakdown(id: string): Promise<ProductWithBreakdown | null> {
+  return prisma.product.findUnique({
+    where: { id },
+    select: {
+      id: true,
+      name: true,
+      category: { select: { name: true } },
+      costBreakdowns: {
+        orderBy: { calculatedAt: "desc" },
+        take: 1,
+        select: { totalCostCents: true, retailPriceCents: true, markupPercent: true },
+      },
+    },
+  });
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+
 /**
  * Get a single cached product by internal ID.
  */
