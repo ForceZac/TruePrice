@@ -34,6 +34,7 @@ model Product {
   ean              String?         @unique
   category         ProductCategory @relation(fields: [categoryId], references: [id])
   categoryId       String
+  subcategory      String?
   description      String?
   imageUrl         String?
   retailPriceCents Int?
@@ -104,12 +105,16 @@ model CostBreakdown {
   markupPercent      Float?
   confidenceScore    Float
   confidenceReason   String
+  confidence         String   @default("LOW")
   methodology        String
   calculatedAt       DateTime
   createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
 
   @@index([productId])
   @@index([calculatedAt])
+  @@index([updatedAt])
+  @@index([markupPercent(sort: Desc)])
 }
 
 model LaborRate {

@@ -35,22 +35,22 @@ Goal 1 (Scaffold)
 - **Done when:** Camera scanning works on mobile, search works, products cached from Open Food Facts + UPCitemdb.
 
 ### Goal 4 — Cost Estimation Engine
-- **TRD:** needs writing
+- **TRD:** `trds/goal4-cost-estimation-engine.md` — status: ready
 - **Why:** The core value — turning materials + commodity prices into cost breakdowns.
 - **Depends on:** Goal 2 + Goal 3
 
 ### Goal 5 — Product Page & Cost Breakdown UI
-- **TRD:** needs writing
+- **TRD:** `trds/goal5-product-page-ui.md` — status: ready
 - **Why:** Users need to see the breakdown in a clear, engaging, shareable format.
 - **Depends on:** Goal 4
 
 ### Goal 6 — Category Browsing & Landing Pages
-- **TRD:** needs writing
+- **TRD:** `trds/goal6-category-browsing.md` — status: ready
 - **Why:** SEO, discovery, and enough content for AdSense approval.
 - **Depends on:** Goal 5
 
 ### Goal 7 — AdSense Integration & Required Pages
-- **TRD:** needs writing
+- **TRD:** `trds/goal7-adsense-integration.md` — status: ready
 - **Why:** Monetization.
 - **Depends on:** Goal 6
 
@@ -60,6 +60,12 @@ Goal 1 (Scaffold)
 - **Depends on:** Goal 7
 
 ### Goal 9 — Product Comparison & Social Features
-- **TRD:** needs writing
+- **TRD:** `trds/goal9-comparison-social.md` — status: done
 - **Why:** Engagement and virality.
 - **Depends on:** Goal 5
+
+### Goal 10 — User Accounts & Personalization
+- **TRD:** needs writing
+- **PRD:** `agents/prds/goal10-user-accounts.md`
+- **Why:** Close the retention loop — watchlist, cross-device sync, price-change email alerts.
+- **Depends on:** Goal 9

@@ -1,6 +1,6 @@
 # TRD: Goal 3 — Product Lookup (Search + Barcode)
 
-- **status:** `ready`
+- **status:** `done`
 - **goal:** `Goal 3`
 - **priority:** `P0`
 - **branch:** `task/goal3-product-lookup`

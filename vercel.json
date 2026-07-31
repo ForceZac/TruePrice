@@ -7,6 +7,14 @@
     {
       "path": "/api/cron/refresh-prices",
       "schedule": "0 6 * * *"
+    },
+    {
+      "path": "/api/cron/refresh-retail-prices",
+      "schedule": "0 7 * * 1"
+    },
+    {
+      "path": "/api/cron/re-estimate",
+      "schedule": "0 8 * * 1"
     }
   ]
 }

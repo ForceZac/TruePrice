@@ -1,6 +1,6 @@
 # TRD: Goal 2 — Commodity Price Integration
 
-- **status:** `ready`
+- **status:** `done`
 - **goal:** `Goal 2`
 - **priority:** `P0`
 - **branch:** `task/goal2-commodity-prices`

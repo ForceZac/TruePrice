@@ -1,6 +1,6 @@
 # TRD: Goal 1 — Project Scaffold & Data Model
 
-- **status:** `ready`
+- **status:** `done`
 - **goal:** `Goal 1`
 - **priority:** `P0`
 - **branch:** `task/goal1-scaffold`
