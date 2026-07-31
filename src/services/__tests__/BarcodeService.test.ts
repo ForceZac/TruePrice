@@ -10,7 +10,7 @@ vi.mock("@/lib/env.server", () => ({
   },
 }));
 
-import { isValidBarcode, lookupByBarcode } from "@/services/BarcodeService";
+import { isValidBarcode, lookupByBarcode, fetchRetailPriceByUPC } from "@/services/BarcodeService";
 
 // ─── isValidBarcode ───────────────────────────────────────────────────────────
 
@@ -126,6 +126,136 @@ describe("lookupByBarcode", () => {
     );
 
     const result = await lookupByBarcode("0123456789012");
+    expect(result).toBeNull();
+  });
+});
+
+// ─── fetchRetailPriceByUPC ────────────────────────────────────────────────────
+
+describe("fetchRetailPriceByUPC", () => {
+  beforeEach(() => {
+    vi.restoreAllMocks();
+  });
+
+  it("returns null when fetch throws", async () => {
+    vi.stubGlobal("fetch", vi.fn().mockRejectedValue(new Error("network error")));
+    const result = await fetchRetailPriceByUPC("012345678901");
+    expect(result).toBeNull();
+  });
+
+  it("returns null when API response is not ok", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue({ ok: false, status: 429 })
+    );
+    const result = await fetchRetailPriceByUPC("012345678901");
+    expect(result).toBeNull();
+  });
+
+  it("returns null when code is not OK", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue({
+        ok: true,
+        json: async () => ({ code: "NOT_FOUND", items: [] }),
+      })
+    );
+    const result = await fetchRetailPriceByUPC("012345678901");
+    expect(result).toBeNull();
+  });
+
+  it("returns null when items array is empty", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue({
+        ok: true,
+        json: async () => ({ code: "OK", items: [] }),
+      })
+    );
+    const result = await fetchRetailPriceByUPC("012345678901");
+    expect(result).toBeNull();
+  });
+
+  it("returns null when item has no offers", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue({
+        ok: true,
+        json: async () => ({
+          code: "OK",
+          items: [{ title: "Widget", offers: [] }],
+        }),
+      })
+    );
+    const result = await fetchRetailPriceByUPC("012345678901");
+    expect(result).toBeNull();
+  });
+
+  it("returns the lowest offer price in cents", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue({
+        ok: true,
+        json: async () => ({
+          code: "OK",
+          items: [
+            {
+              title: "Widget",
+              offers: [
+                { merchant: "Store A", price: "12.99" },
+                { merchant: "Store B", price: "9.49" },
+                { merchant: "Store C", price: "15.00" },
+              ],
+            },
+          ],
+        }),
+      })
+    );
+    const result = await fetchRetailPriceByUPC("012345678901");
+    expect(result).toBe(949); // $9.49 → 949 cents
+  });
+
+  it("ignores offers with unparseable prices", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue({
+        ok: true,
+        json: async () => ({
+          code: "OK",
+          items: [
+            {
+              title: "Widget",
+              offers: [
+                { merchant: "Store A", price: "" },
+                { merchant: "Store B", price: "not-a-number" },
+                { merchant: "Store C", price: "7.50" },
+              ],
+            },
+          ],
+        }),
+      })
+    );
+    const result = await fetchRetailPriceByUPC("012345678901");
+    expect(result).toBe(750); // only $7.50 was valid
+  });
+
+  it("returns null when all offer prices are unparseable", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue({
+        ok: true,
+        json: async () => ({
+          code: "OK",
+          items: [
+            {
+              title: "Widget",
+              offers: [{ price: "free" }, { price: "" }],
+            },
+          ],
+        }),
+      })
+    );
+    const result = await fetchRetailPriceByUPC("012345678901");
     expect(result).toBeNull();
   });
 });

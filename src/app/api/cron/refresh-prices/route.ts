@@ -1,7 +1,6 @@
 import { type NextRequest } from "next/server";
 import { fetchPrices, detectStalePrices } from "@/services/CommodityService";
 import { serverEnv as env } from "@/lib/env.server";
-import { execFile } from "child_process";
 
 /**
  * GET /api/cron/refresh-prices
@@ -40,15 +39,21 @@ export async function GET(request: NextRequest) {
       const alertMsg = `⚠️ Stale commodity prices detected: ${staleCount} material(s) older than 25h — ${staleNames.join(", ")}`;
       console.warn(`[cron/refresh-prices] ${alertMsg}`);
 
-      // Post to Discord #alerts if bot token is available
-      const alertsChannelId = "1494231981800820836";
-      execFile(
-        "node",
-        ["/workspace/scripts/discord-post.js", alertsChannelId, alertMsg],
-        (err) => {
-          if (err) console.error("[cron/refresh-prices] Discord alert failed:", err.message);
-        }
-      );
+      // Post to Discord #alerts via the REST API if the bot token is configured.
+      // Uses fetch (available in Next.js server runtime) so this works on Vercel.
+      if (env.DISCORD_BOT_TOKEN) {
+        const alertsChannelId = "1494231981800820836";
+        fetch(`https://discord.com/api/v10/channels/${alertsChannelId}/messages`, {
+          method: "POST",
+          headers: {
+            Authorization: `Bot ${env.DISCORD_BOT_TOKEN}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ content: alertMsg }),
+        }).catch((err) =>
+          console.error("[cron/refresh-prices] Discord alert failed:", err)
+        );
+      }
     }
 
     return Response.json({
