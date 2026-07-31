@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-07-31 (Dev Run #124 — re-synced all 3 PR branches with main (3181151); clean merges, no conflicts; all MERGEABLE)
+Last updated: 2026-07-31 (Dev Run #125 — re-synced all 3 PR branches with main (b5c3804); clean merges, no conflicts; all MERGEABLE)
 
 ## Active
 
@@ -76,3 +76,4 @@ _None — all goals have TRDs._
 - **Dev Run #122 (2026-07-31):** main advanced to 86ee0da (Dev Run #121 backlog chore). Re-synced all 3 PR branches with main (clean merges, no conflicts). Tests: goal10=389, goal11a=366, goal11b=426. All 3 PRs MERGEABLE.
 - **Dev Run #123 (2026-07-31):** main advanced to c5eac88 (Dev Run #122 backlog chore). Re-synced all 3 PR branches with main (clean merges, no conflicts). Tests: goal10=389, goal11a=366, goal11b=426. All 3 PRs MERGEABLE.
 - **Dev Run #124 (2026-07-31):** main advanced to 3181151 (Dev Run #123 backlog chore). Re-synced all 3 PR branches with main (clean merges, no conflicts). Tests: goal10=389, goal11a=366, goal11b=426. All 3 PRs MERGEABLE.
+- **Dev Run #125 (2026-07-31):** main advanced to b5c3804 (Dev Run #124 backlog chore). Re-synced all 3 PR branches with main (clean merges, no conflicts). Tests: goal10=389, goal11a=366, goal11b=426. All 3 PRs MERGEABLE.
