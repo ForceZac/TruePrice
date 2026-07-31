@@ -14,9 +14,11 @@ const {
   mockRecentlyViewedDeleteMany,
   mockProductFindMany,
   mockUserFindMany,
+  mockUserFindUnique,
   mockUserDelete,
   mockAccountDeleteMany,
   mockSessionDeleteMany,
+  mockVerificationTokenDeleteMany,
   mockTransaction,
 } = vi.hoisted(() => ({
   mockSavedProductFindUnique: vi.fn(),
@@ -30,9 +32,11 @@ const {
   mockRecentlyViewedDeleteMany: vi.fn(),
   mockProductFindMany: vi.fn(),
   mockUserFindMany: vi.fn(),
+  mockUserFindUnique: vi.fn(),
   mockUserDelete: vi.fn(),
   mockAccountDeleteMany: vi.fn(),
   mockSessionDeleteMany: vi.fn(),
+  mockVerificationTokenDeleteMany: vi.fn(),
   mockTransaction: vi.fn(),
 }));
 
@@ -56,6 +60,7 @@ vi.mock("@/lib/db", () => ({
     },
     user: {
       findMany: mockUserFindMany,
+      findUnique: mockUserFindUnique,
       delete: mockUserDelete,
     },
     account: {
@@ -63,6 +68,9 @@ vi.mock("@/lib/db", () => ({
     },
     session: {
       deleteMany: mockSessionDeleteMany,
+    },
+    verificationToken: {
+      deleteMany: mockVerificationTokenDeleteMany,
     },
     $transaction: mockTransaction,
   },
@@ -327,7 +335,7 @@ describe("getDigestCandidates", () => {
 // ─── deleteAccount ────────────────────────────────────────────────────────────
 
 describe("deleteAccount", () => {
-  it("runs a transaction deleting all user data in order", async () => {
+  beforeEach(() => {
     mockTransaction.mockImplementation(async (ops: unknown[]) => {
       for (const op of ops) await (op as Promise<unknown>);
     });
@@ -335,13 +343,33 @@ describe("deleteAccount", () => {
     mockSavedProductDeleteMany.mockResolvedValue({});
     mockSessionDeleteMany.mockResolvedValue({});
     mockAccountDeleteMany.mockResolvedValue({});
+    mockVerificationTokenDeleteMany.mockResolvedValue({});
     mockUserDelete.mockResolvedValue({});
+  });
+
+  it("includes VerificationToken cleanup when user has an email", async () => {
+    mockUserFindUnique.mockResolvedValue({ email: "alice@example.com" });
 
     await deleteAccount(USER_ID);
 
     expect(mockTransaction).toHaveBeenCalledTimes(1);
-    // The transaction receives an array of 5 promises
+    // 5 base operations + 1 verificationToken.deleteMany = 6
+    const [ops] = mockTransaction.mock.calls[0] as [unknown[]];
+    expect(ops).toHaveLength(6);
+    expect(mockVerificationTokenDeleteMany).toHaveBeenCalledWith({
+      where: { identifier: "alice@example.com" },
+    });
+  });
+
+  it("skips VerificationToken cleanup when user has no email", async () => {
+    mockUserFindUnique.mockResolvedValue({ email: null });
+
+    await deleteAccount(USER_ID);
+
+    expect(mockTransaction).toHaveBeenCalledTimes(1);
+    // Only 5 base operations — no verificationToken step
     const [ops] = mockTransaction.mock.calls[0] as [unknown[]];
     expect(ops).toHaveLength(5);
+    expect(mockVerificationTokenDeleteMany).not.toHaveBeenCalled();
   });
 });

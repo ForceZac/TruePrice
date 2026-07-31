@@ -328,13 +328,25 @@ export async function getDigestCandidates(
 /**
  * Permanently deletes a user and all their associated data.
  * Uses a transaction for atomicity.
+ *
+ * VerificationToken uses `identifier` (email), not userId, so we fetch the
+ * email first and clean up orphaned magic-link tokens explicitly.
  */
 export async function deleteAccount(userId: string): Promise<void> {
+  const user = await prisma.user.findUnique({
+    where: { id: userId },
+    select: { email: true },
+  });
+
   await prisma.$transaction([
     prisma.recentlyViewed.deleteMany({ where: { userId } }),
     prisma.savedProduct.deleteMany({ where: { userId } }),
     prisma.session.deleteMany({ where: { userId } }),
     prisma.account.deleteMany({ where: { userId } }),
+    // Clean up magic-link tokens — identifier is the email, not userId
+    ...(user?.email
+      ? [prisma.verificationToken.deleteMany({ where: { identifier: user.email } })]
+      : []),
     prisma.user.delete({ where: { id: userId } }),
   ]);
 }
