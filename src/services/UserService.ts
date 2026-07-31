@@ -5,6 +5,7 @@
  * these functions; they never touch Prisma directly.
  */
 
+import { Prisma } from "@prisma/client";
 import { prisma } from "@/lib/db";
 
 // ─── Constants ────────────────────────────────────────────────────────────────
@@ -130,7 +131,15 @@ export async function addToWatchlist(
     );
   }
 
-  await prisma.savedProduct.create({ data: { userId, productId } });
+  try {
+    await prisma.savedProduct.create({ data: { userId, productId } });
+  } catch (e) {
+    // P2002 = unique constraint violation — two concurrent requests raced; treat as already saved
+    if (e instanceof Prisma.PrismaClientKnownRequestError && e.code === "P2002") {
+      return { alreadySaved: true, nearCap: false };
+    }
+    throw e;
+  }
   return { alreadySaved: false, nearCap: count + 1 >= WATCHLIST_WARN_AT };
 }
 

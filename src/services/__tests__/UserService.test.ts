@@ -145,6 +145,32 @@ describe("addToWatchlist", () => {
     );
     expect(mockSavedProductCreate).not.toHaveBeenCalled();
   });
+
+  it("treats a P2002 unique-constraint error as alreadySaved (race condition)", async () => {
+    mockSavedProductFindUnique.mockResolvedValue(null);
+    mockSavedProductCount.mockResolvedValue(0);
+    const p2002 = Object.assign(new Error("Unique constraint failed"), {
+      code: "P2002",
+      name: "PrismaClientKnownRequestError",
+      clientVersion: "5.0.0",
+      meta: {},
+    });
+    // Make it an instance of PrismaClientKnownRequestError
+    Object.setPrototypeOf(p2002, (await import("@prisma/client")).Prisma.PrismaClientKnownRequestError.prototype);
+    mockSavedProductCreate.mockRejectedValue(p2002);
+
+    const result = await addToWatchlist(USER_ID, PRODUCT_ID);
+
+    expect(result.alreadySaved).toBe(true);
+  });
+
+  it("re-throws non-P2002 errors from create", async () => {
+    mockSavedProductFindUnique.mockResolvedValue(null);
+    mockSavedProductCount.mockResolvedValue(0);
+    mockSavedProductCreate.mockRejectedValue(new Error("Connection lost"));
+
+    await expect(addToWatchlist(USER_ID, PRODUCT_ID)).rejects.toThrow("Connection lost");
+  });
 });
 
 // ─── removeFromWatchlist ──────────────────────────────────────────────────────
