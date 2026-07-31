@@ -1,14 +1,14 @@
 # TruePrice Backlog
 
-Last updated: 2026-07-31 (Dev Run #98 — re-synced all 3 PR branches with main (4161fd9); all MERGEABLE)
+Last updated: 2026-07-31 (Dev Run #99 — re-synced all 3 PR branches with main (bc25bd6); all MERGEABLE)
 
 ## Active
 
 | Goal | PR | Status | Tests | Notes |
 |------|----|----|-------|-------|
-| Goal 10 — User Accounts & Watchlist | #17 | READY FOR MERGE | 389 | Merge conflict resolved (Dev Run #91 + #95 + #97 + #98), all 17 ACs verified |
-| Goal 11a — Save as Image Button | #19 | READY FOR REVIEW | 366 | Merge conflict resolved (Dev Run #93 + #95 + #97 + #98), dom-to-image-more installed |
-| Goal 11b — Price Alerts | #20 | READY FOR REVIEW | 418 | All blockers resolved (Dev Run #89), synced to Goal 10 tip (Dev Run #92 + #95 + #97 + #98) |
+| Goal 10 — User Accounts & Watchlist | #17 | READY FOR MERGE | 389 | Merge conflict resolved (Dev Run #91 + #95 + #97 + #98 + #99), all 17 ACs verified |
+| Goal 11a — Save as Image Button | #19 | READY FOR REVIEW | 366 | Merge conflict resolved (Dev Run #93 + #95 + #97 + #98 + #99), dom-to-image-more installed |
+| Goal 11b — Price Alerts | #20 | READY FOR REVIEW | 418 | All blockers resolved (Dev Run #89), synced to Goal 10 tip (Dev Run #92 + #95 + #97 + #98 + #99) |
 
 ## Upcoming (needs TRD)
 
@@ -32,7 +32,7 @@ _None — all goals have TRDs._
 
 ## Notes
 
-- **Pipeline status:** ✅ GOALS 1-9 SHIPPED + PR #16 (service-layer) merged. main at e15a8ce. 358 tests passing. Goals 10/11a/11b in review.
+- **Pipeline status:** ✅ GOALS 1-9 SHIPPED + PR #16 (service-layer) merged. main at bc25bd6. 358 tests passing. Goals 10/11a/11b in review.
 - **PR #12 (Goal 7):** MERGED (752e8c1) — privacy/terms/contact/about pages, footer, cookie consent, AdSense loader, ad slots, robots.txt.
 - **PR #13 (Goal 8):** ✅ MERGED (b39dfde on 2026-07-30) — 270 tests. Confidence tiers, subcategory profiles, 104 seeded products, material-parser aliases, cron routes, /admin/coverage page.
 - **PR #14 (Goal 9):** ✅ MERGED (ea4e0ba on 2026-07-31) — 305 tests. Compare page, CompareStore, CompareTray, LeaderboardCard, Leaderboard page, OG image routes, ShareButton, AddToCompareButton, JSON-LD, revalidate.
@@ -50,3 +50,4 @@ _None — all goals have TRDs._
 - **Dev Run #95 (2026-07-31):** Synced all 3 open PR branches with main/base (main advanced to e15a8ce). All branches pass tests: goal10=360, goal11a=366, goal11b=418. All 3 PRs now MERGEABLE.
 - **Dev Run #97 (2026-07-31):** PR #17 + PR #19 DIRTY (main advanced to 3644bbe — Dev Run #95 chore). Resolved backlog.md conflicts on goal10 + goal11a; synced goal11b with updated goal10 tip. Tests: goal10=389, goal11a=366, goal11b=418. All 3 PRs now MERGEABLE.
 - **Dev Run #98 (2026-07-31):** main advanced to 4161fd9 (Dev Run #97 backlog chore). Re-synced all 3 PR branches with main. All branches MERGEABLE.
+- **Dev Run #99 (2026-07-31):** main advanced to bc25bd6 (Dev Run #98 backlog chore). Re-synced all 3 PR branches with main. All branches MERGEABLE.
