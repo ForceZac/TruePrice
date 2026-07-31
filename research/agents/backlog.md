@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-07-31 (Dev Run #39 — PR #14 MERGED, all 9 goals shipped, 305 tests passing on main)
+Last updated: 2026-07-31 (Dev Run #40 — All 9 TRDs marked done, project complete)
 
 ## Active
 
@@ -27,10 +27,12 @@ _None — all goals have TRDs._
 
 ## Notes
 
-- **Pipeline status:** ✅ ALL 9 GOALS SHIPPED — main at ea4e0ba. 305 tests passing. Project complete.
+- **Pipeline status:** ✅ ALL 9 GOALS SHIPPED — main at 6dbcee0. 305 tests passing. Project complete.
 - **PR #12 (Goal 7):** MERGED (752e8c1) — privacy/terms/contact/about pages, footer, cookie consent, AdSense loader, ad slots, robots.txt.
 - **PR #13 (Goal 8):** ✅ MERGED (b39dfde on 2026-07-30) — 270 tests. Confidence tiers, subcategory profiles, 104 seeded products, material-parser aliases, cron routes, /admin/coverage page.
 - **PR #14 (Goal 9):** ✅ MERGED (ea4e0ba on 2026-07-31) — 305 tests. Compare page, CompareStore, CompareTray, LeaderboardCard, Leaderboard page, OG image routes, ShareButton, AddToCompareButton, JSON-LD, revalidate.
-- **Dev Run #37 (2026-07-31):** Merged origin/main into task/goal9-comparison-social. Updated PR #14 base to main. 305 tests, TypeScript clean.
-- **Dev Run #39 (2026-07-31):** PR #14 confirmed merged to main (ea4e0ba). Synced local main. 305 tests passing. Backlog updated. No new TRDs — project complete.
+- **Dev Run #39 (2026-07-31):** PR #14 confirmed merged to main (ea4e0ba). Synced local main. 305 tests passing.
+- **Dev Run #40 (2026-07-31):** All 9 TRDs marked `done` to reflect merged state (6dbcee0).
+- **Dev Run #41 (2026-07-31):** No new TRDs. Found stale incomplete merge (origin/task/goal1-scaffold batch-lookup commits never landed in main). Fixed failing CommodityService test (wrong env mock path), committed and pushed (81f0fd4). 329 tests passing.
+- **Dev Run #42 (2026-07-31):** No new TRDs. Committed pending backlog.md + two missing PRDs (goal1, goal2) that were untracked. Project remains complete.
 - **Remaining Zach actions:** Q7-1 (AdSense publisher ID), Q7-3 (Privacy Policy data scope), Q-INFRA-2 (Discord allowlist — run `/discord:access`).
