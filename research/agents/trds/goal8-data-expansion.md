@@ -1,6 +1,6 @@
 # TRD: Goal 8 — Data Expansion & Accuracy Improvements
 
-- **status:** `ready`
+- **status:** `done`
 - **goal:** `Goal 8`
 - **priority:** `P1`
 - **branch:** `task/goal8-data-expansion`

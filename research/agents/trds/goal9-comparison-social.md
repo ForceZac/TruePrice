@@ -1,6 +1,6 @@
 # TRD: Goal 9 — Product Comparison & Social Features
 
-- **status:** `ready`
+- **status:** `done`
 - **goal:** `Goal 9`
 - **priority:** `P2`
 - **branch:** `task/goal9-comparison-social`

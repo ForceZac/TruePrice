@@ -1,6 +1,6 @@
 # TRD: Goal 6 — Category Browsing & Landing Pages
 
-- **status:** `ready`
+- **status:** `done`
 - **goal:** `Goal 6`
 - **priority:** `P1`
 - **branch:** `task/goal6-category-browsing`

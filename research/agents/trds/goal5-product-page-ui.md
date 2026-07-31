@@ -1,6 +1,6 @@
 # TRD: Goal 5 — Product Page & Cost Breakdown UI
 
-- **status:** `ready`
+- **status:** `done`
 - **goal:** `Goal 5`
 - **priority:** `P1`
 - **branch:** `task/goal5-product-page-ui`

@@ -1,6 +1,6 @@
 # TRD: Goal 4 — Cost Estimation Engine
 
-- **status:** `ready`
+- **status:** `done`
 - **goal:** `Goal 4`
 - **priority:** `P0`
 - **branch:** `task/goal4-cost-estimation`

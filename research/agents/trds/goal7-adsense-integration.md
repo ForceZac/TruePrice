@@ -1,6 +1,6 @@
 # TRD: Goal 7 — AdSense Integration & Required Pages
 
-- **status:** `ready`
+- **status:** `done`
 - **goal:** `Goal 7`
 - **priority:** `P1`
 - **branch:** `task/goal7-adsense-integration`
