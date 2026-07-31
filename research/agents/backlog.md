@@ -1,12 +1,12 @@
 # TruePrice Backlog
 
-Last updated: 2026-07-31 (Dev Run #57 — Goal 10 reviewer issues fixed, PR #17 updated)
+Last updated: 2026-07-31 (Dev Run #58 — VerificationToken cleanup on deleteAccount)
 
 ## Active
 
 | Goal | Branch | PR | Status |
 |------|--------|----|--------|
-| Goal 10 — User Accounts & Personalization | task/goal10-user-accounts | #17 | In review — reviewer issues addressed (328f794) |
+| Goal 10 — User Accounts & Personalization | task/goal10-user-accounts | #17 | In review — reviewer LGTM; VerificationToken cleanup applied (2f5d819) |
 
 ## Upcoming (needs TRD)
 
