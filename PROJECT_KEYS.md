@@ -217,3 +217,4 @@ See `research/implementation-roadmap-v2.md` for full goal dependency graph and s
 | Goal 7 — AdSense Integration | `trds/goal7-adsense-integration.md` | ✅ Merged (PR #12, 752e8c1) |
 | Goal 8 — Data Expansion | `trds/goal8-data-expansion.md` | ✅ Merged (PR #13, b39dfde) |
 | Goal 9 — Comparison & Social | `trds/goal9-comparison-social.md` | ✅ Merged (PR #14, ea4e0ba) |
+| Goal 10 — User Accounts & Personalization | TRD needed | 🔲 Proposed (PRD: `agents/prds/goal10-user-accounts.md`) |

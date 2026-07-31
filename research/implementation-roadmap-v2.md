@@ -60,6 +60,12 @@ Goal 1 (Scaffold)
 - **Depends on:** Goal 7
 
 ### Goal 9 — Product Comparison & Social Features
-- **TRD:** needs writing
+- **TRD:** `trds/goal9-comparison-social.md` — status: done
 - **Why:** Engagement and virality.
 - **Depends on:** Goal 5
+
+### Goal 10 — User Accounts & Personalization
+- **TRD:** needs writing
+- **PRD:** `agents/prds/goal10-user-accounts.md`
+- **Why:** Close the retention loop — watchlist, cross-device sync, price-change email alerts.
+- **Depends on:** Goal 9
