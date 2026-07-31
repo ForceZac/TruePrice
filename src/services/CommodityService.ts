@@ -212,6 +212,23 @@ export async function getCachedPrice(materialId: string): Promise<PriceResult | 
 }
 
 /**
+ * Detect commodity prices whose most-recent fetch is older than the given threshold.
+ * Returns the deduplicated material names that are stale.
+ *
+ * Used by the refresh-prices cron route to alert when rows weren't updated in the
+ * current cycle — distinct from the user-facing `stale` flag in getCachedPrice/getAllCachedPrices,
+ * which uses a 48-hour threshold.
+ */
+export async function detectStalePrices(thresholdMs: number): Promise<string[]> {
+  const staleThreshold = new Date(Date.now() - thresholdMs);
+  const stalePrices = await prisma.commodityPrice.findMany({
+    where: { fetchedAt: { lt: staleThreshold } },
+    include: { material: { select: { name: true } } },
+  });
+  return [...new Set(stalePrices.map((p) => p.material.name))];
+}
+
+/**
  * Get cached prices for all materials in the DB.
  * Each material returns its most recent price only.
  */

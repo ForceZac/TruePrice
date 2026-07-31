@@ -6,90 +6,9 @@
  * and a per-category table.
  */
 
-import { prisma } from "@/lib/db";
+import { getCoverageData } from "@/services/ProductService";
 
 export const dynamic = "force-dynamic";
-
-interface TierCounts {
-  HIGH: number;
-  MEDIUM: number;
-  LOW: number;
-  none: number;
-}
-
-interface CategoryRow {
-  name: string;
-  slug: string;
-  total: number;
-  high: number;
-  medium: number;
-  low: number;
-  noEstimate: number;
-}
-
-async function getCoverageData(): Promise<{
-  total: number;
-  tiers: TierCounts;
-  categories: CategoryRow[];
-}> {
-  const [products, breakdowns, categories] = await Promise.all([
-    prisma.product.findMany({ select: { id: true, categoryId: true } }),
-    prisma.costBreakdown.findMany({
-      distinct: ["productId"],
-      orderBy: { calculatedAt: "desc" },
-      select: { productId: true, confidence: true },
-    }),
-    prisma.productCategory.findMany({
-      select: { id: true, name: true, slug: true },
-      orderBy: { name: "asc" },
-    }),
-  ]);
-
-  // Map productId → latest confidence tier
-  const confidenceByProduct = new Map<string, string>(
-    breakdowns.map((b) => [b.productId, b.confidence])
-  );
-
-  const tiers: TierCounts = { HIGH: 0, MEDIUM: 0, LOW: 0, none: 0 };
-  for (const p of products) {
-    const tier = confidenceByProduct.get(p.id);
-    if (tier === "HIGH") tiers.HIGH++;
-    else if (tier === "MEDIUM") tiers.MEDIUM++;
-    else if (tier === "LOW") tiers.LOW++;
-    else tiers.none++;
-  }
-
-  // Per-category breakdown
-  const productsByCategory = new Map<string, string[]>();
-  for (const p of products) {
-    const arr = productsByCategory.get(p.categoryId) ?? [];
-    arr.push(p.id);
-    productsByCategory.set(p.categoryId, arr);
-  }
-
-  const categoryRows: CategoryRow[] = categories.map((cat) => {
-    const ids = productsByCategory.get(cat.id) ?? [];
-    const row: CategoryRow = {
-      name: cat.name,
-      slug: cat.slug,
-      total: ids.length,
-      high: 0,
-      medium: 0,
-      low: 0,
-      noEstimate: 0,
-    };
-    for (const id of ids) {
-      const tier = confidenceByProduct.get(id);
-      if (tier === "HIGH") row.high++;
-      else if (tier === "MEDIUM") row.medium++;
-      else if (tier === "LOW") row.low++;
-      else row.noEstimate++;
-    }
-    return row;
-  });
-
-  return { total: products.length, tiers, categories: categoryRows };
-}
 
 export default async function CoveragePage() {
   const { total, tiers, categories } = await getCoverageData();

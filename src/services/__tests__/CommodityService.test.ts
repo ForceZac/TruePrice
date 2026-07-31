@@ -1,9 +1,10 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 
 // vi.mock is hoisted — use vi.hoisted to create mock fns that are available in the factory
-const { mockCreate, mockFindMany, mockFindFirst, mockFindUnique } = vi.hoisted(() => ({
+const { mockCreate, mockFindMany, mockCommodityFindMany, mockFindFirst, mockFindUnique } = vi.hoisted(() => ({
   mockCreate: vi.fn(),
   mockFindMany: vi.fn(),
+  mockCommodityFindMany: vi.fn(),
   mockFindFirst: vi.fn(),
   mockFindUnique: vi.fn(),
 }));
@@ -27,6 +28,7 @@ vi.mock("@/lib/db", () => ({
     commodityPrice: {
       create: mockCreate,
       findFirst: mockFindFirst,
+      findMany: mockCommodityFindMany,
     },
   },
 }));
@@ -37,6 +39,7 @@ import {
   getCachedPrice,
   getAllCachedPrices,
   seedFallbackPrices,
+  detectStalePrices,
 } from "@/services/CommodityService";
 import { COMMODITY_MAPPINGS } from "@/data/commodity-mappings";
 import { serverEnv as env } from "@/lib/env.server";
@@ -351,5 +354,53 @@ describe("seedFallbackPrices", () => {
     const { data } = mockCreate.mock.calls[0][0];
     expect(data.pricePerKgCents).toBeGreaterThan(0);
     expect(Number.isInteger(data.pricePerKgCents)).toBe(true);
+  });
+});
+
+// ─── detectStalePrices ────────────────────────────────────────────────────────
+
+describe("detectStalePrices", () => {
+  beforeEach(() => {
+    vi.restoreAllMocks();
+    mockCommodityFindMany.mockReset();
+  });
+
+  it("returns empty array when no stale prices exist", async () => {
+    mockCommodityFindMany.mockResolvedValue([]);
+    const result = await detectStalePrices(25 * 60 * 60 * 1000);
+    expect(result).toEqual([]);
+  });
+
+  it("returns material names for stale rows", async () => {
+    mockCommodityFindMany.mockResolvedValue([
+      { material: { name: "cotton" } },
+      { material: { name: "polyester" } },
+    ]);
+    const result = await detectStalePrices(25 * 60 * 60 * 1000);
+    expect(result).toEqual(["cotton", "polyester"]);
+  });
+
+  it("deduplicates material names when multiple stale rows share a material", async () => {
+    mockCommodityFindMany.mockResolvedValue([
+      { material: { name: "cotton" } },
+      { material: { name: "cotton" } },
+      { material: { name: "steel" } },
+    ]);
+    const result = await detectStalePrices(25 * 60 * 60 * 1000);
+    expect(result).toEqual(["cotton", "steel"]);
+  });
+
+  it("passes the computed threshold date to prisma query", async () => {
+    mockCommodityFindMany.mockResolvedValue([]);
+    const thresholdMs = 10 * 60 * 60 * 1000; // 10 hours
+    const before = Date.now();
+    await detectStalePrices(thresholdMs);
+    const after = Date.now();
+
+    expect(mockCommodityFindMany).toHaveBeenCalledOnce();
+    const { where } = mockCommodityFindMany.mock.calls[0][0];
+    const cutoff: Date = where.fetchedAt.lt;
+    expect(cutoff.getTime()).toBeGreaterThanOrEqual(before - thresholdMs);
+    expect(cutoff.getTime()).toBeLessThanOrEqual(after - thresholdMs + 100);
   });
 });

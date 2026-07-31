@@ -1,5 +1,5 @@
 import { ImageResponse } from "next/og";
-import { prisma } from "@/lib/db";
+import { getProductWithBreakdown } from "@/services/ProductService";
 import { centsToUsd } from "@/lib/format";
 
 export const runtime = "nodejs";
@@ -14,26 +14,8 @@ export async function GET(req: Request) {
   }
 
   const [productA, productB] = await Promise.all([
-    prisma.product.findUnique({
-      where: { id: aId },
-      include: {
-        costBreakdowns: {
-          orderBy: { calculatedAt: "desc" },
-          take: 1,
-          select: { totalCostCents: true, markupPercent: true },
-        },
-      },
-    }),
-    prisma.product.findUnique({
-      where: { id: bId },
-      include: {
-        costBreakdowns: {
-          orderBy: { calculatedAt: "desc" },
-          take: 1,
-          select: { totalCostCents: true, markupPercent: true },
-        },
-      },
-    }),
+    getProductWithBreakdown(aId),
+    getProductWithBreakdown(bId),
   ]);
 
   if (!productA || !productB) {
