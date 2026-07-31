@@ -33,6 +33,9 @@ const serverEnvSchema = z.object({
   // Cron job protection
   CRON_SECRET: z.string().optional(),
 
+  // Re-estimation TTL: days after which a CostBreakdown is re-computed (default 7)
+  RE_ESTIMATION_TTL_DAYS: z.coerce.number().int().positive().default(7),
+
   // CI / Bots (optional in dev)
   GITHUB_TOKEN: z.string().optional(),
   DISCORD_BOT_TOKEN: z.string().optional(),

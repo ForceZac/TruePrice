@@ -1,6 +1,8 @@
 import { type NextRequest } from "next/server";
 import { fetchPrices } from "@/services/CommodityService";
 import { serverEnv as env } from "@/lib/env.server";
+import { prisma } from "@/lib/db";
+import { execFile } from "child_process";
 
 /**
  * GET /api/cron/refresh-prices
@@ -27,9 +29,36 @@ export async function GET(request: NextRequest) {
 
     console.log(`[cron/refresh-prices] Refreshed ${count} prices in ${elapsed}ms`);
 
+    // ── Stale price detection ─────────────────────────────────────────────
+    // Query for any CommodityPrice rows whose fetchedAt is older than 25 hours.
+    const staleThreshold = new Date(Date.now() - 25 * 60 * 60 * 1000);
+    const stalePrices = await prisma.commodityPrice.findMany({
+      where: { fetchedAt: { lt: staleThreshold } },
+      include: { material: { select: { name: true } } },
+    });
+
+    let staleCount = 0;
+    if (stalePrices.length > 0) {
+      staleCount = stalePrices.length;
+      const names = [...new Set(stalePrices.map((p) => p.material.name))].join(", ");
+      const alertMsg = `⚠️ Stale commodity prices detected: ${staleCount} row(s) older than 25h — materials: ${names}`;
+      console.warn(`[cron/refresh-prices] ${alertMsg}`);
+
+      // Post to Discord #alerts if bot token is available
+      const alertsChannelId = "1494231981800820836";
+      execFile(
+        "node",
+        ["/workspace/scripts/discord-post.js", alertsChannelId, alertMsg],
+        (err) => {
+          if (err) console.error("[cron/refresh-prices] Discord alert failed:", err.message);
+        }
+      );
+    }
+
     return Response.json({
       ok: true,
       refreshed: count,
+      staleCount,
       elapsedMs: elapsed,
       timestamp: startedAt.toISOString(),
     });
