@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-07-31 (Dev Run #69 — 347 tests pass, tsc clean; no new work; pipeline blocked on Zach tech-stack sign-off + /merge for PR #16 and PR #17)
+Last updated: 2026-07-31 (PM Run #70 — 347 tests pass, tsc clean; 2 PRs ready for merge; pipeline blocked on Zach tech-stack sign-off + /merge for PR #16 and PR #17)
 
 ## Active
 
@@ -45,3 +45,5 @@ _None — all goals have TRDs._
 - **Dev Run #67 (2026-07-31):** Developer run. 347 tests pass, tsc clean. No new TRDs. Pipeline still blocked on Zach: PR #16 + PR #17 awaiting tech-stack sign-off (next-auth, @auth/prisma-adapter, resend) + /merge. No new implementation work.
 - **Dev Run #68 (2026-07-31):** Developer run. 347 tests pass, tsc clean. No new TRDs. Pipeline still blocked on Zach: PR #16 + PR #17 awaiting tech-stack sign-off (next-auth, @auth/prisma-adapter, resend) + /merge. No new implementation work.
 - **Dev Run #69 (2026-07-31):** Developer run. 347 tests pass, tsc clean. No new TRDs. Pipeline still blocked on Zach: PR #16 + PR #17 awaiting tech-stack sign-off (next-auth, @auth/prisma-adapter, resend) + /merge. No new implementation work.
+- **PM Run #70 (2026-07-31):** Project Manager standup. Status snapshot: Goals 1–9 complete (305 tests from Goal 9), Goal 10 in-progress (PR #17 open, all acceptance criteria met, 347 tests pass, tsc clean). Pipeline blocked: awaiting Zach tech-stack approval (next-auth, @auth/prisma-adapter, resend) + `/merge` authorization for PR #16 (service-layer) and PR #17 (Goal 10).
+- **Dev Run #71 (2026-07-31):** Developer run. 347 tests pass, tsc clean. No new TRDs. Pushed 2 backlog-update commits to origin. Pipeline still blocked on Zach: PR #16 + PR #17 awaiting tech-stack sign-off (next-auth, @auth/prisma-adapter, resend) + /merge. No new implementation work available.
