@@ -1,13 +1,12 @@
 # TruePrice Backlog
 
-Last updated: 2026-07-31 (Dev Run #35 — 305 tests confirmed, TypeScript clean, pipeline idle)
+Last updated: 2026-07-31 (Dev Run #37 — PR #14 rebased onto main, 305 tests passing, awaiting /merge)
 
 ## Active
 
 | Priority | TRD | Goal | Status | Branch | PR | Reviewer | Notes |
 |----------|-----|------|--------|--------|-----|----------|-------|
-| P1 | goal8-data-expansion | Goal 8 — Data Expansion & Accuracy Improvements | ✅ APPROVED | task/goal8-data-expansion | #13 | Run #10 cleared at bcdceb0 — awaiting /merge | 270 tests passing, TypeScript clean. Ready to merge. |
-| P2 | goal9-comparison-social | Goal 9 — Product Comparison & Social Features | ✅ APPROVED | task/goal9-comparison-social | #14 | Run #3 cleared at f6bc5b0 (incl. merge commit 44a4522) | 305 tests, TypeScript clean. Awaits PR #13 merge then rebase onto main before /merge. |
+| P1 | goal9-comparison-social | Goal 9 — Product Comparison & Social Features | ✅ APPROVED | task/goal9-comparison-social | #14 | Run #3–4 cleared; needs re-review of merge commit d7e2d3e | 305 tests, TypeScript clean. Merged main (b39dfde) into branch at d7e2d3e. PR base updated to main. Awaiting /merge. |
 
 ## Upcoming (needs TRD)
 
@@ -25,14 +24,14 @@ _None — all goals have TRDs._
 | chore: env-split | #6 | 2026-07-30 | c0f8c2d |
 | Goal 6 — Category Browsing & Landing Pages | #10 | 2026-07-30 | 06cf14e |
 | Goal 7 — AdSense Integration & Required Legal Pages | #12 | 2026-07-30 | 752e8c1 |
+| Goal 8 — Data Expansion & Accuracy Improvements | #13 | 2026-07-30 | b39dfde |
 
 ## Notes
 
-- **Pipeline status:** Goals 1–7 merged to main. PR #13 (Goal 8) approved awaiting /merge. PR #14 (Goal 9) fully reviewed, awaiting PR #13 merge then rebase.
+- **Pipeline status:** Goals 1–8 merged to main. PR #14 (Goal 9) fully reviewed and ready to rebase/merge. All 9 goals complete.
 - **PR #12 (Goal 7):** MERGED (752e8c1) — privacy/terms/contact/about pages, footer, cookie consent, AdSense loader, ad slots, robots.txt.
-- **PR #13 (Goal 8):** APPROVED (Run #10 at bcdceb0) — 270 tests passing. Confidence tiers, subcategory profiles, 104 seeded products, material-parser aliases, cron routes, /admin/coverage page. All reviewer issues resolved.
-- **PR #14 (Goal 9):** APPROVED (Run #3 at f6bc5b0, incl. merge commit 44a4522 cleared) — 305 tests passing. Compare page, CompareStore, CompareTray, LeaderboardCard, Leaderboard page, OG image routes, ShareButton, AddToCompareButton, JSON-LD, revalidate. Awaits PR #13 merge then rebase onto main.
-- **Next cycle:** Zach merges PR #13 → rebase PR #14 onto main → Zach merges PR #14.
-- **Dev Run #33:** PR #12 merged. Merged origin/main into task/goal8-data-expansion (backlog.md conflict). Merged task/goal8-data-expansion into task/goal9-comparison-social (4-file merge: backlog.md, layout.tsx, Footer.tsx, product/[id]/page.tsx).
-- **Dev Run #34:** No new implementation — all 9 goals done. Verified 305 tests passing, TypeScript clean on task/goal9-comparison-social (HEAD: 44a4522). PR #13 APPROVED awaiting /merge; PR #14 Reviewer Run #3 cleared merge commit 44a4522 at f6bc5b0.
-- **Dev Run #35 (2026-07-31):** No new implementation — all 9 goals done. Verified 305 tests passing, TypeScript clean on task/goal9-comparison-social (HEAD: f6bc5b0). Updated backlog: PR #14 status corrected to APPROVED (Run #3 cleared f6bc5b0 including 44a4522). Pipeline idle awaiting /merge decisions.
+- **PR #13 (Goal 8):** ✅ MERGED (b39dfde on 2026-07-30 20:22:36) — 270 tests passing. Confidence tiers, subcategory profiles, 104 seeded products, material-parser aliases, cron routes, /admin/coverage page.
+- **PR #14 (Goal 9):** APPROVED (Run #3 at f6bc5b0, incl. merge commit 44a4522 cleared) — 305 tests passing. Compare page, CompareStore, CompareTray, LeaderboardCard, Leaderboard page, OG image routes, ShareButton, AddToCompareButton, JSON-LD, revalidate. Ready for rebase onto b39dfde and /merge.
+- **Next cycle:** Zach merges PR #14 → project complete (9/9 goals).
+- **Dev Run #36 (2026-07-31 00:32):** PM standup run. All 9 goals implemented and tested (305 tests passing). PR #13 confirmed merged. PR #14 confirmed APPROVED and ready. Updated backlog to reflect completion of Goal 8 and readiness of Goal 9 for final merge.
+- **Dev Run #37 (2026-07-31):** Merged origin/main (b39dfde) into task/goal9-comparison-social (d7e2d3e). Updated PR #14 base from task/goal8-data-expansion to main. 305 tests passing, TypeScript clean. Also committed docs: open-questions updates (PM Run #78 changes) and goal9 TRD format fix. PR #14 now CLEAN/MERGEABLE against main — awaiting /merge from Zach.
