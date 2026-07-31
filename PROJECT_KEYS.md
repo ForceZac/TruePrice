@@ -214,6 +214,6 @@ See `research/implementation-roadmap-v2.md` for full goal dependency graph and s
 | Goal 5 — Product Page UI | `trds/goal5-product-page-ui.md` | ✅ Merged (PR #5) |
 | chore: env-split | — | ✅ Merged (PR #6, c0f8c2d) |
 | Goal 6 — Category Browsing | `trds/goal6-category-browsing.md` | ✅ Merged (PR #10, 06cf14e) |
-| Goal 7 — AdSense Integration | `trds/goal7-adsense-integration.md` | 🔄 PR #12 in review (task/goal7-land) |
-| Goal 8 — Data Expansion | `trds/goal8-data-expansion.md` | 🔄 PR #13 in review (task/goal8-data-expansion) |
-| Goal 9 — Comparison & Social | needs TRD | ⏳ Awaiting PM to write TRD |
+| Goal 7 — AdSense Integration | `trds/goal7-adsense-integration.md` | ✅ Merged (PR #12, 752e8c1) |
+| Goal 8 — Data Expansion | `trds/goal8-data-expansion.md` | ✅ Merged (PR #13, b39dfde) |
+| Goal 9 — Comparison & Social | `trds/goal9-comparison-social.md` | ✅ Merged (PR #14, ea4e0ba) |
