@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-07-31 (Dev Run #84 — Goal 11a PR #19 promoted to ready-for-review)
+Last updated: 2026-07-31 (Dev Run #85 — blocked, no ready TRDs)
 
 ## Active
 
@@ -32,12 +32,13 @@ Last updated: 2026-07-31 (Dev Run #84 — Goal 11a PR #19 promoted to ready-for-
 
 ## Notes
 
-- **Pipeline status:** ✅ GOALS 1-9 SHIPPED (main at 6dbcee0, 305 tests). Goal 10 & 11a in review.
-- **Current PRs:** #19 (Goal 11a draft, 336 tests), #17 (Goal 10 ready, 360 tests), #18 (labor rates fix), #16 (service-layer fix)
-- **Blockers:** Goal 10 awaits tech-stack sign-off (next-auth, resend, @auth/prisma-adapter) + /merge; Goal 11b awaits Goal 10 merge.
-- **Remaining Zach actions:** Goal 10 /merge, AdSense setup (Q7-1, Q7-3), Discord allowlist setup.
+- **Pipeline status:** ✅ GOALS 1-9 SHIPPED. main has 329 tests (note: earlier entry of 305 was stale — Dev Run #41 batch-lookup fix brought it to 329). Goal 10 & 11a in review.
+- **Current PRs:** #19 (Goal 11a ready, 337 tests), #17 (Goal 10 ready, 360 tests), #18 (labor rates fix, DRAFT), #16 (service-layer fix, OPEN)
+- **Blockers:** Goal 10 awaits /merge; Goal 11b awaits Goal 10 merge + PM TRD; PR #18 awaits PROPOSAL-001 /approve.
+- **Remaining Zach actions:** Goal 10 /merge (PR #17), Goal 11a review (PR #19), PROPOSAL-001 /approve (PR #18), PROPOSAL-002 /approve or /block, AdSense setup (Q7-1, Q7-3).
 - **Dev Run #81:** Goal 11a extraction (Save as Image, no Goal 10 dependency), SaveAsImageButton component, 7 new tests, PR #19 opened.
 - **Dev Run #82:** Goal 11a ACs verified complete, TRD updated.
 - **PM Run #83:** Standup check — Goals 1-9 shipped, Goal 11a in draft review, Goal 10 ready awaiting approval.
 - **Dev Run #83:** Goal 11a polish — raw button → shadcn Button (outline/sm), loading state (isPending) with "Saving…" label, setIsPending in finally. Added loading-state test → 337 tests. TRD: added Tasks section (all checked), status in-progress → done. Reviewer blockers (dom-to-image-more approval, non-blocking shadcn/loading) now resolved.
 - **Dev Run #84:** Goal 11a complete — promoted PR #19 from Draft to Ready for Review. 337 tests pass, tsc clean. Blocker: Goal 11b awaits Goal 10 (/merge on PR #17) + TRD authoring by PM.
+- **Dev Run #85:** All TRDs done. No ready TRDs to implement. Confirmed main=329 tests. Blocker posted to #main. Pending: /merge PR #17, /approve PROPOSAL-001, /approve or /block PROPOSAL-002.
