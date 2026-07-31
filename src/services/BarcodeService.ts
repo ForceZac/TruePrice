@@ -240,3 +240,65 @@ export async function lookupByBarcode(
 export function isValidBarcode(barcode: string): boolean {
   return /^(\d{6}|\d{8}|\d{12}|\d{13})$/.test(barcode.trim());
 }
+
+// ─── Retail price fetch ───────────────────────────────────────────────────────
+
+interface UPCItemDbOffer {
+  merchant?: string;
+  price?: string;
+  updated_t?: number;
+}
+
+interface UPCItemDbPriceResponse {
+  code: string;
+  items?: Array<{
+    title?: string;
+    offers?: UPCItemDbOffer[];
+  }>;
+}
+
+/**
+ * Fetch the lowest retail price (in cents) for a UPC from UPCitemdb offers.
+ * Returns null if the API is unreachable, returns no data, or no offers are present.
+ *
+ * Note: Offer data requires a paid UPCitemdb API key — the trial plan does not
+ * return the `offers` array, so this will always return null on the free tier.
+ */
+export async function fetchRetailPriceByUPC(upc: string): Promise<number | null> {
+  const apiKey = env.UPCITEMDB_API_KEY;
+  const baseUrl = apiKey
+    ? "https://api.upcitemdb.com/prod/v1/lookup"
+    : "https://api.upcitemdb.com/prod/trial/lookup";
+
+  const url = `${baseUrl}?upc=${encodeURIComponent(upc)}`;
+  const headers: Record<string, string> = {
+    Accept: "application/json",
+    "Content-Type": "application/json",
+  };
+  if (apiKey) headers["user_key"] = apiKey;
+
+  let res: Response;
+  try {
+    res = await fetch(url, { headers, next: { revalidate: 0 } });
+  } catch (err) {
+    console.error("[BarcodeService] fetchRetailPriceByUPC fetch failed:", err);
+    return null;
+  }
+
+  if (!res.ok) return null;
+
+  const data = (await res.json()) as UPCItemDbPriceResponse;
+  if (data.code !== "OK" || !data.items?.length) return null;
+
+  const item = data.items[0];
+  if (!item.offers?.length) return null;
+
+  const prices = item.offers
+    .map((o) => parseFloat(o.price ?? ""))
+    .filter((p) => !isNaN(p) && p > 0);
+
+  if (prices.length === 0) return null;
+
+  const lowestDollars = Math.min(...prices);
+  return Math.round(lowestDollars * 100);
+}

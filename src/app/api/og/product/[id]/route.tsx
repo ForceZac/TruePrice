@@ -1,5 +1,5 @@
 import { ImageResponse } from "next/og";
-import { prisma } from "@/lib/db";
+import { getProductWithBreakdown } from "@/services/ProductService";
 import { centsToUsd } from "@/lib/format";
 
 export const runtime = "nodejs";
@@ -10,21 +10,7 @@ export async function GET(
 ) {
   const { id } = await params;
 
-  const product = await prisma.product.findUnique({
-    where: { id },
-    include: {
-      category: { select: { name: true } },
-      costBreakdowns: {
-        orderBy: { calculatedAt: "desc" },
-        take: 1,
-        select: {
-          totalCostCents: true,
-          retailPriceCents: true,
-          markupPercent: true,
-        },
-      },
-    },
-  });
+  const product = await getProductWithBreakdown(id);
 
   if (!product) {
     return new Response("Not Found", { status: 404 });

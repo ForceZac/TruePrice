@@ -1,10 +1,12 @@
 # TruePrice Backlog
 
-Last updated: 2026-07-31 (Dev Run #40 — All 9 TRDs marked done, project complete)
+Last updated: 2026-07-31 (Dev Run #54 — PR #16 JSDoc fix applied, marked ready for review, 358 tests passing)
 
 ## Active
 
-_None — all goals implemented and merged._
+| Item | PR | Status | Notes |
+|------|----|----|-------|
+| Service-layer refactoring | #16 | READY | 6 commits — service violations fixed, JSDoc corrected, marked ready for review |
 
 ## Upcoming (needs TRD)
 
@@ -35,4 +37,6 @@ _None — all goals have TRDs._
 - **Dev Run #40 (2026-07-31):** All 9 TRDs marked `done` to reflect merged state (6dbcee0).
 - **Dev Run #41 (2026-07-31):** No new TRDs. Found stale incomplete merge (origin/task/goal1-scaffold batch-lookup commits never landed in main). Fixed failing CommodityService test (wrong env mock path), committed and pushed (81f0fd4). 329 tests passing.
 - **Dev Run #42 (2026-07-31):** No new TRDs. Committed pending backlog.md + two missing PRDs (goal1, goal2) that were untracked. Project remains complete.
+- **Dev Run #43 (2026-07-31):** Post-completion service-layer refactoring — moving Prisma violations from routes to service layer. 5 commits staged on task/fix-service-layer-to-main. PR #16 opened (DRAFT).
+- **Dev Run #54 (2026-07-31):** Applied reviewer JSDoc fix on `forceReEstimate` (returns null, not throws). 358/358 tests passing, tsc clean. PR #16 marked ready for review.
 - **Remaining Zach actions:** Q7-1 (AdSense publisher ID), Q7-3 (Privacy Policy data scope), Q-INFRA-2 (Discord allowlist — run `/discord:access`).

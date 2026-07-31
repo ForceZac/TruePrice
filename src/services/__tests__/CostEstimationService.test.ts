@@ -7,12 +7,14 @@ const {
   mockCostBreakdownCreate,
   mockCostBreakdownDeleteMany,
   mockCostBreakdownFindFirst,
+  mockCostBreakdownFindMany,
   mockLaborRateFindUnique,
 } = vi.hoisted(() => ({
   mockProductFindUnique: vi.fn(),
   mockCostBreakdownCreate: vi.fn(),
   mockCostBreakdownDeleteMany: vi.fn().mockResolvedValue({ count: 0 }),
   mockCostBreakdownFindFirst: vi.fn(),
+  mockCostBreakdownFindMany: vi.fn(),
   mockLaborRateFindUnique: vi.fn(),
 }));
 
@@ -33,6 +35,7 @@ vi.mock("@/lib/db", () => ({
       create: mockCostBreakdownCreate,
       deleteMany: mockCostBreakdownDeleteMany,
       findFirst: mockCostBreakdownFindFirst,
+      findMany: mockCostBreakdownFindMany,
     },
     laborRate: {
       findUnique: mockLaborRateFindUnique,
@@ -40,7 +43,7 @@ vi.mock("@/lib/db", () => ({
   },
 }));
 
-import { estimateCost, getCachedBreakdown } from "@/services/CostEstimationService";
+import { estimateCost, getCachedBreakdown, getStaleBreakdownProductIds, forceReEstimate } from "@/services/CostEstimationService";
 
 // ─── Fixtures ─────────────────────────────────────────────────────────────────
 
@@ -625,5 +628,65 @@ describe("getCachedBreakdown", () => {
     const call = mockCostBreakdownFindFirst.mock.calls[0][0];
     expect(call.where.productId).toBe("prod-42");
     expect(call.orderBy.calculatedAt).toBe("desc");
+  });
+});
+
+// ─── getStaleBreakdownProductIds ──────────────────────────────────────────────
+
+describe("getStaleBreakdownProductIds", () => {
+  beforeEach(() => {
+    vi.restoreAllMocks();
+    mockCostBreakdownFindMany.mockReset();
+  });
+
+  it("returns empty array when no stale breakdowns exist", async () => {
+    mockCostBreakdownFindMany.mockResolvedValue([]);
+    const result = await getStaleBreakdownProductIds(7);
+    expect(result).toEqual([]);
+  });
+
+  it("returns productIds from stale breakdowns", async () => {
+    mockCostBreakdownFindMany.mockResolvedValue([
+      { productId: "prod-1" },
+      { productId: "prod-2" },
+    ]);
+    const result = await getStaleBreakdownProductIds(7);
+    expect(result).toEqual(["prod-1", "prod-2"]);
+  });
+
+  it("queries with updatedAt < staleDate and distinct productId", async () => {
+    mockCostBreakdownFindMany.mockResolvedValue([]);
+    await getStaleBreakdownProductIds(7);
+    const call = mockCostBreakdownFindMany.mock.calls[0][0];
+    expect(call.distinct).toContain("productId");
+    expect(call.select).toEqual({ productId: true });
+    expect(call.where.updatedAt.lt).toBeInstanceOf(Date);
+  });
+});
+
+// ─── forceReEstimate ──────────────────────────────────────────────────────────
+
+describe("forceReEstimate", () => {
+  beforeEach(() => {
+    vi.restoreAllMocks();
+    mockCostBreakdownDeleteMany.mockReset();
+    mockCostBreakdownDeleteMany.mockResolvedValue({ count: 1 });
+    mockProductFindUnique.mockReset();
+    mockCostBreakdownCreate.mockReset();
+    mockLaborRateFindUnique.mockResolvedValue(null);
+  });
+
+  it("deletes the cached breakdown before re-estimating", async () => {
+    mockProductFindUnique.mockResolvedValue(null); // product not found → estimateCost returns null
+    await forceReEstimate("prod-1");
+    expect(mockCostBreakdownDeleteMany).toHaveBeenCalledOnce();
+    const call = mockCostBreakdownDeleteMany.mock.calls[0][0];
+    expect(call.where.productId).toBe("prod-1");
+  });
+
+  it("returns null when the product does not exist", async () => {
+    mockProductFindUnique.mockResolvedValue(null);
+    const result = await forceReEstimate("nonexistent");
+    expect(result).toBeNull();
   });
 });
