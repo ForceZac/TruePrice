@@ -194,3 +194,11 @@ export async function recordRecentView(
     body: JSON.stringify({ productId, ...(localIds ? { localIds } : {}) }),
   });
 }
+
+/** POST /api/user/recent — merges localStorage recently-viewed IDs on sign-in (no productId). */
+export async function mergeLocalRecent(localIds: string[]): Promise<void> {
+  await apiFetch("/api/user/recent", {
+    method: "POST",
+    body: JSON.stringify({ localIds }),
+  });
+}

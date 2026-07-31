@@ -9,6 +9,7 @@ import { CostBreakdownPanel } from "@/components/molecules/CostBreakdownPanel";
 import { EstimateSkeleton } from "@/components/molecules/EstimateSkeleton";
 import { ShareButton } from "@/components/atoms/ShareButton";
 import { recordRecentView } from "@/lib/api";
+import { addLocalRecentView, getLocalRecentIds, clearLocalRecentIds } from "@/lib/recentlyViewedLocal";
 import { centsToUsd } from "@/lib/format";
 import type { ProductResult } from "@/lib/api";
 
@@ -36,10 +37,17 @@ export function ProductPageClient({ product, canonicalUrl, userId }: Props) {
   const { data: breakdown, isLoading, isError, error } = useCostBreakdown(product.id);
   const { mutate: trigger, isPending: isTriggering } = useTriggerEstimate(product.id);
 
-  // Record this product view for authenticated users (one write per product per mount).
+  // Record this product view (one write per product per mount).
+  // - Authenticated: write to DB, and merge any pending localStorage IDs on the same request.
+  // - Unauthenticated: write to localStorage so the IDs can be merged when the user signs in.
   useEffect(() => {
     if (userId) {
-      recordRecentView(product.id).catch(() => {});
+      const localIds = getLocalRecentIds();
+      recordRecentView(product.id, localIds.length > 0 ? localIds : undefined)
+        .then(() => { if (localIds.length > 0) clearLocalRecentIds(); })
+        .catch(() => {});
+    } else {
+      addLocalRecentView(product.id);
     }
   }, [userId, product.id]);
 

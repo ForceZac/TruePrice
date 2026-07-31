@@ -27,8 +27,10 @@ export async function GET() {
 
 /**
  * POST /api/user/recent
- * Body: { productId: string; localIds?: string[] }
- * Records a product view. If `localIds` is present, also merges localStorage IDs.
+ * Body: { productId?: string; localIds?: string[] }
+ * - `productId` records a single product view.
+ * - `localIds` merges a localStorage batch (used on sign-in).
+ * At least one of the two must be present.
  */
 export async function POST(request: NextRequest) {
   const session = await auth();
@@ -48,21 +50,33 @@ export async function POST(request: NextRequest) {
       ? (body as { productId: unknown }).productId
       : undefined;
 
-  if (!productId || typeof productId !== "string") {
-    return Response.json({ error: "productId is required." }, { status: 400 });
-  }
-
   const localIds =
     body && typeof body === "object" && "localIds" in body
       ? (body as { localIds: unknown }).localIds
       : undefined;
 
-  try {
-    await recordProductView(session.user.id, productId);
+  const hasProductId = typeof productId === "string" && productId.length > 0;
+  const hasLocalIds = Array.isArray(localIds) && localIds.length > 0;
 
-    if (Array.isArray(localIds) && localIds.length > 0) {
-      const validIds = localIds.filter((id): id is string => typeof id === "string");
-      await mergeLocalRecentlyViewed(session.user.id, validIds);
+  if (!hasProductId && !hasLocalIds) {
+    return Response.json(
+      { error: "productId or localIds is required." },
+      { status: 400 }
+    );
+  }
+
+  try {
+    if (hasProductId) {
+      await recordProductView(session.user.id, productId as string);
+    }
+
+    if (hasLocalIds) {
+      const validIds = (localIds as unknown[]).filter(
+        (id): id is string => typeof id === "string"
+      );
+      if (validIds.length > 0) {
+        await mergeLocalRecentlyViewed(session.user.id, validIds);
+      }
     }
 
     return Response.json({ ok: true });
