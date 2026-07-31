@@ -340,7 +340,7 @@ export async function getStaleBreakdownProductIds(staleDays: number): Promise<st
 
 /**
  * Force re-estimation for a product: delete its cached breakdown and recompute.
- * Throws if the product does not exist.
+ * Returns null if the product does not exist.
  */
 export async function forceReEstimate(productId: string): Promise<CostBreakdownResult | null> {
   await prisma.costBreakdown.deleteMany({ where: { productId } });
