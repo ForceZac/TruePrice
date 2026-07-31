@@ -50,6 +50,8 @@ TruePrice reveals the true manufacturing cost of consumer products. Users scan a
 | Testing | Vitest (unit/integration) + Playwright (e2e) | All PRs must pass both. |
 | Hosting | Vercel | `vercel.json` for cron + routing config. |
 | Env config | `src/lib/env.server.ts` + `src/lib/env.client.ts` | Split server/client. No raw `process.env` anywhere in app code. |
+| Auth | next-auth@5 + @auth/prisma-adapter | App Router native. Google OAuth + magic-link email. JWT session strategy. |
+| Email | resend | Transactional email for weekly digest. Send gated on `RESEND_API_KEY` presence. |
 
 **Prohibited:**
 - Raw `fetch` in React components — use TanStack Query hooks instead.
@@ -109,6 +111,11 @@ Core models (defined in `prisma/schema.prisma`):
 | `SENTRY_DSN` | server | Error tracking |
 | `RE_ESTIMATION_TTL_DAYS` | server | Days before re-estimating a CostBreakdown (default: 7) |
 | `DISCORD_CHANNEL_ALERTS` | server | Discord channel ID for stale price alerts |
+| `NEXTAUTH_SECRET` | server | JWT signing key (required in prod) |
+| `GOOGLE_CLIENT_ID` | server | Google OAuth client ID |
+| `GOOGLE_CLIENT_SECRET` | server | Google OAuth client secret |
+| `RESEND_API_KEY` | server | Resend API key (optional; email gated on presence) |
+| `FROM_EMAIL` | server | Sender address for digest emails (default: `digest@trueprice.app`) |
 | `NEXT_PUBLIC_APP_URL` | client | Canonical base URL |
 | `NEXT_PUBLIC_ADSENSE_CLIENT` | client | AdSense publisher ID (ca-pub-XXXXXXXX) |
 | `NEXT_PUBLIC_ADSENSE_SLOT_BANNER` | client | AdSense manual banner slot ID |
@@ -148,6 +155,7 @@ Core models (defined in `prisma/schema.prisma`):
 | `ProductService` | `src/services/ProductService.ts` | Product lookup, search, barcode → DB reads/writes. |
 | `BarcodeService` | `src/services/BarcodeService.ts` | Barcode decoding + external product DB lookup (UPCitemdb, Open Food Facts). |
 | `CategoryService` | `src/services/CategoryService.ts` | Category listing, slug → products, slugs for sitemap. |
+| `UserService` | `src/services/UserService.ts` | Watchlist CRUD, recently-viewed, weekly digest candidates, account deletion. |
 
 ### Layer Call Flow
 
@@ -217,3 +225,4 @@ See `research/implementation-roadmap-v2.md` for full goal dependency graph and s
 | Goal 7 — AdSense Integration | `trds/goal7-adsense-integration.md` | ✅ Merged (PR #12, 752e8c1) |
 | Goal 8 — Data Expansion | `trds/goal8-data-expansion.md` | ✅ Merged (PR #13, b39dfde) |
 | Goal 9 — Comparison & Social | `trds/goal9-comparison-social.md` | ✅ Merged (PR #14, ea4e0ba) |
+| Goal 10 — User Accounts & Personalization | `trds/goal10-user-accounts.md` | 🔄 PR #17 open — awaiting merge |
