@@ -1,6 +1,5 @@
 import { auth } from "@/lib/auth";
-import { prisma } from "@/lib/db";
-import { VALID_THRESHOLDS, type AlertThreshold } from "@/lib/alert-constants";
+import { VALID_THRESHOLDS, type AlertThreshold, updateAlertSettings } from "@/services/AlertService";
 
 /**
  * PATCH /api/user/alert-settings
@@ -53,11 +52,7 @@ export async function PATCH(request: Request) {
   }
 
   try {
-    const user = await prisma.user.update({
-      where: { id: session.user.id },
-      data: updates,
-      select: { alertThresholdPct: true, alertsEnabled: true },
-    });
+    const user = await updateAlertSettings(session.user.id, updates);
     return Response.json({ ok: true, ...user });
   } catch (err) {
     console.error("[PATCH /api/user/alert-settings]", err);

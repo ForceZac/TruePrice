@@ -233,6 +233,33 @@ export async function checkWatchlistAlerts(): Promise<AlertCheckResult> {
   return { usersChecked, alertsFired, alertsSkipped };
 }
 
+// ─── User alert settings ──────────────────────────────────────────────────────
+
+export interface AlertSettingsUpdate {
+  alertThresholdPct?: number | null;
+  alertsEnabled?: boolean;
+}
+
+export interface AlertSettingsResult {
+  alertThresholdPct: number | null;
+  alertsEnabled: boolean;
+}
+
+/**
+ * Updates the authenticated user's price alert preferences.
+ * Called from PATCH /api/user/alert-settings.
+ */
+export async function updateAlertSettings(
+  userId: string,
+  updates: AlertSettingsUpdate
+): Promise<AlertSettingsResult> {
+  return prisma.user.update({
+    where: { id: userId },
+    data: updates,
+    select: { alertThresholdPct: true, alertsEnabled: true },
+  });
+}
+
 // ─── Alert history ────────────────────────────────────────────────────────────
 
 /**

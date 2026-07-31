@@ -4,17 +4,19 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 
 const {
   mockUserFindMany,
+  mockUserUpdate,
   mockSavedProductUpdate,
   mockAlertLogCreate,
 } = vi.hoisted(() => ({
   mockUserFindMany: vi.fn(),
+  mockUserUpdate: vi.fn(),
   mockSavedProductUpdate: vi.fn(),
   mockAlertLogCreate: vi.fn(),
 }));
 
 vi.mock("@/lib/db", () => ({
   prisma: {
-    user: { findMany: mockUserFindMany },
+    user: { findMany: mockUserFindMany, update: mockUserUpdate },
     savedProduct: { update: mockSavedProductUpdate },
     alertLog: { create: mockAlertLogCreate },
   },
@@ -55,6 +57,7 @@ import {
   exceedsThreshold,
   isRateLimited,
   checkWatchlistAlerts,
+  updateAlertSettings,
   DEFAULT_ALERT_THRESHOLD_PCT,
   VALID_THRESHOLDS,
 } from "@/services/AlertService";
@@ -346,5 +349,49 @@ describe("checkWatchlistAlerts", () => {
 
     expect(mockAlertLogCreate).not.toHaveBeenCalled();
     expect(result.alertsSkipped).toBe(1);
+  });
+});
+
+// ─── updateAlertSettings ──────────────────────────────────────────────────────
+
+describe("updateAlertSettings", () => {
+  it("delegates to prisma.user.update with provided fields", async () => {
+    mockUserUpdate.mockResolvedValue({ alertThresholdPct: 10, alertsEnabled: true });
+
+    const result = await updateAlertSettings(USER_ID, { alertThresholdPct: 10, alertsEnabled: true });
+
+    expect(mockUserUpdate).toHaveBeenCalledWith({
+      where: { id: USER_ID },
+      data: { alertThresholdPct: 10, alertsEnabled: true },
+      select: { alertThresholdPct: true, alertsEnabled: true },
+    });
+    expect(result).toEqual({ alertThresholdPct: 10, alertsEnabled: true });
+  });
+
+  it("passes null alertThresholdPct (reset to default)", async () => {
+    mockUserUpdate.mockResolvedValue({ alertThresholdPct: null, alertsEnabled: true });
+
+    const result = await updateAlertSettings(USER_ID, { alertThresholdPct: null });
+
+    expect(mockUserUpdate).toHaveBeenCalledWith(
+      expect.objectContaining({ data: { alertThresholdPct: null } })
+    );
+    expect(result.alertThresholdPct).toBeNull();
+  });
+
+  it("updates alertsEnabled only when only that field is supplied", async () => {
+    mockUserUpdate.mockResolvedValue({ alertThresholdPct: 5, alertsEnabled: false });
+
+    await updateAlertSettings(USER_ID, { alertsEnabled: false });
+
+    expect(mockUserUpdate).toHaveBeenCalledWith(
+      expect.objectContaining({ data: { alertsEnabled: false } })
+    );
+  });
+
+  it("propagates prisma errors", async () => {
+    mockUserUpdate.mockRejectedValue(new Error("DB error"));
+
+    await expect(updateAlertSettings(USER_ID, { alertsEnabled: true })).rejects.toThrow("DB error");
   });
 });
