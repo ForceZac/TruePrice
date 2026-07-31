@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-07-31 (PM Run #70 — 347 tests pass, tsc clean; 2 PRs ready for merge; pipeline blocked on Zach tech-stack sign-off + /merge for PR #16 and PR #17)
+Last updated: 2026-07-31 (PM Run #71 — 347 tests pass, tsc clean; Goal 10 acceptance criteria verified; 2 PRs ready for merge; pipeline blocked on Zach tech-stack sign-off + /merge for PR #16 and PR #17)
 
 ## Active
 
@@ -48,3 +48,5 @@ _None — all goals have TRDs._
 - **PM Run #70 (2026-07-31):** Project Manager standup. Status snapshot: Goals 1–9 complete (305 tests from Goal 9), Goal 10 in-progress (PR #17 open, all acceptance criteria met, 347 tests pass, tsc clean). Pipeline blocked: awaiting Zach tech-stack approval (next-auth, @auth/prisma-adapter, resend) + `/merge` authorization for PR #16 (service-layer) and PR #17 (Goal 10).
 - **Dev Run #71 (2026-07-31):** Developer run. 347 tests pass, tsc clean. No new TRDs. Pushed 2 backlog-update commits to origin. Pipeline still blocked on Zach: PR #16 + PR #17 awaiting tech-stack sign-off (next-auth, @auth/prisma-adapter, resend) + /merge. No new implementation work available.
 - **Dev Run #72 (2026-07-31):** Implemented missing acceptance criterion 8 — localStorage recently-viewed sync on sign-in (c0491ec). Added: `recentlyViewedLocal.ts` (localStorage utils), `AuthProvider.tsx` (SessionProvider wrapper), `PostSigninSync.tsx` (detects auth, calls merge, clears localStorage), `mergeLocalRecent()` in `api.ts`. Updated `POST /api/user/recent` to make `productId` optional for local-only merges. `ProductPageClient` now writes to localStorage for unauthenticated users and merges on first authenticated view. 347 tests pass, tsc clean. Pushed to task/goal10-user-accounts; PR #17 updated.
+- **PM Run #71 (2026-07-31):** Project Manager standup. Status: Goals 1–9 complete, Goal 10 ready for merge (all acceptance criteria verified, 347 tests pass, tsc clean). PR #17 and PR #16 both open and ready. Pipeline blocked on Zach: tech-stack approval (next-auth, @auth/prisma-adapter, resend) + `/merge` authorization. Posted standup to #standup (1494239168954503358).
+- **Dev Run #73 (2026-07-31):** Developer run. Full audit of Goal 10 implementation — all 17 acceptance criteria confirmed implemented (auth.ts, NextAuth route, UserService, all API routes, SaveButton, useWatchlist hook, login/dashboard/settings pages, PostSigninSync, AuthProvider, recentlyViewedLocal). 347 tests pass, tsc clean. No new TRDs. Pipeline still blocked on Zach: PR #16 + PR #17 awaiting tech-stack sign-off (next-auth, @auth/prisma-adapter, resend) + /merge. No new implementation work.
