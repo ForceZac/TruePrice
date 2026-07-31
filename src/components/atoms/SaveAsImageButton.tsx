@@ -1,6 +1,8 @@
 "use client";
 
+import { useState } from "react";
 import type { RefObject } from "react";
+import { Button } from "@/components/ui/button";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -29,10 +31,13 @@ function toSlug(name: string): string {
  * initial page bundle. No sign-in is required.
  */
 export function SaveAsImageButton({ chartRef, productName }: Props) {
+  const [isPending, setIsPending] = useState(false);
+
   async function handleClick() {
     const node = chartRef.current;
     if (!node) return;
 
+    setIsPending(true);
     try {
       // Lazy-load to keep it out of the initial page bundle
       const { default: domtoimage } = await import("dom-to-image-more");
@@ -45,16 +50,20 @@ export function SaveAsImageButton({ chartRef, productName }: Props) {
     } catch {
       // Silent fail — browser may block canvas taint or DOM capture in some
       // edge cases (e.g. cross-origin images). User simply won't get a download.
+    } finally {
+      setIsPending(false);
     }
   }
 
   return (
-    <button
+    <Button
       type="button"
+      variant="outline"
+      size="sm"
       onClick={handleClick}
-      className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-background px-3 py-1.5 text-sm font-medium text-foreground hover:bg-muted transition-colors"
+      disabled={isPending}
     >
-      Save as Image
-    </button>
+      {isPending ? "Saving…" : "Save as Image"}
+    </Button>
   );
 }

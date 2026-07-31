@@ -21,6 +21,7 @@ function makeRef(el: HTMLElement | null): RefObject<HTMLElement | null> {
 
 beforeEach(() => {
   mockToPng.mockClear();
+  mockToPng.mockResolvedValue("data:image/png;base64,abc123");
 });
 
 describe("SaveAsImageButton", () => {
@@ -109,5 +110,31 @@ describe("SaveAsImageButton", () => {
     expect(() => fireEvent.click(screen.getByRole("button"))).not.toThrow();
     // Give the promise time to settle
     await new Promise((r) => setTimeout(r, 0));
+  });
+
+  it("shows loading label and disables button while saving", async () => {
+    // Slow toPng so we can assert mid-flight state
+    let resolvePng!: (url: string) => void;
+    mockToPng.mockReturnValueOnce(
+      new Promise<string>((resolve) => {
+        resolvePng = resolve;
+      })
+    );
+
+    const divEl = document.createElement("div");
+    render(<SaveAsImageButton chartRef={makeRef(divEl)} productName="Widget" />);
+
+    fireEvent.click(screen.getByRole("button"));
+
+    // Button should switch to loading state immediately
+    await waitFor(() =>
+      expect(screen.getByRole("button", { name: "Saving…" })).toBeDisabled()
+    );
+
+    // Resolve the PNG and verify button returns to idle
+    resolvePng("data:image/png;base64,done");
+    await waitFor(() =>
+      expect(screen.getByRole("button", { name: "Save as Image" })).not.toBeDisabled()
+    );
   });
 });

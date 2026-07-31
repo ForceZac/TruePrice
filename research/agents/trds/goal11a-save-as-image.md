@@ -1,6 +1,6 @@
 # TRD: Goal 11a — Save as Image
 
-- **status:** `in-progress`
+- **status:** `done`
 - **goal:** `Goal 11a` (sub-feature of Goal 11 — Price Alerts & Save-as-Image)
 - **priority:** `P2`
 - **branch:** `task/goal11a-save-as-image`
@@ -24,6 +24,16 @@ This is the client-side-only sub-feature extracted from Goal 11 (Price Alerts & 
 - [x] `dom-to-image-more` is lazy-loaded on click only (not bundled in initial page load)
 - [x] TypeScript compiles clean
 - [x] Unit tests cover: renders button, no-op when ref is null, calls toPng with scale 2, correct filename
+
+## Tasks
+
+- [x] Create `src/components/atoms/SaveAsImageButton.tsx` client component
+- [x] Lazy-import `dom-to-image-more` inside click handler (not top-level)
+- [x] Implement `toSlug` helper to sanitize product name for filename
+- [x] Add `chartCaptureRef` wrapper div in `ProductPageClient` around stat-cards + chart
+- [x] Wire `SaveAsImageButton` into the product page action bar
+- [x] Write unit tests: renders, null-ref no-op, toPng scale 2, filename slug, special chars, error resilience
+- [x] Verify tsc compiles clean
 
 ## Implementation Notes
 
