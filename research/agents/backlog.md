@@ -1,12 +1,12 @@
 # TruePrice Backlog
 
-Last updated: 2026-07-31 (Dev Run #40 — All 9 TRDs marked done, project complete)
+Last updated: 2026-07-31 (Dev Run #57 — Goal 10 reviewer issues fixed, PR #17 updated)
 
 ## Active
 
 | Goal | Branch | PR | Status |
 |------|--------|----|--------|
-| Goal 10 — User Accounts & Personalization | task/goal10-user-accounts | #17 (DRAFT) | In review |
+| Goal 10 — User Accounts & Personalization | task/goal10-user-accounts | #17 | In review — reviewer issues addressed (328f794) |
 
 ## Upcoming (needs TRD)
 
