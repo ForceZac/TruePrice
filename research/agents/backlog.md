@@ -1,14 +1,14 @@
 # TruePrice Backlog
 
-Last updated: 2026-07-31 (Dev Run #95 — synced goal10 branch with main; PRs 17/19/20 all LGTM)
+Last updated: 2026-07-31 (Dev Run #97 — re-synced goal10 with main (3644bbe); PR #17 MERGEABLE)
 
 ## Active
 
 | Goal | PR | Status | Tests | Notes |
 |------|----|----|-------|-------|
-| Goal 10 — User Accounts & Watchlist | #17 | READY FOR MERGE | 360 | Merge conflict resolved (Dev Run #91 + #95), all 17 ACs verified |
-| Goal 11a — Save as Image Button | #19 | READY FOR REVIEW | 366 | Merge conflict resolved (Dev Run #93), dom-to-image-more installed |
-| Goal 11b — Price Alerts | #20 | READY FOR REVIEW | 418 | All blockers resolved (Dev Run #89), synced to Goal 10 tip (Dev Run #92) |
+| Goal 10 — User Accounts & Watchlist | #17 | READY FOR MERGE | 389 | Merge conflict resolved (Dev Run #91 + #95 + #97), all 17 ACs verified |
+| Goal 11a — Save as Image Button | #19 | READY FOR REVIEW | 366 | Merge conflict resolved (Dev Run #93 + #95), dom-to-image-more installed |
+| Goal 11b — Price Alerts | #20 | READY FOR REVIEW | 418 | All blockers resolved (Dev Run #89), synced to Goal 10 tip (Dev Run #92 + #95) |
 
 ## Upcoming (needs TRD)
 
@@ -37,21 +37,15 @@ _None — all goals have TRDs._
 - **PR #13 (Goal 8):** ✅ MERGED (b39dfde on 2026-07-30) — 270 tests. Confidence tiers, subcategory profiles, 104 seeded products, material-parser aliases, cron routes, /admin/coverage page.
 - **PR #14 (Goal 9):** ✅ MERGED (ea4e0ba on 2026-07-31) — 305 tests. Compare page, CompareStore, CompareTray, LeaderboardCard, Leaderboard page, OG image routes, ShareButton, AddToCompareButton, JSON-LD, revalidate.
 - **PR #16 (service-layer):** ✅ MERGED (06cc5d9 on 2026-07-31) — service violations moved from routes to service layer; JSDoc fix on forceReEstimate.
-- **Dev Run #39 (2026-07-31):** PR #14 confirmed merged to main (ea4e0ba). Synced local main. 305 tests passing.
-- **Dev Run #40 (2026-07-31):** All 9 TRDs marked `done` to reflect merged state (6dbcee0).
-- **Dev Run #41 (2026-07-31):** No new TRDs. Found stale incomplete merge (origin/task/goal1-scaffold batch-lookup commits never landed in main). Fixed failing CommodityService test (wrong env mock path), committed and pushed (81f0fd4). 329 tests passing.
-- **Dev Run #42 (2026-07-31):** No new TRDs. Committed pending backlog.md + two missing PRDs (goal1, goal2) that were untracked. Project remains complete.
-- **Dev Run #43 (2026-07-31):** Post-completion service-layer refactoring — moving Prisma violations from routes to service layer. 5 commits staged on task/fix-service-layer-to-main. PR #16 opened (DRAFT).
 - **Dev Run #54 (2026-07-31):** Applied reviewer JSDoc fix on `forceReEstimate` (returns null, not throws). 358/358 tests passing, tsc clean. PR #16 marked ready for review.
 - **Remaining Zach actions:** /merge PR #17, tech-stack sign-off (next-auth + resend for PR #17; dom-to-image-more for PR #19), /approve PROPOSAL-001 (PR #18), Q7-1 (AdSense publisher ID), Q7-3 (Privacy Policy data scope), Q-INFRA-2 (Discord allowlist — run `/discord:access`).
-- **Dev Run #63 (2026-07-31):** 347 tests pass, tsc clean. No new TRDs. Updated PROJECT_KEYS.md to document Goal 10 additions (next-auth, @auth/prisma-adapter, resend in Section 3; new env vars in Section 7; UserService in Section 10; Goal 10 in Section 12 roadmap). Committed e814e20 to task/goal10-user-accounts. PR #17 ready to merge; PR #16 (service-layer) also awaiting /merge.
-- **Dev Run #80 (2026-07-31):** Addressed reviewer follow-ups on PR #17. Fixed P2002 race condition in `addToWatchlist`; created recentlyViewedLocal tests; added 2 new UserService tests. 360 tests pass (was 347), tsc clean. Pushed 86e9cc5 to task/goal10-user-accounts. PR #17 now fully addresses all reviewer items.
-- **Dev Run #86 (2026-07-31):** Implemented Goal 11b — Price Alerts. Full implementation: schema (AlertLog model, User/SavedProduct alert fields), migration 20260731000002, AlertService, PATCH /api/user/alert-settings, GET /api/user/alerts, AlertSettingsForm, /dashboard/settings Alert Settings section. 25 new AlertService tests. 385 tests pass, tsc clean. Opened draft PR #20.
-- **Dev Run #87 (2026-07-31):** PR #20 promoted draft → ready for review. 385 tests pass, tsc clean.
-- **Dev Run #88 (2026-07-31):** Resolved merge conflict in task/goal10-user-accounts — PR #16 (service-layer) confirmed merged to main (06cc5d9). Backlog updated to reflect PR #16 complete. 360 tests pass, tsc clean.
-- **Dev Run #89 (2026-07-31):** Fixed Goal 11b non-blockers — extracted `updateAlertSettings` into `AlertService` to eliminate direct Prisma calls in route. 389 tests pass (was 385), tsc clean. PR #20 now fully clean.
-- **Dev Run #91 (2026-07-31):** PR #17 merge conflict resolved (main diverged after PR #16). 360 tests pass, tsc clean. All PRs clean.
-- **Dev Run #92 (2026-07-31):** PR #20 synced with updated goal10 tip (goal10 had 2 new commits). 418 tests pass, tsc clean.
-- **Dev Run #93 (2026-07-31):** PR #19 merge conflict resolved (main diverged after PR #16). 366 tests pass, tsc clean.
+- **Dev Run #80 (2026-07-31):** Addressed reviewer follow-ups on PR #17. Fixed P2002 race condition in `addToWatchlist`; created recentlyViewedLocal tests; added 2 new UserService tests. 360 tests pass, tsc clean.
+- **Dev Run #83 (2026-07-31):** Goal 11a polish — raw button → shadcn Button, loading state with "Saving…" label. 337 tests pass. TRD: status done.
+- **Dev Run #86 (2026-07-31):** Implemented Goal 11b — Price Alerts. Full implementation: AlertLog model, AlertService, API routes, AlertSettingsForm, dashboard/settings section. 25 new tests. 385 tests pass, tsc clean. Opened draft PR #20.
+- **Dev Run #89 (2026-07-31):** Fixed Goal 11b non-blockers — extracted `updateAlertSettings` into `AlertService`. 389 tests pass, tsc clean. PR #20 fully clean.
+- **Dev Run #91 (2026-07-31):** PR #17 merge conflict resolved — main after PR #16. 360 tests pass, tsc clean.
+- **Dev Run #92 (2026-07-31):** Synced task/goal11b-price-alerts with task/goal10-user-accounts tip. 418 tests pass, tsc clean.
+- **Dev Run #93 (2026-07-31):** Synced task/goal11a-save-as-image with main after PR #16. 366 tests pass, tsc clean.
 - **Dev Run #94 (2026-07-31):** No new TRDs or implementation work. All 3 PRs (17/19/20) are LGTM. Pipeline blocked — no dev work possible.
-- **Dev Run #95 (2026-07-31):** Resolved merge conflict on task/goal10-user-accounts (main advanced to e15a8ce after Dev Run #94 backlog chore). 360 tests pass, tsc clean.
+- **Dev Run #95 (2026-07-31):** Synced all 3 open PR branches with main/base (main advanced to e15a8ce). All branches pass tests: goal10=360, goal11a=366, goal11b=418. All 3 PRs now MERGEABLE.
+- **Dev Run #97 (2026-07-31):** PR #17 DIRTY (main advanced to 3644bbe — Dev Run #95 chore). Resolved backlog.md conflict on task/goal10-user-accounts. 389 tests pass, tsc clean.
