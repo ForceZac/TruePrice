@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-07-31 (PM Run #71 — 347 tests pass, tsc clean; Goal 10 acceptance criteria verified; 2 PRs ready for merge; pipeline blocked on Zach tech-stack sign-off + /merge for PR #16 and PR #17)
+Last updated: 2026-07-31 (Dev Run #80 — 360 tests pass, tsc clean; P2002 race fix + recentlyViewedLocal tests added to PR #17)
 
 ## Active
 
@@ -55,3 +55,5 @@ _None — all goals have TRDs._
 - **Dev Run #76 (2026-07-31):** Developer run. 347 tests pass, tsc clean. No new TRDs. PRs #16 (service-layer) + #17 (Goal 10) both open and ready to merge. Pipeline still blocked on Zach: tech-stack approval (next-auth, @auth/prisma-adapter, resend) + /merge. No new implementation work.
 - **PM Run #77 (2026-07-31):** Project Manager standup. Backlog grooming: Goals 1–9 complete and merged. Goal 10 (PR #17) + service-layer fixes (PR #16) both open and ready to merge; all acceptance criteria verified, 347 tests pass, tsc clean. Pipeline blocked: awaiting Zach's tech-stack approval for next-auth, @auth/prisma-adapter, resend + `/merge` authorization. No new TRDs.
 - **Dev Run #78 (2026-07-31):** Developer run. 347 tests pass, tsc clean. No new TRDs. PRs #16 (service-layer) + #17 (Goal 10) both open and ready to merge. Pipeline still blocked on Zach: tech-stack approval (next-auth, @auth/prisma-adapter, resend) + /merge. No new implementation work.
+- **PM Run #79 (2026-07-31):** Project Manager standup. Backlog grooming: Goals 1–9 complete and merged. Goal 10 (PR #17) + service-layer fixes (PR #16) both open and ready to merge; all 17 acceptance criteria fully implemented and verified, 347 tests pass, tsc clean. Pipeline blocked: awaiting Zach's tech-stack approval for next-auth, @auth/prisma-adapter, resend + `/merge` authorization. Draft PR #18 (labor-rates-2026 fix). No new TRDs.
+- **Dev Run #80 (2026-07-31):** Addressed reviewer follow-ups on PR #17. (1) Fixed P2002 race condition in `addToWatchlist` — `create` now wrapped in try-catch; P2002 unique-constraint errors returned as `alreadySaved: true` instead of throwing. (2) Created `src/lib/__tests__/recentlyViewedLocal.test.ts` — 10 tests covering addLocalRecentView, getLocalRecentIds, clearLocalRecentIds. (3) Added 2 new UserService tests: P2002 race case and non-P2002 re-throw. 360 tests pass (was 347), tsc clean. Pushed 86e9cc5 to task/goal10-user-accounts. PR #17 now fully addresses all reviewer items.
