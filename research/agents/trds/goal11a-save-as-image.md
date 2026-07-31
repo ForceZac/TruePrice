@@ -1,6 +1,6 @@
 # TRD: Goal 11a — Save as Image
 
-- **status:** `ready`
+- **status:** `in-progress`
 - **goal:** `Goal 11a` (sub-feature of Goal 11 — Price Alerts & Save-as-Image)
 - **priority:** `P2`
 - **branch:** `task/goal11a-save-as-image`
@@ -16,14 +16,14 @@ This is the client-side-only sub-feature extracted from Goal 11 (Price Alerts & 
 
 ## Acceptance Criteria
 
-- [ ] "Save as Image" button appears on the product page cost breakdown section
-- [ ] Clicking "Save as Image" downloads a PNG of the cost breakdown chart without a page reload
-- [ ] PNG is captured at 2× pixel density (Retina-aware)
-- [ ] Filename follows the pattern `trueprice-{product-slug}.png`
-- [ ] Button works for signed-out users (no auth check)
-- [ ] `dom-to-image-more` is lazy-loaded on click only (not bundled in initial page load)
-- [ ] TypeScript compiles clean
-- [ ] Unit tests cover: renders button, no-op when ref is null, calls toPng with scale 2, correct filename
+- [x] "Save as Image" button appears on the product page cost breakdown section
+- [x] Clicking "Save as Image" downloads a PNG of the cost breakdown chart without a page reload
+- [x] PNG is captured at 2× pixel density (Retina-aware)
+- [x] Filename follows the pattern `trueprice-{product-slug}.png`
+- [x] Button works for signed-out users (no auth check)
+- [x] `dom-to-image-more` is lazy-loaded on click only (not bundled in initial page load)
+- [x] TypeScript compiles clean
+- [x] Unit tests cover: renders button, no-op when ref is null, calls toPng with scale 2, correct filename
 
 ## Implementation Notes
 

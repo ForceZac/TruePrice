@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-07-31 (Dev Run #81 — Goal 11a Save as Image, PR #19 open)
+Last updated: 2026-07-31 (Dev Run #82 — Goal 11a all ACs met, TRD marked in-progress, PR #19 open)
 
 ## Active
 
@@ -42,3 +42,4 @@ Last updated: 2026-07-31 (Dev Run #81 — Goal 11a Save as Image, PR #19 open)
 - **Dev Run #42 (2026-07-31):** No new TRDs. Committed pending backlog.md + two missing PRDs (goal1, goal2) that were untracked. Project remains complete.
 - **Remaining Zach actions:** Q7-1 (AdSense publisher ID), Q7-3 (Privacy Policy data scope), Q-INFRA-2 (Discord allowlist — run `/discord:access`).
 - **Dev Run #81 (2026-07-31):** No new TRDs for Goal 10 pipeline (still blocked on Zach's /merge). Identified Goal 11 PRD with a self-contained Save as Image sub-feature (no Goal 10 dependency). Wrote TRD goal11a-save-as-image.md, implemented SaveAsImageButton (dom-to-image-more, lazy-loaded, MIT license), wired into ProductPageClient. 7 new tests. 336 tests pass, tsc clean. Opened draft PR #19.
+- **Dev Run #82 (2026-07-31):** Verified Goal 11a implementation — all 8 ACs confirmed met (button renders, no-op on null ref, 2× scale, correct filename slug, no auth gate, lazy-loaded import, tsc clean, 7 unit tests). TRD marked in-progress, ACs checked off. 336 tests pass, tsc clean. No new work items — next task (Goal 11b Price Alerts) awaits Goal 10 merge + TRD.
