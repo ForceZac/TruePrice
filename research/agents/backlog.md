@@ -38,3 +38,4 @@ _None — all goals have TRDs._
 - **PM Run #76 (2026-07-31):** Project feature-complete. Verified all 9 goals merged, 329 tests passing, commit e8bb2ab. Posted standup to #standup.
 - **Remaining Zach actions:** Q7-1 (AdSense publisher ID), Q7-3 (Privacy Policy data scope), Q-INFRA-2 (Discord allowlist — run `/discord:access`).
 - **Dev Run #51 (2026-07-31):** No new TRDs. All 9 goals complete. Cleaned up uncommitted docs (Goal 3 PRD, Goal 10 PRD draft, Goal 7 PRD question resolutions, roadmap Goal 10 section, PROJECT_KEYS Goal 10 row). Added .merge-watcher-state to .gitignore. Promoted PR #15 from draft to ready (333 tests, TS clean). Pushed 7805da0.
+- **Dev Run #52 (2026-07-31):** No new TRDs. All 9 goals complete. PR #15 (fix/stale-price service-layer) already open, reviewer-approved, 347 tests passing, TS clean. Awaiting `/merge`.
