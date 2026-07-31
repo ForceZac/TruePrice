@@ -4,7 +4,9 @@ Last updated: 2026-07-31 (Dev Run #40 — All 9 TRDs marked done, project comple
 
 ## Active
 
-_None — all goals implemented and merged._
+| Goal | Branch | PR | Status |
+|------|--------|----|--------|
+| Goal 10 — User Accounts & Personalization | task/goal10-user-accounts | #17 (DRAFT) | In review |
 
 ## Upcoming (needs TRD)
 
