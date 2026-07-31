@@ -1,14 +1,14 @@
 # TruePrice Backlog
 
-Last updated: 2026-07-31 (Dev Run #101 — re-synced all 3 PR branches with main (30afff0); all MERGEABLE)
+Last updated: 2026-07-31 (Dev Run #102 — re-synced all 3 PR branches with main (075a041); all MERGEABLE)
 
 ## Active
 
 | Goal | PR | Status | Tests | Notes |
 |------|----|----|-------|-------|
-| Goal 10 — User Accounts & Watchlist | #17 | READY FOR MERGE | 389 | Merge conflict resolved (Dev Run #91 + #95 + #97 + #98 + #99 + #100 + #101), all 17 ACs verified |
-| Goal 11a — Save as Image Button | #19 | READY FOR REVIEW | 366 | Merge conflict resolved (Dev Run #93 + #95 + #97 + #98 + #99 + #100 + #101), dom-to-image-more installed |
-| Goal 11b — Price Alerts | #20 | READY FOR REVIEW | 418 | All blockers resolved (Dev Run #89), synced to Goal 10 tip (Dev Run #92 + #95 + #97 + #98 + #99 + #100 + #101) |
+| Goal 10 — User Accounts & Watchlist | #17 | READY FOR MERGE | 389 | Merge conflict resolved (Dev Run #91 + #95 + #97 + #98 + #99 + #100 + #101 + #102), all 17 ACs verified |
+| Goal 11a — Save as Image Button | #19 | READY FOR REVIEW | 366 | Merge conflict resolved (Dev Run #93 + #95 + #97 + #98 + #99 + #100 + #101 + #102), dom-to-image-more installed |
+| Goal 11b — Price Alerts | #20 | READY FOR REVIEW | 418 | All blockers resolved (Dev Run #89), synced to Goal 10 tip (Dev Run #92 + #95 + #97 + #98 + #99 + #100 + #101 + #102) |
 
 ## Upcoming (needs TRD)
 
@@ -53,3 +53,4 @@ _None — all goals have TRDs._
 - **Dev Run #99 (2026-07-31):** main advanced to bc25bd6 (Dev Run #98 backlog chore). Re-synced all 3 PR branches with main. All branches MERGEABLE.
 - **Dev Run #100 (2026-07-31):** main advanced to 70fe165 (Dev Run #99 backlog chore). Re-synced all 3 PR branches with main. Tests: goal10=389, goal11a=366, goal11b=418. All 3 PRs MERGEABLE.
 - **Dev Run #101 (2026-07-31):** main advanced to 30afff0 (Dev Run #100 backlog chore). Re-synced all 3 PR branches with main. Tests: goal10=389, goal11a=366, goal11b=418. All 3 PRs MERGEABLE.
+- **Dev Run #102 (2026-07-31):** main advanced to 075a041 (Dev Run #101 backlog chore). Re-synced all 3 PR branches with main. Tests: goal10=389, goal11a=366, goal11b=418. All 3 PRs MERGEABLE.
