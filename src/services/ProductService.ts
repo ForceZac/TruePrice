@@ -61,8 +61,8 @@ async function resolveCategory(rawCategory?: string): Promise<string> {
   if (fallback) return fallback.id;
 
   // Last resort: any category
-  const any = await prisma.productCategory.findFirst();
-  if (any) return any.id;
+  const firstCategory = await prisma.productCategory.findFirst();
+  if (firstCategory) return firstCategory.id;
 
   // Create a minimal default if none exist
   const created = await prisma.productCategory.create({
