@@ -1,6 +1,6 @@
 # TRD: Goal 11b — Price Alerts
 
-- **status:** `ready`
+- **status:** `done`
 - **goal:** `Goal 11b`
 - **priority:** `P2`
 - **branch:** `task/goal11b-price-alerts`
@@ -13,18 +13,18 @@ Add price alert emails: after each daily commodity price refresh, re-estimate co
 
 ## Acceptance Criteria
 
-- [ ] `AlertService.checkWatchlistAlerts()` is called after `CommodityService.refreshPrices()` completes in the daily cron
-- [ ] For each user with ≥1 saved product, computes `estimateCost()` result and compares `totalCostCents` to `SavedProduct.lastAlertedCostCents` (falls back to `costAtWatchCents`, then skips if both null)
-- [ ] Alert fires when `abs(delta) / baseline >= threshold` (threshold: null → 10%, 0 → any change, else the stored value in pct)
-- [ ] Alert email (Resend) renders: product name, old cost, new cost, delta % with direction, unsubscribe link
-- [ ] After alert fires, `SavedProduct.lastAlertedCostCents` is updated to the new cost and `SavedProduct.lastAlertedAt` is set to now
-- [ ] Rate limit: no alert fires if `SavedProduct.lastAlertedAt` is within the last 24 hours for that (user, product) pair
-- [ ] `User.alertsEnabled = false` skips that user entirely
-- [ ] `PATCH /api/account/alert-settings` updates `alertThresholdPct` (must be one of `[null, 0, 5, 10, 20]`) and `alertsEnabled`; returns 401 for unauthenticated requests
-- [ ] `GET /api/account/alerts` returns the last 30 days of `AlertLog` rows for the current user; returns 401 for unauthenticated requests
-- [ ] `/dashboard/settings` includes an Alert Settings section with threshold selector and opt-out toggle
-- [ ] TypeScript compiles clean
-- [ ] `AlertService` unit tests: threshold logic (all 5 cases), delta calculation, rate-limit skip, alertsEnabled skip, baseline update
+- [x] `AlertService.checkWatchlistAlerts()` is called after `CommodityService.refreshPrices()` completes in the daily cron
+- [x] For each user with ≥1 saved product, computes `estimateCost()` result and compares `totalCostCents` to `SavedProduct.lastAlertedCostCents` (falls back to `costAtWatchCents`, then skips if both null)
+- [x] Alert fires when `abs(delta) / baseline >= threshold` (threshold: null → 10%, 0 → any change, else the stored value in pct)
+- [x] Alert email (Resend) renders: product name, old cost, new cost, delta % with direction, unsubscribe link
+- [x] After alert fires, `SavedProduct.lastAlertedCostCents` is updated to the new cost and `SavedProduct.lastAlertedAt` is set to now
+- [x] Rate limit: no alert fires if `SavedProduct.lastAlertedAt` is within the last 24 hours for that (user, product) pair
+- [x] `User.alertsEnabled = false` skips that user entirely
+- [x] `PATCH /api/account/alert-settings` updates `alertThresholdPct` (must be one of `[null, 0, 5, 10, 20]`) and `alertsEnabled`; returns 401 for unauthenticated requests
+- [x] `GET /api/account/alerts` returns the last 30 days of `AlertLog` rows for the current user; returns 401 for unauthenticated requests
+- [x] `/dashboard/settings` includes an Alert Settings section with threshold selector and opt-out toggle
+- [x] TypeScript compiles clean
+- [x] `AlertService` unit tests: threshold logic (all 5 cases), delta calculation, rate-limit skip, alertsEnabled skip, baseline update
 
 ## New Dependencies
 
@@ -80,18 +80,18 @@ model AlertLog {
 
 ## Tasks
 
-- [ ] Write TRD
-- [ ] Create branch off `task/goal10-user-accounts`
-- [ ] Add `alertThresholdPct`, `alertsEnabled` to `User` in schema
-- [ ] Add `costAtWatchCents`, `lastAlertedCostCents`, `lastAlertedAt` to `SavedProduct` in schema
-- [ ] Add `AlertLog` model to schema
-- [ ] Create Prisma migration
-- [ ] Add `ALERT_FROM_EMAIL` to `env.server.ts`
-- [ ] Implement `AlertService.ts`
-- [ ] Hook `AlertService.checkWatchlistAlerts()` into refresh-prices cron
-- [ ] Implement `PATCH /api/account/alert-settings`
-- [ ] Implement `GET /api/account/alerts`
-- [ ] Implement `AlertSettingsForm.tsx`
-- [ ] Add alert settings section to `/dashboard/settings`
-- [ ] Write `AlertService` unit tests
-- [ ] Run full test suite + tsc; fix failures
+- [x] Write TRD
+- [x] Create branch off `task/goal10-user-accounts`
+- [x] Add `alertThresholdPct`, `alertsEnabled` to `User` in schema
+- [x] Add `costAtWatchCents`, `lastAlertedCostCents`, `lastAlertedAt` to `SavedProduct` in schema
+- [x] Add `AlertLog` model to schema
+- [x] Create Prisma migration
+- [x] Add `ALERT_FROM_EMAIL` to `env.server.ts`
+- [x] Implement `AlertService.ts`
+- [x] Hook `AlertService.checkWatchlistAlerts()` into refresh-prices cron
+- [x] Implement `PATCH /api/account/alert-settings`
+- [x] Implement `GET /api/account/alerts`
+- [x] Implement `AlertSettingsForm.tsx`
+- [x] Add alert settings section to `/dashboard/settings`
+- [x] Write `AlertService` unit tests
+- [x] Run full test suite + tsc; fix failures

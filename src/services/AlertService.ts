@@ -15,6 +15,9 @@
 import { prisma } from "@/lib/db";
 import { serverEnv as env } from "@/lib/env.server";
 import { getCachedBreakdown } from "@/services/CostEstimationService";
+import { VALID_THRESHOLDS, type AlertThreshold } from "@/lib/alert-constants";
+
+export { VALID_THRESHOLDS, type AlertThreshold };
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
@@ -23,10 +26,6 @@ export const DEFAULT_ALERT_THRESHOLD_PCT = 10;
 
 /** Minimum hours between alerts for the same (user, product) pair. */
 const RATE_LIMIT_HOURS = 24;
-
-/** Valid explicit threshold values (percentage points). */
-export const VALID_THRESHOLDS = [0, 5, 10, 20] as const;
-export type AlertThreshold = (typeof VALID_THRESHOLDS)[number];
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 

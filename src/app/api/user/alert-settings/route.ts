@@ -1,6 +1,6 @@
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/db";
-import { VALID_THRESHOLDS, type AlertThreshold } from "@/services/AlertService";
+import { VALID_THRESHOLDS, type AlertThreshold } from "@/lib/alert-constants";
 
 /**
  * PATCH /api/user/alert-settings

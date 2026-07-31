@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { VALID_THRESHOLDS } from "@/services/AlertService";
+import { VALID_THRESHOLDS } from "@/lib/alert-constants";
 
 interface AlertSettingsFormProps {
   /** Current value from the DB — null means "use 10% default". */
