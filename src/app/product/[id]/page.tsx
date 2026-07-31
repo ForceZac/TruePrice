@@ -3,9 +3,11 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import { getProductById } from "@/services/ProductService";
 import { clientEnv as env } from "@/lib/env.client";
+import { auth } from "@/lib/auth";
 import { ProductPageClient } from "./ProductPageClient";
 import { Breadcrumb } from "@/components/atoms/Breadcrumb";
 import { AddToCompareButton } from "@/components/atoms/AddToCompareButton";
+import { SaveButton } from "@/components/atoms/SaveButton";
 import { CompareTray } from "@/components/molecules/CompareTray";
 import { AdSlot } from "@/components/atoms/AdSlot";
 import type { ProductResult } from "@/lib/api";
@@ -50,12 +52,14 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
 
 export default async function ProductPage({ params }: ProductPageProps) {
   const { id } = await params;
-  const product = await getProductById(id);
+  const [product, session] = await Promise.all([getProductById(id), auth()]);
 
   if (!product) {
     notFound();
   }
 
+  const isAuthenticated = !!session?.user;
+  const userId = session?.user?.id ?? null;
   const canonicalUrl = `${env.NEXT_PUBLIC_APP_URL}/product/${id}`;
 
   // Build breadcrumb items
@@ -124,6 +128,11 @@ export default async function ProductPage({ params }: ProductPageProps) {
               {product.category}
             </span>
             <AddToCompareButton productId={product.id} productName={product.name} />
+            <SaveButton
+              productId={product.id}
+              productName={product.name}
+              isAuthenticated={isAuthenticated}
+            />
           </div>
         </div>
       </div>
@@ -200,7 +209,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
         >
           True Cost
         </h2>
-        <ProductPageClient product={productForClient} canonicalUrl={canonicalUrl} />
+        <ProductPageClient product={productForClient} canonicalUrl={canonicalUrl} userId={userId} />
       </section>
 
       {/* Ad unit — below cost breakdown */}

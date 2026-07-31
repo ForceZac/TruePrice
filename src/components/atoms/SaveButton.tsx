@@ -1,39 +1,42 @@
 "use client";
 
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Bookmark, BookmarkCheck } from "lucide-react";
 import { useWatchlist } from "@/hooks/useWatchlist";
 
 interface Props {
   productId: string;
   productName: string;
+  /** Passed from the server component — avoids a client-side auth round-trip. */
+  isAuthenticated: boolean;
 }
 
 /**
  * Saves/unsaves a product from the user's watchlist.
  *
  * - Authenticated: toggles saved state with an optimistic update.
- * - Unauthenticated: shows a soft sign-in nudge instead of toggling.
+ * - Unauthenticated: shows a soft "Sign in to save" nudge linking to /login.
  */
-export function SaveButton({ productId, productName }: Props) {
+export function SaveButton({ productId, productName, isAuthenticated }: Props) {
+  const pathname = usePathname();
   const { isSaved, isLoading, save, unsave } = useWatchlist(productId);
 
-  const isPending = save.isPending || unsave.isPending;
-
-  function handleClick() {
-    if (isSaved) {
-      unsave.mutate();
-    } else {
-      save.mutate(undefined, {
-        onError: (err) => {
-          // 401 = not signed in — redirect to login
-          if (err instanceof Error && err.message.includes("401")) {
-            window.location.href = `/login?next=${encodeURIComponent(window.location.pathname)}`;
-          }
-        },
-      });
-    }
+  // ── Unauthenticated nudge ──────────────────────────────────────────────────
+  if (!isAuthenticated) {
+    return (
+      <Link
+        href={`/login?next=${encodeURIComponent(pathname)}`}
+        className="inline-flex items-center gap-1.5 rounded-lg border border-dashed border-border px-3 py-1.5 text-sm text-muted-foreground hover:text-foreground hover:border-foreground/40 transition"
+        aria-label={`Sign in to save ${productName}`}
+      >
+        <Bookmark className="h-4 w-4" aria-hidden="true" />
+        Sign in to save
+      </Link>
+    );
   }
 
+  // ── Loading skeleton ────────────────────────────────────────────────────────
   if (isLoading) {
     return (
       <button
@@ -46,6 +49,16 @@ export function SaveButton({ productId, productName }: Props) {
         Save
       </button>
     );
+  }
+
+  const isPending = save.isPending || unsave.isPending;
+
+  function handleClick() {
+    if (isSaved) {
+      unsave.mutate();
+    } else {
+      save.mutate();
+    }
   }
 
   return (
