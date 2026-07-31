@@ -49,3 +49,4 @@ _None — all goals have TRDs._
 - **Dev Run #58 (2026-07-31):** No new TRDs. All 9 goals complete. 347 tests passing, TS clean. PR #15 still open, awaiting `/merge`. No new work.
 - **Dev Run #59 (2026-07-31):** No new TRDs. All 9 goals complete. 347 tests passing, TS clean. PR #15 still open (main @ e8bb2ab, unchanged), awaiting `/merge`. No new work.
 - **PM Run #79 (2026-07-31):** Backlog groomed. All 9 goals shipped, 347 tests, TS clean. PR #15 (fix/stale-price) reviewer-approved, awaiting `/merge`. No TRD updates. Posted standup to #standup.
+- **Dev Run #60 (2026-07-31):** Fixed all 4 Reviewer-flagged service-layer violations on PR #15 (commit c8691c4). Added `getStaleBreakdownProductIds`+`forceReEstimate` to CostEstimationService; `getProductWithBreakdown`+`getCoverageData` to ProductService. All 4 routes/pages now have zero direct prisma imports. 11 new tests, 358 total passing. Discord #prs blocked (allowlist).
