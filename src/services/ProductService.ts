@@ -292,6 +292,52 @@ export async function searchProducts(query: string, limit = 20): Promise<Product
   }));
 }
 
+// ─── Retail price refresh helpers ────────────────────────────────────────────
+
+const RETAIL_STALE_DAYS = 30;
+
+/**
+ * Returns products that have a UPC but no retail price, or whose retail price
+ * hasn't been refreshed in more than 30 days.
+ *
+ * Used by the cron/refresh-retail-prices route to build its refresh queue.
+ */
+export async function getStaleRetailProducts(): Promise<Array<{ id: string; upc: string }>> {
+  const staleDate = new Date(Date.now() - RETAIL_STALE_DAYS * 24 * 60 * 60 * 1000);
+  const products = await prisma.product.findMany({
+    where: {
+      upc: { not: null },
+      OR: [
+        { retailPriceCents: null },
+        { lastLookedUp: { lt: staleDate } },
+        { lastLookedUp: null },
+      ],
+    },
+    select: { id: true, upc: true },
+  });
+  return products.filter((p): p is { id: string; upc: string } => p.upc !== null);
+}
+
+/**
+ * Update the retail price for a product and touch lastLookedUp.
+ * Pass null for priceCents to record that the lookup ran but returned no price,
+ * which prevents the product from being re-queried on the next cron cycle.
+ */
+export async function updateRetailPrice(
+  productId: string,
+  priceCents: number | null
+): Promise<void> {
+  await prisma.product.update({
+    where: { id: productId },
+    data: {
+      ...(priceCents !== null ? { retailPriceCents: priceCents } : {}),
+      lastLookedUp: new Date(),
+    },
+  });
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+
 /**
  * Get a single cached product by internal ID.
  */

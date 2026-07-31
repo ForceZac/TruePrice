@@ -69,6 +69,8 @@ import {
   lookupProduct,
   searchProducts,
   getProductById,
+  getStaleRetailProducts,
+  updateRetailPrice,
 } from "@/services/ProductService";
 
 // ─── Fixtures ─────────────────────────────────────────────────────────────────
@@ -294,5 +296,77 @@ describe("getProductById", () => {
     mockProductFindUnique.mockResolvedValue(null);
     await getProductById("some-id");
     expect(mockProductFindUnique.mock.calls[0][0].where.id).toBe("some-id");
+  });
+});
+
+// ─── getStaleRetailProducts ───────────────────────────────────────────────────
+
+describe("getStaleRetailProducts", () => {
+  beforeEach(() => {
+    mockProductFindMany.mockReset();
+  });
+
+  it("returns empty array when no stale products exist", async () => {
+    mockProductFindMany.mockResolvedValue([]);
+    const result = await getStaleRetailProducts();
+    expect(result).toEqual([]);
+  });
+
+  it("returns products with non-null UPCs", async () => {
+    mockProductFindMany.mockResolvedValue([
+      { id: "p1", upc: "012345678901" },
+      { id: "p2", upc: "012345678902" },
+    ]);
+    const result = await getStaleRetailProducts();
+    expect(result).toHaveLength(2);
+    expect(result[0]).toEqual({ id: "p1", upc: "012345678901" });
+  });
+
+  it("filters out rows where upc is null (Prisma type guard)", async () => {
+    // Prisma guarantees upc is non-null via the where clause, but the TS type
+    // is string | null — confirm our filter handles it defensively.
+    mockProductFindMany.mockResolvedValue([
+      { id: "p1", upc: "012345678901" },
+      { id: "p2", upc: null },
+    ]);
+    const result = await getStaleRetailProducts();
+    expect(result).toHaveLength(1);
+    expect(result[0].id).toBe("p1");
+  });
+
+  it("queries with the correct where clause shape", async () => {
+    mockProductFindMany.mockResolvedValue([]);
+    await getStaleRetailProducts();
+    const call = mockProductFindMany.mock.calls[0][0];
+    expect(call.where.upc).toEqual({ not: null });
+    expect(call.where.OR).toBeDefined();
+    expect(call.select).toEqual({ id: true, upc: true });
+  });
+});
+
+// ─── updateRetailPrice ────────────────────────────────────────────────────────
+
+describe("updateRetailPrice", () => {
+  beforeEach(() => {
+    mockProductUpdate.mockReset();
+    mockProductUpdate.mockResolvedValue({});
+  });
+
+  it("updates retailPriceCents and lastLookedUp when priceCents is provided", async () => {
+    await updateRetailPrice("prod-1", 1499);
+    expect(mockProductUpdate).toHaveBeenCalledOnce();
+    const call = mockProductUpdate.mock.calls[0][0];
+    expect(call.where.id).toBe("prod-1");
+    expect(call.data.retailPriceCents).toBe(1499);
+    expect(call.data.lastLookedUp).toBeInstanceOf(Date);
+  });
+
+  it("only updates lastLookedUp when priceCents is null", async () => {
+    await updateRetailPrice("prod-2", null);
+    expect(mockProductUpdate).toHaveBeenCalledOnce();
+    const call = mockProductUpdate.mock.calls[0][0];
+    expect(call.where.id).toBe("prod-2");
+    expect(call.data).not.toHaveProperty("retailPriceCents");
+    expect(call.data.lastLookedUp).toBeInstanceOf(Date);
   });
 });
