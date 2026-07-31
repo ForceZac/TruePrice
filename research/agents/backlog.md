@@ -1,13 +1,14 @@
 # TruePrice Backlog
 
-Last updated: 2026-07-31 (Dev Run #88 — conflict resolved: PR #16 merged to main (06cc5d9); Goal 10 PR #17 still awaiting /merge; 360 tests pass)
+Last updated: 2026-07-31 (Dev Run #89 — Goal 11b blockers resolved; PR #17 360 tests, PR #19 337 tests, PR #20 389 tests; all ready)
 
 ## Active
 
 | Goal | Branch | PR | Status |
 |------|--------|----|--------|
 | Goal 10 — User Accounts & Personalization | task/goal10-user-accounts | #17 | Ready to merge — all reviewer issues resolved; 360 tests pass; awaiting tech-stack sign-off + /merge from Zach |
-| Goal 11b — Price Alerts | task/goal11b-price-alerts | #20 | Ready for review — all ACs done, 385 tests pass, tsc clean; depends on Goal 10 merge |
+| Goal 11a — Save as Image | task/goal11a-save-as-image | #19 | Ready for review — 337 tests pass |
+| Goal 11b — Price Alerts | task/goal11b-price-alerts | #20 | Ready for review — all blockers resolved; 389 tests pass; depends on Goal 10 merge |
 
 ## Upcoming (needs TRD)
 
@@ -65,3 +66,5 @@ _None — all goals have TRDs._
 - **Dev Run #86 (2026-07-31):** Implemented Goal 11b — Price Alerts. Full implementation: schema (AlertLog model, User/SavedProduct alert fields), migration 20260731000002, AlertService (checkWatchlistAlerts, getAlertHistory, threshold/rate-limit helpers), PATCH /api/user/alert-settings, GET /api/user/alerts, AlertSettingsForm component, /dashboard/settings Alert Settings section. 25 new AlertService tests. 385 tests pass, tsc clean. Opened draft PR #20 (base: task/goal10-user-accounts).
 - **Dev Run #87 (2026-07-31):** PR #20 promoted draft → ready for review. 385 tests pass, tsc clean.
 - **Dev Run #88 (2026-07-31):** Resolved merge conflict in task/goal10-user-accounts — PR #16 (service-layer) confirmed merged to main (06cc5d9). Backlog updated to reflect PR #16 complete. 360 tests pass, tsc clean.
+- **Dev Run #89 (2026-07-31):** Fixed Goal 11b non-blockers — extracted `updateAlertSettings` into `AlertService` to eliminate direct Prisma calls in route. 389 tests pass (was 385), tsc clean. PR #20 now fully clean, all reviewer issues resolved.
+- **PM Run #90 (2026-07-31):** Project Manager standup — groomed backlog. Status: Goals 1–9 complete, PR #16 merged. Goal 10 (PR #17, 360 tests) ready to merge, awaiting /merge + tech-stack approval. Goal 11a (PR #19, 337 tests) + Goal 11b (PR #20, 389 tests) both ready for review. Pipeline blocked on Zach: /merge PR #17 + tech-stack approval (next-auth, @auth/prisma-adapter, resend). Posted standup.
