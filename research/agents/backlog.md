@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-07-31 (Dev Run #64 — 347 tests pass, tsc clean; all acceptance criteria verified; no new work available; Goal 10 awaiting tech-stack approval + /merge)
+Last updated: 2026-07-31 (Dev Run #65 — 347 tests pass, tsc clean; no new work; pipeline blocked on Zach tech-stack sign-off + /merge for PR #16 and PR #17)
 
 ## Active
 
@@ -40,3 +40,4 @@ _None — all goals have TRDs._
 - **Remaining Zach actions:** Q7-1 (AdSense publisher ID), Q7-3 (Privacy Policy data scope), Q-INFRA-2 (Discord allowlist — run `/discord:access`).
 - **Dev Run #63 (2026-07-31):** 347 tests pass, tsc clean. No new TRDs. Updated PROJECT_KEYS.md to document Goal 10 additions (next-auth, @auth/prisma-adapter, resend in Section 3; new env vars in Section 7; UserService in Section 10; Goal 10 in Section 12 roadmap). Committed e814e20 to task/goal10-user-accounts. PR #17 ready to merge; PR #16 (service-layer) also awaiting /merge.
 - **Dev Run #64 (2026-07-31):** 347 tests pass, tsc clean. All Goal 10 acceptance criteria verified against implementation. No new TRDs. PR #17 already open (not draft). No new work — pipeline blocked on Zach's tech-stack sign-off (next-auth, resend, @auth/prisma-adapter) + /merge.
+- **Dev Run #65 (2026-07-31):** 347 tests pass, tsc clean. No new TRDs or work. Pipeline still blocked on Zach: PR #16 + PR #17 awaiting /merge; tech-stack approval required for next-auth, @auth/prisma-adapter, resend. Discord post failed (channel not allowlisted — needs `/discord:access`).
