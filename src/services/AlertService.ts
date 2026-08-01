@@ -94,6 +94,16 @@ export async function checkWatchlistAlerts(): Promise<AlertCheckResult> {
   const now = new Date();
   const nowMs = now.getTime();
 
+  // Memoize breakdown fetches so the same product isn't re-fetched once per
+  // watching user — a single Promise is shared across all users watching it.
+  const breakdownCache = new Map<string, ReturnType<typeof getCachedBreakdown>>();
+  const getBreakdown = (productId: string) => {
+    if (!breakdownCache.has(productId)) {
+      breakdownCache.set(productId, getCachedBreakdown(productId));
+    }
+    return breakdownCache.get(productId)!;
+  };
+
   // Load all users with alerts enabled who have ≥1 saved product
   const users = await prisma.user.findMany({
     where: {
@@ -140,7 +150,7 @@ export async function checkWatchlistAlerts(): Promise<AlertCheckResult> {
       if (baseline === null) {
         // No baseline yet — this is the first refresh since the product was saved.
         // Set costAtWatchCents to the current estimate and move on.
-        const current = await getCachedBreakdown(sp.productId);
+        const current = await getBreakdown(sp.productId);
         if (current) {
           await prisma.savedProduct.update({
             where: { userId_productId: { userId: user.id, productId: sp.productId } },
@@ -158,7 +168,7 @@ export async function checkWatchlistAlerts(): Promise<AlertCheckResult> {
       }
 
       // Get current estimate from cache
-      const current = await getCachedBreakdown(sp.productId);
+      const current = await getBreakdown(sp.productId);
       if (!current) {
         alertsSkipped++;
         continue;
@@ -174,25 +184,26 @@ export async function checkWatchlistAlerts(): Promise<AlertCheckResult> {
       // Compute signed delta
       const deltaPercent = ((newCost - baseline) / baseline) * 100;
 
-      // Persist AlertLog row
-      await prisma.alertLog.create({
-        data: {
-          userId: user.id,
-          productId: sp.productId,
-          oldCostCents: baseline,
-          newCostCents: newCost,
-          deltaPercent,
-        },
-      });
-
-      // Update SavedProduct baseline
-      await prisma.savedProduct.update({
-        where: { userId_productId: { userId: user.id, productId: sp.productId } },
-        data: {
-          lastAlertedCostCents: newCost,
-          lastAlertedAt: now,
-        },
-      });
+      // Persist AlertLog row and update baseline atomically so a crash between
+      // the two writes can't produce a duplicate alert on the next cron run.
+      await prisma.$transaction([
+        prisma.alertLog.create({
+          data: {
+            userId: user.id,
+            productId: sp.productId,
+            oldCostCents: baseline,
+            newCostCents: newCost,
+            deltaPercent,
+          },
+        }),
+        prisma.savedProduct.update({
+          where: { userId_productId: { userId: user.id, productId: sp.productId } },
+          data: {
+            lastAlertedCostCents: newCost,
+            lastAlertedAt: now,
+          },
+        }),
+      ]);
 
       // Send email
       if (resend && user.email) {
@@ -247,7 +258,7 @@ export interface AlertSettingsResult {
 
 /**
  * Updates the authenticated user's price alert preferences.
- * Called from PATCH /api/user/alert-settings.
+ * Called from PATCH /api/account/alert-settings.
  */
 export async function updateAlertSettings(
   userId: string,

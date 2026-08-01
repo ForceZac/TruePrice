@@ -7,11 +7,13 @@ const {
   mockUserUpdate,
   mockSavedProductUpdate,
   mockAlertLogCreate,
+  mockTransaction,
 } = vi.hoisted(() => ({
   mockUserFindMany: vi.fn(),
   mockUserUpdate: vi.fn(),
   mockSavedProductUpdate: vi.fn(),
   mockAlertLogCreate: vi.fn(),
+  mockTransaction: vi.fn(),
 }));
 
 vi.mock("@/lib/db", () => ({
@@ -19,6 +21,7 @@ vi.mock("@/lib/db", () => ({
     user: { findMany: mockUserFindMany, update: mockUserUpdate },
     savedProduct: { update: mockSavedProductUpdate },
     alertLog: { create: mockAlertLogCreate },
+    $transaction: mockTransaction,
   },
 }));
 
@@ -90,6 +93,8 @@ beforeEach(() => {
   vi.clearAllMocks();
   mockSavedProductUpdate.mockResolvedValue({});
   mockAlertLogCreate.mockResolvedValue({});
+  // $transaction(ops[]) — resolve each operation in the array
+  mockTransaction.mockImplementation((ops: Promise<unknown>[]) => Promise.all(ops));
 });
 
 // ─── resolveThreshold ─────────────────────────────────────────────────────────

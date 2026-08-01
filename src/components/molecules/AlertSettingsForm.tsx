@@ -19,7 +19,7 @@ const THRESHOLD_LABELS: Record<string, string> = {
 
 /**
  * Client component rendered inside /dashboard/settings.
- * Submits PATCH /api/user/alert-settings on change.
+ * Submits PATCH /api/account/alert-settings on change.
  */
 export function AlertSettingsForm({
   initialThresholdPct,
@@ -39,7 +39,7 @@ export function AlertSettingsForm({
     setSaved(false);
     setError(null);
     try {
-      const res = await fetch("/api/user/alert-settings", {
+      const res = await fetch("/api/account/alert-settings", {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(patch),

@@ -2,7 +2,7 @@ import { auth } from "@/lib/auth";
 import { VALID_THRESHOLDS, type AlertThreshold, updateAlertSettings } from "@/services/AlertService";
 
 /**
- * PATCH /api/user/alert-settings
+ * PATCH /api/account/alert-settings
  *
  * Updates the authenticated user's price alert preferences.
  * Body: { alertThresholdPct?: number | null, alertsEnabled?: boolean }
@@ -55,7 +55,7 @@ export async function PATCH(request: Request) {
     const user = await updateAlertSettings(session.user.id, updates);
     return Response.json({ ok: true, ...user });
   } catch (err) {
-    console.error("[PATCH /api/user/alert-settings]", err);
+    console.error("[PATCH /api/account/alert-settings]", err);
     return Response.json({ error: "Failed to update alert settings." }, { status: 500 });
   }
 }

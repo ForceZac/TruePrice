@@ -2,7 +2,7 @@ import { auth } from "@/lib/auth";
 import { getAlertHistory } from "@/services/AlertService";
 
 /**
- * GET /api/user/alerts
+ * GET /api/account/alerts
  *
  * Returns the last 30 days of price alert history for the authenticated user.
  * Newest first.
@@ -17,7 +17,7 @@ export async function GET() {
     const alerts = await getAlertHistory(session.user.id);
     return Response.json({ alerts });
   } catch (err) {
-    console.error("[GET /api/user/alerts]", err);
+    console.error("[GET /api/account/alerts]", err);
     return Response.json({ error: "Failed to fetch alert history." }, { status: 500 });
   }
 }
