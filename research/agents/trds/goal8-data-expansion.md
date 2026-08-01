@@ -92,14 +92,31 @@ Use `Promise.race` with 4s timeout so slow external APIs don't block.
 
 - `GET /api/cron/refresh-retail-prices` — protected by CRON_SECRET; queries products with `retailPriceCents IS NULL OR lastLookedUp < NOW() - 30d`; calls UPCitemdb for each in batches of 20
 - `GET /api/cron/re-estimate` — protected by CRON_SECRET; queries products whose latest CostBreakdown.updatedAt < `RE_ESTIMATION_TTL_DAYS` days ago; re-runs estimateCost() in batches of 50
-- Stale price detection: add to `GET /api/cron/refresh-prices` after `fetchPrices()` — query any `CommodityPrice.fetchedAt < NOW() - 25h`; if found, POST to Discord #alerts
+- Stale price detection: add to `GET /api/cron/refresh-prices` after `fetchPrices()` — call `CommodityService.detectStalePrices(25h)`; if stale materials found, notify via `NotificationService.postDiscordAlert()` to #alerts
 
 ### Stale Price Alert
 
 In `GET /api/cron/refresh-prices`, after `fetchPrices()` succeeds:
-1. Query `SELECT * FROM CommodityPrice WHERE fetchedAt < NOW() - 25h`
-2. If any stale rows, call `node /workspace/scripts/discord-post.js <alertsChannelId> "..."`
+1. Call `CommodityService.detectStalePrices(25h)` — returns names of materials with `fetchedAt < NOW() - 25h`
+2. If any stale materials, call `NotificationService.postDiscordAlert(alertsChannelId, message)` — **do not call the Discord API directly from the cron route**
 3. Return stale count in cron response JSON
+
+### NotificationService
+
+`src/services/NotificationService.ts` is the single module responsible for all outbound Discord notifications. Cron routes and other services must use this module — they must not call the Discord API inline.
+
+```ts
+/**
+ * Posts a message to a Discord channel via the bot token.
+ * Fire-and-forget — failures are logged but not re-thrown.
+ */
+export async function postDiscordAlert(
+  channelId: string,
+  content: string
+): Promise<void>
+```
+
+This enforces separation of concerns: the cron route handles business logic (detect stale prices), `NotificationService` handles the transport (Discord API call).
 
 ### vercel.json
 

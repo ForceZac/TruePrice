@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { AlertTriangle } from "lucide-react";
 import { useCostBreakdown, useTriggerEstimate } from "@/hooks/useCostBreakdown";
 import { CostBreakdownChart } from "@/components/molecules/CostBreakdownChart";
@@ -10,6 +10,7 @@ import { EstimateSkeleton } from "@/components/molecules/EstimateSkeleton";
 import { ShareButton } from "@/components/atoms/ShareButton";
 import { recordRecentView } from "@/lib/api";
 import { addLocalRecentView, getLocalRecentIds, clearLocalRecentIds } from "@/lib/recentlyViewedLocal";
+import { SaveAsImageButton } from "@/components/atoms/SaveAsImageButton";
 import { centsToUsd } from "@/lib/format";
 import type { ProductResult } from "@/lib/api";
 
@@ -36,6 +37,7 @@ interface Props {
 export function ProductPageClient({ product, canonicalUrl, userId }: Props) {
   const { data: breakdown, isLoading, isError, error } = useCostBreakdown(product.id);
   const { mutate: trigger, isPending: isTriggering } = useTriggerEstimate(product.id);
+  const chartCaptureRef = useRef<HTMLDivElement>(null);
 
   // Record this product view (one write per product per mount).
   // - Authenticated: write to DB, and merge any pending localStorage IDs on the same request.
@@ -114,37 +116,40 @@ export function ProductPageClient({ product, canonicalUrl, userId }: Props) {
         </div>
       )}
 
-      {/* Key stats above the fold */}
-      <div className="grid grid-cols-3 gap-3">
-        {product.retailPriceCents != null && (
+      {/* Capture zone: stat cards + donut chart — rendered as PNG by SaveAsImageButton */}
+      <div ref={chartCaptureRef} className="flex flex-col gap-6">
+        {/* Key stats above the fold */}
+        <div className="grid grid-cols-3 gap-3">
+          {product.retailPriceCents != null && (
+            <StatCard
+              label="Retail price"
+              value={centsToUsd(product.retailPriceCents)}
+            />
+          )}
           <StatCard
-            label="Retail price"
-            value={centsToUsd(product.retailPriceCents)}
+            label="Estimated cost"
+            value={centsToUsd(breakdown.totalCostCents)}
           />
-        )}
-        <StatCard
-          label="Estimated cost"
-          value={centsToUsd(breakdown.totalCostCents)}
-        />
-        {breakdown.markupPercent != null && (
-          <StatCard
-            label="Markup"
-            value={formatMarkup(breakdown.markupPercent)}
-            highlight
-          />
-        )}
-      </div>
+          {breakdown.markupPercent != null && (
+            <StatCard
+              label="Markup"
+              value={formatMarkup(breakdown.markupPercent)}
+              highlight
+            />
+          )}
+        </div>
 
-      {/* Donut chart */}
-      <section aria-labelledby="chart-heading">
-        <h2
-          id="chart-heading"
-          className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-3"
-        >
-          Cost Breakdown
-        </h2>
-        <CostBreakdownChart breakdown={breakdown} />
-      </section>
+        {/* Donut chart */}
+        <section aria-labelledby="chart-heading">
+          <h2
+            id="chart-heading"
+            className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-3"
+          >
+            Cost Breakdown
+          </h2>
+          <CostBreakdownChart breakdown={breakdown} />
+        </section>
+      </div>
 
       {/* Cost detail panel */}
       <CostBreakdownPanel breakdown={breakdown} />
@@ -155,7 +160,10 @@ export function ProductPageClient({ product, canonicalUrl, userId }: Props) {
           confidenceScore={breakdown.confidenceScore}
           confidenceReason={breakdown.confidenceReason}
         />
-        <ShareButton url={canonicalUrl} label="Share" />
+        <div className="flex items-center gap-2">
+          <SaveAsImageButton chartRef={chartCaptureRef} productName={product.name} />
+          <ShareButton url={canonicalUrl} label="Share" />
+        </div>
       </div>
     </div>
   );
