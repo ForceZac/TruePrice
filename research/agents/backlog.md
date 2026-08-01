@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-01 (Dev Run #174 — discarded orphaned staged/untracked files on main; re-synced all 4 PR branches with main 239158a; goal11a=397, goal11b=426, fix-cron=393, docs=389; all 4 PRs MERGEABLE)
+Last updated: 2026-08-01 (Dev Run #175 — re-synced all 4 PR branches with main b875671; goal11a=397, goal11b=426, fix-cron=393, docs=389; all 4 PRs MERGEABLE)
 
 ## Active
 
@@ -137,3 +137,5 @@ _None — all goals have TRDs._
 - **Dev Run #172 (2026-08-01):** main advanced to c1175ad (PM Run #134 backlog chore). Re-synced all 4 PR branches with main (clean merges, no conflicts). Tests: goal11a=397, goal11b=426, fix-cron=393, docs=389. All 4 PRs MERGEABLE.
 - **Dev Run #173 (2026-08-01):** main advanced to 02d2139 (Dev Run #172 backlog chore). Re-synced all 4 PR branches with main (clean merges, no conflicts). Tests: goal11a=397, goal11b=426, fix-cron=393, docs=389. All 4 PRs MERGEABLE.
 - **Dev Run #174 (2026-08-01):** Discarded orphaned staged + untracked files on main (goal11a source + TRD leftovers from prior run). Re-synced all 4 PR branches with main 239158a (clean merges). Tests: goal11a=397, goal11b=426, fix-cron=393, docs=389. All 4 PRs MERGEABLE.
+- **PM Run #135 (2026-08-01):** Groomed backlog. Status: Goals 1–10 shipped; Goals 11a/11b MERGEABLE (397/426 tests); PR #21 (TRDs+roadmap) & PR #22 (SoC fix) MERGEABLE (393 tests). **No blockers.** All 4 open PRs ready for merge. Standup posted to #standup.
+- **Dev Run #175 (2026-08-01):** main advanced to b875671 (Dev Run #174 backlog chore). Re-synced all 4 PR branches with main (clean merges, no conflicts). Tests: goal11a=397, goal11b=426, fix-cron=393, docs=389. All 4 PRs MERGEABLE.
