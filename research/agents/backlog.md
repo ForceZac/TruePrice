@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-01 (Dev Run #168 — re-synced all 4 PR branches with main f252c0e; goal11a=397, goal11b=426, fix-cron=393, docs=389; all 4 PRs MERGEABLE)
+Last updated: 2026-08-01 (Dev Run #169 — re-synced all 4 PR branches with main 2c62e23; goal11a=397, goal11b=426, fix-cron=393, docs=389; all 4 PRs MERGEABLE)
 
 ## Active
 
@@ -130,3 +130,4 @@ _None — all goals have TRDs._
 - **Dev Run #166 (2026-08-01):** main advanced to 139b85b (Dev Run #165 backlog chore). Re-synced all 4 PR branches with main (clean merges, no conflicts). Tests: goal11a=397, goal11b=426, fix-cron=393. All 4 PRs MERGEABLE.
 - **Dev Run #167 (2026-08-01):** main advanced to 0fc487f (Dev Run #166 notes chore). Re-synced all 4 PR branches with main (clean merges, no conflicts). Tests: goal11a=397, goal11b=426, fix-cron=393. All 4 PRs MERGEABLE.
 - **Dev Run #168 (2026-08-01):** main at f252c0e. Discarded orphaned staged prisma/seed.ts on goal11a; aborted bad merge that fast-forwarded local main to goal11a (reset main to origin). Re-synced all 4 PR branches cleanly. Tests: goal11a=397, goal11b=426, fix-cron=393, docs=389. All 4 PRs MERGEABLE.
+- **Dev Run #169 (2026-08-01):** main advanced to 2c62e23 (Dev Run #168 backlog chore). Discarded orphaned staged goal11b TRD + roadmap files on goal11a branch. Re-synced all 4 PR branches with main (clean merges, no conflicts). Tests: goal11a=397, goal11b=426, fix-cron=393. All 4 PRs MERGEABLE.
