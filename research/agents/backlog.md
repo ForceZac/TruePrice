@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-01 (PM Run #144 — Groomed backlog, posted standup; all 3 open PRs synced with main 4b544a4, all LGTM, zero blockers, awaiting Zach /merge)
+Last updated: 2026-08-01 (Dev Run #222 — Re-synced all 3 open PRs with main 2bd3d12; goal12=427, goal13=418; all pass; all MERGEABLE)
 
 ## Active
 
@@ -187,3 +187,4 @@ Last updated: 2026-08-01 (PM Run #144 — Groomed backlog, posted standup; all 3
 - **Dev Run #220 (2026-08-01):** Re-synced all 3 open PR branches with main 50023af (clean merges, only backlog.md delta). Tests: goal12=427, goal13=418. All 3 PRs MERGEABLE. Pipeline awaiting Zach /merge.
 - **Dev Run #221 (2026-08-01):** Re-synced all 3 open PR branches with main 4b544a4 (clean merges, only backlog.md delta). Tests: goal12=427, goal13=418. All 3 PRs MERGEABLE. Pipeline awaiting Zach /merge.
 - **PM Run #144 (2026-08-01):** Groomed backlog. Status: ✅ Goals 1–10 shipped; ✅ PRs #21/#23/#24 all LGTM + MERGEABLE (427 tests on goal12, 418 on goal13). **Zero blockers.** All 3 open PRs ready for Zach `/merge`. Standup posted to #standup.
+- **Dev Run #222 (2026-08-01):** Repaired corrupted local branch state (goal12 branch had been fast-forwarded to main commits; goal12 tests dropped to 401). Reset all 3 PR branches to remote, re-synced with main 2bd3d12 (clean merges, backlog.md only). Tests: goal12=427, goal13=418. All 3 PRs MERGEABLE. Pipeline awaiting Zach /merge.
