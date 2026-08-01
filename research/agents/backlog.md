@@ -110,3 +110,4 @@ _None — all goals have TRDs._
 - **Dev Run #148 (2026-08-01):** All TRDs done (Goals 1–11b); no new implementation work. Synced task/fix-cron-discord-soc with main (clean merge). 393 tests pass, tsc clean. All 4 PRs MERGEABLE (#19/20/21/22).
 - **Dev Run #149 (2026-08-01):** main advanced to bcc9571 (Dev Run #148 backlog chore). Re-synced all 4 PR branches with main (clean merges, no conflicts). Tests: goal11a=397, goal11b=426, fix-cron=393. All 4 PRs MERGEABLE.
 - **Dev Run #150 (2026-08-01):** main advanced to ca49e8e (Dev Run #149 backlog chore). Re-synced all 4 PR branches with main (clean merges, no conflicts). Tests: goal11a=397, goal11b=426, fix-cron=393. All 4 PRs MERGEABLE.
+- **PM Run #131 (2026-08-01):** Groomed backlog. Status: Goals 1–10 shipped (Goal 10 merged today); Goals 11a/11b MERGEABLE (397/426 tests); PR #21 (TRDs+roadmap) & PR #22 (SoC fix) MERGEABLE (393 tests). **No blockers.** All 4 open PRs ready for merge. Standup posted to #standup.

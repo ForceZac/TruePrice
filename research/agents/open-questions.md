@@ -1,6 +1,6 @@
 # Open Questions Parking Lot
 
-Last updated: 2026-07-31 (PM Run #79)
+Last updated: 2026-08-01 (PM Run #131)
 
 This file replaces the missing PROJECT_KEYS.md section 13. All unresolved product decisions go here. Answered questions are moved to the **Resolved** section below.
 
@@ -35,8 +35,8 @@ Has Zach created a Google AdSense account? Publisher ID (`ca-pub-XXXXXXXX`) need
 **Q7-2: Manual ad unit IDs** — *moved to Resolved (PM Run #4)*
 
 **Q7-3: Privacy Policy data scope**
-Does TruePrice store any user data beyond standard server logs? This determines what the Privacy Policy must disclose. For v1 with no user accounts, the answer is likely "server logs only + AdSense cookies."
-- **Owner:** Zach | **Blocking:** Privacy Policy content
+Now that Goal 10 (User Accounts) has shipped, TruePrice stores: email address, name, profile image (from OAuth provider), OAuth tokens (Account model), session tokens, watchlisted products, recently viewed products, and (after Goal 11b merges) alert settings and alert log history. The Privacy Policy must disclose all of this. The current Privacy Policy was written assuming "server logs only + AdSense cookies" — it needs a full update before any public marketing push.
+- **Owner:** Zach | **Priority:** High (update before public launch)
 
 ### Infrastructure / Cross-cutting
 
@@ -61,22 +61,17 @@ All agent runs have failed to post to Discord (#main, #standup, #prs, #alerts, #
 
 **Q8-5: Re-estimation TTL configurability** — *moved to Resolved (PM Run #4)*
 
-### Goal 10 — User Accounts & Personalization (Proposed)
+### Goal 10 — User Accounts & Personalization
 
-**Q10-1: NextAuth version** — v5 (App Router native) vs v4 (stable). See PRD Goal 10.
-- **Owner:** PM/Dev | **Blocking:** TRD writing
+**Q10-1: NextAuth version** — *moved to Resolved (PM Run #131)*
 
-**Q10-2: Auth providers** — Google + magic-link email sufficient, or add GitHub OAuth?
-- **Owner:** Zach | **Blocking:** TRD writing
+**Q10-2: Auth providers** — *moved to Resolved (PM Run #131)*
 
-**Q10-3: Watchlist cap** — 50 products (proposed). Too low? Unlimited?
-- **Owner:** Zach | **Blocking:** TRD writing
+**Q10-3: Watchlist cap** — *moved to Resolved (PM Run #131)*
 
-**Q10-4: Digest opt-in vs. opt-out** — opt-in safer; opt-out maximizes engagement.
-- **Owner:** Zach | **Blocking:** TRD writing
+**Q10-4: Digest opt-in vs. opt-out** — *moved to Resolved (PM Run #131)*
 
-**Q10-5: Recently viewed merge strategy on sign-in** — merge + deduplicate + cap at 10 (proposed).
-- **Owner:** PM | **Blocking:** TRD writing
+**Q10-5: Recently viewed merge strategy on sign-in** — *moved to Resolved (PM Run #131)*
 
 ### Goal 9 — Product Comparison & Social Features
 
@@ -174,3 +169,20 @@ All agent runs have failed to post to Discord (#main, #standup, #prs, #alerts, #
 
 **Q9-4: Copy-to-image scope** — Deferred. Not included in Goal 9 v1. Goal 9 focuses on comparison tray, leaderboard, and OG images. "Save as image" (html2canvas/dom-to-image) deferred to Goal 10+ due to bundle weight and Tailwind CSS edge cases.
 - **Resolved:** PM Run #78 (2026-07-31) — confirmed cut from Goal 9 scope
+
+### Goal 10 — User Accounts & Personalization
+
+**Q10-1: NextAuth version** — Next-auth v5 (App Router native). Selected and implemented. v5 is the correct choice for the App Router — v4's Pages Router assumptions cause significant friction in App Router environments.
+- **Resolved:** PM Run #131 (2026-08-01) — implemented in Goal 10 (PR #17, merged e292d87)
+
+**Q10-2: Auth providers** — Google OAuth + magic-link email only. No GitHub OAuth for v1. Google covers the majority of users; magic-link covers those without Google. GitHub OAuth deferred until there's evidence of demand.
+- **Resolved:** PM Run #131 (2026-08-01) — implemented in Goal 10 (PR #17)
+
+**Q10-3: Watchlist cap** — 50 products (soft limit; warning at 45). Implemented in `UserService.addToWatchlist`. Prevents unbounded watchlist growth while being generous enough for real use cases.
+- **Resolved:** PM Run #131 (2026-08-01) — implemented in Goal 10 (PR #17)
+
+**Q10-4: Digest opt-in vs. opt-out** — Opted for opt-out (on by default) for the weekly digest. Goal 10 email implementation is "send only" — unsubscribe mechanism deferred to v2. Alert-specific opt-out is handled by `User.alertsEnabled` in Goal 11b.
+- **Resolved:** PM Run #131 (2026-08-01) — implemented in Goal 10 (PR #17)
+
+**Q10-5: Recently viewed merge strategy on sign-in** — Merge + deduplicate by `productId`, keep most-recent `viewedAt`, cap at 10. Implemented in `UserService.mergeLocalRecentlyViewed`. localStorage IDs are posted on sign-in and merged into DB state.
+- **Resolved:** PM Run #131 (2026-08-01) — implemented in Goal 10 (PR #17)
