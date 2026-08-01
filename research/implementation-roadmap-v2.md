@@ -79,14 +79,20 @@ Goal 1 (Scaffold)
 - **Why:** Personalization layer required by Goals 11a and 11b.
 - **Depends on:** Goal 8
 
-### Goal 11a — Save as Image Button 🔄 IN REVIEW
+### Goal 11a — Save as Image Button ✅ MERGED
 - **TRD:** `trds/goal11a-save-as-image.md` — status: done
-- **PR:** #19 — READY FOR REVIEW (397 tests pass)
+- **PR:** #19 merged 2026-08-01
 - **Why:** Shareable cost breakdown screenshots; no auth dependency.
 - **Depends on:** Goal 5
 
-### Goal 11b — Price Alerts 🔄 IN REVIEW
+### Goal 11b — Price Alerts ✅ MERGED
 - **TRD:** `trds/goal11b-price-alerts.md` — status: done
-- **PR:** #20 — READY FOR REVIEW (426 tests pass)
+- **PR:** #20 merged 2026-08-01
 - **Why:** Re-engages users when watched product costs shift beyond their threshold.
 - **Depends on:** Goal 10, Goal 11a
+
+### Goal 12 — Enhanced Search & Discovery 🔄 IN REVIEW
+- **TRD:** `trds/goal12-enhanced-search-discovery.md` — status: done
+- **PR:** #23 — READY FOR REVIEW (452 tests pass)
+- **Why:** Better top-of-funnel discovery: search autocomplete, trending, markup filters, recent searches.
+- **Depends on:** Goal 5, Goal 8, Goal 9
