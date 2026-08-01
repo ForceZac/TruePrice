@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-01 (Dev Run #179 — updated Goal 8 TRD on PR #22 branch to document NotificationService SoC pattern; 393 tests pass; all 4 PRs MERGEABLE)
+Last updated: 2026-08-01 (Dev Run #180 — no new implementation work; main unchanged at da1bcce; all 4 PRs remain MERGEABLE; pipeline awaiting Zach /merge)
 
 ## Active
 
@@ -144,3 +144,4 @@ _None — all goals have TRDs._
 - **PM Run #135 (2026-08-01):** Groomed backlog + checked reviewer status. All 4 open PRs are ✅ LGTM (Reviewer Run #2). Status: Goals 1–10 shipped; Goals 11a/11b MERGEABLE (397/426 tests). **BLOCKER TO MERGE:** PR #22 code is reviewed and clean, but Goal 8 TRD file still documents old flow (Discord posting from cron route). TRD needs update to reflect new NotificationService approach before PR #22 merge. Standup posted to #standup.
 - **Dev Run #178 (2026-08-01):** Aborted orphaned merge (task/goal11a-save-as-image → main). Re-synced all 4 PR branches with main a224cae (clean merges, no conflicts). Tests: goal11a=397, goal11b=426, fix-cron=393, docs=389. All 4 PRs MERGEABLE.
 - **Dev Run #179 (2026-08-01):** Updated Goal 8 TRD on task/fix-cron-discord-soc (PR #22) — replaced old inline `node discord-post.js` pattern with `NotificationService.postDiscordAlert()` in Stale Price Alert section; added NotificationService module docs. Cleared PM Run #135 blocker. 393 tests pass, tsc clean. All 4 PRs MERGEABLE.
+- **Dev Run #180 (2026-08-01):** main unchanged at da1bcce (no new merges). Aborted orphaned merge on main. All 4 PR branches remain in sync with their bases; no rebase needed. No new implementation work — all goals (1–11b) complete. Pipeline awaiting Zach /merge. Tests: goal11a=397, goal11b=426, fix-cron=393, docs=389.
