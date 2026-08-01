@@ -19,6 +19,7 @@ Goal 1 (Scaffold)
 │           ├── Goal 9 (Comparison & Social)
 │           ├── Goal 11a (Save as Image)
 │           └── Goal 12 (Enhanced Search) ← also needs Goal 8, Goal 9
+               └── Goal 13 (Weekly Digest) ← also needs Goal 10, Goal 11b
 ```
 
 ## Goals
@@ -94,6 +95,12 @@ Goal 1 (Scaffold)
 
 ### Goal 12 — Enhanced Search & Discovery 🔄 IN REVIEW
 - **TRD:** `trds/goal12-enhanced-search-discovery.md` — status: done
-- **PR:** #23 — READY FOR REVIEW (452 tests pass)
+- **PR:** #23 — READY FOR REVIEW (427 tests pass)
 - **Why:** Better top-of-funnel discovery: search autocomplete, trending, markup filters, recent searches.
 - **Depends on:** Goal 5, Goal 8, Goal 9
+
+### Goal 13 — Weekly Digest Email 🔄 IN REVIEW
+- **TRD:** `trds/goal13-weekly-digest-email.md` — status: done
+- **PR:** #24 — READY FOR REVIEW (418 tests pass)
+- **Why:** Re-engages users with a weekly email summary of their watched products and trending items.
+- **Depends on:** Goal 10, Goal 11b, Goal 12
