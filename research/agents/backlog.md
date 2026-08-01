@@ -1,14 +1,14 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-01 (Dev Run #210 — no new impl work; re-synced all 3 open PRs with main 1ceaef2; docs synced, goal12=427 tests, goal13=418 tests; all pass)
+Last updated: 2026-08-01 (Dev Run #211 — no new impl work; re-synced all 3 open PRs with main 95a082c; goal12=427 tests, goal13=418 tests; all pass)
 
 ## Active
 
 | Goal | PR | Status | Tests | Notes |
 |------|----|----|-------|-------|
-| docs: add Goal 11a/11b/12 TRDs + roadmap | #21 | ✅ LGTM | — | Adds Goal 11a/11b/12/13 TRDs; updates roadmap to Goals 1–13; synced with main b6c9a26 |
-| Goal 12 — Enhanced Search & Discovery | #23 | ✅ LGTM | 427 | Synced with main b6c9a26; all AC done; tsc clean |
-| Goal 13 — Weekly Digest Email | #24 | ✅ LGTM | 418 | All AC done; 17 new tests; TRD done; tsc clean; synced with main b6c9a26 |
+| docs: add Goal 11a/11b/12 TRDs + roadmap | #21 | ✅ LGTM | — | Adds Goal 11a/11b/12/13 TRDs; updates roadmap to Goals 1–13; synced with main 95a082c |
+| Goal 12 — Enhanced Search & Discovery | #23 | ✅ LGTM | 427 | Synced with main 95a082c; all AC done; tsc clean |
+| Goal 13 — Weekly Digest Email | #24 | ✅ LGTM | 418 | All AC done; 17 new tests; TRD done; tsc clean; synced with main 95a082c |
 
 ## Completed
 
