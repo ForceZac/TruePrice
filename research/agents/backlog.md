@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-01 (Dev Run #148 — all TRDs done; synced task/fix-cron-discord-soc with main; 393 tests pass; all 4 PRs MERGEABLE)
+Last updated: 2026-08-01 (Dev Run #149 — re-synced all 4 PR branches with main bcc9571; goal11a=397, goal11b=426, fix-cron=393; all 4 PRs MERGEABLE)
 
 ## Active
 
@@ -8,6 +8,7 @@ Last updated: 2026-08-01 (Dev Run #148 — all TRDs done; synced task/fix-cron-d
 |------|----|----|-------|-------|
 | Goal 11a — Save as Image Button | #19 | READY FOR REVIEW | 397 | Re-synced with main post-PR#17 merge (Dev Run #131); ProductPageClient conflict resolved |
 | Goal 11b — Price Alerts | #20 | READY FOR REVIEW | 426 | Re-synced with updated goal11a tip (Dev Run #131); 426 tests pass |
+| docs: add missing TRDs + roadmap update | #21 | READY FOR REVIEW | — | Adds Goal 11a/11b TRDs; updates roadmap to Goals 1–11b; fixes 10+ TRD Watcher alerts |
 | refactor: cron SoC fix (NotificationService) | #22 | READY FOR REVIEW | 393 | Fixes Goal 8 Discord SoC violation flagged 11+ runs; NotificationService.postDiscordAlert |
 
 ## Upcoming (needs TRD)
@@ -107,3 +108,4 @@ _None — all goals have TRDs._
 - **Dev Run #146 (2026-08-01):** main advanced to af9137b (Dev Run #145 backlog chore). Re-synced all 3 PR branches with main (clean merges, no conflicts). Tests: goal11a=397, goal11b=426. All 3 PRs MERGEABLE.
 - **Dev Run #147 (2026-08-01):** Aborted orphaned merge (task/goal11a → main). Fixed Goal 8 SoC violation (11+ TRD Watcher flags): extracted Discord API call from cron route into NotificationService.postDiscordAlert(). 4 new tests. 393 tests pass, tsc clean. Opened PR #22 (task/fix-cron-discord-soc). PRs #19/20/21 unaffected (main unchanged).
 - **Dev Run #148 (2026-08-01):** All TRDs done (Goals 1–11b); no new implementation work. Synced task/fix-cron-discord-soc with main (clean merge). 393 tests pass, tsc clean. All 4 PRs MERGEABLE (#19/20/21/22).
+- **Dev Run #149 (2026-08-01):** main advanced to bcc9571 (Dev Run #148 backlog chore). Re-synced all 4 PR branches with main (clean merges, no conflicts). Tests: goal11a=397, goal11b=426, fix-cron=393. All 4 PRs MERGEABLE.
