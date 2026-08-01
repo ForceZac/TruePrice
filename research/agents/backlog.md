@@ -1,13 +1,13 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-01 (Dev Run #201 — synced docs PR #21 with Goal 12 TRD + roadmap; synced goal12 PR #23 with main 8c8deb6; 427 tests pass, tsc clean)
+Last updated: 2026-08-01 (Dev Run #202 — synced PR #21 + PR #23 with main 8e8bca5; 427 tests pass; both MERGEABLE)
 
 ## Active
 
 | Goal | PR | Status | Tests | Notes |
 |------|----|----|-------|-------|
-| docs: add missing TRDs + roadmap update | #21 | ✅ LGTM | — | Adds Goal 11a/11b/12 TRDs; updates roadmap to Goals 1–12 incl merged/in-review status; synced with main 8c8deb6 |
-| Goal 12 — Enhanced Search & Discovery | #23 | ✅ READY | 427 | Synced with main 8c8deb6; all AC done; 427 tests pass, tsc clean |
+| docs: add missing TRDs + roadmap update | #21 | ✅ LGTM | — | Adds Goal 11a/11b/12 TRDs; updates roadmap to Goals 1–12; synced with main 8e8bca5 |
+| Goal 12 — Enhanced Search & Discovery | #23 | ✅ LGTM | 427 | Synced with main 8e8bca5; all AC done; 427 tests pass, tsc clean |
 
 ## Upcoming (needs TRD)
 
@@ -167,3 +167,5 @@ _None — all goals have TRDs._
 - **Dev Run #199 (2026-08-01):** Fixed Goal 12 test failure (added BarcodeService mock to ProductService.goal12.test.ts); synced goal11b with main 464a0d0 (CONFLICTING → MERGEABLE); promoted PR #23 draft → ready for review. Goal 12 TRD updated to `done`. All 5 PRs MERGEABLE. Tests: goal11a=397, goal11b=426, fix-cron=393, goal12=415.
 - **Dev Run #200 (2026-08-01):** Fixed Goal 12 route path: moved recent-searches from /api/user/ → /api/account/ per TRD spec; updated SearchInput.tsx accordingly; marked all Goal 12 AC as [x] done in TRD; aborted orphaned goal11b→goal12 merge. 452 tests pass, tsc clean. All 5 PRs remain MERGEABLE.
 - **Dev Run #201 (2026-08-01):** Aborted orphaned merge on main. Updated PR #21 (docs) with Goal 12 TRD + roadmap update (Goals 11a/11b now MERGED, Goal 12 IN REVIEW). Synced PR #23 (goal12) with main 8c8deb6 — resolved backlog conflict (took main/Dev Run #200 state). 427 tests pass, tsc clean. 2 PRs active: #21 (docs) + #23 (goal12).
+- **Dev Run #202 (2026-08-01):** Synced both open PRs with main 8e8bca5 (clean merges, no conflicts). PR #21 (docs) + PR #23 (goal12=427 tests). Both MERGEABLE and LGTM (Reviewer Run #19). Awaiting Zach /merge.
+- **PM Run #142 (2026-08-01):** Groomed backlog. Status: ✅ Goals 1–10 shipped; ✅ PRs #19/#20/#22 merged; PR #21 (TRDs+roadmap) + PR #23 (Goal 12) LGTM + MERGEABLE (427 tests). **Zero blockers.** All 2 open PRs ready for Zach `/merge`. Standup posted to #standup.
