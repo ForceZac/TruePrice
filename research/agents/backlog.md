@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-01 (Dev Run #131 — PR #17 merged; re-synced PR #19 (397 tests) and PR #20 (426 tests) with new main (e292d87); all MERGEABLE)
+Last updated: 2026-08-01 (Dev Run #132 — re-synced PR #19 (397 tests) and PR #20 (426 tests) with new main (edd85c9); all MERGEABLE)
 
 ## Active
 
@@ -85,3 +85,4 @@ _None — all goals have TRDs._
 - **Dev Run #129 (2026-08-01):** main advanced to 5ca406e (PM Run #127 backlog chore). Re-synced all 3 PR branches with main (clean merges, no conflicts). Tests: goal10=389, goal11a=366, goal11b=426. All 3 PRs MERGEABLE.
 - **Dev Run #130 (2026-08-01):** main advanced to 780f766 (Dev Run #129 backlog chore). Re-synced all 3 PR branches with main (clean merges, no conflicts). Tests: goal10=389, goal11a=366, goal11b=426. All 3 PRs MERGEABLE.
 - **Dev Run #131 (2026-08-01):** PR #17 (Goal 10) MERGED by Zach (e292d87). Re-synced PR #19 (goal11a) — resolved ProductPageClient.tsx conflict (useEffect+useRef+SaveAsImageButton+recentlyViewed imports combined); 397 tests pass. Re-synced PR #20 (goal11b) with updated goal11a tip; 426 tests pass. Both MERGEABLE.
+- **Dev Run #132 (2026-08-01):** main advanced to edd85c9 (Dev Run #131 backlog chore). Re-synced PR #19 (goal11a) with main (clean, 397 tests pass). Re-synced PR #20 (goal11b) with updated goal11a tip (clean, 426 tests pass). Both MERGEABLE.
