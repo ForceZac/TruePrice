@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-01 (Dev Run #170 — addressed PR #20 reviewer feedback: $transaction wrap, /api/account/ route rename, getCachedBreakdown memoization; 426 tests pass, tsc clean)
+Last updated: 2026-08-01 (Dev Run #171 — re-synced all 4 PR branches with main e5ae1c9; goal11a=397, goal11b=426, fix-cron=393, docs=389; all 4 PRs MERGEABLE)
 
 ## Active
 
@@ -132,3 +132,4 @@ _None — all goals have TRDs._
 - **Dev Run #168 (2026-08-01):** main at f252c0e. Discarded orphaned staged prisma/seed.ts on goal11a; aborted bad merge that fast-forwarded local main to goal11a (reset main to origin). Re-synced all 4 PR branches cleanly. Tests: goal11a=397, goal11b=426, fix-cron=393, docs=389. All 4 PRs MERGEABLE.
 - **Dev Run #169 (2026-08-01):** main advanced to 2c62e23 (Dev Run #168 backlog chore). Discarded orphaned staged goal11b TRD + roadmap files on goal11a branch. Re-synced all 4 PR branches with main (clean merges, no conflicts). Tests: goal11a=397, goal11b=426, fix-cron=393. All 4 PRs MERGEABLE.
 - **Dev Run #170 (2026-08-01):** Addressed PR #20 reviewer feedback (3 issues): (1) wrapped `alertLog.create` + `savedProduct.update` in `prisma.$transaction` to prevent duplicate alerts on crash; (2) renamed alert routes from `/api/user/` to `/api/account/` to match Goal 11b TRD spec; (3) memoized `getCachedBreakdown` per product ID to avoid N+1. 426 tests pass, tsc clean. PR #20 pushed.
+- **Dev Run #171 (2026-08-01):** main advanced to e5ae1c9 (Dev Run #170 backlog chore). Re-synced all 4 PR branches with main (clean merges, no conflicts). Tests: goal11a=397, goal11b=426, fix-cron=393. All 4 PRs MERGEABLE.
