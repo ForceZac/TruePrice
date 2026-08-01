@@ -3,7 +3,7 @@ import { auth } from "@/lib/auth";
 import { getRecentSearches, saveRecentSearch } from "@/services/UserService";
 
 /**
- * GET /api/user/recent-searches
+ * GET /api/account/recent-searches
  * Returns the authenticated user's recent search queries.
  */
 export async function GET() {
@@ -16,13 +16,13 @@ export async function GET() {
     const searches = await getRecentSearches(session.user.id);
     return Response.json({ searches });
   } catch (err) {
-    console.error("[GET /api/user/recent-searches]", err);
+    console.error("[GET /api/account/recent-searches]", err);
     return Response.json({ error: "Failed to fetch recent searches." }, { status: 500 });
   }
 }
 
 /**
- * POST /api/user/recent-searches
+ * POST /api/account/recent-searches
  * Body: { query: string }
  * Saves a search query to the user's recent searches.
  */
@@ -48,7 +48,7 @@ export async function POST(request: NextRequest) {
     await saveRecentSearch(session.user.id, query);
     return new Response(null, { status: 204 });
   } catch (err) {
-    console.error("[POST /api/user/recent-searches]", err);
+    console.error("[POST /api/account/recent-searches]", err);
     return Response.json({ error: "Failed to save search." }, { status: 500 });
   }
 }

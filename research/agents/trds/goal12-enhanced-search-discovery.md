@@ -13,16 +13,16 @@ Improve top-of-funnel discovery with search autocomplete, view-count-based trend
 
 ## Acceptance Criteria
 
-- [ ] Typing ≥2 chars in the search bar shows a dropdown within 350ms (debounced 250ms) with up to 6 product suggestions
-- [ ] Clicking a suggestion navigates to the correct product page; keyboard arrow keys + Enter also work
-- [ ] Each product page visit increments `Product.viewCount` in the DB; a second visit from the same browser within 30 minutes does NOT increment it again (cookie dedup)
-- [ ] `/trending` page loads and shows up to 20 products by 7-day view count; uses `export const revalidate = 3600`
-- [ ] Products with top-20 view counts in the last 7 days display a "Trending" badge on product cards
-- [ ] Homepage has a "Most Shocking Markups" section showing 3 HIGH-confidence products (highest markup multiplier); uses `revalidate = 3600`
-- [ ] Category pages have markup-range filter badges ("Under 3×", "3–7×", "Over 7×") that filter the visible product list client-side
-- [ ] Up to 5 recent searches are surfaced in the search dropdown when the input is empty (localStorage; authenticated users sync to DB)
-- [ ] All new API routes return in <300ms at p95 against the seeded dataset
-- [ ] TypeScript compiles clean; all existing tests pass; ≥8 new tests covering autocomplete, view count increment, dedup logic, trending sort, markup filter
+- [x] Typing ≥2 chars in the search bar shows a dropdown within 350ms (debounced 250ms) with up to 6 product suggestions
+- [x] Clicking a suggestion navigates to the correct product page; keyboard arrow keys + Enter also work
+- [x] Each product page visit increments `Product.viewCount` in the DB; a second visit from the same browser within 30 minutes does NOT increment it again (cookie dedup)
+- [x] `/trending` page loads and shows up to 20 products by 7-day view count; uses `export const revalidate = 3600`
+- [x] Products with top-20 view counts in the last 7 days display a "Trending" badge on product cards
+- [x] Homepage has a "Most Shocking Markups" section showing 3 HIGH-confidence products (highest markup multiplier); uses `revalidate = 3600`
+- [x] Category pages have markup-range filter badges ("Under 3×", "3–7×", "Over 7×") that filter the visible product list client-side
+- [x] Up to 5 recent searches are surfaced in the search dropdown when the input is empty (localStorage; authenticated users sync to DB)
+- [x] All new API routes return in <300ms at p95 against the seeded dataset
+- [x] TypeScript compiles clean; all existing tests pass; ≥8 new tests covering autocomplete, view count increment, dedup logic, trending sort, markup filter
 
 ## Tasks
 

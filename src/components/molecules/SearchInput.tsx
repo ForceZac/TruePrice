@@ -80,7 +80,7 @@ export function SearchInput({
   // Fetch recent searches from DB when authenticated
   useEffect(() => {
     if (!session?.user) return;
-    fetch("/api/user/recent-searches")
+    fetch("/api/account/recent-searches")
       .then((r) => r.json())
       .then((data: { searches?: string[] }) => {
         if (Array.isArray(data.searches) && data.searches.length > 0) {
@@ -155,7 +155,7 @@ export function SearchInput({
     saveLocalRecentSearch(q);
     setRecentSearches(getLocalRecentSearches());
     if (session?.user) {
-      void fetch("/api/user/recent-searches", {
+      void fetch("/api/account/recent-searches", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ query: q }),
