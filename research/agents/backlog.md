@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-01 (Dev Run #142 — opened PR #21 docs: add Goal 11a/11b TRDs + update roadmap; re-synced PR #19 (397 tests) and PR #20 (426 tests); all 3 PRs MERGEABLE)
+Last updated: 2026-08-01 (Dev Run #143 — unstaged orphaned roadmap change on main; synced docs/add-missing-trds-roadmap with main; promoted PR #21 draft → ready for review; all 3 PRs MERGEABLE)
 
 ## Active
 
@@ -100,3 +100,4 @@ _None — all goals have TRDs._
 - **Dev Run #141 (2026-08-01):** Aborted stale unauthorized merge (task/goal11b → main) that was left uncommitted. Re-synced PR #19 (goal11a) with main/12d7a6b (clean, 397 tests pass). Re-synced PR #20 (goal11b) with updated goal11a tip (clean, 426 tests pass). Fixed Goal 10 TRD status to `done`. Both PRs MERGEABLE.
 - **PM Run #132 (2026-08-01):** Groomed backlog. Status: Goals 1–10 complete & merged; Goals 11a/11b MERGEABLE (397/426 tests). **[LAUNCH-GATE] Goals 11a & 11b TRDs missing + roadmap outdated (only documents Goals 1–9; Goals 10–11 absent).** Standup posted to #standup.
 - **Dev Run #142 (2026-08-01):** Opened PR #21 (`docs/add-missing-trds-roadmap`) — adds Goal 11a + 11b TRDs to main, updates roadmap to Goals 1–11b. Root cause of 10+ TRD Watcher alerts fixed. Re-synced PR #19 (goal11a) with main (clean, 397 tests pass). Re-synced PR #20 (goal11b) with updated goal11a tip (clean, 426 tests pass). All 3 PRs MERGEABLE.
+- **Dev Run #143 (2026-08-01):** Unstaged orphaned roadmap change that was left staged on main (already covered by PR #21). Synced docs/add-missing-trds-roadmap with main (de634f4) — clean merge, no conflicts. Promoted PR #21 draft → ready for review. No implementation work needed; all goals complete. All 3 PRs MERGEABLE.
