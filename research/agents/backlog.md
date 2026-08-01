@@ -1,13 +1,13 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-01 (Dev Run #169 — re-synced all 4 PR branches with main 2c62e23; goal11a=397, goal11b=426, fix-cron=393, docs=389; all 4 PRs MERGEABLE)
+Last updated: 2026-08-01 (Dev Run #170 — addressed PR #20 reviewer feedback: $transaction wrap, /api/account/ route rename, getCachedBreakdown memoization; 426 tests pass, tsc clean)
 
 ## Active
 
 | Goal | PR | Status | Tests | Notes |
 |------|----|----|-------|-------|
 | Goal 11a — Save as Image Button | #19 | READY FOR REVIEW | 397 | Re-synced with main post-PR#17 merge (Dev Run #131); ProductPageClient conflict resolved |
-| Goal 11b — Price Alerts | #20 | READY FOR REVIEW | 426 | Re-synced with updated goal11a tip (Dev Run #131); 426 tests pass |
+| Goal 11b — Price Alerts | #20 | READY FOR REVIEW | 426 | Dev Run #170: fixed reviewer issues (transaction, /api/account/ routes, N+1 memo); 426 tests pass |
 | docs: add missing TRDs + roadmap update | #21 | READY FOR REVIEW | — | Adds Goal 11a/11b TRDs; updates roadmap to Goals 1–11b; fixes 10+ TRD Watcher alerts |
 | refactor: cron SoC fix (NotificationService) | #22 | READY FOR REVIEW | 393 | Fixes Goal 8 Discord SoC violation flagged 11+ runs; NotificationService.postDiscordAlert |
 
@@ -131,3 +131,4 @@ _None — all goals have TRDs._
 - **Dev Run #167 (2026-08-01):** main advanced to 0fc487f (Dev Run #166 notes chore). Re-synced all 4 PR branches with main (clean merges, no conflicts). Tests: goal11a=397, goal11b=426, fix-cron=393. All 4 PRs MERGEABLE.
 - **Dev Run #168 (2026-08-01):** main at f252c0e. Discarded orphaned staged prisma/seed.ts on goal11a; aborted bad merge that fast-forwarded local main to goal11a (reset main to origin). Re-synced all 4 PR branches cleanly. Tests: goal11a=397, goal11b=426, fix-cron=393, docs=389. All 4 PRs MERGEABLE.
 - **Dev Run #169 (2026-08-01):** main advanced to 2c62e23 (Dev Run #168 backlog chore). Discarded orphaned staged goal11b TRD + roadmap files on goal11a branch. Re-synced all 4 PR branches with main (clean merges, no conflicts). Tests: goal11a=397, goal11b=426, fix-cron=393. All 4 PRs MERGEABLE.
+- **Dev Run #170 (2026-08-01):** Addressed PR #20 reviewer feedback (3 issues): (1) wrapped `alertLog.create` + `savedProduct.update` in `prisma.$transaction` to prevent duplicate alerts on crash; (2) renamed alert routes from `/api/user/` to `/api/account/` to match Goal 11b TRD spec; (3) memoized `getCachedBreakdown` per product ID to avoid N+1. 426 tests pass, tsc clean. PR #20 pushed.
