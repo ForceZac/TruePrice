@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { QueryProvider } from "@/components/providers/QueryProvider";
+import { AuthProvider } from "@/components/providers/AuthProvider";
+import { PostSigninSync } from "@/components/atoms/PostSigninSync";
 import { Footer } from "@/components/layout/Footer";
 import { CookieConsent } from "@/components/molecules/CookieConsent";
 import { AdSenseLoader } from "@/components/layout/AdSenseLoader";
@@ -36,7 +38,12 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <QueryProvider>{children}</QueryProvider>
+        <AuthProvider>
+          <QueryProvider>
+            {children}
+            <PostSigninSync />
+          </QueryProvider>
+        </AuthProvider>
         <Footer />
         <CookieConsent />
         {adSensePublisherId && (

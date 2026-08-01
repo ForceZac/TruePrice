@@ -36,6 +36,15 @@ const serverEnvSchema = z.object({
   // Re-estimation TTL: days after which a CostBreakdown is re-computed (default 7)
   RE_ESTIMATION_TTL_DAYS: z.coerce.number().int().positive().default(7),
 
+  // Auth (NextAuth v5)
+  NEXTAUTH_SECRET: z.string().optional(),
+  GOOGLE_CLIENT_ID: z.string().optional(),
+  GOOGLE_CLIENT_SECRET: z.string().optional(),
+
+  // Email (Resend) — weekly digest
+  RESEND_API_KEY: z.string().optional(),
+  FROM_EMAIL: z.string().default("digest@trueprice.app"),
+
   // CI / Bots (optional in dev)
   GITHUB_TOKEN: z.string().optional(),
   DISCORD_BOT_TOKEN: z.string().optional(),

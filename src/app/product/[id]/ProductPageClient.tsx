@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { AlertTriangle } from "lucide-react";
 import { useCostBreakdown, useTriggerEstimate } from "@/hooks/useCostBreakdown";
 import { CostBreakdownChart } from "@/components/molecules/CostBreakdownChart";
@@ -7,6 +8,8 @@ import { ConfidenceBadge } from "@/components/molecules/ConfidenceBadge";
 import { CostBreakdownPanel } from "@/components/molecules/CostBreakdownPanel";
 import { EstimateSkeleton } from "@/components/molecules/EstimateSkeleton";
 import { ShareButton } from "@/components/atoms/ShareButton";
+import { recordRecentView } from "@/lib/api";
+import { addLocalRecentView, getLocalRecentIds, clearLocalRecentIds } from "@/lib/recentlyViewedLocal";
 import { centsToUsd } from "@/lib/format";
 import type { ProductResult } from "@/lib/api";
 
@@ -26,11 +29,27 @@ function formatMarkup(percent: number): string {
 interface Props {
   product: ProductProp;
   canonicalUrl: string;
+  /** Passed from the server — if set, records a recently-viewed entry on mount. */
+  userId: string | null;
 }
 
-export function ProductPageClient({ product, canonicalUrl }: Props) {
+export function ProductPageClient({ product, canonicalUrl, userId }: Props) {
   const { data: breakdown, isLoading, isError, error } = useCostBreakdown(product.id);
   const { mutate: trigger, isPending: isTriggering } = useTriggerEstimate(product.id);
+
+  // Record this product view (one write per product per mount).
+  // - Authenticated: write to DB, and merge any pending localStorage IDs on the same request.
+  // - Unauthenticated: write to localStorage so the IDs can be merged when the user signs in.
+  useEffect(() => {
+    if (userId) {
+      const localIds = getLocalRecentIds();
+      recordRecentView(product.id, localIds.length > 0 ? localIds : undefined)
+        .then(() => { if (localIds.length > 0) clearLocalRecentIds(); })
+        .catch(() => {});
+    } else {
+      addLocalRecentView(product.id);
+    }
+  }, [userId, product.id]);
 
   // ── Loading state ──────────────────────────────────────────────────────────
   if (isLoading) {
