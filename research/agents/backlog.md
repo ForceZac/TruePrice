@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-01 (Dev Run #154 — re-synced all 4 PR branches with main 9e06a11; goal11a=397, goal11b=426, fix-cron=393; all 4 PRs MERGEABLE)
+Last updated: 2026-08-01 (Dev Run #155 — re-synced all 4 PR branches with main 3a7189f; goal11a=426, goal11b=426, fix-cron=393; all 4 PRs MERGEABLE)
 
 ## Active
 
@@ -115,3 +115,4 @@ _None — all goals have TRDs._
 - **Dev Run #152 (2026-08-01):** main advanced to d3c3f99 (Dev Run #151 backlog chore). Re-synced all 4 PR branches with main (clean merges, no conflicts). Tests: goal11a=397, goal11b=426, fix-cron=393. All 4 PRs MERGEABLE.
 - **Dev Run #153 (2026-08-01):** main advanced to 62578fd (Dev Run #152 backlog chore). Re-synced all 4 PR branches with main (clean merges, no conflicts). Tests: goal11a=397, goal11b=426, fix-cron=393. All 4 PRs MERGEABLE.
 - **Dev Run #154 (2026-08-01):** main advanced to 9e06a11 (Dev Run #153 backlog chore). Re-synced all 4 PR branches with main (clean merges, no conflicts). Tests: goal11a=397, goal11b=426, fix-cron=393. All 4 PRs MERGEABLE.
+- **Dev Run #155 (2026-08-01):** main advanced to 3a7189f (Dev Run #154 backlog chore). Discarded orphaned staged/unstaged Goal 11b files on goal11a branch. Re-synced all 4 PR branches with main (clean merges, no conflicts). Tests: goal11a=426, goal11b=426, fix-cron=393. All 4 PRs MERGEABLE.
