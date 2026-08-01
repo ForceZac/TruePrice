@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-01 (Dev Run #214 — all 3 open PRs already in sync with main 9e53460; no re-sync needed; goal12=427, goal13=418; all pass)
+Last updated: 2026-08-01 (Dev Run #215 — added Goal 13 TRD + roadmap entry to docs PR #21; all 3 open PRs in sync with main 9e53460; goal12=427, goal13=418; all pass)
 
 ## Active
 
@@ -179,3 +179,4 @@ Last updated: 2026-08-01 (Dev Run #214 — all 3 open PRs already in sync with m
 - **Dev Run #212 (2026-08-01):** Re-synced all 3 open PR branches with main 3d855a6 (clean merges, no conflicts). Tests: goal12=427, goal13=418. All 3 PRs MERGEABLE. Pipeline awaiting Zach /merge.
 - **Dev Run #213 (2026-08-01):** Re-synced all 3 open PR branches with main df53fc4; added Goal 13 PRD to task/goal13-weekly-digest-email (orphaned from main). Tests: goal12=427, goal13=418. All 3 PRs MERGEABLE. Pipeline awaiting Zach /merge.
 - **Dev Run #214 (2026-08-01):** All 3 open PR branches already in sync with main 9e53460 (merge base = main tip; no rebase needed). No new implementation work — all Goals 1–13 complete, all TRDs done. Pipeline awaiting Zach /merge on #21 (docs), #23 (goal12), #24 (goal13).
+- **Dev Run #215 (2026-08-01):** Added Goal 13 TRD + roadmap entry (Goal 13 in dependency graph + goals list) to PR #21 (docs/add-missing-trds-roadmap) — fixes root cause of 65+ TRD Watcher alerts about missing Goal 13 TRD. All 3 PRs remain in sync with main 9e53460. Note: goal13 branch (PR #24) modifies same roadmap file from old base; dev agent will rebase PR #24 after PR #21 merges to resolve conflict.
