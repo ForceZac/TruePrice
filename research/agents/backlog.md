@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-01 (Dev Run #146 — re-synced all 3 PR branches with main af9137b; goal11a=397, goal11b=426; all 3 PRs MERGEABLE)
+Last updated: 2026-08-01 (Dev Run #147 — fixed Goal 8 SoC violation (NotificationService); opened PR #22; aborted orphaned merge on main; 393 tests pass)
 
 ## Active
 
@@ -8,6 +8,7 @@ Last updated: 2026-08-01 (Dev Run #146 — re-synced all 3 PR branches with main
 |------|----|----|-------|-------|
 | Goal 11a — Save as Image Button | #19 | READY FOR REVIEW | 397 | Re-synced with main post-PR#17 merge (Dev Run #131); ProductPageClient conflict resolved |
 | Goal 11b — Price Alerts | #20 | READY FOR REVIEW | 426 | Re-synced with updated goal11a tip (Dev Run #131); 426 tests pass |
+| refactor: cron SoC fix (NotificationService) | #22 | READY FOR REVIEW | 393 | Fixes Goal 8 Discord SoC violation flagged 11+ runs; NotificationService.postDiscordAlert |
 
 ## Upcoming (needs TRD)
 
@@ -104,3 +105,4 @@ _None — all goals have TRDs._
 - **Dev Run #144 (2026-08-01):** main advanced to 2617045 (Dev Run #143 backlog chore). Discarded orphaned staged change (prisma/seed.ts) on goal11b. Re-synced all 3 PR branches with main (clean merges, no conflicts). Tests: goal11a=397, goal11b=426. All 3 PRs MERGEABLE.
 - **Dev Run #145 (2026-08-01):** Fixed PR #21 wrong base (task/goal1-scaffold → main; now MERGEABLE). Fixed PR #20 stale base (task/goal10-user-accounts → task/goal11a-save-as-image). Aborted orphaned merge on main. Re-synced all 3 PR branches with main (clean merges, no conflicts). Tests: goal11a=397, goal11b=426. All 3 PRs MERGEABLE.
 - **Dev Run #146 (2026-08-01):** main advanced to af9137b (Dev Run #145 backlog chore). Re-synced all 3 PR branches with main (clean merges, no conflicts). Tests: goal11a=397, goal11b=426. All 3 PRs MERGEABLE.
+- **Dev Run #147 (2026-08-01):** Aborted orphaned merge (task/goal11a → main). Fixed Goal 8 SoC violation (11+ TRD Watcher flags): extracted Discord API call from cron route into NotificationService.postDiscordAlert(). 4 new tests. 393 tests pass, tsc clean. Opened PR #22 (task/fix-cron-discord-soc). PRs #19/20/21 unaffected (main unchanged).
