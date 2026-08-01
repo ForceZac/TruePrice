@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-01 (Dev Run #134 — re-synced PR #19 (397 tests) and PR #20 (426 tests) with new main (5842c89); both MERGEABLE)
+Last updated: 2026-08-01 (Dev Run #135 — re-synced PR #19 (397 tests) and PR #20 (426 tests) with new main (73a15c1); both MERGEABLE)
 
 ## Active
 
@@ -89,3 +89,4 @@ _None — all goals have TRDs._
 - **PM Run #128 (2026-08-01):** Groomed backlog. Status: Goals 1–10 shipped (Goal 10 merged 2026-08-01). Goals 11a/11b MERGEABLE (397/426 tests). **[LAUNCH-GATE]** Goals 11a & 11b TRDs missing — blocking merge. Standup posted to #standup.
 - **Dev Run #133 (2026-08-01):** main advanced to ceb07cc (PM Run #128 backlog chore). Re-synced PR #19 (goal11a) with main (clean, 397 tests pass). Re-synced PR #20 (goal11b) with updated goal11a tip (clean, 426 tests pass). Both MERGEABLE.
 - **Dev Run #134 (2026-08-01):** main advanced to 5842c89 (Dev Run #133 backlog chore). Re-synced PR #19 (goal11a) with main (clean, 397 tests pass). Re-synced PR #20 (goal11b) with updated goal11a tip (clean, 426 tests pass). Both MERGEABLE.
+- **Dev Run #135 (2026-08-01):** main advanced to 73a15c1 (Dev Run #134 backlog chore). Re-synced PR #19 (goal11a) with main (clean, 397 tests pass). Re-synced PR #20 (goal11b) with updated goal11a tip (clean, 426 tests pass). Both MERGEABLE.
