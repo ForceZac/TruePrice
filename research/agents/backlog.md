@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-01 (Dev Run #212 — no new impl work; re-synced all 3 open PRs with main 3d855a6; goal12=427 tests, goal13=418 tests; all pass)
+Last updated: 2026-08-01 (Dev Run #213 — re-synced all 3 open PRs with main df53fc4; goal12=427, goal13=418; all pass)
 
 ## Active
 
@@ -98,6 +98,7 @@ Last updated: 2026-08-01 (Dev Run #212 — no new impl work; re-synced all 3 ope
 - **PM Run #132 (2026-08-01):** Groomed backlog. Status: Goals 1–10 complete & merged; Goals 11a/11b MERGEABLE (397/426 tests). **[LAUNCH-GATE] Goals 11a & 11b TRDs missing + roadmap outdated (only documents Goals 1–9; Goals 10–11 absent).** Standup posted to #standup.
 - **Dev Run #142 (2026-08-01):** Opened PR #21 (`docs/add-missing-trds-roadmap`) — adds Goal 11a + 11b TRDs to main, updates roadmap to Goals 1–11b. Root cause of 10+ TRD Watcher alerts fixed. Re-synced PR #19 (goal11a) with main (clean, 397 tests pass). Re-synced PR #20 (goal11b) with updated goal11a tip (clean, 426 tests pass). All 3 PRs MERGEABLE.
 - **Dev Run #143 (2026-08-01):** Unstaged orphaned roadmap change that was left staged on main (already covered by PR #21). Synced docs/add-missing-trds-roadmap with main (de634f4) — clean merge, no conflicts. Promoted PR #21 draft → ready for review. No implementation work needed; all goals complete. All 3 PRs MERGEABLE.
+- **PM Run #143 (2026-08-01):** Groomed backlog. Status: Goals 1–10 shipped (merged); Goals 11a/11b/12/13 ready (3 PRs LGTM). 401 tests on main. **Zero blockers.** All 3 PRs (#21/#23/#24) CLEAN, MERGEABLE, awaiting Zach /merge. Standup posted to #standup.
 - **Dev Run #144 (2026-08-01):** main advanced to 2617045 (Dev Run #143 backlog chore). Discarded orphaned staged change (prisma/seed.ts) on goal11b. Re-synced all 3 PR branches with main (clean merges, no conflicts). Tests: goal11a=397, goal11b=426. All 3 PRs MERGEABLE.
 - **Dev Run #145 (2026-08-01):** Fixed PR #21 wrong base (task/goal1-scaffold → main; now MERGEABLE). Fixed PR #20 stale base (task/goal10-user-accounts → task/goal11a-save-as-image). Aborted orphaned merge on main. Re-synced all 3 PR branches with main (clean merges, no conflicts). Tests: goal11a=397, goal11b=426. All 3 PRs MERGEABLE.
 - **Dev Run #146 (2026-08-01):** main advanced to af9137b (Dev Run #145 backlog chore). Re-synced all 3 PR branches with main (clean merges, no conflicts). Tests: goal11a=397, goal11b=426. All 3 PRs MERGEABLE.
@@ -174,3 +175,6 @@ Last updated: 2026-08-01 (Dev Run #212 — no new impl work; re-synced all 3 ope
 - **Dev Run #208 (2026-08-01):** No new implementation work — all Goals 1–13 complete, all TRDs done. Confirmed all 3 open PRs still in sync with main b6c9a26 (zero behind). 418 tests pass, tsc clean. Pipeline awaiting Zach /merge on #21 (docs), #23 (goal12), #24 (goal13).
 - **Dev Run #209 (2026-08-01):** Re-synced all 3 open PR branches with main 1e56f84 (clean merges; goal13 had backlog.md conflict resolved in favor of main). Tests: docs branch clean, goal12=427, goal13=418. All 3 PRs MERGEABLE. Pipeline awaiting Zach /merge.
 - **Dev Run #210 (2026-08-01):** Re-synced all 3 open PR branches with main 1ceaef2 (clean merges, only backlog.md delta). Tests: goal12=427, goal13=418. All 3 PRs MERGEABLE. Pipeline awaiting Zach /merge on #21 (docs), #23 (goal12), #24 (goal13).
+- **Dev Run #211 (2026-08-01):** Re-synced all 3 open PR branches with main 95a082c (clean merges, no conflicts). Tests: goal12=427, goal13=418. All 3 PRs MERGEABLE. Pipeline awaiting Zach /merge.
+- **Dev Run #212 (2026-08-01):** Re-synced all 3 open PR branches with main 3d855a6 (clean merges, no conflicts). Tests: goal12=427, goal13=418. All 3 PRs MERGEABLE. Pipeline awaiting Zach /merge.
+- **Dev Run #213 (2026-08-01):** Re-synced all 3 open PR branches with main df53fc4; added Goal 13 PRD to task/goal13-weekly-digest-email (orphaned from main). Tests: goal12=427, goal13=418. All 3 PRs MERGEABLE. Pipeline awaiting Zach /merge.
