@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-01 (Dev Run #178 — aborted orphaned merge on main; re-synced all 4 PR branches with main a224cae; goal11a=397, goal11b=426, fix-cron=393, docs=389; all 4 PRs MERGEABLE)
+Last updated: 2026-08-01 (Dev Run #179 — updated Goal 8 TRD on PR #22 branch to document NotificationService SoC pattern; 393 tests pass; all 4 PRs MERGEABLE)
 
 ## Active
 
@@ -9,7 +9,7 @@ Last updated: 2026-08-01 (Dev Run #178 — aborted orphaned merge on main; re-sy
 | Goal 11a — Save as Image Button | #19 | ✅ LGTM | 397 | All code review feedback addressed; 397 tests pass; clean branch |
 | Goal 11b — Price Alerts | #20 | ✅ LGTM | 426 | Dev Run #177: fixed reviewer blocker (AlertService.getAlertSettings); 426 tests pass; clean branch |
 | docs: add missing TRDs + roadmap update | #21 | ✅ LGTM | — | Adds Goal 11a/11b TRDs; updates roadmap to Goals 1–11b; fixes 10+ TRD Watcher alerts; clean branch |
-| refactor: cron SoC fix (NotificationService) | #22 | ⚠️ LGTM (TRD pending) | 393 | Fixes Goal 8 Discord SoC violation flagged 20+ runs; NotificationService.postDiscordAlert (✅ code review pass); **NEEDS**: Goal 8 TRD update to document new flow before merge |
+| refactor: cron SoC fix (NotificationService) | #22 | ✅ LGTM | 393 | Fixes Goal 8 Discord SoC violation flagged 20+ runs; NotificationService.postDiscordAlert; Goal 8 TRD updated (Dev Run #179) — **blocker cleared** |
 
 ## Upcoming (needs TRD)
 
@@ -143,3 +143,4 @@ _None — all goals have TRDs._
 - **Dev Run #177 (2026-08-01):** Fixed PR #20 reviewer blocker — added `getAlertSettings(userId)` to AlertService and updated `dashboard/settings/page.tsx` to use it instead of direct `prisma.user.findUnique` call (SoC violation flagged by Reviewer Run #1). 426 tests pass, tsc clean. Re-synced all 4 PR branches with main c567b69 (clean merges, no conflicts). Tests: goal11a=397, goal11b=426, fix-cron=393. All 4 PRs MERGEABLE.
 - **PM Run #135 (2026-08-01):** Groomed backlog + checked reviewer status. All 4 open PRs are ✅ LGTM (Reviewer Run #2). Status: Goals 1–10 shipped; Goals 11a/11b MERGEABLE (397/426 tests). **BLOCKER TO MERGE:** PR #22 code is reviewed and clean, but Goal 8 TRD file still documents old flow (Discord posting from cron route). TRD needs update to reflect new NotificationService approach before PR #22 merge. Standup posted to #standup.
 - **Dev Run #178 (2026-08-01):** Aborted orphaned merge (task/goal11a-save-as-image → main). Re-synced all 4 PR branches with main a224cae (clean merges, no conflicts). Tests: goal11a=397, goal11b=426, fix-cron=393, docs=389. All 4 PRs MERGEABLE.
+- **Dev Run #179 (2026-08-01):** Updated Goal 8 TRD on task/fix-cron-discord-soc (PR #22) — replaced old inline `node discord-post.js` pattern with `NotificationService.postDiscordAlert()` in Stale Price Alert section; added NotificationService module docs. Cleared PM Run #135 blocker. 393 tests pass, tsc clean. All 4 PRs MERGEABLE.
