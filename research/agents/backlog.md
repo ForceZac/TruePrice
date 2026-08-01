@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-01 (Dev Run #199 — fixed goal12 test (BarcodeService mock); PR #23 promoted to ready; synced goal11b with main; 415 tests pass)
+Last updated: 2026-08-01 (Dev Run #200 — fixed recent-searches route path (/api/user/ → /api/account/ per TRD spec); marked Goal 12 AC done; 452 tests pass, tsc clean; PR #23 updated)
 
 ## Active
 
@@ -10,7 +10,7 @@ Last updated: 2026-08-01 (Dev Run #199 — fixed goal12 test (BarcodeService moc
 | Goal 11b — Price Alerts | #20 | ✅ LGTM | 426 | Dev Run #177: fixed reviewer blocker (AlertService.getAlertSettings); 426 tests pass; clean branch |
 | docs: add missing TRDs + roadmap update | #21 | ✅ LGTM | — | Adds Goal 11a/11b TRDs; updates roadmap to Goals 1–11b; fixes 10+ TRD Watcher alerts; clean branch |
 | refactor: cron SoC fix (NotificationService) | #22 | ✅ LGTM | 393 | Fixes Goal 8 Discord SoC violation flagged 20+ runs; NotificationService.postDiscordAlert; Goal 8 TRD updated (Dev Run #179) — **blocker cleared** |
-| Goal 12 — Enhanced Search & Discovery | #23 | 🔍 REVIEW | 415 | Dev Run #199: fixed BarcodeService mock in goal12 tests; PR promoted to ready; 415 tests pass, tsc clean |
+| Goal 12 — Enhanced Search & Discovery | #23 | 🔍 REVIEW | 452 | Dev Run #200: moved recent-searches route to /api/account/ (TRD spec); all AC done; 452 tests pass, tsc clean |
 
 ## Upcoming (needs TRD)
 
@@ -166,6 +166,6 @@ _None — all goals have TRDs._
 - **Dev Run #195 (2026-08-01):** Re-synced all 4 PR branches with main 134101f (clean merges, no conflicts). Tests: goal11a=397, goal11b=426, fix-cron=393. All 4 PRs MERGEABLE.
 - **Dev Run #196 (2026-08-01):** Re-synced all 4 PR branches with main 19018ad (clean merges, no conflicts). Tests: goal11a=397, goal11b=426, fix-cron=393. All 4 PRs MERGEABLE.
 - **Dev Run #197 (2026-08-01):** Re-synced all 4 PR branches with main 6612d8b (clean merges, no conflicts). Tests: goal11a=397, fix-cron=393. All 4 PRs MERGEABLE.
-
 - **PM Run #141 (2026-08-01):** Groomed backlog. Status: Goals 1–10 shipped (main at 464a0d0). All 4 critical PRs ready for review: PR #19 (goal11a=397), PR #20 (goal11b=426), PR #21 (TRDs+roadmap), PR #22 (SoC fix=393). ✅ All LGTM and MERGEABLE. **Zero blockers.** Awaiting Zach `/merge`.
 - **Dev Run #199 (2026-08-01):** Fixed Goal 12 test failure (added BarcodeService mock to ProductService.goal12.test.ts); synced goal11b with main 464a0d0 (CONFLICTING → MERGEABLE); promoted PR #23 draft → ready for review. Goal 12 TRD updated to `done`. All 5 PRs MERGEABLE. Tests: goal11a=397, goal11b=426, fix-cron=393, goal12=415.
+- **Dev Run #200 (2026-08-01):** Fixed Goal 12 route path: moved recent-searches from /api/user/ → /api/account/ per TRD spec; updated SearchInput.tsx accordingly; marked all Goal 12 AC as [x] done in TRD; aborted orphaned goal11b→goal12 merge. 452 tests pass, tsc clean. All 5 PRs remain MERGEABLE.
