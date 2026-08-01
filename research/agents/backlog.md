@@ -1,15 +1,14 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-01 (Dev Run #207 — verified PRs in sync; 418 tests pass; tsc clean; pipeline awaiting /merge)
+Last updated: 2026-08-01 (Dev Run #208 — no new implementation work; all Goals 1–13 complete; verified 3 open PRs in sync with main b6c9a26; 418 tests pass, tsc clean)
 
 ## Active
 
 | Goal | PR | Status | Tests | Notes |
 |------|----|----|-------|-------|
-| docs: add missing TRDs + roadmap update | #21 | ✅ LGTM | — | Adds Goal 11a/11b/12 TRDs; updates roadmap to Goals 1–12; synced with main b6c9a26 |
-| Goal 12 — Enhanced Search & Discovery | #23 | ✅ LGTM | 427 | Synced with main b6c9a26; all AC done; 427 tests pass, tsc clean |
-| Goal 13 — Weekly Digest Email | #24 | ✅ LGTM | 418 | All AC done; roadmap updated to include Goal 13; 418 tests pass, tsc clean |
-| Goal 13 — Weekly Digest Email | #24 | ✅ LGTM | 418 | All AC done; 17 new tests; TRD marked done; tsc clean; ready for review |
+| docs: add Goal 11a/11b/12 TRDs + roadmap | #21 | ✅ LGTM | — | Adds Goal 11a/11b/12/13 TRDs; updates roadmap to Goals 1–13; synced with main b6c9a26 |
+| Goal 12 — Enhanced Search & Discovery | #23 | ✅ LGTM | 427 | Synced with main b6c9a26; all AC done; tsc clean |
+| Goal 13 — Weekly Digest Email | #24 | ✅ LGTM | 418 | All AC done; 17 new tests; TRD done; tsc clean; synced with main b6c9a26 |
 
 ## Completed
 
@@ -30,7 +29,7 @@ Last updated: 2026-08-01 (Dev Run #207 — verified PRs in sync; 418 tests pass;
 
 ## Notes
 
-- **Pipeline status:** ✅ GOALS 1-10 SHIPPED (main at b6c9a26). 401 tests passing. PR #21 (docs+TRDs+roadmap) + PR #23 (Goal 12) MERGEABLE & LGTM. Awaiting Zach `/merge`.
+- **Pipeline status:** ✅ GOALS 1-10 SHIPPED + PR #16 (service-layer) merged. main at e292d87. 397 tests passing. Goals 11a/11b in review.
 - **PR #12 (Goal 7):** MERGED (752e8c1) — privacy/terms/contact/about pages, footer, cookie consent, AdSense loader, ad slots, robots.txt.
 - **PR #13 (Goal 8):** ✅ MERGED (b39dfde on 2026-07-30) — 270 tests. Confidence tiers, subcategory profiles, 104 seeded products, material-parser aliases, cron routes, /admin/coverage page.
 - **PR #14 (Goal 9):** ✅ MERGED (ea4e0ba on 2026-07-31) — 305 tests. Compare page, CompareStore, CompareTray, LeaderboardCard, Leaderboard page, OG image routes, ShareButton, AddToCompareButton, JSON-LD, revalidate.
@@ -167,8 +166,9 @@ Last updated: 2026-08-01 (Dev Run #207 — verified PRs in sync; 418 tests pass;
 - **Dev Run #201 (2026-08-01):** Aborted orphaned merge on main. Updated PR #21 (docs) with Goal 12 TRD + roadmap update (Goals 11a/11b now MERGED, Goal 12 IN REVIEW). Synced PR #23 (goal12) with main 8c8deb6 — resolved backlog conflict (took main/Dev Run #200 state). 427 tests pass, tsc clean. 2 PRs active: #21 (docs) + #23 (goal12).
 - **Dev Run #202 (2026-08-01):** Synced both open PRs with main 8e8bca5 (clean merges, no conflicts). PR #21 (docs) + PR #23 (goal12=427 tests). Both MERGEABLE and LGTM (Reviewer Run #19). Awaiting Zach /merge.
 - **PM Run #142 (2026-08-01):** Groomed backlog. Status: ✅ Goals 1–10 shipped; ✅ PRs #19/#20/#22 merged; PR #21 (TRDs+roadmap) + PR #23 (Goal 12) LGTM + MERGEABLE (427 tests). **Zero blockers.** All 2 open PRs ready for Zach `/merge`. Standup posted to #standup.
-- **Dev Run #204 (2026-08-01):** Goal 13 (Weekly Digest Email) already implemented on task/goal13-weekly-digest-email branch (2 commits: schema + full feature). 418 tests pass, tsc clean. Opened draft PR #24. All 3 open PRs: #21 (docs), #23 (goal12), #24 (goal13).
-- **Dev Run #205 (2026-08-01):** TRD done; Goal 13 TRD updated to `done`; PR #24 promoted to ready for review. 418 tests pass, tsc clean. All 3 open PRs MERGEABLE & LGTM: #21 (docs), #23 (goal12), #24 (goal13).
-- **PM Run #143 (2026-08-01):** ✅ Groomed backlog. Status: ✅ Goals 1–10 shipped; ✅ PRs #21 (docs+TRDs+roadmap) + #23 (goal12) LGTM + MERGEABLE (427 tests); ✅ PR #24 (goal13) LGTM + MERGEABLE (418 tests). **Zero blockers.** All 3 open PRs ready for Zach `/merge`.
-- **Dev Run #206 (2026-08-01):** All TRDs done (Goals 1–13). All 3 open PRs in sync with main b6c9a26 (0 behind). Updated implementation-roadmap-v2.md to add Goal 13 to dependency graph and goals list. 418 tests pass, tsc clean. Pipeline awaiting Zach /merge on #21, #23, #24.
-- **Dev Run #207 (2026-08-01):** No new implementation work — all Goals 1–13 complete, all TRDs done. Verified all 3 open PRs in sync with main b6c9a26 (none behind). 418 tests pass, tsc clean. Pipeline awaiting Zach /merge on #21 (docs), #23 (goal12), #24 (goal13).
+- **Dev Run #204 (2026-08-01):** Goal 13 (Weekly Digest Email) already implemented on task/goal13-weekly-digest-email branch. 418 tests pass, tsc clean. Opened draft PR #24.
+- **Dev Run #205 (2026-08-01):** Goal 13 TRD updated to `done`; PR #24 promoted to ready for review. 418 tests pass, tsc clean. All 3 open PRs MERGEABLE & LGTM: #21 (docs), #23 (goal12), #24 (goal13).
+- **PM Run #143 (2026-08-01):** ✅ Groomed backlog. Status: ✅ Goals 1–10 shipped; ✅ PRs #21/#23/#24 LGTM + MERGEABLE. **Zero blockers.** All 3 open PRs ready for Zach `/merge`.
+- **Dev Run #206 (2026-08-01):** All TRDs done (Goals 1–13). Updated roadmap to add Goal 13. 418 tests pass, tsc clean. Pipeline awaiting Zach /merge on #21, #23, #24.
+- **Dev Run #207 (2026-08-01):** No new implementation work. Verified all 3 open PRs in sync with main b6c9a26. 418 tests pass, tsc clean. Pipeline awaiting Zach /merge on #21, #23, #24.
+- **Dev Run #208 (2026-08-01):** No new implementation work — all Goals 1–13 complete, all TRDs done. Confirmed all 3 open PRs still in sync with main b6c9a26 (zero behind). 418 tests pass, tsc clean. Pipeline awaiting Zach /merge on #21 (docs), #23 (goal12), #24 (goal13).
