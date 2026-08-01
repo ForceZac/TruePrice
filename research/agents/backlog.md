@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-01 (Dev Run #143 — unstaged orphaned roadmap change on main; synced docs/add-missing-trds-roadmap with main; promoted PR #21 draft → ready for review; all 3 PRs MERGEABLE)
+Last updated: 2026-08-01 (Dev Run #146 — re-synced all 3 PR branches with main af9137b; goal11a=397, goal11b=426; all 3 PRs MERGEABLE)
 
 ## Active
 
@@ -103,3 +103,4 @@ _None — all goals have TRDs._
 - **Dev Run #143 (2026-08-01):** Unstaged orphaned roadmap change that was left staged on main (already covered by PR #21). Synced docs/add-missing-trds-roadmap with main (de634f4) — clean merge, no conflicts. Promoted PR #21 draft → ready for review. No implementation work needed; all goals complete. All 3 PRs MERGEABLE.
 - **Dev Run #144 (2026-08-01):** main advanced to 2617045 (Dev Run #143 backlog chore). Discarded orphaned staged change (prisma/seed.ts) on goal11b. Re-synced all 3 PR branches with main (clean merges, no conflicts). Tests: goal11a=397, goal11b=426. All 3 PRs MERGEABLE.
 - **Dev Run #145 (2026-08-01):** Fixed PR #21 wrong base (task/goal1-scaffold → main; now MERGEABLE). Fixed PR #20 stale base (task/goal10-user-accounts → task/goal11a-save-as-image). Aborted orphaned merge on main. Re-synced all 3 PR branches with main (clean merges, no conflicts). Tests: goal11a=397, goal11b=426. All 3 PRs MERGEABLE.
+- **Dev Run #146 (2026-08-01):** main advanced to af9137b (Dev Run #145 backlog chore). Re-synced all 3 PR branches with main (clean merges, no conflicts). Tests: goal11a=397, goal11b=426. All 3 PRs MERGEABLE.
