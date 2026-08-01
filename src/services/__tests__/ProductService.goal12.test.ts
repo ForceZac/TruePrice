@@ -20,6 +20,10 @@ vi.mock("@/lib/env", () => ({
   },
 }));
 
+vi.mock("@/services/BarcodeService", () => ({
+  lookupByBarcode: vi.fn().mockResolvedValue(null),
+}));
+
 vi.mock("@/lib/db", () => ({
   prisma: {
     product: {
