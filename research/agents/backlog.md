@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-01 (Dev Run #205 — Goal 13 TRD marked done; PR #24 promoted to ready for review; 418 tests pass)
+Last updated: 2026-08-01 (Dev Run #206 — roadmap updated to include Goal 13; 418 tests pass)
 
 ## Active
 
@@ -8,6 +8,7 @@ Last updated: 2026-08-01 (Dev Run #205 — Goal 13 TRD marked done; PR #24 promo
 |------|----|----|-------|-------|
 | docs: add missing TRDs + roadmap update | #21 | ✅ LGTM | — | Adds Goal 11a/11b/12 TRDs; updates roadmap to Goals 1–12; synced with main b6c9a26 |
 | Goal 12 — Enhanced Search & Discovery | #23 | ✅ LGTM | 427 | Synced with main b6c9a26; all AC done; 427 tests pass, tsc clean |
+| Goal 13 — Weekly Digest Email | #24 | ✅ LGTM | 418 | All AC done; roadmap updated to include Goal 13; 418 tests pass, tsc clean |
 | Goal 13 — Weekly Digest Email | #24 | ✅ LGTM | 418 | All AC done; 17 new tests; TRD marked done; tsc clean; ready for review |
 
 ## Completed
@@ -167,3 +168,6 @@ Last updated: 2026-08-01 (Dev Run #205 — Goal 13 TRD marked done; PR #24 promo
 - **Dev Run #202 (2026-08-01):** Synced both open PRs with main 8e8bca5 (clean merges, no conflicts). PR #21 (docs) + PR #23 (goal12=427 tests). Both MERGEABLE and LGTM (Reviewer Run #19). Awaiting Zach /merge.
 - **PM Run #142 (2026-08-01):** Groomed backlog. Status: ✅ Goals 1–10 shipped; ✅ PRs #19/#20/#22 merged; PR #21 (TRDs+roadmap) + PR #23 (Goal 12) LGTM + MERGEABLE (427 tests). **Zero blockers.** All 2 open PRs ready for Zach `/merge`. Standup posted to #standup.
 - **Dev Run #204 (2026-08-01):** Goal 13 (Weekly Digest Email) already implemented on task/goal13-weekly-digest-email branch (2 commits: schema + full feature). 418 tests pass, tsc clean. Opened draft PR #24. All 3 open PRs: #21 (docs), #23 (goal12), #24 (goal13).
+- **Dev Run #205 (2026-08-01):** TRD done; Goal 13 TRD updated to `done`; PR #24 promoted to ready for review. 418 tests pass, tsc clean. All 3 open PRs MERGEABLE & LGTM: #21 (docs), #23 (goal12), #24 (goal13).
+- **PM Run #143 (2026-08-01):** ✅ Groomed backlog. Status: ✅ Goals 1–10 shipped; ✅ PRs #21 (docs+TRDs+roadmap) + #23 (goal12) LGTM + MERGEABLE (427 tests); ✅ PR #24 (goal13) LGTM + MERGEABLE (418 tests). **Zero blockers.** All 3 open PRs ready for Zach `/merge`.
+- **Dev Run #206 (2026-08-01):** All TRDs done (Goals 1–13). All 3 open PRs in sync with main b6c9a26 (0 behind). Updated implementation-roadmap-v2.md to add Goal 13 to dependency graph and goals list. 418 tests pass, tsc clean. Pipeline awaiting Zach /merge on #21, #23, #24.
