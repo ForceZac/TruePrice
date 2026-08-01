@@ -45,6 +45,9 @@ const serverEnvSchema = z.object({
   RESEND_API_KEY: z.string().optional(),
   FROM_EMAIL: z.string().default("digest@trueprice.app"),
 
+  // Digest unsubscribe token signing
+  DIGEST_UNSUBSCRIBE_SECRET: z.string().optional(),
+
   // CI / Bots (optional in dev)
   GITHUB_TOKEN: z.string().optional(),
   DISCORD_BOT_TOKEN: z.string().optional(),

@@ -5,8 +5,10 @@
  * these functions; they never touch Prisma directly.
  */
 
+import { SignJWT, jwtVerify } from "jose";
 import { Prisma } from "@prisma/client";
 import { prisma } from "@/lib/db";
+import { serverEnv } from "@/lib/env.server";
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
@@ -330,6 +332,378 @@ export async function getDigestCandidates(
   }
 
   return candidates;
+}
+
+// ─── Digest Preferences ───────────────────────────────────────────────────────
+
+/** Returns the user's digest preference. */
+export async function getDigestPreferences(
+  userId: string
+): Promise<{ digestEnabled: boolean } | null> {
+  const user = await prisma.user.findUnique({
+    where: { id: userId },
+    select: { digestEnabled: true },
+  });
+  return user ? { digestEnabled: user.digestEnabled } : null;
+}
+
+/** Updates the user's digestEnabled preference. */
+export async function updateDigestPreferences(
+  userId: string,
+  digestEnabled: boolean
+): Promise<{ digestEnabled: boolean }> {
+  const user = await prisma.user.update({
+    where: { id: userId },
+    data: { digestEnabled },
+    select: { digestEnabled: true },
+  });
+  return { digestEnabled: user.digestEnabled };
+}
+
+// ─── Unsubscribe Tokens ────────────────────────────────────────────────────────
+
+function getUnsubscribeSecret(): Uint8Array {
+  const secret = serverEnv.DIGEST_UNSUBSCRIBE_SECRET;
+  if (!secret) throw new Error("DIGEST_UNSUBSCRIBE_SECRET is not configured");
+  return Buffer.from(secret, "utf8");
+}
+
+/** Signs a 30-day JWT for one-click digest unsubscribe. */
+export async function signUnsubscribeToken(userId: string): Promise<string> {
+  return new SignJWT({ userId, action: "unsubscribe-digest" })
+    .setProtectedHeader({ alg: "HS256" })
+    .setIssuedAt()
+    .setExpirationTime("30d")
+    .sign(getUnsubscribeSecret());
+}
+
+/**
+ * Verifies a digest unsubscribe token.
+ * Returns `{ userId }` on success, `null` if invalid or expired.
+ */
+export async function verifyUnsubscribeToken(
+  token: string
+): Promise<{ userId: string } | null> {
+  try {
+    const { payload } = await jwtVerify(token, getUnsubscribeSecret());
+    if (
+      payload.action !== "unsubscribe-digest" ||
+      typeof payload.userId !== "string"
+    ) {
+      return null;
+    }
+    return { userId: payload.userId };
+  } catch {
+    return null;
+  }
+}
+
+// ─── Full Digest Candidates ───────────────────────────────────────────────────
+
+export interface FullDigestProduct {
+  id: string;
+  name: string;
+  brand: string | null;
+  imageUrl: string | null;
+  retailPriceCents: number | null;
+  markupPercent: number | null;
+  confidence: string;
+}
+
+export interface FullDigestCandidate {
+  userId: string;
+  email: string;
+  name: string | null;
+  products: FullDigestProduct[];
+}
+
+export interface DigestHighlight {
+  id: string;
+  name: string;
+  brand: string | null;
+  markupPercent: number;
+}
+
+export interface DigestSendResult {
+  sent: number;
+  skipped: number;
+  errors: number;
+}
+
+/**
+ * Returns opted-in users (digestEnabled=true) with ≥1 saved product,
+ * including up to 5 watchlisted products per user.
+ * Cursor-paginated; pageSize=500 by default.
+ */
+export async function getFullDigestCandidates(
+  pageSize = 500,
+  cursor?: string
+): Promise<FullDigestCandidate[]> {
+  const users = await prisma.user.findMany({
+    where: {
+      digestEnabled: true,
+      email: { not: null },
+      savedProducts: { some: {} },
+    },
+    take: pageSize,
+    ...(cursor ? { skip: 1, cursor: { id: cursor } } : {}),
+    orderBy: { id: "asc" },
+    select: {
+      id: true,
+      email: true,
+      name: true,
+      savedProducts: {
+        take: 5,
+        orderBy: { savedAt: "desc" },
+        select: {
+          product: {
+            select: {
+              id: true,
+              name: true,
+              brand: true,
+              imageUrl: true,
+              retailPriceCents: true,
+              costBreakdowns: {
+                orderBy: { calculatedAt: "desc" },
+                take: 1,
+                select: { markupPercent: true, confidence: true },
+              },
+            },
+          },
+        },
+      },
+    },
+  });
+
+  return users
+    .filter((u): u is typeof u & { email: string } => u.email !== null)
+    .map((u) => ({
+      userId: u.id,
+      email: u.email,
+      name: u.name,
+      products: u.savedProducts.map((sp) => ({
+        id: sp.product.id,
+        name: sp.product.name,
+        brand: sp.product.brand,
+        imageUrl: sp.product.imageUrl,
+        retailPriceCents: sp.product.retailPriceCents,
+        markupPercent: sp.product.costBreakdowns[0]?.markupPercent ?? null,
+        confidence: sp.product.costBreakdowns[0]?.confidence ?? "LOW",
+      })),
+    }));
+}
+
+/** Returns the top N most-shocking products (HIGH confidence, highest markupPercent). */
+async function getMostShockingHighlights(limit = 3): Promise<DigestHighlight[]> {
+  const breakdowns = await prisma.costBreakdown.findMany({
+    where: { confidence: "HIGH", markupPercent: { not: null } },
+    orderBy: { markupPercent: "desc" },
+    take: limit * 3, // fetch extra to deduplicate by product
+    distinct: ["productId"],
+    select: {
+      markupPercent: true,
+      product: { select: { id: true, name: true, brand: true } },
+    },
+  });
+
+  return breakdowns
+    .filter((b): b is typeof b & { markupPercent: number } => b.markupPercent !== null)
+    .slice(0, limit)
+    .map((b) => ({
+      id: b.product.id,
+      name: b.product.name,
+      brand: b.product.brand,
+      markupPercent: b.markupPercent,
+    }));
+}
+
+/**
+ * Orchestrates the weekly digest send.
+ * Skips users with digestEnabled=false or empty watchlist.
+ * Resend failure for one user does not stop others.
+ * Returns `{ sent, skipped, errors }`.
+ */
+export async function sendWeeklyDigests(): Promise<DigestSendResult> {
+  const result: DigestSendResult = { sent: 0, skipped: 0, errors: 0 };
+
+  if (!serverEnv.RESEND_API_KEY) {
+    console.warn(
+      "[sendWeeklyDigests] RESEND_API_KEY not set — skipping email send"
+    );
+    return result;
+  }
+
+  if (!serverEnv.DIGEST_UNSUBSCRIBE_SECRET) {
+    console.warn(
+      "[sendWeeklyDigests] DIGEST_UNSUBSCRIBE_SECRET not set — skipping email send"
+    );
+    return result;
+  }
+
+  const { Resend } = await import("resend");
+  const resend = new Resend(serverEnv.RESEND_API_KEY);
+
+  const highlights = await getMostShockingHighlights(3);
+
+  // Cursor-paginated to handle large user counts
+  let cursor: string | undefined;
+  do {
+    const page = await getFullDigestCandidates(500, cursor);
+    if (page.length === 0) break;
+
+    await Promise.all(
+      page.map(async (candidate) => {
+        try {
+          const unsubscribeToken = await signUnsubscribeToken(candidate.userId);
+          const html = buildDigestHtml(candidate, highlights, unsubscribeToken);
+          const text = buildDigestText(candidate, highlights);
+
+          await resend.emails.send({
+            from: serverEnv.FROM_EMAIL,
+            to: candidate.email,
+            subject: "Your TruePrice weekly digest",
+            html,
+            text,
+          });
+          result.sent++;
+        } catch (err) {
+          console.error(
+            `[sendWeeklyDigests] Failed for user ${candidate.userId}:`,
+            err
+          );
+          result.errors++;
+        }
+      })
+    );
+
+    cursor = page[page.length - 1]?.userId;
+    // If page is smaller than pageSize, we've hit the last page
+    if (page.length < 500) break;
+  } while (cursor);
+
+  return result;
+}
+
+// ─── Email Templates ───────────────────────────────────────────────────────────
+
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+export function buildDigestHtml(
+  candidate: FullDigestCandidate,
+  highlights: DigestHighlight[],
+  unsubscribeToken: string
+): string {
+  const productRows = candidate.products
+    .map(
+      (p) => `
+      <tr>
+        <td style="padding:8px 12px">${escapeHtml(p.name)}</td>
+        <td style="padding:8px 12px">${p.brand ? escapeHtml(p.brand) : "—"}</td>
+        <td style="padding:8px 12px">${p.markupPercent !== null ? `${p.markupPercent.toFixed(1)}%` : "—"}</td>
+        <td style="padding:8px 12px">${escapeHtml(p.confidence)}</td>
+      </tr>`
+    )
+    .join("");
+
+  const highlightRows = highlights
+    .map(
+      (h) => `
+      <tr>
+        <td style="padding:8px 12px">${escapeHtml(h.name)}</td>
+        <td style="padding:8px 12px">${h.brand ? escapeHtml(h.brand) : "—"}</td>
+        <td style="padding:8px 12px">${h.markupPercent.toFixed(1)}%</td>
+      </tr>`
+    )
+    .join("");
+
+  const unsubscribeUrl = `https://trueprice.app/api/account/unsubscribe?token=${encodeURIComponent(unsubscribeToken)}`;
+
+  return `<!DOCTYPE html>
+<html lang="en">
+<body style="font-family:sans-serif;color:#111;max-width:600px;margin:auto;padding:20px">
+  <h2 style="color:#1a1a1a">Your TruePrice Weekly Digest</h2>
+  <p>Hi${candidate.name ? ` ${escapeHtml(candidate.name)}` : ""},</p>
+  <p>Here's a look at your watchlist and this week's most surprising markups.</p>
+
+  <h3 style="margin-top:24px">Your Watchlist</h3>
+  <table style="width:100%;border-collapse:collapse;border:1px solid #ddd">
+    <thead>
+      <tr style="background:#f5f5f5">
+        <th style="padding:8px 12px;text-align:left">Product</th>
+        <th style="padding:8px 12px;text-align:left">Brand</th>
+        <th style="padding:8px 12px;text-align:left">Markup</th>
+        <th style="padding:8px 12px;text-align:left">Confidence</th>
+      </tr>
+    </thead>
+    <tbody>${productRows}</tbody>
+  </table>
+
+  ${
+    highlights.length > 0
+      ? `<h3 style="margin-top:24px">This Week's Most Shocking Markups</h3>
+  <table style="width:100%;border-collapse:collapse;border:1px solid #ddd">
+    <thead>
+      <tr style="background:#f5f5f5">
+        <th style="padding:8px 12px;text-align:left">Product</th>
+        <th style="padding:8px 12px;text-align:left">Brand</th>
+        <th style="padding:8px 12px;text-align:left">Markup</th>
+      </tr>
+    </thead>
+    <tbody>${highlightRows}</tbody>
+  </table>`
+      : ""
+  }
+
+  <p style="margin-top:24px">
+    <a href="https://trueprice.app/dashboard" style="color:#2563eb">View your dashboard →</a>
+  </p>
+
+  <hr style="margin-top:32px;border:none;border-top:1px solid #eee"/>
+  <p style="font-size:12px;color:#888">
+    You're receiving this because you opted in to weekly digests on TruePrice.
+    <a href="${escapeHtml(unsubscribeUrl)}" style="color:#888">Unsubscribe</a>
+  </p>
+</body>
+</html>`;
+}
+
+function buildDigestText(
+  candidate: FullDigestCandidate,
+  highlights: DigestHighlight[]
+): string {
+  const productLines = candidate.products
+    .map(
+      (p) =>
+        `- ${p.name}${p.brand ? ` (${p.brand})` : ""}: ${p.markupPercent !== null ? `${p.markupPercent.toFixed(1)}% markup` : "no estimate"}`
+    )
+    .join("\n");
+
+  const highlightLines = highlights
+    .map((h) => `- ${h.name}${h.brand ? ` (${h.brand})` : ""}: ${h.markupPercent.toFixed(1)}% markup`)
+    .join("\n");
+
+  return [
+    `Your TruePrice Weekly Digest`,
+    ``,
+    `Hi${candidate.name ? ` ${candidate.name}` : ""},`,
+    ``,
+    `Your Watchlist:`,
+    productLines,
+    ``,
+    highlights.length > 0 ? `This Week's Most Shocking Markups:\n${highlightLines}` : "",
+    ``,
+    `View your dashboard: https://trueprice.app/dashboard`,
+    ``,
+    `To unsubscribe, visit your account settings: https://trueprice.app/dashboard/settings`,
+  ]
+    .filter((l) => l !== undefined)
+    .join("\n");
 }
 
 // ─── Account Deletion ─────────────────────────────────────────────────────────
