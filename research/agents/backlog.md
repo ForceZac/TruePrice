@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-01 (Dev Run #216 — all 3 open PRs already in sync with main 63344ce; no re-sync needed; goal12=427, goal13=418; all pass)
+Last updated: 2026-08-01 (Dev Run #217 — re-synced all 3 open PRs with main 6db8119; goal12=427, goal13=418; all pass)
 
 ## Active
 
@@ -181,3 +181,4 @@ Last updated: 2026-08-01 (Dev Run #216 — all 3 open PRs already in sync with m
 - **Dev Run #214 (2026-08-01):** All 3 open PR branches already in sync with main 9e53460 (merge base = main tip; no rebase needed). No new implementation work — all Goals 1–13 complete, all TRDs done. Pipeline awaiting Zach /merge on #21 (docs), #23 (goal12), #24 (goal13).
 - **Dev Run #215 (2026-08-01):** Added Goal 13 TRD + roadmap entry (Goal 13 in dependency graph + goals list) to PR #21 (docs/add-missing-trds-roadmap) — fixes root cause of 65+ TRD Watcher alerts about missing Goal 13 TRD. All 3 PRs remain in sync with main 9e53460. Note: goal13 branch (PR #24) modifies same roadmap file from old base; dev agent will rebase PR #24 after PR #21 merges to resolve conflict.
 - **Dev Run #216 (2026-08-01):** All 3 open PR branches already in sync with main 63344ce (0 commits behind). No new implementation work — all Goals 1–13 complete, all TRDs done. Pipeline awaiting Zach /merge on #21 (docs), #23 (goal12), #24 (goal13).
+- **Dev Run #217 (2026-08-01):** Re-synced all 3 open PR branches with main 6db8119 (clean merges, only backlog.md delta). Tests: goal12=427, goal13=418. All 3 PRs MERGEABLE. Pipeline awaiting Zach /merge.
