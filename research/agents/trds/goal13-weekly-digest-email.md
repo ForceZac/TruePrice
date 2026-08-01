@@ -1,6 +1,6 @@
 # TRD: Goal 13 — Weekly Digest Email
 
-- **status:** `ready`
+- **status:** `done`
 - **goal:** `Goal 13`
 - **priority:** `P2`
 - **branch:** `task/goal13-weekly-digest-email`
@@ -14,34 +14,34 @@ Send a weekly HTML digest email to opted-in users. Each digest contains up to 5 
 
 ## Acceptance Criteria
 
-- [ ] `GET /api/cron/send-digest` protected by `CRON_SECRET` header
-- [ ] Users with `digestEnabled: false` receive no email
-- [ ] Users with `digestEnabled: true` but empty watchlist receive no email
-- [ ] Users with ≥1 watchlist item receive email containing: up to 5 watchlist products, 3 platform highlights, working unsubscribe link
-- [ ] Clicking the unsubscribe link sets `User.digestEnabled = false` without sign-in; subsequent cron runs skip them
-- [ ] Expired unsubscribe tokens (>30 days) return 400 with a friendly message
-- [ ] Resend API failure for one user does not stop cron from processing remaining users
-- [ ] Cron response body includes `{ sent: N, skipped: N, errors: N }`
-- [ ] `PATCH /api/account/preferences` with `{ digestEnabled: boolean }` updates the user's preference
-- [ ] Dashboard settings page shows a "Weekly Digest" toggle backed by `PATCH /api/account/preferences`
-- [ ] TypeScript compiles clean
-- [ ] ≥10 new tests
+- [x] `GET /api/cron/send-digest` protected by `CRON_SECRET` header
+- [x] Users with `digestEnabled: false` receive no email
+- [x] Users with `digestEnabled: true` but empty watchlist receive no email
+- [x] Users with ≥1 watchlist item receive email containing: up to 5 watchlist products, 3 platform highlights, working unsubscribe link
+- [x] Clicking the unsubscribe link sets `User.digestEnabled = false` without sign-in; subsequent cron runs skip them
+- [x] Expired unsubscribe tokens (>30 days) return 400 with a friendly message
+- [x] Resend API failure for one user does not stop cron from processing remaining users
+- [x] Cron response body includes `{ sent: N, skipped: N, errors: N }`
+- [x] `PATCH /api/account/preferences` with `{ digestEnabled: boolean }` updates the user's preference
+- [x] Dashboard settings page shows a "Weekly Digest" toggle backed by `PATCH /api/account/preferences`
+- [x] TypeScript compiles clean
+- [x] ≥10 new tests (17 written)
 
 ## Tasks
 
-- [ ] Add `digestEnabled Boolean @default(true)` to User model in schema
-- [ ] Create Prisma migration
-- [ ] Add `DIGEST_UNSUBSCRIBE_SECRET` to `env.server.ts`
-- [ ] Add `signUnsubscribeToken(userId)` and `verifyUnsubscribeToken(token)` to `UserService`
-- [ ] Add `getFullDigestCandidates()` to `UserService` (users with digestEnabled + ≥1 watchlist item)
-- [ ] Add `sendWeeklyDigests()` to `UserService`
-- [ ] Create `GET /api/cron/send-digest/route.ts`
-- [ ] Create `GET /api/account/unsubscribe/route.ts`
-- [ ] Create `PATCH /api/account/preferences/route.ts`
-- [ ] Create `/account/unsubscribed/page.tsx` confirmation page
-- [ ] Update `dashboard/settings/page.tsx` with digest toggle
-- [ ] Update `vercel.json` with new cron entry
-- [ ] Write ≥10 tests
+- [x] Add `digestEnabled Boolean @default(true)` to User model in schema
+- [x] Create Prisma migration
+- [x] Add `DIGEST_UNSUBSCRIBE_SECRET` to `env.server.ts`
+- [x] Add `signUnsubscribeToken(userId)` and `verifyUnsubscribeToken(token)` to `UserService`
+- [x] Add `getFullDigestCandidates()` to `UserService` (users with digestEnabled + ≥1 watchlist item)
+- [x] Add `sendWeeklyDigests()` to `UserService`
+- [x] Create `GET /api/cron/send-digest/route.ts`
+- [x] Create `GET /api/account/unsubscribe/route.ts`
+- [x] Create `PATCH /api/account/preferences/route.ts`
+- [x] Create `/account/unsubscribed/page.tsx` confirmation page
+- [x] Update `dashboard/settings/page.tsx` with digest toggle
+- [x] Update `vercel.json` with new cron entry
+- [x] Write ≥10 tests (17 written)
 
 ## Implementation Notes
 
