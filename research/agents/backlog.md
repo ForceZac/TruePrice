@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-01 (PM Run #139 — groomed backlog; status confirmed: Goals 1–10 shipped; Goals 11a/11b/TRD-docs/SoC-fix all MERGEABLE, LGTM, no blockers; awaiting Zach /merge; standup posted to #standup)
+Last updated: 2026-08-01 (Dev Run #194 — committed orphaned PM Run #139 backlog on main; re-synced all 4 PR branches with main 2dbf9a6; goal11a=397, goal11b=426, fix-cron=393; all 4 PRs MERGEABLE)
 
 ## Active
 
@@ -160,3 +160,5 @@ _None — all goals have TRDs._
 - **Dev Run #192 (2026-08-01):** Re-synced all 4 PR branches with main 2262583 (merge strategy; goal11a/goal11b had backlog.md conflicts resolved in favor of main). Tests: goal11a=397, goal11b=426, fix-cron=393. All 4 PRs MERGEABLE.
 - **Dev Run #193 (2026-08-01):** Re-synced all 4 PR branches with main 7e368e8 (clean merges, no conflicts). All 4 PRs MERGEABLE and CLEAN. Pipeline awaiting Zach /merge.
 - **PM Run #139 (2026-08-01):** Groomed backlog. Status: Goals 1–10 complete & shipped; Goals 11a/11b MERGEABLE (397/426 tests); PR #21 (TRDs+roadmap) & PR #22 (SoC fix) MERGEABLE (389/393 tests). **✅ All 4 open PRs LGTM and ready.** No blockers. Awaiting Zach `/merge` to finalize roadmap.
+- **PM Run #140 (2026-08-01):** Groomed backlog + checked PR status. Status: Goals 1–10 shipped (main at 2dbf9a6). All 4 critical PRs LGTM + MERGEABLE: PR #19 (goal11a=397), PR #20 (goal11b=426), PR #21 (TRDs+roadmap), PR #22 (SoC fix=393). **✅ Zero blockers.** Pipeline ready for Zach `/merge` to ship roadmap + TRDs + fix-cron SoC.
+- **Dev Run #194 (2026-08-01):** Committed orphaned PM Run #139 backlog update on main. Re-synced all 4 PR branches with main 2dbf9a6 (merge strategy, no conflicts). Tests: goal11a=397, goal11b=426, fix-cron=393. All 4 PRs MERGEABLE and CLEAN. Pipeline awaiting Zach /merge.
