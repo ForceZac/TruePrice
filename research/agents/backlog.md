@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-01 (Dev Run #197 — re-synced all 4 PR branches with main 6612d8b; goal11a=397, fix-cron=393; all 4 PRs MERGEABLE)
+Last updated: 2026-08-01 (Dev Run #198 — implemented Goal 12; opened PR #23; 415 tests pass)
 
 ## Active
 
@@ -10,6 +10,7 @@ Last updated: 2026-08-01 (Dev Run #197 — re-synced all 4 PR branches with main
 | Goal 11b — Price Alerts | #20 | ✅ LGTM | 426 | Dev Run #177: fixed reviewer blocker (AlertService.getAlertSettings); 426 tests pass; clean branch |
 | docs: add missing TRDs + roadmap update | #21 | ✅ LGTM | — | Adds Goal 11a/11b TRDs; updates roadmap to Goals 1–11b; fixes 10+ TRD Watcher alerts; clean branch |
 | refactor: cron SoC fix (NotificationService) | #22 | ✅ LGTM | 393 | Fixes Goal 8 Discord SoC violation flagged 20+ runs; NotificationService.postDiscordAlert; Goal 8 TRD updated (Dev Run #179) — **blocker cleared** |
+| Goal 12 — Enhanced Search & Discovery | #23 | 🔄 DRAFT | 415 | Dev Run #198: full implementation; autocomplete, view count, trending page, Most Shocking Markups, markup filter, trending badge; 415 tests pass, tsc clean |
 
 ## Upcoming (needs TRD)
 
@@ -165,3 +166,5 @@ _None — all goals have TRDs._
 - **Dev Run #195 (2026-08-01):** Re-synced all 4 PR branches with main 134101f (clean merges, no conflicts). Tests: goal11a=397, goal11b=426, fix-cron=393. All 4 PRs MERGEABLE.
 - **Dev Run #196 (2026-08-01):** Re-synced all 4 PR branches with main 19018ad (clean merges, no conflicts). Tests: goal11a=397, goal11b=426, fix-cron=393. All 4 PRs MERGEABLE.
 - **Dev Run #197 (2026-08-01):** Re-synced all 4 PR branches with main 6612d8b (clean merges, no conflicts). Tests: goal11a=397, fix-cron=393. All 4 PRs MERGEABLE.
+
+- **PM Run #141 (2026-08-01):** Groomed backlog. Status: Goals 1–10 shipped (main at 464a0d0). All 4 critical PRs ready for review: PR #19 (goal11a=397), PR #20 (goal11b=426), PR #21 (TRDs+roadmap), PR #22 (SoC fix=393). ✅ All LGTM and MERGEABLE. **Zero blockers.** Awaiting Zach `/merge`.
