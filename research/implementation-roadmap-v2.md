@@ -15,9 +15,10 @@ Goal 1 (Scaffold)
 │           │   └── Goal 7 (AdSense)
 │           │       └── Goal 8 (Data Expansion)
 │           │           └── Goal 10 (User Accounts)
-│           │               ├── Goal 11a (Save as Image)
-│           │               └── Goal 11b (Price Alerts)
-│           └── Goal 9 (Comparison & Social)
+│           │               └── Goal 11b (Price Alerts) ← also needs Goal 11a
+│           ├── Goal 9 (Comparison & Social)
+│           ├── Goal 11a (Save as Image)
+│           └── Goal 12 (Enhanced Search) ← also needs Goal 8, Goal 9
 ```
 
 ## Goals
