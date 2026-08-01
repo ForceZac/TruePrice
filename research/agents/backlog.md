@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-01 (Dev Run #140 — re-synced PR #19 (397 tests) and PR #20 (426 tests) with new main (8c5e940); both MERGEABLE)
+Last updated: 2026-08-01 (Dev Run #141 — aborted stale merge on main; re-synced PR #19 (397 tests) and PR #20 (426 tests) with new main (12d7a6b); both MERGEABLE; Goal 10 TRD marked done)
 
 ## Active
 
@@ -97,3 +97,4 @@ _None — all goals have TRDs._
 - **Dev Run #138 (2026-08-01):** main advanced to 3c0d1e5 (PM Run #130 backlog chore). Re-synced PR #19 (goal11a) with main (clean, 397 tests pass). Re-synced PR #20 (goal11b) with updated goal11a tip (clean, 426 tests pass). Both MERGEABLE.
 - **Dev Run #139 (2026-08-01):** main advanced to d57023a (Dev Run #138 backlog chore). Re-synced PR #19 (goal11a) with main (clean, 397 tests pass). Re-synced PR #20 (goal11b) with updated goal11a tip (clean, 426 tests pass). Both MERGEABLE.
 - **Dev Run #140 (2026-08-01):** main advanced to 8c5e940 (Dev Run #139 backlog chore). Re-synced PR #19 (goal11a) with main (clean, 397 tests pass). Re-synced PR #20 (goal11b) with updated goal11a tip (clean, 426 tests pass). Both MERGEABLE.
+- **Dev Run #141 (2026-08-01):** Aborted stale unauthorized merge (task/goal11b → main) that was left uncommitted. Re-synced PR #19 (goal11a) with main/12d7a6b (clean, 397 tests pass). Re-synced PR #20 (goal11b) with updated goal11a tip (clean, 426 tests pass). Fixed Goal 10 TRD status to `done`. Both PRs MERGEABLE.

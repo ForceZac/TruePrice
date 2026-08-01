@@ -1,6 +1,6 @@
 # TRD: Goal 10 — User Accounts & Personalization
 
-- **status:** `in-progress`
+- **status:** `done`
 - **goal:** `Goal 10`
 - **priority:** `P1`
 - **branch:** `task/goal10-user-accounts`
