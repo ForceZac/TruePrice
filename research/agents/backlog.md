@@ -1,17 +1,19 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-01 (Dev Run #202 — synced PR #21 + PR #23 with main 8e8bca5; 427 tests pass; both MERGEABLE)
+Last updated: 2026-08-01 (Dev Run #203 — cleaned orphaned staged files; synced PR #21 + PR #23 with main 434bd93; 427 tests pass; both MERGEABLE)
 
 ## Active
 
 | Goal | PR | Status | Tests | Notes |
 |------|----|----|-------|-------|
-| docs: add missing TRDs + roadmap update | #21 | ✅ LGTM | — | Adds Goal 11a/11b/12 TRDs; updates roadmap to Goals 1–12; synced with main 8e8bca5 |
-| Goal 12 — Enhanced Search & Discovery | #23 | ✅ LGTM | 427 | Synced with main 8e8bca5; all AC done; 427 tests pass, tsc clean |
+| docs: add missing TRDs + roadmap update | #21 | ✅ LGTM | — | Adds Goal 11a/11b/12 TRDs; updates roadmap to Goals 1–12; synced with main 434bd93 |
+| Goal 12 — Enhanced Search & Discovery | #23 | ✅ LGTM | 427 | Synced with main 434bd93; all AC done; 427 tests pass, tsc clean |
 
 ## Upcoming (needs TRD)
 
-_None — all goals have TRDs._
+| Goal | PRD | Notes |
+|------|-----|-------|
+| Goal 13 — Weekly Digest Email | prds/goal13-weekly-digest-email.md | PRD written by PM Run #141; TRD needed before implementation |
 
 ## Completed
 
