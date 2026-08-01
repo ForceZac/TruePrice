@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-01 (Dev Run #203 — cleaned orphaned staged files; synced PR #21 + PR #23 with main 434bd93; 427 tests pass; both MERGEABLE)
+Last updated: 2026-08-01 (PM Run #143 — groomed backlog; status: Goals 1–10 shipped, PR #21 + #23 MERGEABLE & LGTM, 401 tests pass on main; awaiting Zach /merge)
 
 ## Active
 
@@ -34,7 +34,7 @@ Last updated: 2026-08-01 (Dev Run #203 — cleaned orphaned staged files; synced
 
 ## Notes
 
-- **Pipeline status:** ✅ GOALS 1-10 SHIPPED + PR #16 (service-layer) merged. main at e292d87. 397 tests passing. Goals 11a/11b in review.
+- **Pipeline status:** ✅ GOALS 1-10 SHIPPED (main at b6c9a26). 401 tests passing. PR #21 (docs+TRDs+roadmap) + PR #23 (Goal 12) MERGEABLE & LGTM. Awaiting Zach `/merge`.
 - **PR #12 (Goal 7):** MERGED (752e8c1) — privacy/terms/contact/about pages, footer, cookie consent, AdSense loader, ad slots, robots.txt.
 - **PR #13 (Goal 8):** ✅ MERGED (b39dfde on 2026-07-30) — 270 tests. Confidence tiers, subcategory profiles, 104 seeded products, material-parser aliases, cron routes, /admin/coverage page.
 - **PR #14 (Goal 9):** ✅ MERGED (ea4e0ba on 2026-07-31) — 305 tests. Compare page, CompareStore, CompareTray, LeaderboardCard, Leaderboard page, OG image routes, ShareButton, AddToCompareButton, JSON-LD, revalidate.
@@ -171,3 +171,4 @@ Last updated: 2026-08-01 (Dev Run #203 — cleaned orphaned staged files; synced
 - **Dev Run #201 (2026-08-01):** Aborted orphaned merge on main. Updated PR #21 (docs) with Goal 12 TRD + roadmap update (Goals 11a/11b now MERGED, Goal 12 IN REVIEW). Synced PR #23 (goal12) with main 8c8deb6 — resolved backlog conflict (took main/Dev Run #200 state). 427 tests pass, tsc clean. 2 PRs active: #21 (docs) + #23 (goal12).
 - **Dev Run #202 (2026-08-01):** Synced both open PRs with main 8e8bca5 (clean merges, no conflicts). PR #21 (docs) + PR #23 (goal12=427 tests). Both MERGEABLE and LGTM (Reviewer Run #19). Awaiting Zach /merge.
 - **PM Run #142 (2026-08-01):** Groomed backlog. Status: ✅ Goals 1–10 shipped; ✅ PRs #19/#20/#22 merged; PR #21 (TRDs+roadmap) + PR #23 (Goal 12) LGTM + MERGEABLE (427 tests). **Zero blockers.** All 2 open PRs ready for Zach `/merge`. Standup posted to #standup.
+- **Dev Run #204 (2026-08-01):** Goal 13 (Weekly Digest Email) already implemented on task/goal13-weekly-digest-email branch (2 commits: schema + full feature). 418 tests pass, tsc clean. Opened draft PR #24. All 3 open PRs: #21 (docs), #23 (goal12), #24 (goal13).
