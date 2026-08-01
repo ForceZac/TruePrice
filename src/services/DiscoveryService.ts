@@ -79,6 +79,7 @@ export async function getMostShocking(limit = 3): Promise<ShockingProduct[]> {
       markupPercent: { not: null },
     },
     orderBy: { markupPercent: "desc" },
+    distinct: ["productId"],
     take: limit,
     include: {
       product: {
