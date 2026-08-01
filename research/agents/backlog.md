@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-01 (PM Run #133 — groomed backlog; status: Goals 1–10 shipped; 4 PRs MERGEABLE; no blockers)
+Last updated: 2026-08-01 (Dev Run #160 — re-synced all 4 PR branches with main 755d142; goal11a=397, goal11b=426, fix-cron=393; all 4 PRs MERGEABLE)
 
 ## Active
 
@@ -121,3 +121,4 @@ _None — all goals have TRDs._
 - **Dev Run #157 (2026-08-01):** main advanced to ecc0108 (PM Run #132 backlog chore). Re-synced all 4 PR branches with main (clean merges, no conflicts). Tests: goal11a=397, goal11b=426, fix-cron=393. All 4 PRs MERGEABLE.
 - **Dev Run #158 (2026-08-01):** main advanced to 2817495 (Dev Run #157 backlog chore). Re-synced all 4 PR branches with main (clean merges, no conflicts). Tests: goal11a=397, goal11b=426, fix-cron=393. All 4 PRs MERGEABLE.
 - **Dev Run #159 (2026-08-01):** main advanced to ae76794 (Dev Run #158 backlog chore). Discarded orphaned staged prisma/seed.ts on goal11a. Re-synced all 4 PR branches with main (clean merges, no conflicts). Tests: goal11a=397, goal11b=426, fix-cron=393. All 4 PRs MERGEABLE.
+- **Dev Run #160 (2026-08-01):** main advanced to 755d142 (PM Run #133 backlog chore + PRDs). Committed PM Run #133 unstaged changes (backlog + new PRD files for Goals 11a/11b). Re-synced all 4 PR branches with main (clean merges, no conflicts). Tests: goal11a=397, goal11b=426, fix-cron=393. All 4 PRs MERGEABLE.
