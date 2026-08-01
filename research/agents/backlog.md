@@ -1,14 +1,13 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-01 (Dev Run #130 — re-synced all 3 PR branches with main (780f766); clean merges, no conflicts; all MERGEABLE)
+Last updated: 2026-08-01 (Dev Run #131 — PR #17 merged; re-synced PR #19 (397 tests) and PR #20 (426 tests) with new main (e292d87); all MERGEABLE)
 
 ## Active
 
 | Goal | PR | Status | Tests | Notes |
 |------|----|----|-------|-------|
-| Goal 10 — User Accounts & Watchlist | #17 | READY FOR MERGE | 389 | Merge conflict resolved (Dev Run #91 + #95 + #97–#104), all 17 ACs verified |
-| Goal 11a — Save as Image Button | #19 | READY FOR REVIEW | 366 | Merge conflict resolved (Dev Run #93 + #95 + #97–#105), dom-to-image-more + @testing-library/dom installed |
-| Goal 11b — Price Alerts | #20 | READY FOR REVIEW | 426 | All blockers resolved (Dev Run #89), synced with goal11a (Dev Run #105); ProductPageClient conflict resolved; 426 tests pass |
+| Goal 11a — Save as Image Button | #19 | READY FOR REVIEW | 397 | Re-synced with main post-PR#17 merge (Dev Run #131); ProductPageClient conflict resolved |
+| Goal 11b — Price Alerts | #20 | READY FOR REVIEW | 426 | Re-synced with updated goal11a tip (Dev Run #131); 426 tests pass |
 
 ## Upcoming (needs TRD)
 
@@ -29,16 +28,17 @@ _None — all goals have TRDs._
 | Goal 8 — Data Expansion & Accuracy Improvements | #13 | 2026-07-30 | b39dfde |
 | Goal 9 — Product Comparison & Social Features | #14 | 2026-07-31 | ea4e0ba |
 | chore: service-layer refactoring | #16 | 2026-07-31 | 06cc5d9 |
+| Goal 10 — User Accounts & Watchlist | #17 | 2026-08-01 | e292d87 |
 
 ## Notes
 
-- **Pipeline status:** ✅ GOALS 1-9 SHIPPED + PR #16 (service-layer) merged. main at 30afff0. 358 tests passing. Goals 10/11a/11b in review.
+- **Pipeline status:** ✅ GOALS 1-10 SHIPPED + PR #16 (service-layer) merged. main at e292d87. 397 tests passing. Goals 11a/11b in review.
 - **PR #12 (Goal 7):** MERGED (752e8c1) — privacy/terms/contact/about pages, footer, cookie consent, AdSense loader, ad slots, robots.txt.
 - **PR #13 (Goal 8):** ✅ MERGED (b39dfde on 2026-07-30) — 270 tests. Confidence tiers, subcategory profiles, 104 seeded products, material-parser aliases, cron routes, /admin/coverage page.
 - **PR #14 (Goal 9):** ✅ MERGED (ea4e0ba on 2026-07-31) — 305 tests. Compare page, CompareStore, CompareTray, LeaderboardCard, Leaderboard page, OG image routes, ShareButton, AddToCompareButton, JSON-LD, revalidate.
 - **PR #16 (service-layer):** ✅ MERGED (06cc5d9 on 2026-07-31) — service violations moved from routes to service layer; JSDoc fix on forceReEstimate.
 - **Dev Run #54 (2026-07-31):** Applied reviewer JSDoc fix on `forceReEstimate` (returns null, not throws). 358/358 tests passing, tsc clean. PR #16 marked ready for review.
-- **Remaining Zach actions:** /merge PR #17, tech-stack sign-off (next-auth + resend for PR #17; dom-to-image-more for PR #19), /approve PROPOSAL-001 (PR #18), Q7-1 (AdSense publisher ID), Q7-3 (Privacy Policy data scope), Q-INFRA-2 (Discord allowlist — run `/discord:access`).
+- **Remaining Zach actions:** tech-stack sign-off (dom-to-image-more for PR #19), /approve PROPOSAL-001 (PR #18), Q7-1 (AdSense publisher ID), Q7-3 (Privacy Policy data scope), Q-INFRA-2 (Discord allowlist — run `/discord:access`).
 - **Dev Run #80 (2026-07-31):** Addressed reviewer follow-ups on PR #17. Fixed P2002 race condition in `addToWatchlist`; created recentlyViewedLocal tests; added 2 new UserService tests. 360 tests pass, tsc clean.
 - **Dev Run #83 (2026-07-31):** Goal 11a polish — raw button → shadcn Button, loading state with "Saving…" label. 337 tests pass. TRD: status done.
 - **Dev Run #86 (2026-07-31):** Implemented Goal 11b — Price Alerts. Full implementation: AlertLog model, AlertService, API routes, AlertSettingsForm, dashboard/settings section. 25 new tests. 385 tests pass, tsc clean. Opened draft PR #20.
@@ -84,3 +84,4 @@ _None — all goals have TRDs._
 - **PM Run #127 (2026-07-31):** Groomed backlog; status confirmed: Goals 1–9 complete (all merged); Goals 10/11a/11b MERGEABLE (389/366/426 tests). **[LAUNCH-GATE]** TRDs missing for Goals 10/11a/11b — blocking merge. Standup posted to #standup.
 - **Dev Run #129 (2026-08-01):** main advanced to 5ca406e (PM Run #127 backlog chore). Re-synced all 3 PR branches with main (clean merges, no conflicts). Tests: goal10=389, goal11a=366, goal11b=426. All 3 PRs MERGEABLE.
 - **Dev Run #130 (2026-08-01):** main advanced to 780f766 (Dev Run #129 backlog chore). Re-synced all 3 PR branches with main (clean merges, no conflicts). Tests: goal10=389, goal11a=366, goal11b=426. All 3 PRs MERGEABLE.
+- **Dev Run #131 (2026-08-01):** PR #17 (Goal 10) MERGED by Zach (e292d87). Re-synced PR #19 (goal11a) — resolved ProductPageClient.tsx conflict (useEffect+useRef+SaveAsImageButton+recentlyViewed imports combined); 397 tests pass. Re-synced PR #20 (goal11b) with updated goal11a tip; 426 tests pass. Both MERGEABLE.
