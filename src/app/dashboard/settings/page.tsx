@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import { auth, signOut } from "@/lib/auth";
-import { prisma } from "@/lib/db";
+import { getAlertSettings } from "@/services/AlertService";
 import { DeleteAccountButton } from "@/components/molecules/DeleteAccountButton";
 import { AlertSettingsForm } from "@/components/molecules/AlertSettingsForm";
 
@@ -18,10 +18,7 @@ export default async function SettingsPage() {
     redirect("/login?next=/dashboard/settings");
   }
 
-  const userPrefs = await prisma.user.findUnique({
-    where: { id: session.user.id },
-    select: { alertThresholdPct: true, alertsEnabled: true },
-  });
+  const userPrefs = await getAlertSettings(session.user.id);
 
   return (
     <main className="flex flex-col min-h-screen px-4 py-10 max-w-2xl mx-auto w-full gap-8">

@@ -257,6 +257,17 @@ export interface AlertSettingsResult {
 }
 
 /**
+ * Returns the current price alert preferences for a user.
+ * Called from the settings page server component.
+ */
+export async function getAlertSettings(userId: string): Promise<AlertSettingsResult | null> {
+  return prisma.user.findUnique({
+    where: { id: userId },
+    select: { alertThresholdPct: true, alertsEnabled: true },
+  });
+}
+
+/**
  * Updates the authenticated user's price alert preferences.
  * Called from PATCH /api/account/alert-settings.
  */
