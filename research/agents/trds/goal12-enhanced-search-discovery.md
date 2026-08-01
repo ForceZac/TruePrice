@@ -1,6 +1,6 @@
 # TRD: Goal 12 — Enhanced Search & Discovery
 
-- **status:** `in-progress`
+- **status:** `done`
 - **goal:** `Goal 12`
 - **priority:** `P2`
 - **branch:** `task/goal12-enhanced-search-discovery`
