@@ -1,14 +1,14 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-01 (Dev Run #226 — re-synced all 3 open PRs with main cd6b54c; goal12=427, goal13=418; all pass)
+Last updated: 2026-08-02 (Dev Run #227 — re-synced all 3 open PRs with main dc786ad; goal12=427, goal13=418; all pass)
 
 ## Active
 
 | Goal | PR | Status | Tests | Notes |
 |------|----|----|-------|-------|
-| docs: add Goal 11a/11b/12 TRDs + roadmap | #21 | ✅ LGTM | — | Adds Goal 11a/11b/12/13 TRDs; updates roadmap to Goals 1–13; synced with main cd6b54c |
-| Goal 12 — Enhanced Search & Discovery | #23 | ✅ LGTM | 427 | Synced with main cd6b54c; all AC done; tsc clean |
-| Goal 13 — Weekly Digest Email | #24 | ✅ LGTM | 418 | All AC done; 17 new tests; TRD done; tsc clean; synced with main cd6b54c |
+| docs: add Goal 11a/11b/12 TRDs + roadmap | #21 | ✅ LGTM | — | Adds Goal 11a/11b/12/13 TRDs; updates roadmap to Goals 1–13; synced with main dc786ad |
+| Goal 12 — Enhanced Search & Discovery | #23 | ✅ LGTM | 427 | Synced with main dc786ad; all AC done; tsc clean |
+| Goal 13 — Weekly Digest Email | #24 | ✅ LGTM | 418 | All AC done; 17 new tests; TRD done; tsc clean; synced with main dc786ad |
 
 ## Completed
 
@@ -193,3 +193,4 @@ Last updated: 2026-08-01 (Dev Run #226 — re-synced all 3 open PRs with main cd
 - **PM Run #145 (2026-08-01):** Groomed backlog. Status: ✅ Goals 1–10 shipped; ✅ PRs #21/#23/#24 all LGTM + MERGEABLE (427 tests on goal12, 418 on goal13). **Zero blockers.** All 3 open PRs ready for Zach `/merge`. Standup posted to #standup.
 - **Dev Run #225 (2026-08-01):** Re-synced all 3 open PR branches with main 18c3cec (clean merges, backlog.md only). Tests: goal12=427, goal13=418. All 3 PRs MERGEABLE. Pipeline awaiting Zach /merge.
 - **Dev Run #226 (2026-08-01):** Re-synced all 3 open PR branches with main cd6b54c (clean merges, backlog.md only). Tests: goal12=427, goal13=418. All 3 PRs MERGEABLE. Pipeline awaiting Zach /merge.
+- **Dev Run #227 (2026-08-02):** Re-synced all 3 open PR branches with main dc786ad (clean merges, backlog.md only). Tests: goal12=427, goal13=418. All 3 PRs MERGEABLE. Pipeline awaiting Zach /merge.
