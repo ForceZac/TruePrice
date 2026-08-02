@@ -1,14 +1,14 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-02 (Dev Run #234 — re-synced PRs #23/#24 with main d34e36b; goal12=427, goal13=418; tsc clean)
+Last updated: 2026-08-02 (Dev Run #235 — re-synced PRs #23/#24 with main bb7158d; fixed Prisma client regen on goal12 (tsc now clean); goal12=427, goal13=418; all MERGEABLE)
 
 ## Active
 
 | Goal | PR | Status | Tests | Notes |
 |------|----|----|-------|-------|
-| docs: add Goal 11a/11b/12 TRDs + roadmap | #21 | ⚠️ SUPERSEDED | — | TRDs/roadmap now committed directly to main (8e58de8); PR #21 has zero diff vs main — can be closed |
-| Goal 12 — Enhanced Search & Discovery | #23 | ✅ LGTM | 427 | Synced with main 809c86b; all AC done; tsc clean |
-| Goal 13 — Weekly Digest Email | #24 | ✅ LGTM | 418 | All AC done; 17 new tests; TRD done; tsc clean; synced with main 809c86b |
+| docs: add Goal 11a/11b/12 TRDs + roadmap | #21 | ⚠️ SUPERSEDED | — | TRDs/roadmap committed to main (8e58de8); PR #21 zero diff vs main — ready to close |
+| Goal 12 — Enhanced Search & Discovery | #23 | ✅ LGTM | 427 | Synced with main bb7158d; all AC done; tsc clean (Prisma client regen fixed) |
+| Goal 13 — Weekly Digest Email | #24 | ✅ LGTM | 418 | All AC done; 17 new tests; TRD done; tsc clean; synced with main bb7158d |
 
 ## Completed
 
@@ -204,3 +204,4 @@ Last updated: 2026-08-02 (Dev Run #234 — re-synced PRs #23/#24 with main d34e3
 - **Dev Run #232 (2026-08-02):** No new impl — all Goals 1–13 complete, all TRDs done. Re-synced PRs #23/#24 with main b5b02bd (clean merges, backlog.md only). Tests: goal12=427, goal13=418; tsc clean. PRs #23/#24 MERGEABLE; PR #21 superseded (can be closed). Pipeline awaiting Zach /merge.
 - **Dev Run #233 (2026-08-02):** No new impl — all Goals 1–13 complete, all TRDs done. Re-synced PRs #23/#24 with main f052828 (clean merges, backlog.md only). Tests: goal12=427, goal13=418; tsc clean. PRs #23/#24 MERGEABLE; PR #21 superseded (can be closed). Pipeline awaiting Zach /merge.
 - **Dev Run #234 (2026-08-02):** No new impl — all Goals 1–13 complete, all TRDs done. Re-synced PRs #23/#24 with main d34e36b (clean merges, backlog.md only). Tests: goal12=427, goal13=418; tsc clean. PRs #23/#24 MERGEABLE; PR #21 superseded (can be closed). Pipeline awaiting Zach /merge.
+- **PM Run #148 (2026-08-02):** Groomed backlog. Status: ✅ Goals 1–10 shipped; ✅ PRs #23/#24 LGTM + MERGEABLE (427 tests on goal12, 418 on goal13). TRD Watcher confirms 14/14 TRD files valid, zero blockers. Merge Watcher confirms 3 PRs CLEAN & MERGEABLE, zero conflicts. **No changes since Dev Run #234.** PR #21 superseded, ready to close. PRs #23/#24 await Zach `/merge`. Standup posted to #standup.
