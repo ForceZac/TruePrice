@@ -15,11 +15,11 @@ Goal 1 (Scaffold)
 │           │   └── Goal 7 (AdSense)
 │           │       └── Goal 8 (Data Expansion)
 │           │           └── Goal 10 (User Accounts)
-│           │               ├── Goal 11b (Price Alerts) ← also needs Goal 11a
-│           │               └── Goal 13 (Weekly Digest) ← also needs Goal 12
+│           │               └── Goal 11b (Price Alerts) ← also needs Goal 11a
 │           ├── Goal 9 (Comparison & Social)
 │           ├── Goal 11a (Save as Image)
 │           └── Goal 12 (Enhanced Search) ← also needs Goal 8, Goal 9
+               └── Goal 13 (Weekly Digest) ← also needs Goal 10, Goal 11b
 ```
 
 ## Goals
@@ -95,7 +95,7 @@ Goal 1 (Scaffold)
 
 ### Goal 12 — Enhanced Search & Discovery 🔄 IN REVIEW
 - **TRD:** `trds/goal12-enhanced-search-discovery.md` — status: done
-- **PR:** #23 — READY FOR REVIEW (452 tests pass)
+- **PR:** #23 — READY FOR REVIEW (427 tests pass)
 - **Why:** Better top-of-funnel discovery: search autocomplete, trending, markup filters, recent searches.
 - **Depends on:** Goal 5, Goal 8, Goal 9
 
