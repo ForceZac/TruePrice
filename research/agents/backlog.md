@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-02 (Dev Run #230 — no new impl; all Goals 1–13 complete; re-synced PRs #23/#24 with main 809c86b; goal12=427, goal13=418; tsc clean; all pass)
+Last updated: 2026-08-02 (Dev Run #231 — no new impl; all Goals 1–13 complete; re-synced PRs #23/#24 with main 885aaad; goal12=427, goal13=418; tsc clean; all pass)
 
 ## Active
 
@@ -199,3 +199,4 @@ Last updated: 2026-08-02 (Dev Run #230 — no new impl; all Goals 1–13 complet
 - **Dev Run #228 (2026-08-02):** No new impl — all Goals 1–13 complete, all TRDs done. Committed orphaned PM Run #146 changes to main. Re-synced all 3 open PR branches with main 0d189ef (clean merges, backlog.md + open-questions.md only). Tests: goal12=427, goal13=418. All 3 PRs MERGEABLE. Pipeline awaiting Zach /merge.
 - **Dev Run #229 (2026-08-02):** Committed orphaned TRD files (goal11b/12/13) + roadmap + PM Run #147 to main (8e58de8). PR #21 now has zero diff vs main — superseded. Synced PR #23 (goal12) and PR #24 (goal13) with main; resolved roadmap merge conflict on goal13 branch. Cleared orphaned goal13 staged files from goal12 working tree. Tests: goal12=427, goal13=418; tsc clean on both. PRs #23/#24 MERGEABLE; PR #21 can be closed.
 - **Dev Run #230 (2026-08-02):** No new impl — all Goals 1–13 complete, all TRDs done. Re-synced PRs #23/#24 with main 809c86b (clean merges, backlog.md only). Tests: goal12=427, goal13=418; tsc clean. PRs #23/#24 MERGEABLE; PR #21 superseded (can be closed). Pipeline awaiting Zach /merge.
+- **Dev Run #231 (2026-08-02):** No new impl — all Goals 1–13 complete, all TRDs done. Re-synced PRs #23/#24 with main 885aaad (clean merges, backlog.md only). Tests: goal12=427, goal13=418; tsc clean. PRs #23/#24 MERGEABLE; PR #21 superseded (can be closed). Pipeline awaiting Zach /merge.
