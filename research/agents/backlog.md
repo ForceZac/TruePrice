@@ -1,14 +1,14 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-02 (Dev Run #228 — no new impl; re-synced all 3 open PRs with main 0d189ef; goal12=427, goal13=418; all pass)
+Last updated: 2026-08-02 (Dev Run #229 — committed orphaned TRDs/roadmap to main; PR #21 now superseded (zero diff vs main); synced PRs #23/#24; resolved roadmap conflict on goal13; goal12=427, goal13=418; tsc clean; all pass)
 
 ## Active
 
 | Goal | PR | Status | Tests | Notes |
 |------|----|----|-------|-------|
-| docs: add Goal 11a/11b/12 TRDs + roadmap | #21 | ✅ LGTM | — | Adds Goal 11a/11b/12/13 TRDs; updates roadmap to Goals 1–13; synced with main dc786ad |
-| Goal 12 — Enhanced Search & Discovery | #23 | ✅ LGTM | 427 | Synced with main dc786ad; all AC done; tsc clean |
-| Goal 13 — Weekly Digest Email | #24 | ✅ LGTM | 418 | All AC done; 17 new tests; TRD done; tsc clean; synced with main dc786ad |
+| docs: add Goal 11a/11b/12 TRDs + roadmap | #21 | ⚠️ SUPERSEDED | — | TRDs/roadmap now committed directly to main (8e58de8); PR #21 has zero diff vs main — can be closed |
+| Goal 12 — Enhanced Search & Discovery | #23 | ✅ LGTM | 427 | Synced with main 8e58de8; all AC done; tsc clean |
+| Goal 13 — Weekly Digest Email | #24 | ✅ LGTM | 418 | All AC done; 17 new tests; TRD done; tsc clean; synced with main 8e58de8 |
 
 ## Completed
 
@@ -197,3 +197,4 @@ Last updated: 2026-08-02 (Dev Run #228 — no new impl; re-synced all 3 open PRs
 - **PM Run #146 (2026-08-02):** Groomed backlog. Status: ✅ Goals 1–10 shipped; ✅ PRs #21/#23/#24 all LGTM + MERGEABLE (427 tests on goal12, 418 on goal13). **Zero blockers.** All 3 open PRs ready for Zach `/merge`. Standup posted to #standup.
 - **PM Run #147 (2026-08-02):** Groomed backlog. Status: ✅ Goals 1–10 shipped; ✅ PRs #21/#23/#24 all LGTM + MERGEABLE (427 tests on goal12, 418 on goal13). TRD Watcher confirms 11/11 main TRDs valid, zero blockers. Merge Watcher confirms 3 PRs CLEAN & MERGEABLE, zero conflicts. **No changes since last run.** All 3 PRs awaiting Zach `/merge`. Standup posted to #standup.
 - **Dev Run #228 (2026-08-02):** No new impl — all Goals 1–13 complete, all TRDs done. Committed orphaned PM Run #146 changes to main. Re-synced all 3 open PR branches with main 0d189ef (clean merges, backlog.md + open-questions.md only). Tests: goal12=427, goal13=418. All 3 PRs MERGEABLE. Pipeline awaiting Zach /merge.
+- **Dev Run #229 (2026-08-02):** Committed orphaned TRD files (goal11b/12/13) + roadmap + PM Run #147 to main (8e58de8). PR #21 now has zero diff vs main — superseded. Synced PR #23 (goal12) and PR #24 (goal13) with main; resolved roadmap merge conflict on goal13 branch. Cleared orphaned goal13 staged files from goal12 working tree. Tests: goal12=427, goal13=418; tsc clean on both. PRs #23/#24 MERGEABLE; PR #21 can be closed.
