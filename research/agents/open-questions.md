@@ -1,6 +1,6 @@
 # Open Questions Parking Lot
 
-Last updated: 2026-08-01 (PM Run #131)
+Last updated: 2026-08-02 (PM Run #146)
 
 This file replaces the missing PROJECT_KEYS.md section 13. All unresolved product decisions go here. Answered questions are moved to the **Resolved** section below.
 
@@ -82,6 +82,30 @@ All agent runs have failed to post to Discord (#main, #standup, #prs, #alerts, #
 **Q9-3: Leaderboard confidence filter** — *moved to Resolved (PM Run #4)*
 
 **Q9-4: Copy-to-image scope** — *moved to Resolved (PM Run #78)*
+
+### Goal 12 — Enhanced Search & Discovery
+
+**Q12-1: View count session dedup strategy** — *moved to Resolved (PM Run #146)*
+
+**Q12-2: Trending time window** — *moved to Resolved (PM Run #146)*
+
+**Q12-3: Markup tier thresholds** — *moved to Resolved (PM Run #146)*
+
+**Q12-4: `/trending` cold-state display**
+What does `/trending` show on a fresh deploy before any products have accumulated view counts? Currently the page would render empty (no products with viewCount > 0). Consider falling back to `getMostShocking(20)` or a friendly empty-state with a prompt to browse categories.
+- **Owner:** Zach | **Priority:** Low — not a launch blocker, but worth deciding before first marketing push
+
+### Goal 13 — Weekly Digest Email
+
+**Q13-1: Unsubscribe token expiry** — *moved to Resolved (PM Run #146)*
+
+**Q13-2: Email template design** — *moved to Resolved (PM Run #146)*
+
+**Q13-3: Resend plan & rate limits**
+Resend free tier is 100 emails/day (3,000/month). If registered users with non-empty watchlists exceed 100, the Saturday digest cron will hit the daily cap and silently drop emails. Check current user count before first digest run; upgrade Resend plan or stagger sends across multiple days if needed.
+- **Owner:** Zach | **Priority:** High if user count exceeds 100 before first digest run; blocks Goal 13 go-live
+
+**Q13-4: Digest send day/time** — *moved to Resolved (PM Run #146)*
 
 ---
 
@@ -186,3 +210,25 @@ All agent runs have failed to post to Discord (#main, #standup, #prs, #alerts, #
 
 **Q10-5: Recently viewed merge strategy on sign-in** — Merge + deduplicate by `productId`, keep most-recent `viewedAt`, cap at 10. Implemented in `UserService.mergeLocalRecentlyViewed`. localStorage IDs are posted on sign-in and merged into DB state.
 - **Resolved:** PM Run #131 (2026-08-01) — implemented in Goal 10 (PR #17)
+
+### Goal 12 — Enhanced Search & Discovery
+
+**Q12-1: View count session dedup strategy** — Cookie (server-authoritative, works without JS). Cookie name: `vw_<productId>`. `httpOnly: true`, `sameSite: lax`, `maxAge: 1800` (30 minutes). Set by `POST /api/products/[id]/view` on first view; subsequent calls within 30 min are ignored without a DB write.
+- **Resolved:** PM Run #146 (2026-08-02) — implemented in Goal 12 (PR #23, TRD confirmed)
+
+**Q12-2: Trending time window** — 7-day rolling window. Configurable via function param (`windowDays`, default 7). All-time view counts would over-represent old high-traffic products; 7 days reflects current interest. Can adjust via function call if Zach wants a different default.
+- **Resolved:** PM Run #146 (2026-08-02) — implemented in Goal 12 (PR #23, TRD confirmed)
+
+**Q12-3: Markup tier thresholds** — Under 3× (markupPercent < 300) / 3–7× (300 ≤ markupPercent < 700) / Over 7× (markupPercent ≥ 700). Applied client-side in `CategoryMarkupFilter.tsx`. No copy labels chosen for the tier names; filter badges display the multiplier range directly.
+- **Resolved:** PM Run #146 (2026-08-02) — implemented in Goal 12 (PR #23, TRD confirmed)
+
+### Goal 13 — Weekly Digest Email
+
+**Q13-1: Unsubscribe token expiry** — 30 days. Signed with `DIGEST_UNSUBSCRIBE_SECRET` via `jose` (`SignJWT` / `jwtVerify`). Expired tokens return 400 with a friendly message. 30 days is the industry default and appropriate for a low-sensitivity unsubscribe action.
+- **Resolved:** PM Run #146 (2026-08-02) — implemented in Goal 13 (PR #24, TRD confirmed)
+
+**Q13-2: Email template design** — Plain HTML string with self-contained inline styles (no React Email SDK or external template library). Includes a `text` part for non-HTML clients. Keeps the bundle small and avoids importing UI framework dependencies into the email path.
+- **Resolved:** PM Run #146 (2026-08-02) — implemented in Goal 13 (PR #24, TRD confirmed)
+
+**Q13-4: Digest send day/time** — Saturday 08:00 UTC (`"0 8 * * 6"` in `vercel.json`). This is 4am US Eastern / 9am UK. Aligns with typical weekend digest open rates.
+- **Resolved:** PM Run #146 (2026-08-02) — implemented in Goal 13 (PR #24, TRD confirmed)
