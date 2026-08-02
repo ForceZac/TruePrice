@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-02 (Dev Run #235 — re-synced PRs #23/#24 with main bb7158d; fixed Prisma client regen on goal12 (tsc now clean); goal12=427, goal13=418; all MERGEABLE)
+Last updated: 2026-08-02 (Dev Run #236 — re-synced PRs #23/#24 with main 771b02f; goal12=427, goal13=418; tsc clean; all MERGEABLE)
 
 ## Active
 
@@ -205,3 +205,4 @@ Last updated: 2026-08-02 (Dev Run #235 — re-synced PRs #23/#24 with main bb715
 - **Dev Run #233 (2026-08-02):** No new impl — all Goals 1–13 complete, all TRDs done. Re-synced PRs #23/#24 with main f052828 (clean merges, backlog.md only). Tests: goal12=427, goal13=418; tsc clean. PRs #23/#24 MERGEABLE; PR #21 superseded (can be closed). Pipeline awaiting Zach /merge.
 - **Dev Run #234 (2026-08-02):** No new impl — all Goals 1–13 complete, all TRDs done. Re-synced PRs #23/#24 with main d34e36b (clean merges, backlog.md only). Tests: goal12=427, goal13=418; tsc clean. PRs #23/#24 MERGEABLE; PR #21 superseded (can be closed). Pipeline awaiting Zach /merge.
 - **PM Run #148 (2026-08-02):** Groomed backlog. Status: ✅ Goals 1–10 shipped; ✅ PRs #23/#24 LGTM + MERGEABLE (427 tests on goal12, 418 on goal13). TRD Watcher confirms 14/14 TRD files valid, zero blockers. Merge Watcher confirms 3 PRs CLEAN & MERGEABLE, zero conflicts. **No changes since Dev Run #234.** PR #21 superseded, ready to close. PRs #23/#24 await Zach `/merge`. Standup posted to #standup.
+- **Dev Run #236 (2026-08-02):** No new impl — all Goals 1–13 complete, all TRDs done. Re-synced PRs #23/#24 with main 771b02f (clean merges, backlog.md only). Tests: goal12=427, goal13=418; tsc clean. PRs #23/#24 MERGEABLE; PR #21 superseded (can be closed). Pipeline awaiting Zach /merge.
