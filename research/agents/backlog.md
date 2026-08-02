@@ -1,14 +1,14 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-02 (Dev Run #238 — re-synced PRs #23/#24 with main c4605e4; goal12=427, goal13=418; tsc clean; all MERGEABLE)
+Last updated: 2026-08-02 (PM Run #149 — standup review; Goals 1–10 shipped; PRs #23/#24 LGTM + MERGEABLE; 14/14 TRDs valid; zero blockers)
 
 ## Active
 
 | Goal | PR | Status | Tests | Notes |
 |------|----|----|-------|-------|
 | docs: add Goal 11a/11b/12 TRDs + roadmap | #21 | ⚠️ SUPERSEDED | — | TRDs/roadmap committed to main (8e58de8); PR #21 zero diff vs main — ready to close |
-| Goal 12 — Enhanced Search & Discovery | #23 | ✅ LGTM | 427 | Synced with main c4605e4; all AC done; tsc clean |
-| Goal 13 — Weekly Digest Email | #24 | ✅ LGTM | 418 | All AC done; 17 new tests; TRD done; tsc clean; synced with main c4605e4 |
+| Goal 12 — Enhanced Search & Discovery | #23 | ✅ LGTM | 427 | Synced with main 2f301f9; all AC done; tsc clean; MERGEABLE |
+| Goal 13 — Weekly Digest Email | #24 | ✅ LGTM | 418 | All AC done; 17 new tests; TRD done; tsc clean; synced with main 2f301f9; MERGEABLE |
 
 ## Completed
 
@@ -208,3 +208,6 @@ Last updated: 2026-08-02 (Dev Run #238 — re-synced PRs #23/#24 with main c4605
 - **Dev Run #236 (2026-08-02):** No new impl — all Goals 1–13 complete, all TRDs done. Re-synced PRs #23/#24 with main 771b02f (clean merges, backlog.md only). Tests: goal12=427, goal13=418; tsc clean. PRs #23/#24 MERGEABLE; PR #21 superseded (can be closed). Pipeline awaiting Zach /merge.
 - **Dev Run #237 (2026-08-02):** No new impl — all Goals 1–13 complete, all TRDs done. Re-synced PRs #23/#24 with main 38646cb (clean merges, backlog.md only). Tests: goal12=427, goal13=418; tsc clean. PRs #23/#24 MERGEABLE; PR #21 superseded (can be closed). Pipeline awaiting Zach /merge.
 - **Dev Run #238 (2026-08-02):** No new impl — all Goals 1–13 complete, all TRDs done. Re-synced PRs #23/#24 with main c4605e4 (clean merges, backlog.md only). Tests: goal12=427, goal13=418; tsc clean. PRs #23/#24 MERGEABLE; PR #21 superseded (can be closed). Pipeline awaiting Zach /merge.
+- **Merge Watcher Run #287 (2026-08-02):** ✅ 1 NEW COMMIT (2f301f94, PR #238); 3 active PRs all CLEAN; zero conflicts; all MERGEABLE
+- **PM Run #149 (2026-08-02):** Groomed backlog. Status: ✅ Goals 1–10 shipped; ✅ PRs #23/#24 LGTM + MERGEABLE (427 tests on goal12, 418 on goal13). TRD Watcher confirms 14/14 TRD files valid, zero blockers. Merge Watcher confirms 3 PRs CLEAN & MERGEABLE, zero conflicts. **No changes since last run.** All 3 PRs awaiting Zach `/merge`. Standup posted to #standup.
+- **Dev Run #239 (2026-08-02):** No new impl — all Goals 1–13 complete, all TRDs done. Re-synced PRs #23/#24 with main 75bf4dd (clean merges, backlog.md only). Tests: goal12=427, goal13=418; tsc clean. PRs #23/#24 MERGEABLE; PR #21 superseded (can be closed). Pipeline awaiting Zach /merge.
