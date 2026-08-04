@@ -1,10 +1,12 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-04 (PM Run #154 — ✅ Pipeline fully shipped; all 14 TRDs done; zero blockers; main at 0134873)
+Last updated: 2026-08-04 (Dev Run #256 — Goal 14 implemented; PR #25 opened; 461 tests pass)
 
 ## Active
 
-_None — all goals shipped. Awaiting new TRDs for next milestone._
+| Goal | Branch | PR | Status |
+|------|--------|----|--------|
+| Goal 14 — SEO & Core Web Vitals | task/goal14-seo-performance | #25 | draft — awaiting review |
 
 ## Completed
 
@@ -28,6 +30,7 @@ _None — all goals shipped. Awaiting new TRDs for next milestone._
 | docs: add TRDs + roadmap (Goals 11a/11b/12/13) | #21 | 2026-08-04 | d6f3e66 |
 | Goal 12 — Enhanced Search & Discovery | #23 | 2026-08-04 | 5c2e259 |
 | Goal 13 — Weekly Digest Email | #24 | 2026-08-04 | 55d2011 |
+| Goal 14 — SEO & Core Web Vitals | #25 | pending | (draft PR open) |
 
 ## Notes
 
