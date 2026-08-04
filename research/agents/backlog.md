@@ -1,13 +1,13 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-04 (Dev Run #269 — Goal 15 implemented; PR #26 draft opened; 468 tests; tsc clean)
+Last updated: 2026-08-04 (Dev Run #270 — Goal 15 TRD marked done; PR #26 promoted to ready for review; 468 tests; tsc clean)
 
 ## Active
 
 | Goal | PR | Status | Tests |
 |------|----|--------|-------|
 | Goal 14 — SEO & Core Web Vitals | #25 | LGTM + MERGEABLE | 467 |
-| Goal 15 — User-Submitted Products | #26 | Draft — awaiting review | 468 |
+| Goal 15 — User-Submitted Products | #26 | Ready for review | 468 |
 
 ## Completed
 

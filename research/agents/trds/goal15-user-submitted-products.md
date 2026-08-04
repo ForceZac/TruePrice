@@ -1,6 +1,6 @@
 # TRD: Goal 15 — User-Submitted Products
 
-- **status:** `ready`
+- **status:** `done`
 - **goal:** `Goal 15`
 - **priority:** `P2`
 - **branch:** `task/goal15-user-submitted-products`
@@ -17,16 +17,16 @@ estimation and an approval email sent via Resend.
 
 ## Acceptance Criteria
 
-- [ ] `POST /api/products/submit` returns 401 for unauthenticated requests
-- [ ] `POST /api/products/submit` with a UPC that already exists returns 409 with the existing product's URL
-- [ ] `POST /api/products/submit` with a valid payload creates a `ProductSubmission` row with `status: PENDING` and returns 201
-- [ ] A user with 5 existing `PENDING` submissions cannot submit a 6th — receives 429
-- [ ] `/admin/submissions` renders a list of all `PENDING` submissions; accessible only to admin users (email in `ADMIN_EMAILS` env var)
-- [ ] Admin approving a submission creates a `Product` row, calls `CostEstimationService.estimateCost()`, and sends an approval email via Resend
-- [ ] Admin rejecting a submission updates status to `REJECTED`; no product row is created
-- [ ] The scan page "not found" screen includes a "Submit this product" CTA pre-populated with the scanned UPC (`/submit-product?upc=<upc>`)
-- [ ] The search page `EmptyState` includes a "Submit it" link to `/submit-product`
-- [ ] `tsc --noEmit` passes clean. All existing tests pass. ≥15 new tests covering: submission creation, UPC duplicate detection, rate limit enforcement, admin approve flow (creates Product + triggers estimate), admin reject flow, unauthenticated rejection, email send on approval
+- [x] `POST /api/products/submit` returns 401 for unauthenticated requests
+- [x] `POST /api/products/submit` with a UPC that already exists returns 409 with the existing product's URL
+- [x] `POST /api/products/submit` with a valid payload creates a `ProductSubmission` row with `status: PENDING` and returns 201
+- [x] A user with 5 existing `PENDING` submissions cannot submit a 6th — receives 429
+- [x] `/admin/submissions` renders a list of all `PENDING` submissions; accessible only to admin users (email in `ADMIN_EMAILS` env var)
+- [x] Admin approving a submission creates a `Product` row, calls `CostEstimationService.estimateCost()`, and sends an approval email via Resend
+- [x] Admin rejecting a submission updates status to `REJECTED`; no product row is created
+- [x] The scan page "not found" screen includes a "Submit this product" CTA pre-populated with the scanned UPC (`/submit-product?upc=<upc>`)
+- [x] The search page `EmptyState` includes a "Submit it" link to `/submit-product`
+- [x] `tsc --noEmit` passes clean. All existing tests pass. ≥15 new tests covering: submission creation, UPC duplicate detection, rate limit enforcement, admin approve flow (creates Product + triggers estimate), admin reject flow, unauthenticated rejection, email send on approval
 
 ## Tasks
 
