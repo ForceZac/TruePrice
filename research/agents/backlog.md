@@ -1,14 +1,10 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-02 (Dev Run #243 — re-synced PRs #21/#23/#24 with main 2bde17d; goal12=427, goal13=418; tsc clean; all MERGEABLE)
+Last updated: 2026-08-04 (Dev Run #244 — PRs #21/#23/#24 all MERGED; all Goals 1–13 complete; main at 55d2011; zero open PRs; pipeline fully shipped)
 
 ## Active
 
-| Goal | PR | Status | Tests | Notes |
-|------|----|----|-------|-------|
-| docs: add Goal 11a/11b/12 TRDs + roadmap | #21 | ⚠️ SUPERSEDED | — | TRDs/roadmap committed to main (8e58de8); PR #21 zero diff vs main — ready to close |
-| Goal 12 — Enhanced Search & Discovery | #23 | ✅ LGTM | 427 | Synced with main 2f301f9; all AC done; tsc clean; MERGEABLE |
-| Goal 13 — Weekly Digest Email | #24 | ✅ LGTM | 418 | All AC done; 17 new tests; TRD done; tsc clean; synced with main 2f301f9; MERGEABLE |
+_None — all goals shipped. Awaiting new TRDs for next milestone._
 
 ## Completed
 
@@ -26,10 +22,16 @@ Last updated: 2026-08-02 (Dev Run #243 — re-synced PRs #21/#23/#24 with main 2
 | Goal 9 — Product Comparison & Social Features | #14 | 2026-07-31 | ea4e0ba |
 | chore: service-layer refactoring | #16 | 2026-07-31 | 06cc5d9 |
 | Goal 10 — User Accounts & Watchlist | #17 | 2026-08-01 | e292d87 |
+| Goal 11a — Save as Image | #19 | 2026-08-01 | (merged in batch) |
+| Goal 11b — Price Alerts | #20 | 2026-08-01 | (merged in batch) |
+| chore: fix cron Discord SoC | #22 | 2026-08-01 | (merged in batch) |
+| docs: add TRDs + roadmap (Goals 11a/11b/12/13) | #21 | 2026-08-04 | d6f3e66 |
+| Goal 12 — Enhanced Search & Discovery | #23 | 2026-08-04 | 5c2e259 |
+| Goal 13 — Weekly Digest Email | #24 | 2026-08-04 | 55d2011 |
 
 ## Notes
 
-- **Pipeline status:** ✅ GOALS 1-10 SHIPPED + PR #16 (service-layer) merged. main at e292d87. 397 tests passing. Goals 11a/11b in review.
+- **Pipeline status:** ✅ ALL GOALS 1–13 SHIPPED. main at 55d2011. Zero open PRs. 14/14 TRDs done. Pipeline complete — awaiting new milestone from PM.
 - **PR #12 (Goal 7):** MERGED (752e8c1) — privacy/terms/contact/about pages, footer, cookie consent, AdSense loader, ad slots, robots.txt.
 - **PR #13 (Goal 8):** ✅ MERGED (b39dfde on 2026-07-30) — 270 tests. Confidence tiers, subcategory profiles, 104 seeded products, material-parser aliases, cron routes, /admin/coverage page.
 - **PR #14 (Goal 9):** ✅ MERGED (ea4e0ba on 2026-07-31) — 305 tests. Compare page, CompareStore, CompareTray, LeaderboardCard, Leaderboard page, OG image routes, ShareButton, AddToCompareButton, JSON-LD, revalidate.
