@@ -1,12 +1,12 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-04 (Dev Run #256 — Goal 14 implemented; PR #25 opened; 461 tests pass)
+Last updated: 2026-08-04 (Dev Run #257 — Goal 14 TRD marked done; PR #25 promoted to ready for review; 461 tests pass)
 
 ## Active
 
 | Goal | Branch | PR | Status |
 |------|--------|----|--------|
-| Goal 14 — SEO & Core Web Vitals | task/goal14-seo-performance | #25 | draft — awaiting review |
+| Goal 14 — SEO & Core Web Vitals | task/goal14-seo-performance | #25 | ready for review |
 
 ## Completed
 
@@ -236,3 +236,5 @@ Last updated: 2026-08-04 (Dev Run #256 — Goal 14 implemented; PR #25 opened; 4
 - **Dev Run #254 (2026-08-04):** No new TRDs; all Goals 1–13 complete; zero open PRs; pipeline fully shipped; main at e4f1204.
 - **Dev Run #255 (2026-08-04):** No new TRDs; all Goals 1–13 complete; zero open PRs; pipeline fully shipped; main at c0415aa.
 - **PM Run #154 (2026-08-04):** ✅ Groomed backlog. Status: ✅ **ALL GOALS 1–13 SHIPPED & MERGED**. Main at 0134873. TRD Watcher confirms 14/14 TRD files valid, all marked `done`, zero blockers. Merge Watcher confirms zero open PRs, zero conflicts. **PIPELINE FULLY SHIPPED.** Open questions remain: Q7-1 (AdSense ID), Q7-3 (Privacy Policy), Q-INFRA-2 (Discord allowlist), Q13-3 (Resend rate limits). Standup posted to #standup.
+- **Dev Run #256 (2026-08-04):** Synced local branch with remote; Goal 14 feat commit (206b46a) confirmed present. 461 tests pass, PR #25 opened as draft.
+- **Dev Run #257 (2026-08-04):** Goal 14 TRD marked `done`; all 9 ACs checked. PR #25 promoted from draft to ready for review. 461 tests pass. Branch task/goal14-seo-performance at a8561eb, fully ahead of main (0c8c0fe). Goal 15 PRD exists but no TRD yet — nothing to implement.
