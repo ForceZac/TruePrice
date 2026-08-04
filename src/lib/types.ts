@@ -26,6 +26,8 @@ export interface CategoryProductItem {
   /** Most recent CostBreakdown total in cents. Null if no estimate. */
   estimatedCostCents: number | null;
   markupPercent: number | null;
+  /** True if this product is in the current trending top-20 by view count. */
+  isTrending?: boolean;
 }
 
 export interface CategoryDetail extends CategorySummary {

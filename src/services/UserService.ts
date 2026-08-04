@@ -359,3 +359,45 @@ export async function deleteAccount(userId: string): Promise<void> {
     prisma.user.delete({ where: { id: userId } }),
   ]);
 }
+
+// ─── Recent Searches ─────────────────────────────────────────────────────────
+
+/** Maximum number of recent searches stored server-side per user. */
+const MAX_RECENT_SEARCHES = 10;
+
+/**
+ * Prepend `query` to the user's recent searches list.
+ * Deduplicates (removes prior occurrence of the same query) and trims to
+ * MAX_RECENT_SEARCHES entries.
+ */
+export async function saveRecentSearch(userId: string, query: string): Promise<void> {
+  const q = query.trim();
+  if (!q) return;
+
+  const user = await prisma.user.findUnique({
+    where: { id: userId },
+    select: { recentSearches: true },
+  });
+  if (!user) return;
+
+  const updated = [q, ...user.recentSearches.filter((s) => s !== q)].slice(
+    0,
+    MAX_RECENT_SEARCHES
+  );
+
+  await prisma.user.update({
+    where: { id: userId },
+    data: { recentSearches: updated },
+  });
+}
+
+/**
+ * Return the user's recent searches, most recent first.
+ */
+export async function getRecentSearches(userId: string): Promise<string[]> {
+  const user = await prisma.user.findUnique({
+    where: { id: userId },
+    select: { recentSearches: true },
+  });
+  return user?.recentSearches ?? [];
+}

@@ -259,7 +259,11 @@ export async function lookupProduct(barcode: string): Promise<ProductResult | nu
 /**
  * Text search over cached products (name + brand).
  */
-export async function searchProducts(query: string, limit = 20): Promise<ProductResult[]> {
+export async function searchProducts(
+  query: string,
+  limit = 20,
+  autocomplete = false
+): Promise<ProductResult[]> {
   const q = query.trim();
   if (!q) return [];
 
@@ -275,6 +279,25 @@ export async function searchProducts(query: string, limit = 20): Promise<Product
     orderBy: { lastLookedUp: "desc" },
   });
 
+  if (autocomplete) {
+    return products.map((p) => ({
+      id: p.id,
+      name: p.name,
+      brand: p.brand,
+      description: null,
+      imageUrl: null,
+      category: p.category.name,
+      categorySlug: p.category.slug,
+      ingredients: null,
+      weightGrams: null,
+      countryOfOrigin: null,
+      upc: null,
+      ean: null,
+      source: p.source,
+      cachedAt: p.createdAt,
+    }));
+  }
+
   return products.map((p) => ({
     id: p.id,
     name: p.name,
@@ -282,6 +305,7 @@ export async function searchProducts(query: string, limit = 20): Promise<Product
     description: p.description,
     imageUrl: p.imageUrl,
     category: p.category.name,
+    categorySlug: p.category.slug,
     ingredients: p.ingredients,
     weightGrams: p.weightGrams,
     countryOfOrigin: p.countryOfOrigin,
@@ -290,6 +314,17 @@ export async function searchProducts(query: string, limit = 20): Promise<Product
     source: p.source,
     cachedAt: p.createdAt,
   }));
+}
+
+/**
+ * Increment the viewCount of a product by 1.
+ * Silently no-ops if the product does not exist.
+ */
+export async function incrementViewCount(productId: string): Promise<void> {
+  await prisma.product.updateMany({
+    where: { id: productId },
+    data: { viewCount: { increment: 1 } },
+  });
 }
 
 // ─── Retail price refresh helpers ────────────────────────────────────────────

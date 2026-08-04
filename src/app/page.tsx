@@ -1,13 +1,17 @@
 import Link from "next/link";
-import { ScanLine, Trophy } from "lucide-react";
+import { ScanLine, Trophy, Zap } from "lucide-react";
 import { SearchInput } from "@/components/molecules/SearchInput";
 import { CategoryCard } from "@/components/molecules/CategoryCard";
 import { getAllCategories } from "@/services/CategoryService";
+import { getMostShocking } from "@/services/DiscoveryService";
 
 export const revalidate = 3600;
 
 export default async function Home() {
-  const categories = await getAllCategories();
+  const [categories, shocking] = await Promise.all([
+    getAllCategories(),
+    getMostShocking(3),
+  ]);
 
   return (
     <main className="flex flex-1 flex-col items-center px-4 py-24 gap-16">
@@ -38,6 +42,40 @@ export default async function Home() {
           Search for any product by name, or scan the barcode to look it up.
         </p>
       </div>
+
+      {/* Most Shocking Markups */}
+      {shocking.length > 0 && (
+        <section aria-labelledby="shocking-heading" className="w-full max-w-2xl">
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center gap-2">
+              <Zap className="h-5 w-5 text-yellow-500" aria-hidden="true" />
+              <h2
+                id="shocking-heading"
+                className="text-lg font-semibold text-foreground"
+              >
+                Most Shocking Markups
+              </h2>
+            </div>
+          </div>
+          <div className="flex flex-col gap-3">
+            {shocking.map((product) => (
+              <Link
+                key={product.id}
+                href={`/product/${product.id}`}
+                className="flex items-center gap-4 p-4 rounded-xl border border-border bg-card hover:bg-muted/50 transition"
+              >
+                <div className="flex flex-col gap-0.5 flex-1 min-w-0">
+                  <p className="font-semibold text-foreground truncate">{product.name}</p>
+                  <p className="text-sm text-muted-foreground truncate">{product.category}</p>
+                </div>
+                <span className="text-lg font-bold text-foreground shrink-0">
+                  {(product.markupPercent / 100).toFixed(1)}×
+                </span>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Category grid */}
       {categories.length > 0 && (

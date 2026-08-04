@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { cache } from "react";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import React from "react";
 import {
   getCategoryBySlug as _getCategoryBySlug,
   getCategoryProducts,
@@ -14,7 +13,8 @@ import {
 const getCategoryBySlug = cache(_getCategoryBySlug);
 import { getCategoryDescription } from "@/data/category-descriptions";
 import { CategoryProductCard } from "@/components/molecules/ProductCard";
-import { AdSlot } from "@/components/atoms/AdSlot";
+import { CategoryMarkupFilter } from "@/components/molecules/CategoryMarkupFilter";
+import { getTrendingIds } from "@/services/DiscoveryService";
 import { env } from "@/lib/env";
 
 export const revalidate = 3600;
@@ -67,10 +67,16 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   const page = Math.max(1, parseInt(pageParam ?? "1", 10) || 1);
   const perPage = 12;
 
-  const [category, { products, total }] = await Promise.all([
+  const [category, { products: rawProducts, total }, trendingIds] = await Promise.all([
     getCategoryBySlug(slug),
     getCategoryProducts(slug, page, perPage),
+    getTrendingIds(20, 7),
   ]);
+
+  const products = rawProducts.map((p) => ({
+    ...p,
+    isTrending: trendingIds.has(p.id),
+  }));
 
   if (!category) {
     notFound();
@@ -187,7 +193,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
         </section>
       )}
 
-      {/* Product list */}
+      {/* Product list with markup filter */}
       <section aria-labelledby="products-heading">
         <div className="flex items-center justify-between mb-3">
           <h2
@@ -213,28 +219,12 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
             No products in this category yet.
           </p>
         ) : (
-          <div className="flex flex-col gap-3">
-            {products.map((product, index) => (
-              <React.Fragment key={product.id}>
-                <CategoryProductCard
-                  product={product}
-                  isTop={
-                    category.topProduct?.id === product.id &&
-                    product.markupPercent !== null
-                  }
-                />
-                {/* NEXT_PUBLIC_ADSENSE_SLOT_CATEGORY must be the numeric slot ID
-                    from the AdSense dashboard (e.g. "1234567890"). */}
-                {index === 5 && env.NEXT_PUBLIC_ADSENSE_CLIENT && env.NEXT_PUBLIC_ADSENSE_SLOT_CATEGORY && (
-                  <AdSlot
-                    publisherId={env.NEXT_PUBLIC_ADSENSE_CLIENT}
-                    slotId={env.NEXT_PUBLIC_ADSENSE_SLOT_CATEGORY}
-                    format="leaderboard"
-                  />
-                )}
-              </React.Fragment>
-            ))}
-          </div>
+          <CategoryMarkupFilter
+            products={products}
+            topProductId={category.topProduct?.id}
+            adsenseClient={env.NEXT_PUBLIC_ADSENSE_CLIENT}
+            adsenseSlot={env.NEXT_PUBLIC_ADSENSE_SLOT_CATEGORY}
+          />
         )}
 
         {/* Pagination */}
