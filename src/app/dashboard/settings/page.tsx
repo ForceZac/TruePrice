@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import { auth, signOut } from "@/lib/auth";
+import { getDigestPreferences } from "@/services/UserService";
 import { DeleteAccountButton } from "@/components/molecules/DeleteAccountButton";
+import { DigestToggle } from "@/components/molecules/DigestToggle";
 
 export const metadata: Metadata = {
   title: "Account Settings — TruePrice",
@@ -15,6 +17,10 @@ export default async function SettingsPage() {
   if (!session?.user) {
     redirect("/login?next=/dashboard/settings");
   }
+
+  const digestPrefs = session.user.id
+    ? await getDigestPreferences(session.user.id)
+    : null;
 
   return (
     <main className="flex flex-col min-h-screen px-4 py-10 max-w-2xl mx-auto w-full gap-8">
@@ -60,6 +66,12 @@ export default async function SettingsPage() {
             Sign out
           </button>
         </form>
+      </section>
+
+      {/* Email preferences */}
+      <section className="flex flex-col gap-4 rounded-lg border border-border bg-card p-6">
+        <h2 className="font-semibold">Email Preferences</h2>
+        <DigestToggle initialEnabled={digestPrefs?.digestEnabled ?? true} />
       </section>
 
       {/* Danger zone */}
