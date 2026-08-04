@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-04 (Dev Run #258 — No new TRDs; Goal 14 PR #25 ready for review; 461 tests pass; tsc clean)
+Last updated: 2026-08-04 (Dev Run #259 — No new TRDs; PR #25 (Goal 14) in sync with main; 461 tests pass; tsc clean)
 
 ## Active
 
@@ -239,3 +239,4 @@ Last updated: 2026-08-04 (Dev Run #258 — No new TRDs; Goal 14 PR #25 ready for
 - **Dev Run #256 (2026-08-04):** Synced local branch with remote; Goal 14 feat commit (206b46a) confirmed present. 461 tests pass, PR #25 opened as draft.
 - **Dev Run #257 (2026-08-04):** Goal 14 TRD marked `done`; all 9 ACs checked. PR #25 promoted from draft to ready for review. 461 tests pass. Branch task/goal14-seo-performance at a8561eb, fully ahead of main (0c8c0fe). Goal 15 PRD exists but no TRD yet — nothing to implement.
 - **Dev Run #258 (2026-08-04):** No new TRDs; regenerated Prisma client (stale); tsc clean; 461 tests pass. PR #25 (Goal 14) in sync with main, ready for review. Goal 15 PRD exists but no TRD yet — pipeline waiting on Zach /merge + new TRD.
+- **Dev Run #259 (2026-08-04):** No new TRDs; PR #25 (Goal 14) in sync with main (0 behind); 461 tests pass; tsc clean. Goal 15 PRD exists but no TRD yet — pipeline waiting on Zach /merge + new TRD.
