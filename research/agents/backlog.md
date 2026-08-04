@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-04 (Dev Run #271 — Added Prisma migration for Goal 15 (PR #26 blocker fixed); 468 tests pass; tsc clean)
+Last updated: 2026-08-04 (Dev Run #272 — No new TRDs; PRs #25/#26 both 0-behind main; all 15 TRDs done; awaiting Zach /merge)
 
 ## Active
 
@@ -34,7 +34,8 @@ Last updated: 2026-08-04 (Dev Run #271 — Added Prisma migration for Goal 15 (P
 
 ## Notes
 
-- **Pipeline status:** ✅ Goals 1–13 SHIPPED (main at 0c8c0fe). Goal 14 ready for merge (PR #25, 467 tests). Goal 15 ready for review (PR #26, 468 tests) — Prisma migration added (Dev Run #271). 15/15 TRDs done. Zero blockers. Awaiting Zach `/merge`.
+- **Pipeline status:** ✅ Goals 1–13 SHIPPED (main at 0c8c0fe). Goal 14 ready for merge (PR #25, 467 tests). Goal 15 ready for review (PR #26, 468 tests). 15/15 TRDs done. Zero blockers. Awaiting Zach `/merge`.
+- **Dev Run #272 (2026-08-04):** No new TRDs or implementation. PRs #25 (goal14, 28 ahead, 0 behind) and #26 (goal15, 5 ahead, 0 behind) both in sync with main. Pipeline awaiting Zach /merge.
 - **Dev Run #271 (2026-08-04):** Fixed PR #26 (Goal 15) Reviewer Run #89 blocker — added missing Prisma migration `20260804000001_goal15_user_submitted_products` (SubmissionStatus enum + ProductSubmission table). 468 tests pass, tsc clean. Branch pushed.
 - **PM Run #159 (2026-08-04):** Groomed backlog. Status: ✅ Goals 1–13 shipped; ✅ Goal 14 LGTM + MERGEABLE (467 tests); ✅ 15/15 TRDs valid, all done. **Zero blockers.** PR #25 ready for Zach `/merge`. Standup posted to #standup.
 - **PR #12 (Goal 7):** MERGED (752e8c1) — privacy/terms/contact/about pages, footer, cookie consent, AdSense loader, ad slots, robots.txt.
