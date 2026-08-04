@@ -1,6 +1,6 @@
 # TruePrice Implementation Roadmap v2
 
-Generated from PROJECT_KEYS.md section 12 — 2026-07-30; updated 2026-08-01
+Generated from PROJECT_KEYS.md section 12 — 2026-07-30; updated 2026-08-04
 
 ## Dependency Graph
 
@@ -16,12 +16,12 @@ Goal 1 (Scaffold)
 │           │       └── Goal 8 (Data Expansion)
 │           │           └── Goal 10 (User Accounts)
 │           │               └── Goal 11b (Price Alerts) ← also needs Goal 11a
-│           │                   └── Goal 15 (User Submissions) ← also needs Goal 3, Goal 8
 │           ├── Goal 9 (Comparison & Social)
-│           │   └── Goal 14 (SEO & Perf) ← also needs Goal 6
+│           │   └── Goal 14 (SEO & Core Web Vitals) ← also needs Goal 5, Goal 6
 │           ├── Goal 11a (Save as Image)
 │           └── Goal 12 (Enhanced Search) ← also needs Goal 8, Goal 9
-               └── Goal 13 (Weekly Digest) ← also needs Goal 10, Goal 11b
+│              └── Goal 13 (Weekly Digest) ← also needs Goal 10, Goal 11b
+└── Goal 15 (User-Submitted Products) ← also needs Goal 10
 ```
 
 ## Goals
@@ -107,12 +107,14 @@ Goal 1 (Scaffold)
 - **Why:** Re-engages users with a weekly email summary of their watched products and trending items.
 - **Depends on:** Goal 10, Goal 11b, Goal 12
 
-### Goal 14 — SEO & Core Web Vitals 📋 PRD WRITTEN
-- **PRD:** `prds/goal14-seo-performance.md` — status: pending TRD
-- **Why:** Structured data, sitemap, canonical URLs, and Lighthouse performance optimizations to drive organic search traffic.
+### Goal 14 — SEO & Core Web Vitals 🔄 IN REVIEW
+- **TRD:** `trds/goal14-seo-performance.md` — status: done
+- **PR:** #25 — READY FOR REVIEW (467 tests pass)
+- **Why:** Structured data, canonical URLs, sitemap coverage, and OG completeness to drive organic traffic.
 - **Depends on:** Goal 5, Goal 6, Goal 9
 
-### Goal 15 — User-Submitted Products 📋 PRD WRITTEN
-- **PRD:** `prds/goal15-user-submitted-products.md` — status: pending TRD
-- **Why:** Crowdsource catalog growth — authenticated users submit products, admin reviews via `/admin/submissions`, approved items get immediate cost estimates.
-- **Depends on:** Goal 3, Goal 8, Goal 10
+### Goal 15 — User-Submitted Products 🔄 IN REVIEW
+- **TRD:** `trds/goal15-user-submitted-products.md` — status: done
+- **PR:** #26 — READY FOR REVIEW (468 tests pass)
+- **Why:** Crowdsourced product submissions with admin moderation to expand the product catalog.
+- **Depends on:** Goal 1, Goal 10

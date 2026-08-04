@@ -1,12 +1,13 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-04 (Dev Run #268 — Fixed pre-existing test gap: added env mock to UserService.goal12.test.ts; 467 tests pass (up from 461); tsc clean; PR #25 pushed; pipeline waiting on Zach /merge + Goal 15 TRD)
+Last updated: 2026-08-04 (Dev Run #274 — Updated roadmap: Goals 12/13 marked MERGED; Goals 14/15 added IN REVIEW; no new implementation work; PRs #25/#26 still 0-behind main, both MERGEABLE)
 
 ## Active
 
-| Goal | Branch | PR | Status |
-|------|--------|----|--------|
-| Goal 14 — SEO & Core Web Vitals | task/goal14-seo-performance | #25 | LGTM — awaiting /merge |
+| Goal | PR | Status | Tests |
+|------|----|--------|-------|
+| Goal 14 — SEO & Core Web Vitals | #25 | LGTM + MERGEABLE | 467 |
+| Goal 15 — User-Submitted Products | #26 | LGTM + MERGEABLE | 468 |
 
 ## Completed
 
@@ -30,11 +31,11 @@ Last updated: 2026-08-04 (Dev Run #268 — Fixed pre-existing test gap: added en
 | docs: add TRDs + roadmap (Goals 11a/11b/12/13) | #21 | 2026-08-04 | d6f3e66 |
 | Goal 12 — Enhanced Search & Discovery | #23 | 2026-08-04 | 5c2e259 |
 | Goal 13 — Weekly Digest Email | #24 | 2026-08-04 | 55d2011 |
-| Goal 14 — SEO & Core Web Vitals | #25 | pending | (draft PR open) |
 
 ## Notes
 
-- **Pipeline status:** ✅ GOALS 1–13 SHIPPED; Goal 14 READY. main at 0c8c0fe. 1 open PR (#25). 15/15 TRDs valid, all marked `done`. PR #25 LGTM + MERGEABLE — awaiting Zach `/merge`.
+- **Pipeline status:** ✅ Goals 1–13 SHIPPED (main at 0c8c0fe). Goal 14 LGTM + MERGEABLE (PR #25, 467 tests). Goal 15 LGTM + MERGEABLE (PR #26, 468 tests). 15/15 TRDs done. Zero blockers. Awaiting Zach `/merge`.
+- **Dev Run #274 (2026-08-04):** Updated stale roadmap — Goals 12/13 now marked MERGED; Goals 14/15 added as IN REVIEW. Both PR branches verified 0-behind main. No new TRDs or implementation needed.
 - **PR #12 (Goal 7):** MERGED (752e8c1) — privacy/terms/contact/about pages, footer, cookie consent, AdSense loader, ad slots, robots.txt.
 - **PR #13 (Goal 8):** ✅ MERGED (b39dfde on 2026-07-30) — 270 tests. Confidence tiers, subcategory profiles, 104 seeded products, material-parser aliases, cron routes, /admin/coverage page.
 - **PR #14 (Goal 9):** ✅ MERGED (ea4e0ba on 2026-07-31) — 305 tests. Compare page, CompareStore, CompareTray, LeaderboardCard, Leaderboard page, OG image routes, ShareButton, AddToCompareButton, JSON-LD, revalidate.
@@ -221,34 +222,3 @@ Last updated: 2026-08-04 (Dev Run #268 — Fixed pre-existing test gap: added en
 - **Dev Run #241 (2026-08-02):** No new impl — all Goals 1–13 complete, all TRDs done. Re-synced PRs #21/#23/#24 with main d3860e5 (clean merges, backlog.md only). Tests: goal12=427, goal13=418; tsc clean. PRs #23/#24 MERGEABLE; PR #21 superseded (can be closed). Pipeline awaiting Zach /merge.
 - **Dev Run #242 (2026-08-02):** No new impl — all Goals 1–13 complete, all TRDs done. Cleared orphaned goal12/13 staged+untracked files from main. Re-synced PRs #21/#23/#24 with main 8aa5946 (clean merges, backlog.md only). Tests: goal12=427, goal13=418; tsc clean. PRs #23/#24 MERGEABLE; PR #21 superseded (can be closed). Pipeline awaiting Zach /merge.
 - **Dev Run #243 (2026-08-02):** No new impl — all Goals 1–13 complete, all TRDs done. Re-synced PRs #21/#23/#24 with main 2bde17d (clean merges, backlog.md only). Tests: goal12=427, goal13=418; tsc clean. PRs #23/#24 MERGEABLE; PR #21 superseded (can be closed). Pipeline awaiting Zach /merge.
-- **Dev Run #245 (2026-08-04):** No new TRDs; all Goals 1–13 complete; zero open PRs; pipeline fully shipped; main at 2b8a3c6.
-- **Dev Run #246 (2026-08-04):** No new TRDs; all Goals 1–13 complete; zero open PRs; pipeline fully shipped; main at 53330ee.
-- **PM Run #151 (2026-08-04):** ✅ Groomed backlog. Status: ✅ **ALL GOALS 1–13 SHIPPED & MERGED**. Main at 53330ee. TRD Watcher confirms 14/14 TRD files valid, all marked `done`, zero blockers. Merge Watcher confirms zero open PRs, zero conflicts. **PIPELINE FULLY SHIPPED.** Standup posted to #standup.
-- **Dev Run #247 (2026-08-04):** No new TRDs; all Goals 1–13 complete; zero open PRs; pipeline fully shipped; main at 53330ee.
-- **Dev Run #248 (2026-08-04):** No new TRDs; all Goals 1–13 complete; zero open PRs; pipeline fully shipped; main at 1d30d8d.
-- **Dev Run #249 (2026-08-04):** No new TRDs; all Goals 1–13 complete; zero open PRs; pipeline fully shipped; main at 4f4c1d2.
-- **PM Run #152 (2026-08-04):** ✅ Groomed backlog. Status: ✅ **ALL GOALS 1–13 SHIPPED & MERGED**. Main at 9fdfaeb. TRD Watcher confirms 14/14 TRD files valid, all marked `done`, zero blockers. Merge Watcher confirms zero open PRs, zero conflicts. **PIPELINE FULLY SHIPPED.** Open questions remain: Q7-1 (AdSense ID), Q7-3 (Privacy Policy), Q-INFRA-2 (Discord allowlist), Q13-3 (Resend rate limits). Standup posted to #standup.
-- **Dev Run #250 (2026-08-04):** No new TRDs; all Goals 1–13 complete; zero open PRs; pipeline fully shipped; main at 9fdfaeb.
-- **Dev Run #251 (2026-08-04):** No new TRDs; all Goals 1–13 complete; zero open PRs; pipeline fully shipped; main at b1d3e12.
-- **Dev Run #252 (2026-08-04):** No new TRDs; all Goals 1–13 complete; zero open PRs; pipeline fully shipped; main at 54de1f7.
-- **PM Run #153 (2026-08-04):** ✅ Groomed backlog. Status: ✅ **ALL GOALS 1–13 SHIPPED & MERGED**. Main at 54de1f7. TRD Watcher confirms 14/14 TRD files valid, all marked `done`, zero blockers. Merge Watcher confirms zero open PRs, zero conflicts. **PIPELINE FULLY SHIPPED.** Open questions remain: Q7-1 (AdSense ID), Q7-3 (Privacy Policy), Q-INFRA-2 (Discord allowlist), Q13-3 (Resend rate limits). Standup posted to #standup.
-- **Dev Run #253 (2026-08-04):** No new TRDs; all Goals 1–13 complete; zero open PRs; pipeline fully shipped; main at 9cb106a.
-- **Dev Run #254 (2026-08-04):** No new TRDs; all Goals 1–13 complete; zero open PRs; pipeline fully shipped; main at e4f1204.
-- **Dev Run #255 (2026-08-04):** No new TRDs; all Goals 1–13 complete; zero open PRs; pipeline fully shipped; main at c0415aa.
-- **PM Run #154 (2026-08-04):** ✅ Groomed backlog. Status: ✅ **ALL GOALS 1–13 SHIPPED & MERGED**. Main at 0134873. TRD Watcher confirms 14/14 TRD files valid, all marked `done`, zero blockers. Merge Watcher confirms zero open PRs, zero conflicts. **PIPELINE FULLY SHIPPED.** Open questions remain: Q7-1 (AdSense ID), Q7-3 (Privacy Policy), Q-INFRA-2 (Discord allowlist), Q13-3 (Resend rate limits). Standup posted to #standup.
-- **Dev Run #256 (2026-08-04):** Synced local branch with remote; Goal 14 feat commit (206b46a) confirmed present. 461 tests pass, PR #25 opened as draft.
-- **Dev Run #257 (2026-08-04):** Goal 14 TRD marked `done`; all 9 ACs checked. PR #25 promoted from draft to ready for review. 461 tests pass. Branch task/goal14-seo-performance at a8561eb, fully ahead of main (0c8c0fe). Goal 15 PRD exists but no TRD yet — nothing to implement.
-- **Dev Run #258 (2026-08-04):** No new TRDs; regenerated Prisma client (stale); tsc clean; 461 tests pass. PR #25 (Goal 14) in sync with main, ready for review. Goal 15 PRD exists but no TRD yet — pipeline waiting on Zach /merge + new TRD.
-- **Dev Run #259 (2026-08-04):** No new TRDs; PR #25 (Goal 14) in sync with main (0 behind); 461 tests pass; tsc clean. Goal 15 PRD exists but no TRD yet — pipeline waiting on Zach /merge + new TRD.
-- **Dev Run #260 (2026-08-04):** No new TRDs; PR #25 (Goal 14) in sync with main (18 ahead, 0 behind); 461 tests pass; tsc clean. Goal 15 PRD exists but no TRD yet — pipeline waiting on Zach /merge + new TRD.
-- **PM Run #155 (2026-08-04):** ✅ Groomed backlog. Status: ✅ Goals 1–13 shipped; Goal 14 LGTM + MERGEABLE (461 tests). TRD Watcher confirms 15/15 TRD files valid, all marked `done`, zero blockers. Merge Watcher confirms 1 open PR clean & mergeable, zero conflicts. Goal 15 PRD exists; awaiting TRD for next milestone. **No changes since Dev Run #260.** PR #25 awaiting Zach `/merge`. Standup posted to #standup.
-- **Dev Run #261 (2026-08-04):** No new TRDs; PR #25 (Goal 14) in sync with main (19 ahead, 0 behind); 461 tests pass; tsc clean. Goal 15 PRD exists but no TRD yet — pipeline waiting on Zach /merge + Goal 15 TRD.
-- **Dev Run #262 (2026-08-04):** No new TRDs; PR #25 (Goal 14) in sync with main (20 ahead, 0 behind); 461 tests pass; tsc clean. Goal 15 PRD exists but no TRD yet — pipeline waiting on Zach /merge + Goal 15 TRD.
-- **Dev Run #263 (2026-08-04):** No new TRDs; PR #25 (Goal 14) in sync with main (21 ahead, 0 behind); 461 tests pass; tsc clean. Goal 15 PRD exists but no TRD yet — pipeline waiting on Zach /merge + Goal 15 TRD.
-- **PM Run #156 (2026-08-04):** ✅ Groomed backlog. Status: ✅ Goals 1–13 shipped; Goal 14 LGTM + MERGEABLE (461 tests). TRD Watcher confirms 15/15 TRD files valid, all marked `done`, zero blockers. Merge Watcher confirms 1 open PR clean & mergeable, zero conflicts. Goal 15 PRD exists; awaiting TRD for next milestone. **No changes since Dev Run #263.** PR #25 awaiting Zach `/merge`. Standup posted to #standup.
-- **Dev Run #264 (2026-08-04):** No new TRDs; PR #25 (Goal 14) in sync with main (22 ahead, 0 behind); 461 tests pass; tsc clean. Goal 15 PRD exists but no TRD yet — pipeline waiting on Zach /merge + Goal 15 TRD.
-- **Dev Run #265 (2026-08-04):** No new TRDs; PR #25 (Goal 14) in sync with main (23 ahead, 0 behind); 461 tests pass; tsc clean. Goal 15 PRD exists but no TRD yet — pipeline waiting on Zach /merge + Goal 15 TRD.
-- **Dev Run #266 (2026-08-04):** Aborted orphaned merge (origin/task/goal11a-save-as-image → task/goal14-seo-performance) that was left mid-merge from prior session. PR #25 (Goal 14) clean (24 ahead, 0 behind main); 461 tests pass; tsc clean. No new TRDs — pipeline waiting on Zach /merge + Goal 15 TRD.
-- **PM Run #157 (2026-08-04):** ✅ Groomed backlog. Status: ✅ Goals 1–13 shipped; Goal 14 LGTM + MERGEABLE (461 tests). TRD Watcher confirms 15/15 TRD files valid, all marked `done`, zero blockers. Merge Watcher confirms 1 open PR clean & mergeable, zero conflicts. Goal 15 PRD exists; awaiting TRD for next milestone. **No changes since Dev Run #266.** PR #25 awaiting Zach `/merge`. Standup posted to #standup.
-- **Dev Run #267 (2026-08-04):** No new TRDs; PR #25 (Goal 14) in sync with main (25 ahead, 0 behind); 461 tests pass; tsc clean. Goal 15 PRD exists but no TRD yet — pipeline waiting on Zach /merge + Goal 15 TRD.
-- **Dev Run #268 (2026-08-04):** Fixed pre-existing test gap: `UserService.goal12.test.ts` was missing env mock, causing 6 tests to not run. Added `vi.mock('@/lib/env.server')` matching pattern from other UserService tests. 467 tests now pass (up from 461); tsc clean. PR #25 pushed. No new TRDs — pipeline waiting on Zach /merge + Goal 15 TRD.
