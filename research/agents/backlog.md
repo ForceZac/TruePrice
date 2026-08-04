@@ -1,12 +1,12 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-04 (Dev Run #260 — No new TRDs; PR #25 (Goal 14) in sync with main (0 behind); 461 tests pass; tsc clean)
+Last updated: 2026-08-04 (Dev Run #261 — No new TRDs; PR #25 in sync with main; 461 tests pass; tsc clean; pipeline waiting on /merge + Goal 15 TRD)
 
 ## Active
 
 | Goal | Branch | PR | Status |
 |------|--------|----|--------|
-| Goal 14 — SEO & Core Web Vitals | task/goal14-seo-performance | #25 | ready for review |
+| Goal 14 — SEO & Core Web Vitals | task/goal14-seo-performance | #25 | LGTM — awaiting /merge |
 
 ## Completed
 
@@ -34,7 +34,7 @@ Last updated: 2026-08-04 (Dev Run #260 — No new TRDs; PR #25 (Goal 14) in sync
 
 ## Notes
 
-- **Pipeline status:** ✅ ALL GOALS 1–13 SHIPPED. main at 55d2011. Zero open PRs. 14/14 TRDs done. Pipeline complete — awaiting new milestone from PM.
+- **Pipeline status:** ✅ GOALS 1–13 SHIPPED; Goal 14 READY. main at 0c8c0fe. 1 open PR (#25). 15/15 TRDs valid, all marked `done`. PR #25 LGTM + MERGEABLE — awaiting Zach `/merge`.
 - **PR #12 (Goal 7):** MERGED (752e8c1) — privacy/terms/contact/about pages, footer, cookie consent, AdSense loader, ad slots, robots.txt.
 - **PR #13 (Goal 8):** ✅ MERGED (b39dfde on 2026-07-30) — 270 tests. Confidence tiers, subcategory profiles, 104 seeded products, material-parser aliases, cron routes, /admin/coverage page.
 - **PR #14 (Goal 9):** ✅ MERGED (ea4e0ba on 2026-07-31) — 305 tests. Compare page, CompareStore, CompareTray, LeaderboardCard, Leaderboard page, OG image routes, ShareButton, AddToCompareButton, JSON-LD, revalidate.
@@ -241,3 +241,5 @@ Last updated: 2026-08-04 (Dev Run #260 — No new TRDs; PR #25 (Goal 14) in sync
 - **Dev Run #258 (2026-08-04):** No new TRDs; regenerated Prisma client (stale); tsc clean; 461 tests pass. PR #25 (Goal 14) in sync with main, ready for review. Goal 15 PRD exists but no TRD yet — pipeline waiting on Zach /merge + new TRD.
 - **Dev Run #259 (2026-08-04):** No new TRDs; PR #25 (Goal 14) in sync with main (0 behind); 461 tests pass; tsc clean. Goal 15 PRD exists but no TRD yet — pipeline waiting on Zach /merge + new TRD.
 - **Dev Run #260 (2026-08-04):** No new TRDs; PR #25 (Goal 14) in sync with main (18 ahead, 0 behind); 461 tests pass; tsc clean. Goal 15 PRD exists but no TRD yet — pipeline waiting on Zach /merge + new TRD.
+- **PM Run #155 (2026-08-04):** ✅ Groomed backlog. Status: ✅ Goals 1–13 shipped; Goal 14 LGTM + MERGEABLE (461 tests). TRD Watcher confirms 15/15 TRD files valid, all marked `done`, zero blockers. Merge Watcher confirms 1 open PR clean & mergeable, zero conflicts. Goal 15 PRD exists; awaiting TRD for next milestone. **No changes since Dev Run #260.** PR #25 awaiting Zach `/merge`. Standup posted to #standup.
+- **Dev Run #261 (2026-08-04):** No new TRDs; PR #25 (Goal 14) in sync with main (19 ahead, 0 behind); 461 tests pass; tsc clean. Goal 15 PRD exists but no TRD yet — pipeline waiting on Zach /merge + Goal 15 TRD.
