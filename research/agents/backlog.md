@@ -1,10 +1,13 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-04 (Dev Run #244 — PRs #21/#23/#24 all MERGED; all Goals 1–13 complete; main at 55d2011; zero open PRs; pipeline fully shipped)
+Last updated: 2026-08-04 (Dev Run #269 — Goal 15 implemented; PR #26 draft opened; 468 tests; tsc clean)
 
 ## Active
 
-_None — all goals shipped. Awaiting new TRDs for next milestone._
+| Goal | PR | Status | Tests |
+|------|----|--------|-------|
+| Goal 14 — SEO & Core Web Vitals | #25 | LGTM + MERGEABLE | 467 |
+| Goal 15 — User-Submitted Products | #26 | Draft — awaiting review | 468 |
 
 ## Completed
 
@@ -31,7 +34,8 @@ _None — all goals shipped. Awaiting new TRDs for next milestone._
 
 ## Notes
 
-- **Pipeline status:** ✅ ALL GOALS 1–13 SHIPPED. main at 55d2011. Zero open PRs. 14/14 TRDs done. Pipeline complete — awaiting new milestone from PM.
+- **Pipeline status:** ✅ Goals 1–13 SHIPPED (main at 0c8c0fe). Goal 14 ready for merge (PR #25, 467 tests). 15/15 TRDs done. Zero blockers. Awaiting Zach `/merge` to finalize Goal 14 + Goal 15 TRD.
+- **PM Run #159 (2026-08-04):** Groomed backlog. Status: ✅ Goals 1–13 shipped; ✅ Goal 14 LGTM + MERGEABLE (467 tests); ✅ 15/15 TRDs valid, all done. **Zero blockers.** PR #25 ready for Zach `/merge`. Standup posted to #standup.
 - **PR #12 (Goal 7):** MERGED (752e8c1) — privacy/terms/contact/about pages, footer, cookie consent, AdSense loader, ad slots, robots.txt.
 - **PR #13 (Goal 8):** ✅ MERGED (b39dfde on 2026-07-30) — 270 tests. Confidence tiers, subcategory profiles, 104 seeded products, material-parser aliases, cron routes, /admin/coverage page.
 - **PR #14 (Goal 9):** ✅ MERGED (ea4e0ba on 2026-07-31) — 305 tests. Compare page, CompareStore, CompareTray, LeaderboardCard, Leaderboard page, OG image routes, ShareButton, AddToCompareButton, JSON-LD, revalidate.
