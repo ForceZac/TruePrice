@@ -1,6 +1,6 @@
 # TRD: Goal 14 — SEO & Core Web Vitals
 
-- **status:** `in-progress`
+- **status:** `done`
 - **goal:** `Goal 14`
 - **priority:** `P2`
 - **branch:** `task/goal14-seo-performance`
@@ -15,15 +15,15 @@ Extends the JSON-LD foundation from Goal 9 rather than replacing it.
 
 ## Acceptance Criteria
 
-- [ ] Every product page (`/product/[id]`) has valid `Product` JSON-LD with `name`, `brand`, `description`, `offers.price` (retail price in USD), and `additionalProperty` entries for `manufacturingCost` and `markupMultiplier` (when a cost breakdown exists)
-- [ ] Every category page (`/category/[slug]`) emits a `CollectionPage` JSON-LD block alongside the existing `ItemList`
-- [ ] `GET /sitemap.xml` includes at least one URL per product (via `/product/[id]`) and one per category; referenced in `robots.txt` via `Sitemap:` directive (already in place)
-- [ ] Every product and category page sets `alternates.canonical` in `generateMetadata`, pointing to the page's canonical URL (no trailing slash)
-- [ ] All product and category pages have complete Open Graph tags: `og:title`, `og:description`, `og:url`, `og:image`, `og:type`
-- [ ] Above-fold product hero image uses `priority` prop on `next/image` to eliminate LCP delay
-- [ ] `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` env var (optional) wires up `<meta name="google-site-verification">` in root layout
-- [ ] `tsc --noEmit` passes clean
-- [ ] All existing tests pass; ≥8 new tests covering: sitemap returns XML with product + category entries, `getAllProductIds` returns IDs, Product JSON-LD shape, CollectionPage JSON-LD shape, canonical URL in metadata, OG tags complete, `JsonLd` component renders correct script tag
+- [x] Every product page (`/product/[id]`) has valid `Product` JSON-LD with `name`, `brand`, `description`, `offers.price` (retail price in USD), and `additionalProperty` entries for `manufacturingCost` and `markupMultiplier` (when a cost breakdown exists)
+- [x] Every category page (`/category/[slug]`) emits a `CollectionPage` JSON-LD block alongside the existing `ItemList`
+- [x] `GET /sitemap.xml` includes at least one URL per product (via `/product/[id]`) and one per category; referenced in `robots.txt` via `Sitemap:` directive (already in place)
+- [x] Every product and category page sets `alternates.canonical` in `generateMetadata`, pointing to the page's canonical URL (no trailing slash)
+- [x] All product and category pages have complete Open Graph tags: `og:title`, `og:description`, `og:url`, `og:image`, `og:type`
+- [x] Above-fold product hero image uses `priority` prop on `next/image` to eliminate LCP delay
+- [x] `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` env var (optional) wires up `<meta name="google-site-verification">` in root layout
+- [x] `tsc --noEmit` passes clean
+- [x] All existing tests pass; ≥8 new tests covering: sitemap returns XML with product + category entries, `getAllProductIds` returns IDs, Product JSON-LD shape, CollectionPage JSON-LD shape, canonical URL in metadata, OG tags complete, `JsonLd` component renders correct script tag (23 new tests added)
 
 ## Tasks
 
