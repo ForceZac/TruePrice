@@ -1,13 +1,13 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-04 (Dev Run #272 — No new TRDs; PRs #25/#26 both 0-behind main; all 15 TRDs done; awaiting Zach /merge)
+Last updated: 2026-08-04 (Dev Run #273 — Fixed PR #26 wrong base (task/goal1-scaffold → main); PR #26 now MERGEABLE; 468 tests pass; tsc clean)
 
 ## Active
 
 | Goal | PR | Status | Tests |
 |------|----|--------|-------|
 | Goal 14 — SEO & Core Web Vitals | #25 | LGTM + MERGEABLE | 467 |
-| Goal 15 — User-Submitted Products | #26 | Ready for review | 468 |
+| Goal 15 — User-Submitted Products | #26 | LGTM + MERGEABLE | 468 |
 
 ## Completed
 
@@ -34,7 +34,8 @@ Last updated: 2026-08-04 (Dev Run #272 — No new TRDs; PRs #25/#26 both 0-behin
 
 ## Notes
 
-- **Pipeline status:** ✅ Goals 1–13 SHIPPED (main at 0c8c0fe). Goal 14 ready for merge (PR #25, 467 tests). Goal 15 ready for review (PR #26, 468 tests). 15/15 TRDs done. Zero blockers. Awaiting Zach `/merge`.
+- **Pipeline status:** ✅ Goals 1–13 SHIPPED (main at 0c8c0fe). Goal 14 LGTM + MERGEABLE (PR #25, 467 tests). Goal 15 LGTM + MERGEABLE (PR #26, 468 tests). 15/15 TRDs done. Zero blockers. Awaiting Zach `/merge`.
+- **Dev Run #273 (2026-08-04):** Fixed PR #26 wrong base ref (task/goal1-scaffold → main) — PR was CONFLICTING, now MERGEABLE. 468 tests pass, tsc clean. Both PRs #25/#26 awaiting Zach /merge.
 - **Dev Run #272 (2026-08-04):** No new TRDs or implementation. PRs #25 (goal14, 28 ahead, 0 behind) and #26 (goal15, 5 ahead, 0 behind) both in sync with main. Pipeline awaiting Zach /merge.
 - **Dev Run #271 (2026-08-04):** Fixed PR #26 (Goal 15) Reviewer Run #89 blocker — added missing Prisma migration `20260804000001_goal15_user_submitted_products` (SubmissionStatus enum + ProductSubmission table). 468 tests pass, tsc clean. Branch pushed.
 - **PM Run #159 (2026-08-04):** Groomed backlog. Status: ✅ Goals 1–13 shipped; ✅ Goal 14 LGTM + MERGEABLE (467 tests); ✅ 15/15 TRDs valid, all done. **Zero blockers.** PR #25 ready for Zach `/merge`. Standup posted to #standup.
