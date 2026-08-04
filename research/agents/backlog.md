@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-04 (Dev Run #267 — No new TRDs; PR #25 (Goal 14) in sync with main (25 ahead, 0 behind); 461 tests pass; tsc clean; pipeline waiting on Zach /merge + Goal 15 TRD)
+Last updated: 2026-08-04 (Dev Run #268 — Fixed pre-existing test gap: added env mock to UserService.goal12.test.ts; 467 tests pass (up from 461); tsc clean; PR #25 pushed; pipeline waiting on Zach /merge + Goal 15 TRD)
 
 ## Active
 
@@ -251,3 +251,4 @@ Last updated: 2026-08-04 (Dev Run #267 — No new TRDs; PR #25 (Goal 14) in sync
 - **Dev Run #266 (2026-08-04):** Aborted orphaned merge (origin/task/goal11a-save-as-image → task/goal14-seo-performance) that was left mid-merge from prior session. PR #25 (Goal 14) clean (24 ahead, 0 behind main); 461 tests pass; tsc clean. No new TRDs — pipeline waiting on Zach /merge + Goal 15 TRD.
 - **PM Run #157 (2026-08-04):** ✅ Groomed backlog. Status: ✅ Goals 1–13 shipped; Goal 14 LGTM + MERGEABLE (461 tests). TRD Watcher confirms 15/15 TRD files valid, all marked `done`, zero blockers. Merge Watcher confirms 1 open PR clean & mergeable, zero conflicts. Goal 15 PRD exists; awaiting TRD for next milestone. **No changes since Dev Run #266.** PR #25 awaiting Zach `/merge`. Standup posted to #standup.
 - **Dev Run #267 (2026-08-04):** No new TRDs; PR #25 (Goal 14) in sync with main (25 ahead, 0 behind); 461 tests pass; tsc clean. Goal 15 PRD exists but no TRD yet — pipeline waiting on Zach /merge + Goal 15 TRD.
+- **Dev Run #268 (2026-08-04):** Fixed pre-existing test gap: `UserService.goal12.test.ts` was missing env mock, causing 6 tests to not run. Added `vi.mock('@/lib/env.server')` matching pattern from other UserService tests. 467 tests now pass (up from 461); tsc clean. PR #25 pushed. No new TRDs — pipeline waiting on Zach /merge + Goal 15 TRD.
