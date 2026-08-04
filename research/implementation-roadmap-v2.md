@@ -1,6 +1,6 @@
 # TruePrice Implementation Roadmap v2
 
-Generated from PROJECT_KEYS.md section 12 — 2026-07-30; updated 2026-08-01
+Generated from PROJECT_KEYS.md section 12 — 2026-07-30; updated 2026-08-04
 
 ## Dependency Graph
 
@@ -17,9 +17,11 @@ Goal 1 (Scaffold)
 │           │           └── Goal 10 (User Accounts)
 │           │               └── Goal 11b (Price Alerts) ← also needs Goal 11a
 │           ├── Goal 9 (Comparison & Social)
+│           │   └── Goal 14 (SEO & Core Web Vitals) ← also needs Goal 5, Goal 6
 │           ├── Goal 11a (Save as Image)
 │           └── Goal 12 (Enhanced Search) ← also needs Goal 8, Goal 9
-               └── Goal 13 (Weekly Digest) ← also needs Goal 10, Goal 11b
+│              └── Goal 13 (Weekly Digest) ← also needs Goal 10, Goal 11b
+└── Goal 15 (User-Submitted Products) ← also needs Goal 10
 ```
 
 ## Goals
@@ -93,14 +95,26 @@ Goal 1 (Scaffold)
 - **Why:** Re-engages users when watched product costs shift beyond their threshold.
 - **Depends on:** Goal 10, Goal 11a
 
-### Goal 12 — Enhanced Search & Discovery 🔄 IN REVIEW
+### Goal 12 — Enhanced Search & Discovery ✅ MERGED
 - **TRD:** `trds/goal12-enhanced-search-discovery.md` — status: done
-- **PR:** #23 — READY FOR REVIEW (427 tests pass)
+- **PR:** #23 merged 2026-08-04
 - **Why:** Better top-of-funnel discovery: search autocomplete, trending, markup filters, recent searches.
 - **Depends on:** Goal 5, Goal 8, Goal 9
 
-### Goal 13 — Weekly Digest Email 🔄 IN REVIEW
+### Goal 13 — Weekly Digest Email ✅ MERGED
 - **TRD:** `trds/goal13-weekly-digest-email.md` — status: done
-- **PR:** #24 — READY FOR REVIEW (418 tests pass)
+- **PR:** #24 merged 2026-08-04
 - **Why:** Re-engages users with a weekly email summary of their watched products and trending items.
 - **Depends on:** Goal 10, Goal 11b, Goal 12
+
+### Goal 14 — SEO & Core Web Vitals 🔄 IN REVIEW
+- **TRD:** `trds/goal14-seo-performance.md` — status: done
+- **PR:** #25 — READY FOR REVIEW (467 tests pass)
+- **Why:** Structured data, canonical URLs, sitemap coverage, and OG completeness to drive organic traffic.
+- **Depends on:** Goal 5, Goal 6, Goal 9
+
+### Goal 15 — User-Submitted Products 🔄 IN REVIEW
+- **TRD:** `trds/goal15-user-submitted-products.md` — status: done
+- **PR:** #26 — READY FOR REVIEW (468 tests pass)
+- **Why:** Crowdsourced product submissions with admin moderation to expand the product catalog.
+- **Depends on:** Goal 1, Goal 10
