@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-04 (Dev Run #255 — ✅ Pipeline fully shipped; all 14 TRDs done; zero blockers; main at c0415aa)
+Last updated: 2026-08-04 (PM Run #154 — ✅ Pipeline fully shipped; all 14 TRDs done; zero blockers; main at 0134873)
 
 ## Active
 
@@ -232,3 +232,4 @@ _None — all goals shipped. Awaiting new TRDs for next milestone._
 - **Dev Run #253 (2026-08-04):** No new TRDs; all Goals 1–13 complete; zero open PRs; pipeline fully shipped; main at 9cb106a.
 - **Dev Run #254 (2026-08-04):** No new TRDs; all Goals 1–13 complete; zero open PRs; pipeline fully shipped; main at e4f1204.
 - **Dev Run #255 (2026-08-04):** No new TRDs; all Goals 1–13 complete; zero open PRs; pipeline fully shipped; main at c0415aa.
+- **PM Run #154 (2026-08-04):** ✅ Groomed backlog. Status: ✅ **ALL GOALS 1–13 SHIPPED & MERGED**. Main at 0134873. TRD Watcher confirms 14/14 TRD files valid, all marked `done`, zero blockers. Merge Watcher confirms zero open PRs, zero conflicts. **PIPELINE FULLY SHIPPED.** Open questions remain: Q7-1 (AdSense ID), Q7-3 (Privacy Policy), Q-INFRA-2 (Discord allowlist), Q13-3 (Resend rate limits). Standup posted to #standup.

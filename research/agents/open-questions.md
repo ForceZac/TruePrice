@@ -1,6 +1,6 @@
 # Open Questions Parking Lot
 
-Last updated: 2026-08-02 (PM Run #146)
+Last updated: 2026-08-04 (PM Run #154)
 
 This file replaces the missing PROJECT_KEYS.md section 13. All unresolved product decisions go here. Answered questions are moved to the **Resolved** section below.
 
@@ -94,6 +94,41 @@ All agent runs have failed to post to Discord (#main, #standup, #prs, #alerts, #
 **Q12-4: `/trending` cold-state display**
 What does `/trending` show on a fresh deploy before any products have accumulated view counts? Currently the page would render empty (no products with viewCount > 0). Consider falling back to `getMostShocking(20)` or a friendly empty-state with a prompt to browse categories.
 - **Owner:** Zach | **Priority:** Low — not a launch blocker, but worth deciding before first marketing push
+- **Suggested answer:** Fall back to `getMostShocking(20)` when trending returns fewer than 5 results. Avoids empty-page UX with zero additional implementation complexity. Implement when Goal 14 is in dev (the SEO goal includes a Lighthouse audit of the trending page).
+
+### Goal 14 — SEO & Core Web Vitals
+
+**Q14-1: Lighthouse CI integration**
+Should Lighthouse CI run as a GitHub Actions check on every PR, or is a manual audit at the goal boundary sufficient? CI integration is the gold standard but adds ~2 minutes to each CI run.
+- **Owner:** Zach | **Priority:** Low — manual audit acceptable for this goal; CI can be added later
+
+**Q14-2: Google Search Console verification method**
+Google supports four verification methods: HTML meta tag, HTML file, DNS TXT record, and Google Analytics. The meta tag approach (via `GOOGLE_SITE_VERIFICATION` env var) is simplest to implement without deploy-time file changes. Is that acceptable, or does Zach prefer DNS TXT?
+- **Owner:** Zach | **Priority:** Medium — needed before submitting sitemap
+
+**Q14-3: Sitemap URL format for products**
+Product URLs are currently `/products/[id]` (numeric ID) or `/products/[slug]` (human-readable slug). If product slugs are not yet in the DB schema, the sitemap must use numeric IDs. Should we add a `slug` field to `Product` as part of this goal, or use numeric IDs for now?
+- **Owner:** PM / Dev | **Priority:** High — affects sitemap and canonical URL implementation
+- **Suggested answer:** Add a `slug` field to `Product` as part of Goal 14. Derived from `name` + `brand` (kebab-case, deduplicated). Better for SEO than numeric IDs; worth the migration complexity.
+
+### Goal 15 — User-Submitted Products
+
+**Q15-1: Admin notification on new submission**
+Should Zach receive an email (or Discord message) when a new submission comes in, or just check `/admin/submissions` manually? A Discord ping via `NotificationService` would be low-effort to add.
+- **Owner:** Zach | **Priority:** Low — manual queue check acceptable for low submission volumes
+
+**Q15-2: Submitter approval email content**
+When a submission is approved, what should the email say? Proposed: "Your submission for [product name] has been approved — [see the cost breakdown link]." Should include the markup multiplier in the email body to reward the contribution with immediate value.
+- **Owner:** Zach | **Priority:** Medium — affects quality of the contribution loop
+
+**Q15-3: Material composition input in submission form**
+Should the submission form expose a materials input (ingredient picker from the existing `Material` table) for power users, or require name+UPC only?
+- **Suggested answer:** Show materials input as optional/collapsible. Power users who know the ingredients can include them; casual submitters skip it. Materials stored as JSON in `ProductSubmission`; admin can edit before approving. Implement collapsible section with "Add ingredients (optional)" toggle.
+- **Owner:** Zach | **Priority:** Medium — determines implementation complexity of the submission form
+
+**Q15-4: ADMIN_EMAILS vs. role field**
+Using an env var for admin auth is simpler but requires a redeploy to add new admins. A `User.role` field (`USER | ADMIN`) is more scalable. For v1 with one admin (Zach), env var is fine.
+- **Owner:** PM / Dev | **Priority:** Low — can migrate to role field in a future goal if team grows
 
 ### Goal 13 — Weekly Digest Email
 
