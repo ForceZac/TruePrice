@@ -89,12 +89,20 @@ function EmptyState({ query }: { query: string }) {
       <p className="text-sm text-muted-foreground mt-2">
         Try scanning the barcode or searching with different keywords.
       </p>
-      <Link
-        href="/scan"
-        className="inline-block mt-4 text-sm text-primary underline underline-offset-4"
-      >
-        Scan barcode instead →
-      </Link>
+      <div className="flex flex-col items-center gap-2 mt-4">
+        <Link
+          href="/scan"
+          className="text-sm text-primary underline underline-offset-4"
+        >
+          Scan barcode instead →
+        </Link>
+        <Link
+          href="/submit-product"
+          className="text-sm text-muted-foreground underline underline-offset-4 hover:text-foreground"
+        >
+          Don&apos;t see it? Submit it →
+        </Link>
+      </div>
     </div>
   );
 }

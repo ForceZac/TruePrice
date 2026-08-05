@@ -11,7 +11,11 @@ datasource db {
 
 // ─── Enums ─────────────────────────────────────────────────────────────────
 
-// (none yet — using string fields for flexibility in v1)
+enum SubmissionStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
 
 // ─── Models ────────────────────────────────────────────────────────────────
 
@@ -24,6 +28,7 @@ model ProductCategory {
   createdAt       DateTime  @default(now())
 
   products        Product[]
+  submissions     ProductSubmission[]
 }
 
 model Product {
@@ -145,10 +150,11 @@ model User {
 
   recentSearches String[]
 
-  accounts       Account[]
-  sessions       Session[]
-  savedProducts  SavedProduct[]
-  recentlyViewed RecentlyViewed[]
+  accounts        Account[]
+  sessions        Session[]
+  savedProducts   SavedProduct[]
+  recentlyViewed  RecentlyViewed[]
+  submissions     ProductSubmission[]
 }
 
 model Account {
@@ -213,4 +219,29 @@ model RecentlyViewed {
   @@id([userId, productId])
   @@index([userId])
   @@index([viewedAt])
+}
+
+// ─── Product Submissions ────────────────────────────────────────────────────
+
+model ProductSubmission {
+  id               String           @id @default(cuid())
+  name             String
+  upc              String
+  brand            String?
+  categoryId       String
+  category         ProductCategory  @relation(fields: [categoryId], references: [id])
+  retailPriceCents Int?
+  countryOfOrigin  String?
+  materials        Json?
+  status           SubmissionStatus @default(PENDING)
+  submittedById    String
+  submittedBy      User             @relation(fields: [submittedById], references: [id], onDelete: Cascade)
+  reviewedAt       DateTime?
+  rejectionReason  String?
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
+
+  @@index([submittedById])
+  @@index([status])
+  @@index([createdAt])
 }
