@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-05 (Dev Run #287 — Synced PRs #25/#26 with main (PM Run #162 backlog commit); added Goal 14 & 15 TRDs to main (clearing TRD Watcher launch-gate); 467/468 tests pass; tsc clean; awaiting /merge)
+Last updated: 2026-08-05 (Dev Run #288 — Synced PRs #25/#26 with main (Dev Run #287 TRD commit); 467/468 tests pass; tsc clean; awaiting /merge)
 
 ## Active
 
@@ -34,6 +34,7 @@ Last updated: 2026-08-05 (Dev Run #287 — Synced PRs #25/#26 with main (PM Run 
 
 ## Notes
 
+- **Dev Run #288 (2026-08-05):** Synced PRs #25/#26 with main (Dev Run #287 TRD commit); 467/468 tests pass; tsc clean; awaiting /merge.
 - **Dev Run #287 (2026-08-05):** Synced PRs #25/#26 with main (PM Run #162 backlog commit); copied Goal 14 & 15 TRD files from PR branches to main (clearing persistent TRD Watcher launch-gate); 467/468 tests pass on both branches; tsc clean; awaiting /merge.
 - **PM Run #162 (2026-08-05):** ✅ Groomed backlog. Status: ✅ Goals 1–13 shipped (main at 86919a3). ✅ PR #25 (Goal 14 SEO, 467 tests) LGTM + MERGEABLE. ✅ PR #26 (Goal 15 Products, 468 tests) LGTM + MERGEABLE. **[CRITICAL BLOCKER]** Goal 14 & 15 TRD files MISSING (referenced in roadmap but files do not exist). 14/14 existing TRDs valid; zero SoC violations. TRD Watcher blocking merge. **Action required:** Create goal14-seo-performance.md and goal15-user-submitted-products.md before /merge.
 - **Pipeline status:** ✅ Goals 1–13 SHIPPED (main at 86919a3). Goal 14 LGTM + MERGEABLE (PR #25, 467 tests). Goal 15 LGTM + MERGEABLE (PR #26, 468 tests). 16/16 TRDs on main. SoC violations cleared. Awaiting Zach `/merge`.
