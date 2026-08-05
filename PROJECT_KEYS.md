@@ -156,6 +156,9 @@ Core models (defined in `prisma/schema.prisma`):
 | `BarcodeService` | `src/services/BarcodeService.ts` | Barcode decoding + external product DB lookup (UPCitemdb, Open Food Facts). |
 | `CategoryService` | `src/services/CategoryService.ts` | Category listing, slug → products, slugs for sitemap. |
 | `UserService` | `src/services/UserService.ts` | Watchlist CRUD, recently-viewed, weekly digest candidates, account deletion. |
+| `DiscoveryService` | `src/services/DiscoveryService.ts` | View-count-based trending products and high-markup discovery lists. No routes or components may query these directly. |
+| `NotificationService` | `src/services/NotificationService.ts` | All outbound notifications: Discord channel alerts and transactional emails. No other module may post to Discord or send email. |
+| `SubmissionService` | `src/services/SubmissionService.ts` | All user-submitted product CRUD and moderation (create, approve, reject). Delegates cost estimation to CostEstimationService; delegates approval email to NotificationService. |
 
 ### Layer Call Flow
 
