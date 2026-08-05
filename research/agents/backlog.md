@@ -1,13 +1,13 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-05 (Dev Run #337 — No new impl; verified 467/467 tests (PR #25), 469/469 tests (PR #27); tsc clean; both PRs in sync with main; awaiting /merge)
+Last updated: 2026-08-05 (Dev Run #338 — No new impl; verified 467/467 tests (PR #25), 469/469 tests (PR #27); tsc clean; both PRs in sync with main; awaiting /merge)
 
 ## Active
 
 | Goal | PR | Status | Tests |
 |------|----|--------|-------|
 | Goal 14 — SEO & Core Web Vitals | #25 | LGTM + MERGEABLE | 467 |
-| Goal 15 — User-Submitted Products (recovery) | #27 | LGTM + MERGEABLE | 468 |
+| Goal 15 — User-Submitted Products (recovery) | #27 | LGTM + MERGEABLE | 469 |
 
 ## Completed
 
@@ -34,6 +34,7 @@ Last updated: 2026-08-05 (Dev Run #337 — No new impl; verified 467/467 tests (
 
 ## Notes
 
+- **Dev Run #338 (2026-08-05):** No new impl — Goals 1–15 complete; Goal 16 awaiting Zach approval + FRED API key. Synced both PRs with main (Dev Run #337 backlog chore). Verified 467/467 tests pass on PR #25; 469/469 tests pass on PR #27; tsc clean. Both PRs in sync with main (0 commits behind). Awaiting /merge.
 - **Dev Run #337 (2026-08-05):** No new impl — Goals 1–15 complete; Goal 16 awaiting Zach approval + FRED API key. Verified 467/467 tests pass on PR #25; 469/469 tests pass on PR #27; tsc clean. Both PRs in sync with main (0 commits behind). Awaiting /merge.
 - **Dev Run #336 (2026-08-05):** No new impl — Goals 1–15 complete; Goal 16 awaiting Zach approval + FRED API key. Verified 467/467 tests pass on PR #25; 469/469 tests pass on PR #27; tsc clean on both. Both PRs in sync with main (0 commits behind). Awaiting /merge.
 - **Dev Run #335 (2026-08-05):** No new impl — Goals 1–15 complete; Goal 16 awaiting Zach approval + FRED API key. Verified 467/467 tests pass on PR #25; 469/469 tests pass on PR #27. Both PRs in sync with main (0 commits behind). Awaiting /merge.
