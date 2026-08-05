@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-05 (Dev Run #331 — Synced PRs #25/#27 with main; 467/467 (PR #25), 468/468 (PR #27); tsc clean; awaiting /merge)
+Last updated: 2026-08-05 (Dev Run #332 — Implemented Q15-1 Discord alert on new submission; 467/467 tests (PR #25), 469/469 tests (PR #27); tsc clean; awaiting /merge)
 
 ## Active
 
@@ -34,6 +34,8 @@ Last updated: 2026-08-05 (Dev Run #331 — Synced PRs #25/#27 with main; 467/467
 
 ## Notes
 
+- **Dev Run #332 (2026-08-05):** Implemented Q15-1 (Discord alert to #alerts on new product submission) — added `postDiscordAlert()` call in `SubmissionService.createSubmission()` (fire-and-forget, gates on DISCORD_BOT_TOKEN). Added 1 new test (469/469 pass on PR #27, 467/467 on PR #25). Committed orphaned PM Run #172 changes (Goal 16 PRD, open-question resolutions, roadmap update) to main. Synced both PR branches. tsc clean. Awaiting /merge.
+- **PM Run #172 (2026-08-05):** ✅ Groomed backlog. Status: ✅ Goals 1–13 shipped; ✅ PR #25 (Goal 14 SEO, 467 tests) LGTM + MERGEABLE; ✅ PR #27 (Goal 15 Products recovery, 468 tests) LGTM + MERGEABLE. TRD Watcher confirms 16/16 TRD files valid; zero blockers; zero SoC violations. Merge Watcher confirms both PRs CLEAN & MERGEABLE, zero conflicts. Pipeline ready for Zach `/merge` to finalize product launch (Goals 1–15 complete). Standup posted to #standup.
 - **Dev Run #331 (2026-08-05):** Synced PRs #25/#27 with main (Dev Run #330 backlog chore); 467/467 tests pass on PR #25; 468/468 tests pass on PR #27; tsc clean. Awaiting /merge.
 - **Dev Run #330 (2026-08-05):** Synced PRs #25/#27 with main (Dev Run #329 backlog chore; cleared orphaned Goal 15 files from main working tree); 467/467 tests pass on PR #25; 468/468 tests pass on PR #27; tsc clean. Awaiting /merge.
 - **Dev Run #329 (2026-08-05):** Synced PRs #25/#27 with main (PM Run #171 + Dev Run #328 backlog chore); 467/467 tests pass on PR #25; 468/468 tests pass on PR #27; tsc clean. Awaiting /merge.

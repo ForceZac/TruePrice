@@ -91,9 +91,7 @@ All agent runs have failed to post to Discord (#main, #standup, #prs, #alerts, #
 
 **Q12-3: Markup tier thresholds** — *moved to Resolved (PM Run #146)*
 
-**Q12-4: `/trending` cold-state display**
-What does `/trending` show on a fresh deploy before any products have accumulated view counts? Currently the page would render empty (no products with viewCount > 0). Consider falling back to `getMostShocking(20)` or a friendly empty-state with a prompt to browse categories.
-- **Owner:** Zach | **Priority:** Low — not a launch blocker, but worth deciding before first marketing push
+**Q12-4: `/trending` cold-state display** — *moved to Resolved (PM Run #172)*
 
 ### Goal 13 — Weekly Digest Email
 
@@ -117,15 +115,11 @@ Resend free tier is 100 emails/day (3,000/month). If registered users with non-e
 
 ### Goal 15 — User-Submitted Products
 
-**Q15-1: Admin notification on new submission**
-Should Zach receive a Discord ping (via `NotificationService`) when a new submission arrives, or just poll `/admin/submissions` manually? A Discord ping is ~10 lines and avoids building a polling habit.
-- **Owner:** Zach | **Priority:** Low — manual queue check acceptable for low submission volumes
+**Q15-1: Admin notification on new submission** — *moved to Resolved (PM Run #172)*
 
 **Q15-2: Approval email content** — *moved to Resolved (PM Run #162)*
 
-**Q15-3: Material composition input in submission form**
-Should `/submit-product` include an optional collapsible "Add ingredients" section for power users who know the product's materials? Suggested v1 answer: name + UPC only; add optional materials picker in a follow-up goal.
-- **Owner:** Zach | **Priority:** Medium — determines complexity of submission form
+**Q15-3: Material composition input in submission form** — *moved to Resolved (PM Run #172)*
 
 **Q15-4: ADMIN_EMAILS env var vs. User.role field** — *moved to Resolved (PM Run #162)*
 
@@ -273,3 +267,14 @@ Should `/submit-product` include an optional collapsible "Add ingredients" secti
 
 **Q15-4: ADMIN_EMAILS env var vs. User.role field** — `ADMIN_EMAILS` (comma-separated, optional) env var chosen for v1. Implemented via `isAdmin()` helper at `src/lib/admin.ts`. Requires redeploy to add admins but is simpler than a schema migration for a single-admin setup. Plan to migrate to `User.role` when a second admin is onboarded.
 - **Resolved:** PM Run #162 (2026-08-05) — implemented in Goal 15 (PR #26)
+
+### Added PM Run #172 (2026-08-05)
+
+**Q12-4: `/trending` cold-state display** — Fall back to `getMostShocking(20)` (highest markup products by markupPercent descending). This surfaces the most compelling content TruePrice has — the extreme markups — and gives new users an immediate "wow" moment before the trending algorithm has data. No empty state, no redirect. Add a subtle header note: "Trending by views — showing top markups until we have enough data." Implement the fallback in `DiscoveryService.getTrending()` as: if `viewCount > 0` results < N, pad with `getMostShocking()` results up to N.
+- **Resolved:** PM Run #172 (2026-08-05) — working default; no Zach input required for this decision
+
+**Q15-1: Admin notification on new submission** — Send a Discord ping via `NotificationService` when a new submission arrives. Implementation: ~10 lines in `SubmissionService.createSubmission()` calling `NotificationService.postToDiscord(DISCORD_CHANNEL_ALERTS, message)`. Format: `📬 New product submission: <name> (<UPC>) — review at /admin/submissions`. This avoids building a polling habit as submission volume grows. Gate on `DISCORD_CHANNEL_ALERTS` env var presence (already in env.server.ts) so it's a no-op in local dev.
+- **Resolved:** PM Run #172 (2026-08-05) — working default; recommend implementing in Goal 15 patch or Goal 16
+
+**Q15-3: Material composition input in submission form** — v1: name + UPC only. No "Add ingredients" collapsible section in the submission form. Reasons: (1) most submitters won't know composition details; (2) a partial/wrong ingredient list would decrease confidence rather than increase it; (3) the existing material parser already attempts auto-extraction from UPCitemdb data. A materials picker UI is a better fit for a future power-user goal (Goal 17+). Implement a backlog note in `research/agents/backlog.md`.
+- **Resolved:** PM Run #172 (2026-08-05) — working default; deferred to future goal
