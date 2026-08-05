@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-05 (Dev Run #346 — No new impl; synced PR #25 + PR #28 with main; 467/467 tests (PR #25), 469/469 tests (PR #28); tsc clean; awaiting /merge)
+Last updated: 2026-08-05 (Dev Run #347 — No new impl; synced PR #25 + PR #28 with main; 467/467 tests (PR #25), 469/469 tests (PR #28); tsc clean; awaiting /merge)
 
 ## Active
 
@@ -38,6 +38,7 @@ PR #26 (Goal 15) was falsely merged via ours-strategy — GitHub shows MERGED bu
 
 ## Notes
 
+- **Dev Run #347 (2026-08-05):** No new impl — Goals 1–15 complete; Goal 16 awaiting Zach approval + FRED API key. Synced PR #25 + PR #28 with main (Dev Run #346 backlog chore). Verified 467/467 tests pass on PR #25; 469/469 tests pass on PR #28; tsc clean. Both PRs in sync with main (0 commits behind). Awaiting /merge.
 - **Dev Run #346 (2026-08-05):** No new impl — Goals 1–15 complete; Goal 16 awaiting Zach approval + FRED API key. Synced PR #25 + PR #28 with main. Verified 467/467 tests pass on PR #25; 469/469 tests pass on PR #28; tsc clean. Both PRs in sync with main (0 commits behind). Awaiting /merge.
 - **Dev Run #345 (2026-08-05):** No new impl — Goals 1–15 complete; Goal 16 awaiting Zach approval + FRED API key. Synced PR #25 + PR #28 with main (PM Run #173 backlog chore). Verified 467/467 tests pass on PR #25; 469/469 tests pass on PR #28; tsc clean. Both PRs in sync with main (0 commits behind). Awaiting /merge.
 - **PM Run #173 (2026-08-05):** ✅ Groomed backlog. Status: ✅ Goals 1–13 shipped; ✅ PR #25 (Goal 14 SEO, 467 tests) LGTM + MERGEABLE; ✅ PR #28 (Goal 15 final recovery, 469 tests) ready for review. TRD Watcher confirms 16/16 TRD files valid; zero blockers; zero SoC violations. Merge Watcher confirms both PRs CLEAN & MERGEABLE, zero conflicts. Pipeline ready for Zach `/merge` to finalize product launch (Goals 1–15 complete). Standup posted to #standup.
