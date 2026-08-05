@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-05 (Dev Run #294 — Synced PRs #25/#26 with main (Dev Run #293 backlog chore); tests pass; tsc clean; awaiting /merge)
+Last updated: 2026-08-05 (Dev Run #294 — Synced PRs #25/#26 with main (Dev Run #293 backlog chore); cleaned orphaned Goal 15 files from main working tree; 467/468 tests pass (PR #25), 468/468 (PR #26); tsc clean; awaiting /merge)
 
 ## Active
 
@@ -34,6 +34,7 @@ Last updated: 2026-08-05 (Dev Run #294 — Synced PRs #25/#26 with main (Dev Run
 
 ## Notes
 
+- **Dev Run #294 (2026-08-05):** Synced PRs #25/#26 with main (Dev Run #293 backlog chore); cleaned orphaned Goal 15 files from main working tree; 467/468 tests pass on PR #25; 468/468 tests pass on PR #26; tsc clean; awaiting /merge.
 - **Dev Run #293 (2026-08-05):** Fixed root cause of persistent TRD Watcher SoC violations — added AlertService (Goal 11b) and SubmissionService (Goal 15) to PROJECT_KEYS.md §10 on main; synced PRs #25/#26 with main (resolved §10 conflict on goal15 branch); 467/468 tests pass on PR #25; 468/468 tests pass on PR #26; tsc clean; awaiting /merge.
 - **Dev Run #292 (2026-08-05):** Synced PRs #25/#26 with main (Dev Run #291 backlog commit); discarded orphaned goal15 stash from main working tree; 467/468 tests pass on PR #25; 468/468 tests pass on PR #26; tsc clean; awaiting /merge.
 - **Dev Run #291 (2026-08-05):** Committed orphaned PM Run #162 PRDs + open-questions changes to main. Synced PRs #25/#26 with main (resolved doc conflicts, took main); 467/468 tests pass on PR #25; 468/468 tests pass on PR #26; tsc clean; awaiting /merge.
@@ -242,5 +243,4 @@ Last updated: 2026-08-05 (Dev Run #294 — Synced PRs #25/#26 with main (Dev Run
 - **Dev Run #242 (2026-08-02):** No new impl — all Goals 1–13 complete, all TRDs done. Cleared orphaned goal12/13 staged+untracked files from main. Re-synced PRs #21/#23/#24 with main 8aa5946 (clean merges, backlog.md only). Tests: goal12=427, goal13=418; tsc clean. PRs #23/#24 MERGEABLE; PR #21 superseded (can be closed). Pipeline awaiting Zach /merge.
 - **Dev Run #243 (2026-08-02):** No new impl — all Goals 1–13 complete, all TRDs done. Re-synced PRs #21/#23/#24 with main 2bde17d (clean merges, backlog.md only). Tests: goal12=427, goal13=418; tsc clean. PRs #23/#24 MERGEABLE; PR #21 superseded (can be closed). Pipeline awaiting Zach /merge.
 - **PM Run #160 (2026-08-05):** Groomed backlog. Status: ✅ Goals 1–13 shipped; ✅ PR #25 (Goal 14 SEO, 467 tests) LGTM + MERGEABLE; ✅ PR #26 (Goal 15 Products, 468 tests) LGTM + MERGEABLE. **[CRITICAL BLOCKER]** Goal 14 & 15 TRD files MISSING — only 14/14 existing TRD files present; roadmap references 15 goals. 4 SoC violations flagged (AlertService, NotificationService, DiscoveryService unapproved). Awaiting TRDs before merge. Standup posted to #standup.
-- **PM Run #164 (2026-08-05):** ✅ Groomed backlog. Status: ✅ Goals 1–13 shipped (main tests: 444/444 pass); ✅ PR #25 (Goal 14 SEO, 467 tests) LGTM + MERGEABLE; ✅ PR #26 (Goal 15 Products, 468 tests) LGTM + MERGEABLE. **All 16 TRD files valid** (confirmed via glob). **Zero SoC violations.** **Zero blockers.** Pipeline ready for Zach `/merge` to finalize product launch (Goals 1–15 complete). Standup posted to #standup.
 - **Dev Run #279 (2026-08-05):** No new TRDs or implementation work. Verified: PR #25 (goal14-seo-performance) 31 ahead/0 behind main — 467 tests pass, tsc clean. PR #26 (goal15-user-submitted-products) 12 ahead/0 behind main — 468 tests pass, tsc clean. Note: main itself has 1 failing test file (UserService.goal12.test.ts env mock) — fix is on PR #25, will resolve on merge. Pipeline awaiting Zach /merge.
