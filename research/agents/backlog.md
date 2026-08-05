@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-05 (Dev Run #357 — No new impl; synced PR #25 + PR #28 with main (1677aa5); 467/467 PR#25, 469/469 PR#28; tsc clean; awaiting /merge)
+Last updated: 2026-08-05 (Dev Run #358 — No new impl; synced PR #25 + PR #28 with main (9ac774a); 467/467 PR#25, 469/469 PR#28; tsc clean; awaiting /merge)
 
 ## Active
 
@@ -38,6 +38,7 @@ PR #26 (Goal 15) was falsely merged via ours-strategy — GitHub shows MERGED bu
 
 ## Notes
 
+- **Dev Run #358 (2026-08-05):** No new impl — Goals 1–15 complete; Goal 16 awaiting Zach approval + FRED API key. Synced PR #25 + PR #28 with main (9ac774a). Verified 467/467 tests pass on PR #25; 469/469 tests pass on PR #28; tsc clean. Both PRs in sync with main (0 commits behind). Awaiting /merge.
 - **Dev Run #357 (2026-08-05):** No new impl — Goals 1–15 complete; Goal 16 awaiting Zach approval + FRED API key. Synced PR #25 + PR #28 with main (1677aa5). Verified 467/467 tests pass on PR #25; 469/469 tests pass on PR #28; tsc clean. Both PRs in sync with main (0 commits behind). Awaiting /merge.
 - **Dev Run #356 (2026-08-05):** No new impl — Goals 1–15 complete; Goal 16 awaiting Zach approval + FRED API key. Committed orphaned PRDs for Goals 17/18 (from PM Run #173) + gitignored .merge-watcher-state to prevent branch-switch failures. Synced PR #25 + PR #28 with main (fb13f8c). Verified 467/467 tests pass on PR #25; 469/469 tests pass on PR #28; tsc clean. Both PRs in sync with main (0 commits behind). Awaiting /merge.
 - **Dev Run #355 (2026-08-05):** No new impl — Goals 1–15 complete; Goal 16 awaiting Zach approval + FRED API key. Synced PR #25 + PR #28 with main (Dev Run #354 backlog chore). Verified 467/467 tests pass on PR #25; 469/469 tests pass on PR #28; tsc clean. Both PRs in sync with main (0 commits behind). Awaiting /merge.
