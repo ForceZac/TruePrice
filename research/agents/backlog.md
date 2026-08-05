@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-05 (Dev Run #309 — Synced PRs #25/#26 with main (Dev Run #308 backlog chore); 467/467 tests pass (PR #25), 468/468 (PR #26); tsc clean; awaiting /merge)
+Last updated: 2026-08-05 (Dev Run #311 — Aborted orphaned goal15→goal14 merge; pushed Dev Run #310 sync commits; 467/467 tests pass (PR #25), 468/468 (PR #26); tsc clean; awaiting /merge)
 
 ## Active
 
@@ -259,3 +259,5 @@ Last updated: 2026-08-05 (Dev Run #309 — Synced PRs #25/#26 with main (Dev Run
 - **Dev Run #243 (2026-08-02):** No new impl — all Goals 1–13 complete, all TRDs done. Re-synced PRs #21/#23/#24 with main 2bde17d (clean merges, backlog.md only). Tests: goal12=427, goal13=418; tsc clean. PRs #23/#24 MERGEABLE; PR #21 superseded (can be closed). Pipeline awaiting Zach /merge.
 - **PM Run #160 (2026-08-05):** Groomed backlog. Status: ✅ Goals 1–13 shipped; ✅ PR #25 (Goal 14 SEO, 467 tests) LGTM + MERGEABLE; ✅ PR #26 (Goal 15 Products, 468 tests) LGTM + MERGEABLE. **[CRITICAL BLOCKER]** Goal 14 & 15 TRD files MISSING — only 14/14 existing TRD files present; roadmap references 15 goals. 4 SoC violations flagged (AlertService, NotificationService, DiscoveryService unapproved). Awaiting TRDs before merge. Standup posted to #standup.
 - **Dev Run #279 (2026-08-05):** No new TRDs or implementation work. Verified: PR #25 (goal14-seo-performance) 31 ahead/0 behind main — 467 tests pass, tsc clean. PR #26 (goal15-user-submitted-products) 12 ahead/0 behind main — 468 tests pass, tsc clean. Note: main itself has 1 failing test file (UserService.goal12.test.ts env mock) — fix is on PR #25, will resolve on merge. Pipeline awaiting Zach /merge.
+- **PM Run #166 (2026-08-05):** ✅ Groomed backlog. Status: ✅ Goals 1–13 shipped (main at 8d10529); ✅ PR #25 (Goal 14 SEO, 467 tests) LGTM + MERGEABLE; ✅ PR #26 (Goal 15 Products, 468 tests) LGTM + MERGEABLE. TRD Watcher confirms 16/16 TRD files valid; zero blockers; zero SoC violations. Merge Watcher confirms both PRs CLEAN & MERGEABLE. Pipeline ready for Zach `/merge` to finalize product launch (Goals 1–15 complete). Standup posted to #standup.
+- **Dev Run #311 (2026-08-05):** Aborted orphaned goal15→goal14 incomplete merge left by Dev Run #310. Pushed Dev Run #310 sync commits to both PR branches (cbdda3a on PR #25, ed8ffc9 on PR #26). Verified: 467/467 tests pass (PR #25), 468/468 (PR #26); tsc clean. Both PRs in sync with main 8d10529, CLEAN & MERGEABLE. Awaiting /merge.
