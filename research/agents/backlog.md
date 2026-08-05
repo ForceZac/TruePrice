@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-05 (Dev Run #307 — Synced PRs #25/#26 with main (Dev Run #306 backlog chore); 467/467 tests pass (PR #25), 468/468 (PR #26); tsc clean; awaiting /merge)
+Last updated: 2026-08-05 (Dev Run #308 — Synced PRs #25/#26 with main (Dev Run #307 backlog chore); 467/467 tests pass (PR #25), 468/468 (PR #26); tsc clean; awaiting /merge)
 
 ## Active
 
@@ -34,6 +34,7 @@ Last updated: 2026-08-05 (Dev Run #307 — Synced PRs #25/#26 with main (Dev Run
 
 ## Notes
 
+- **Dev Run #308 (2026-08-05):** Synced PRs #25/#26 with main (Dev Run #307 backlog chore); 467/467 tests pass on PR #25; 468/468 tests pass on PR #26; tsc clean; awaiting /merge.
 - **Dev Run #307 (2026-08-05):** Synced PRs #25/#26 with main (Dev Run #306 backlog chore); 467/467 tests pass on PR #25; 468/468 tests pass on PR #26; tsc clean; awaiting /merge.
 - **Dev Run #306 (2026-08-05):** Synced PRs #25/#26 with main (Dev Run #305 backlog chore); 467/467 tests pass on PR #25; 468/468 tests pass on PR #26; tsc clean; awaiting /merge.
 - **Dev Run #305 (2026-08-05):** Synced PRs #25/#26 with main (Dev Run #304 backlog chore); 467/467 tests pass on PR #25; 468/468 tests pass on PR #26; tsc clean; awaiting /merge.
