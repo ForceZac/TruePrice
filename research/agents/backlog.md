@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-05 (Dev Run #341 — No new impl; synced PR #25 with main (+1 backlog commit); verified 467/467 tests (PR #25), 469/469 tests (PR #27); tsc clean; both PRs in sync with main; awaiting /merge)
+Last updated: 2026-08-05 (Dev Run #342 — No new impl; synced PR #25 with main (+1 backlog commit, cleaned orphaned stash); verified 467/467 tests (PR #25), 469/469 tests (PR #27); tsc clean; both PRs in sync with main; awaiting /merge)
 
 ## Active
 
@@ -8,6 +8,10 @@ Last updated: 2026-08-05 (Dev Run #341 — No new impl; synced PR #25 with main 
 |------|----|--------|-------|
 | Goal 14 — SEO & Core Web Vitals | #25 | LGTM + MERGEABLE | 467 |
 | Goal 15 — User-Submitted Products (recovery) | #27 | LGTM + MERGEABLE | 469 |
+
+## Incident
+
+PR #26 (Goal 15) was falsely merged via ours-strategy merge — GitHub shows MERGED but Goal 15 code never landed on main. PR #27 (fix/goal15-recovery) recovers all 21 files.
 
 ## Completed
 
@@ -34,6 +38,7 @@ Last updated: 2026-08-05 (Dev Run #341 — No new impl; synced PR #25 with main 
 
 ## Notes
 
+- **Dev Run #342 (2026-08-05):** No new impl — Goals 1–15 complete; Goal 16 awaiting Zach approval + FRED API key. Synced PR #25 with main (+1 backlog commit from Dev Run #341); cleaned orphaned stash (Goal 14 files) from main working tree. Verified 467/467 tests pass on PR #25; 469/469 tests pass on PR #27; tsc clean. Both PRs in sync with main (0 commits behind). Awaiting /merge.
 - **Dev Run #341 (2026-08-05):** No new impl — Goals 1–15 complete; Goal 16 awaiting Zach approval + FRED API key. Synced PR #25 with main (+1 backlog commit from Dev Run #340). Verified 467/467 tests pass on PR #25; 469/469 tests pass on PR #27; tsc clean. Both PRs in sync with main (0 commits behind). Awaiting /merge.
 - **Dev Run #340 (2026-08-05):** No new impl — Goals 1–15 complete; Goal 16 awaiting Zach approval + FRED API key. Synced both PRs with main (Dev Run #339 backlog chore). Verified 467/467 tests pass on PR #25; 469/469 tests pass on PR #27; tsc clean. Both PRs in sync with main (0 commits behind). Awaiting /merge.
 - **Dev Run #339 (2026-08-05):** No new impl — Goals 1–15 complete; Goal 16 awaiting Zach approval + FRED API key. Synced both PRs with main (Dev Run #338 backlog chore). Verified 467/467 tests pass on PR #25; 469/469 tests pass on PR #27; tsc clean. Both PRs in sync with main (0 commits behind). Awaiting /merge.
@@ -67,6 +72,9 @@ Last updated: 2026-08-05 (Dev Run #341 — No new impl; synced PR #25 with main 
 - **Dev Run #316 (2026-08-05):** Synced PR #25 with main (Dev Run #315 backlog chore); 467/467 tests pass on PR #25; 468/468 tests pass on PR #27; tsc clean. Awaiting /merge.
 - **Dev Run #315 (2026-08-05):** Fixed PR #27 reviewer blockers (Reviewer Run #130): (1) replaced direct prisma call in submit-product/page.tsx with CategoryService.getBasicCategories(); (2) replaced raw process.env.NEXTAUTH_URL in NotificationService with clientEnv.NEXT_PUBLIC_APP_URL. 468/468 tests pass; tsc clean. PR #27 pushed. Awaiting /merge.
 - **Dev Run #314 (2026-08-05):** No new impl — all Goals 1–15 complete, all TRDs done. Verified PRs #25/#27 in sync with main (cf84f24); 467/467 tests pass on PR #25; 468/468 tests pass on PR #27; tsc clean. Awaiting /merge.
+- **Dev Run #313 (2026-08-05):** Promoted PR #27 (fix/goal15-recovery) from DRAFT to ready for review. 468/468 tests pass; tsc clean. Both PRs (#25/#27) in sync with main (cf84f24); awaiting /merge.
+- **Dev Run #312 (2026-08-05):** Opened PR #27 (fix/goal15-recovery) to recover Goal 15 code lost in PR #26 ours-strategy false merge. PR #25 (Goal 14) already in sync with main (merge base = cf84f24). 468/468 tests pass on recovery branch; tsc clean. PR #25 awaiting /merge; PR #27 opened as DRAFT, needs review.
+- **PM Run #166 (2026-08-05):** ✅ Groomed backlog. Status: ✅ Goals 1–13 shipped; ✅ PR #25 (Goal 14 SEO, 467 tests) LGTM + MERGEABLE; ✅ PR #26 (Goal 15 Products, 468 tests) LGTM + MERGEABLE. TRD Watcher confirms 16/16 TRDs valid; zero blockers; zero SoC violations. Merge Watcher confirms both PRs CLEAN & MERGEABLE. Pipeline ready for Zach `/merge` to finalize product launch (Goals 1–15 complete). Standup posted to #standup.
 - **Dev Run #309 (2026-08-05):** Synced PRs #25/#26 with main (Dev Run #308 backlog chore); 467/467 tests pass on PR #25; 468/468 tests pass on PR #26; tsc clean; awaiting /merge.
 - **Dev Run #308 (2026-08-05):** Synced PRs #25/#26 with main (Dev Run #307 backlog chore); 467/467 tests pass on PR #25; 468/468 tests pass on PR #26; tsc clean; awaiting /merge.
 - **Dev Run #307 (2026-08-05):** Synced PRs #25/#26 with main (Dev Run #306 backlog chore); 467/467 tests pass on PR #25; 468/468 tests pass on PR #26; tsc clean; awaiting /merge.
