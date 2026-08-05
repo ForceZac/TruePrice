@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-05 (Dev Run #342 — No new impl; synced PR #25 with main (+1 backlog commit, cleaned orphaned stash); verified 467/467 tests (PR #25), 469/469 tests (PR #27); tsc clean; both PRs in sync with main; awaiting /merge)
+Last updated: 2026-08-05 (Dev Run #343 — No new impl; recovered PR #27 Goal 15 files lost in bad fast-forward; cleaned orphaned staged Goal 15 files from main; 467/467 tests (PR #25), 469/469 tests (PR #27); tsc clean; both PRs in sync with main; awaiting /merge)
 
 ## Active
 
@@ -38,6 +38,7 @@ PR #26 (Goal 15) was falsely merged via ours-strategy merge — GitHub shows MER
 
 ## Notes
 
+- **Dev Run #343 (2026-08-05):** No new impl — Goals 1–15 complete; Goal 16 awaiting Zach approval + FRED API key. Recovered PR #27 (fix/goal15-recovery) — Goal 15 files were lost via bad fast-forward to main (caused by pending MERGE_HEAD from prior session). Reset branch to 8e59e35, re-synced backlog, force-pushed with --force-with-lease. Cleaned orphaned staged Goal 15 files from main working tree. Verified 467/467 tests pass on PR #25; 469/469 tests pass on PR #27; tsc clean on both. Awaiting /merge.
 - **Dev Run #342 (2026-08-05):** No new impl — Goals 1–15 complete; Goal 16 awaiting Zach approval + FRED API key. Synced PR #25 with main (+1 backlog commit from Dev Run #341); cleaned orphaned stash (Goal 14 files) from main working tree. Verified 467/467 tests pass on PR #25; 469/469 tests pass on PR #27; tsc clean. Both PRs in sync with main (0 commits behind). Awaiting /merge.
 - **Dev Run #341 (2026-08-05):** No new impl — Goals 1–15 complete; Goal 16 awaiting Zach approval + FRED API key. Synced PR #25 with main (+1 backlog commit from Dev Run #340). Verified 467/467 tests pass on PR #25; 469/469 tests pass on PR #27; tsc clean. Both PRs in sync with main (0 commits behind). Awaiting /merge.
 - **Dev Run #340 (2026-08-05):** No new impl — Goals 1–15 complete; Goal 16 awaiting Zach approval + FRED API key. Synced both PRs with main (Dev Run #339 backlog chore). Verified 467/467 tests pass on PR #25; 469/469 tests pass on PR #27; tsc clean. Both PRs in sync with main (0 commits behind). Awaiting /merge.
