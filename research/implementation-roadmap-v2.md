@@ -118,3 +118,10 @@ Goal 1 (Scaffold)
 - **PR:** #26 — READY FOR REVIEW (468 tests pass)
 - **Why:** Crowdsourced product submissions with admin moderation to expand the product catalog.
 - **Depends on:** Goal 1, Goal 10
+
+### Goal 16 — Data Quality & Accuracy Refresh 📋 PROPOSED
+- **PRD:** `agents/prds/goal16-data-quality-accuracy-refresh.md` — status: proposal (awaiting Zach approval)
+- **TRD:** not yet written
+- **Why:** Labor rates are ~40–90% understated (China $3.50 vs actual $6.50/hr); textile/plastic materials have no commodity price coverage. Core accuracy is compromised before public launch.
+- **Depends on:** Goal 8, Goal 15
+- **Blockers before TRD:** Zach registers FRED API key (free, 2 min); confirm active commodity API in production (Q16-4)
