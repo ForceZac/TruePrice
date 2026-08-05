@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-05 (Dev Run #285 — Synced PRs #25/#26 with main (Dev Run #284 backlog commit); 467/468 tests pass; tsc clean on both branches; awaiting /merge)
+Last updated: 2026-08-05 (Dev Run #286 — Synced PRs #25/#26 with main (Dev Run #285 backlog commit); 467/468 tests pass; tsc clean on both branches; awaiting /merge)
 
 ## Active
 
@@ -35,6 +35,7 @@ Last updated: 2026-08-05 (Dev Run #285 — Synced PRs #25/#26 with main (Dev Run
 ## Notes
 
 - **Pipeline status:** ✅ Goals 1–13 SHIPPED (main at 953181c). Goal 14 LGTM + MERGEABLE (PR #25, 467 tests). Goal 15 LGTM + MERGEABLE (PR #26, 468 tests). 15/15 TRDs done. SoC violations cleared. Awaiting Zach `/merge`.
+- **Dev Run #286 (2026-08-05):** Synced PRs #25/#26 with main (Dev Run #285 backlog commit); 467/468 tests pass; tsc clean on both branches; awaiting /merge
 - **Dev Run #285 (2026-08-05):** Synced PRs #25/#26 with main (Dev Run #284 backlog commit); 467/468 tests pass; tsc clean on both branches; awaiting /merge
 - **Dev Run #284 (2026-08-05):** Synced PRs #25/#26 with main (Dev Run #283 backlog commit); 467/468 tests pass; tsc clean on both branches; awaiting /merge
 - **Dev Run #283 (2026-08-05):** Synced PRs #25/#26 with main (Dev Run #282 backlog commit); 467/468 tests pass; tsc clean on both branches; awaiting /merge
