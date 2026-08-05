@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-05 (Dev Run #335 — No new impl; verified 467/467 tests (PR #25), 469/469 tests (PR #27); tsc clean; both PRs in sync with main; awaiting /merge)
+Last updated: 2026-08-05 (Dev Run #336 — No new impl; verified 467/467 tests (PR #25), 469/469 tests (PR #27); tsc clean; both PRs in sync with main; awaiting /merge)
 
 ## Active
 
@@ -34,6 +34,7 @@ Last updated: 2026-08-05 (Dev Run #335 — No new impl; verified 467/467 tests (
 
 ## Notes
 
+- **Dev Run #336 (2026-08-05):** No new impl — Goals 1–15 complete; Goal 16 awaiting Zach approval + FRED API key. Verified 467/467 tests pass on PR #25; 469/469 tests pass on PR #27; tsc clean on both. Both PRs in sync with main (0 commits behind). Awaiting /merge.
 - **Dev Run #335 (2026-08-05):** No new impl — Goals 1–15 complete; Goal 16 awaiting Zach approval + FRED API key. Verified 467/467 tests pass on PR #25; 469/469 tests pass on PR #27. Both PRs in sync with main (0 commits behind). Awaiting /merge.
 - **Dev Run #332 (2026-08-05):** Implemented Q15-1 (Discord alert to #alerts on new product submission) — added `postDiscordAlert()` call in `SubmissionService.createSubmission()` (fire-and-forget, gates on DISCORD_BOT_TOKEN). Added 1 new test (469/469 pass on PR #27, 467/467 on PR #25). Committed orphaned PM Run #172 changes (Goal 16 PRD, open-question resolutions, roadmap update) to main. Synced both PR branches. tsc clean. Awaiting /merge.
 - **Dev Run #334 (2026-08-05):** No new impl — Goals 1–15 complete; Goal 16 awaiting Zach approval + FRED API key. Verified 467/467 tests pass on PR #25; 469/469 tests pass on PR #27; tsc clean on PR #25. Both PRs in sync with main (0 commits behind). Awaiting /merge.
