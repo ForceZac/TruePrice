@@ -1,6 +1,6 @@
 # Open Questions Parking Lot
 
-Last updated: 2026-08-02 (PM Run #146)
+Last updated: 2026-08-05 (PM Run #162)
 
 This file replaces the missing PROJECT_KEYS.md section 13. All unresolved product decisions go here. Answered questions are moved to the **Resolved** section below.
 
@@ -106,6 +106,28 @@ Resend free tier is 100 emails/day (3,000/month). If registered users with non-e
 - **Owner:** Zach | **Priority:** High if user count exceeds 100 before first digest run; blocks Goal 13 go-live
 
 **Q13-4: Digest send day/time** — *moved to Resolved (PM Run #146)*
+
+### Goal 14 — SEO & Core Web Vitals
+
+**Q14-1: Lighthouse CI integration** — *moved to Resolved (PM Run #162)*
+
+**Q14-2: Google Search Console verification method** — *moved to Resolved (PM Run #162)*
+
+**Q14-3: Sitemap URL format for products** — *moved to Resolved (PM Run #162)*
+
+### Goal 15 — User-Submitted Products
+
+**Q15-1: Admin notification on new submission**
+Should Zach receive a Discord ping (via `NotificationService`) when a new submission arrives, or just poll `/admin/submissions` manually? A Discord ping is ~10 lines and avoids building a polling habit.
+- **Owner:** Zach | **Priority:** Low — manual queue check acceptable for low submission volumes
+
+**Q15-2: Approval email content** — *moved to Resolved (PM Run #162)*
+
+**Q15-3: Material composition input in submission form**
+Should `/submit-product` include an optional collapsible "Add ingredients" section for power users who know the product's materials? Suggested v1 answer: name + UPC only; add optional materials picker in a follow-up goal.
+- **Owner:** Zach | **Priority:** Medium — determines complexity of submission form
+
+**Q15-4: ADMIN_EMAILS env var vs. User.role field** — *moved to Resolved (PM Run #162)*
 
 ---
 
@@ -232,3 +254,22 @@ Resend free tier is 100 emails/day (3,000/month). If registered users with non-e
 
 **Q13-4: Digest send day/time** — Saturday 08:00 UTC (`"0 8 * * 6"` in `vercel.json`). This is 4am US Eastern / 9am UK. Aligns with typical weekend digest open rates.
 - **Resolved:** PM Run #146 (2026-08-02) — implemented in Goal 13 (PR #24, TRD confirmed)
+
+### Goal 14 — SEO & Core Web Vitals
+
+**Q14-1: Lighthouse CI integration** — Manual Lighthouse audit at goal boundary is acceptable. CI integration (GitHub Actions) deferred post-launch. TRD does not include CI gate; manual audit at PR review time is the standard for this project.
+- **Resolved:** PM Run #162 (2026-08-05) — accepted working default; revisit if performance regressions become a recurring issue
+
+**Q14-2: Google Search Console verification method** — HTML meta tag via `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` client env var. Implemented in root layout via `metadata.verification.google`. No deploy-time file changes or DNS updates required.
+- **Resolved:** PM Run #162 (2026-08-05) — implemented in Goal 14 (PR #25)
+
+**Q14-3: Sitemap URL format for products** — Numeric IDs (`/product/[id]`). No `slug` field added to `Product` in Goal 14. `getAllProductIds()` returns `string[]` of numeric IDs. Human-readable slugs deferred to a future goal; numeric IDs are functional for indexing and simpler to implement.
+- **Resolved:** PM Run #162 (2026-08-05) — implemented in Goal 14 (PR #25); slug migration is a future backlog item
+
+### Goal 15 — User-Submitted Products
+
+**Q15-2: Approval email content** — Implemented as `sendSubmissionApprovedEmail({ to, productName, productId })` via `NotificationService`. Sends a link to the approved product page. Body should include the markup multiplier to reward the contributor with immediate value — implement in template when email is first sent in production.
+- **Resolved:** PM Run #162 (2026-08-05) — implemented in Goal 15 (PR #26); template detail is an editorial decision
+
+**Q15-4: ADMIN_EMAILS env var vs. User.role field** — `ADMIN_EMAILS` (comma-separated, optional) env var chosen for v1. Implemented via `isAdmin()` helper at `src/lib/admin.ts`. Requires redeploy to add admins but is simpler than a schema migration for a single-admin setup. Plan to migrate to `User.role` when a second admin is onboarded.
+- **Resolved:** PM Run #162 (2026-08-05) — implemented in Goal 15 (PR #26)
