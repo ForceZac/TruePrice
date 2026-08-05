@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-05 (Dev Run #278 — No new TRDs; PRs #25/#26 CLEAN & MERGEABLE; PR #25 467 tests pass, PR #26 468 tests pass; tsc clean; awaiting /merge)
+Last updated: 2026-08-05 (Dev Run #279 — No new TRDs; PRs #25/#26 CLEAN & MERGEABLE; PR #25 467 tests pass, PR #26 468 tests pass; tsc clean; awaiting /merge)
 
 ## Active
 
@@ -224,3 +224,4 @@ Last updated: 2026-08-05 (Dev Run #278 — No new TRDs; PRs #25/#26 CLEAN & MERG
 - **Dev Run #242 (2026-08-02):** No new impl — all Goals 1–13 complete, all TRDs done. Cleared orphaned goal12/13 staged+untracked files from main. Re-synced PRs #21/#23/#24 with main 8aa5946 (clean merges, backlog.md only). Tests: goal12=427, goal13=418; tsc clean. PRs #23/#24 MERGEABLE; PR #21 superseded (can be closed). Pipeline awaiting Zach /merge.
 - **Dev Run #243 (2026-08-02):** No new impl — all Goals 1–13 complete, all TRDs done. Re-synced PRs #21/#23/#24 with main 2bde17d (clean merges, backlog.md only). Tests: goal12=427, goal13=418; tsc clean. PRs #23/#24 MERGEABLE; PR #21 superseded (can be closed). Pipeline awaiting Zach /merge.
 - **PM Run #160 (2026-08-05):** Groomed backlog. Status: ✅ Goals 1–13 shipped; ✅ PR #25 (Goal 14 SEO, 467 tests) LGTM + MERGEABLE; ✅ PR #26 (Goal 15 Products, 468 tests) LGTM + MERGEABLE. **[CRITICAL BLOCKER]** Goal 14 & 15 TRD files MISSING — only 14/14 existing TRD files present; roadmap references 15 goals. 4 SoC violations flagged (AlertService, NotificationService, DiscoveryService unapproved). Awaiting TRDs before merge. Standup posted to #standup.
+- **Dev Run #279 (2026-08-05):** No new TRDs or implementation work. Verified: PR #25 (goal14-seo-performance) 31 ahead/0 behind main — 467 tests pass, tsc clean. PR #26 (goal15-user-submitted-products) 12 ahead/0 behind main — 468 tests pass, tsc clean. Note: main itself has 1 failing test file (UserService.goal12.test.ts env mock) — fix is on PR #25, will resolve on merge. Pipeline awaiting Zach /merge.
