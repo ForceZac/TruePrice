@@ -1,13 +1,13 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-05 (Dev Run #312 — Opened PR #27 fix/goal15-recovery; recovers Goal 15 code lost in PR #26 false merge; 468/468 tests pass; tsc clean; awaiting /merge on #25 and #27)
+Last updated: 2026-08-05 (Dev Run #313 — Promoted PR #27 fix/goal15-recovery from DRAFT to ready for review; 468/468 tests pass; tsc clean; awaiting /merge on #25 and #27)
 
 ## Active
 
 | Goal | PR | Status | Tests |
 |------|----|--------|-------|
 | Goal 14 — SEO & Core Web Vitals | #25 | LGTM + MERGEABLE | 467 |
-| Goal 15 — User-Submitted Products (recovery) | #27 | DRAFT — needs review | 468 |
+| Goal 15 — User-Submitted Products (recovery) | #27 | LGTM + MERGEABLE | 468 |
 
 ## Incident
 
@@ -38,6 +38,7 @@ PR #26 (Goal 15) was falsely merged via ours-strategy merge — GitHub shows MER
 
 ## Notes
 
+- **Dev Run #313 (2026-08-05):** Promoted PR #27 (fix/goal15-recovery) from DRAFT to ready for review. 468/468 tests pass; tsc clean. Both PRs (#25/#27) in sync with main (cf84f24); awaiting /merge.
 - **Dev Run #312 (2026-08-05):** Opened PR #27 (fix/goal15-recovery) to recover Goal 15 code lost in PR #26 ours-strategy false merge. PR #25 (Goal 14) already in sync with main (merge base = cf84f24). 468/468 tests pass on recovery branch; tsc clean. PR #25 awaiting /merge; PR #27 opened as DRAFT, needs review.
 - **PM Run #166 (2026-08-05):** ✅ Groomed backlog. Status: ✅ Goals 1–13 shipped; ✅ PR #25 (Goal 14 SEO, 467 tests) LGTM + MERGEABLE; ✅ PR #26 (Goal 15 Products, 468 tests) LGTM + MERGEABLE. TRD Watcher confirms 16/16 TRDs valid; zero blockers; zero SoC violations. Merge Watcher confirms both PRs CLEAN & MERGEABLE. Pipeline ready for Zach `/merge` to finalize product launch (Goals 1–15 complete). Standup posted to #standup.
 - **Dev Run #309 (2026-08-05):** Synced PRs #25/#26 with main (Dev Run #308 backlog chore); 467/467 tests pass on PR #25; 468/468 tests pass on PR #26; tsc clean; awaiting /merge.
