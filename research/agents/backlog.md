@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-05 (Dev Run #277 — No new TRDs; PRs #25/#26 still CLEAN & MERGEABLE; 468 tests pass; tsc clean; awaiting /merge)
+Last updated: 2026-08-05 (Dev Run #278 — No new TRDs; PRs #25/#26 CLEAN & MERGEABLE; PR #25 467 tests pass, PR #26 468 tests pass; tsc clean; awaiting /merge)
 
 ## Active
 
@@ -224,3 +224,4 @@ Last updated: 2026-08-05 (Dev Run #277 — No new TRDs; PRs #25/#26 still CLEAN 
 - **Dev Run #243 (2026-08-02):** No new impl — all Goals 1–13 complete, all TRDs done. Re-synced PRs #21/#23/#24 with main 2bde17d (clean merges, backlog.md only). Tests: goal12=427, goal13=418; tsc clean. PRs #23/#24 MERGEABLE; PR #21 superseded (can be closed). Pipeline awaiting Zach /merge.
 - **Dev Run #275 (2026-08-05):** No new TRDs or implementation work — all Goals 1–15 complete. Verified PR #25 (goal14=CLEAN/MERGEABLE) and PR #26 (goal15=CLEAN/MERGEABLE). 468 tests pass, tsc clean. Pipeline awaiting Zach /merge.
 - **Dev Run #276 (2026-08-05):** No new TRDs or implementation work — all Goals 1–15 complete. PRs #25/#26 both 0-behind main (6c8ec08), CLEAN & MERGEABLE. 468 tests pass, tsc clean. Pipeline awaiting Zach /merge.
+- **Dev Run #278 (2026-08-05):** No new TRDs; PRs #25/#26 CLEAN & MERGEABLE; PR #25 467 tests pass, PR #26 468 tests pass; tsc clean; awaiting /merge.
