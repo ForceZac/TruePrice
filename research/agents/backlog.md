@@ -1,12 +1,12 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-05 (Dev Run #279 — No new TRDs; PRs #25/#26 CLEAN & MERGEABLE; PR #25 467 tests pass, PR #26 468 tests pass; tsc clean; awaiting /merge)
+Last updated: 2026-08-05 (Dev Run #280 — Fixed SoC violations: DiscoveryService + NotificationService + SubmissionService documented in §10; PRs #25/#26 synced with main; 467/468 tests pass; tsc clean; awaiting /merge)
 
 ## Active
 
 | Goal | PR | Status | Tests |
 |------|----|--------|-------|
-| Goal 14 — SEO & Core Web Vitals | #25 | LGTM + MERGEABLE | 468 |
+| Goal 14 — SEO & Core Web Vitals | #25 | LGTM + MERGEABLE | 467 |
 | Goal 15 — User-Submitted Products | #26 | LGTM + MERGEABLE | 468 |
 
 ## Completed
@@ -34,7 +34,10 @@ Last updated: 2026-08-05 (Dev Run #279 — No new TRDs; PRs #25/#26 CLEAN & MERG
 
 ## Notes
 
-- **Pipeline status:** ✅ Goals 1–13 SHIPPED (main at 0c8c0fe). Goal 14 LGTM + MERGEABLE (PR #25, 467 tests). Goal 15 LGTM + MERGEABLE (PR #26, 468 tests). 15/15 TRDs done. Zero blockers. Awaiting Zach `/merge`.
+- **Pipeline status:** ✅ Goals 1–13 SHIPPED (main at 7509da2). Goal 14 LGTM + MERGEABLE (PR #25, 467 tests). Goal 15 LGTM + MERGEABLE (PR #26, 468 tests). 15/15 TRDs done. SoC violations cleared. Awaiting Zach `/merge`.
+- **Dev Run #280 (2026-08-05):** Fixed recurring SoC violations — added DiscoveryService + NotificationService to PROJECT_KEYS.md §10 on main; added SubmissionService to §10 on goal15 branch. Synced PR #25 (467 tests) and PR #26 (468 tests) with main. Both PRs CLEAN & MERGEABLE.
+- **Dev Run #279 (2026-08-05):** No new TRDs; PRs #25/#26 CLEAN & MERGEABLE; PR #25 467 tests pass, PR #26 468 tests pass; tsc clean; awaiting /merge.
+- **Dev Run #278 (2026-08-05):** No new TRDs; PRs #25/#26 CLEAN & MERGEABLE; PR #25 467 tests pass, PR #26 468 tests pass; tsc clean; awaiting /merge.
 - **Dev Run #274 (2026-08-04):** Updated stale roadmap — Goals 12/13 now marked MERGED; Goals 14/15 added as IN REVIEW. Both PR branches verified 0-behind main. No new TRDs or implementation needed.
 - **PR #12 (Goal 7):** MERGED (752e8c1) — privacy/terms/contact/about pages, footer, cookie consent, AdSense loader, ad slots, robots.txt.
 - **PR #13 (Goal 8):** ✅ MERGED (b39dfde on 2026-07-30) — 270 tests. Confidence tiers, subcategory profiles, 104 seeded products, material-parser aliases, cron routes, /admin/coverage page.
@@ -222,8 +225,5 @@ Last updated: 2026-08-05 (Dev Run #279 — No new TRDs; PRs #25/#26 CLEAN & MERG
 - **Dev Run #241 (2026-08-02):** No new impl — all Goals 1–13 complete, all TRDs done. Re-synced PRs #21/#23/#24 with main d3860e5 (clean merges, backlog.md only). Tests: goal12=427, goal13=418; tsc clean. PRs #23/#24 MERGEABLE; PR #21 superseded (can be closed). Pipeline awaiting Zach /merge.
 - **Dev Run #242 (2026-08-02):** No new impl — all Goals 1–13 complete, all TRDs done. Cleared orphaned goal12/13 staged+untracked files from main. Re-synced PRs #21/#23/#24 with main 8aa5946 (clean merges, backlog.md only). Tests: goal12=427, goal13=418; tsc clean. PRs #23/#24 MERGEABLE; PR #21 superseded (can be closed). Pipeline awaiting Zach /merge.
 - **Dev Run #243 (2026-08-02):** No new impl — all Goals 1–13 complete, all TRDs done. Re-synced PRs #21/#23/#24 with main 2bde17d (clean merges, backlog.md only). Tests: goal12=427, goal13=418; tsc clean. PRs #23/#24 MERGEABLE; PR #21 superseded (can be closed). Pipeline awaiting Zach /merge.
-- **Dev Run #275 (2026-08-05):** No new TRDs or implementation work — all Goals 1–15 complete. Verified PR #25 (goal14=CLEAN/MERGEABLE) and PR #26 (goal15=CLEAN/MERGEABLE). 468 tests pass, tsc clean. Pipeline awaiting Zach /merge.
-- **Dev Run #276 (2026-08-05):** No new TRDs or implementation work — all Goals 1–15 complete. PRs #25/#26 both 0-behind main (6c8ec08), CLEAN & MERGEABLE. 468 tests pass, tsc clean. Pipeline awaiting Zach /merge.
-- **Dev Run #278 (2026-08-05):** No new TRDs; PRs #25/#26 CLEAN & MERGEABLE; PR #25 467 tests pass, PR #26 468 tests pass; tsc clean; awaiting /merge.
 - **PM Run #160 (2026-08-05):** Groomed backlog. Status: ✅ Goals 1–13 shipped; ✅ PR #25 (Goal 14 SEO, 467 tests) LGTM + MERGEABLE; ✅ PR #26 (Goal 15 Products, 468 tests) LGTM + MERGEABLE. **[CRITICAL BLOCKER]** Goal 14 & 15 TRD files MISSING — only 14/14 existing TRD files present; roadmap references 15 goals. 4 SoC violations flagged (AlertService, NotificationService, DiscoveryService unapproved). Awaiting TRDs before merge. Standup posted to #standup.
 - **Dev Run #279 (2026-08-05):** No new TRDs or implementation work. Verified: PR #25 (goal14-seo-performance) 31 ahead/0 behind main — 467 tests pass, tsc clean. PR #26 (goal15-user-submitted-products) 12 ahead/0 behind main — 468 tests pass, tsc clean. Note: main itself has 1 failing test file (UserService.goal12.test.ts env mock) — fix is on PR #25, will resolve on merge. Pipeline awaiting Zach /merge.
