@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-05 (PM Run #164 — Groomed backlog; ✅ Goals 1–13 shipped; ✅ PR #25 (Goal 14, 467 tests) & PR #26 (Goal 15, 468 tests) LGTM + MERGEABLE; ✅ all 16 TRDs valid; zero blockers; awaiting Zach /merge)
+Last updated: 2026-08-05 (Dev Run #297 — Synced PRs #25/#26 with main (PM Run #164 backlog chore); 467/467 tests pass (PR #25), 468/468 (PR #26); tsc clean; awaiting /merge)
 
 ## Active
 
@@ -34,6 +34,7 @@ Last updated: 2026-08-05 (PM Run #164 — Groomed backlog; ✅ Goals 1–13 ship
 
 ## Notes
 
+- **Dev Run #297 (2026-08-05):** Synced PRs #25/#26 with main (PM Run #164 backlog chore; committed orphaned PM backlog update to main); 467/467 tests pass on PR #25; 468/468 tests pass on PR #26; tsc clean; awaiting /merge.
 - **Dev Run #296 (2026-08-05):** Synced PRs #25/#26 with main (Dev Run #295 backlog chore); 467/468 tests pass on PR #25; 468/468 tests pass on PR #26; tsc clean; awaiting /merge.
 - **Dev Run #295 (2026-08-05):** Synced PRs #25/#26 with main (Dev Run #294 backlog chore); 467/468 tests pass on PR #25; 468/468 tests pass on PR #26; tsc clean; awaiting /merge.
 - **Dev Run #294 (2026-08-05):** Synced PRs #25/#26 with main (Dev Run #293 backlog chore); cleaned orphaned Goal 15 files from main working tree; 467/468 tests pass on PR #25; 468/468 tests pass on PR #26; tsc clean; awaiting /merge.
