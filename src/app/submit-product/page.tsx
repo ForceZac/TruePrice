@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { auth } from "@/lib/auth";
-import { prisma } from "@/lib/db";
+import { getBasicCategories } from "@/services/CategoryService";
 import { SubmitProductForm } from "./SubmitProductForm";
 
 export const metadata: Metadata = {
@@ -25,10 +25,7 @@ export default async function SubmitProductPage({
 
   const { upc } = await searchParams;
 
-  const categories = await prisma.productCategory.findMany({
-    select: { id: true, name: true, slug: true },
-    orderBy: { name: "asc" },
-  });
+  const categories = await getBasicCategories();
 
   return (
     <main className="flex flex-col min-h-screen px-4 py-10 max-w-lg mx-auto w-full gap-8">

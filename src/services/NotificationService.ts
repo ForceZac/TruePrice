@@ -1,4 +1,5 @@
 import { serverEnv as env } from "@/lib/env.server";
+import { clientEnv } from "@/lib/env.client";
 
 const DISCORD_API_BASE = "https://discord.com/api/v10";
 
@@ -58,7 +59,7 @@ export async function sendSubmissionApprovedEmail({
     return;
   }
 
-  const productUrl = `${process.env.NEXTAUTH_URL ?? "https://trueprice.app"}/product/${productId}`;
+  const productUrl = `${clientEnv.NEXT_PUBLIC_APP_URL}/product/${productId}`;
 
   try {
     const { Resend } = await import("resend");
