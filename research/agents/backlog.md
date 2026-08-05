@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-05 (Dev Run #279 — No new TRDs; PRs #25/#26 CLEAN & MERGEABLE; PR #25 467 tests pass, PR #26 468 tests pass; tsc clean; awaiting /merge)
+Last updated: 2026-08-05 (Dev Run #280 — Fixed SoC violations: DiscoveryService + NotificationService + SubmissionService documented in §10; PRs #25/#26 synced with main; 467/468 tests pass; tsc clean; awaiting /merge)
 
 ## Active
 
@@ -34,7 +34,9 @@ Last updated: 2026-08-05 (Dev Run #279 — No new TRDs; PRs #25/#26 CLEAN & MERG
 
 ## Notes
 
-- **Pipeline status:** ✅ Goals 1–13 SHIPPED (main at 6c8ec08). Goal 14 LGTM + MERGEABLE (PR #25, 467 tests). Goal 15 LGTM + MERGEABLE (PR #26, 468 tests). 15/15 TRDs done. Zero blockers. Awaiting Zach `/merge`.
+- **Pipeline status:** ✅ Goals 1–13 SHIPPED (main at 7509da2). Goal 14 LGTM + MERGEABLE (PR #25, 467 tests). Goal 15 LGTM + MERGEABLE (PR #26, 468 tests). 15/15 TRDs done. SoC violations cleared. Awaiting Zach `/merge`.
+- **Dev Run #280 (2026-08-05):** Fixed recurring SoC violations — added DiscoveryService + NotificationService to PROJECT_KEYS.md §10 on main; added SubmissionService to §10 on goal15 branch. Synced PR #25 (467 tests) and PR #26 (468 tests) with main. Both PRs CLEAN & MERGEABLE.
+- **Dev Run #279 (2026-08-05):** No new TRDs; PRs #25/#26 CLEAN & MERGEABLE; PR #25 467 tests pass, PR #26 468 tests pass; tsc clean; awaiting /merge.
 - **Dev Run #278 (2026-08-05):** No new TRDs; PRs #25/#26 CLEAN & MERGEABLE; PR #25 467 tests pass, PR #26 468 tests pass; tsc clean; awaiting /merge.
 - **Dev Run #274 (2026-08-04):** Updated stale roadmap — Goals 12/13 now marked MERGED; Goals 14/15 added as IN REVIEW. Both PR branches verified 0-behind main. No new TRDs or implementation needed.
 - **PR #12 (Goal 7):** MERGED (752e8c1) — privacy/terms/contact/about pages, footer, cookie consent, AdSense loader, ad slots, robots.txt.
