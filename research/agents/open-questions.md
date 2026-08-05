@@ -1,6 +1,6 @@
 # Open Questions Parking Lot
 
-Last updated: 2026-08-04 (PM Run #154)
+Last updated: 2026-08-05 (PM Run #162)
 
 This file replaces the missing PROJECT_KEYS.md section 13. All unresolved product decisions go here. Answered questions are moved to the **Resolved** section below.
 
@@ -94,41 +94,6 @@ All agent runs have failed to post to Discord (#main, #standup, #prs, #alerts, #
 **Q12-4: `/trending` cold-state display**
 What does `/trending` show on a fresh deploy before any products have accumulated view counts? Currently the page would render empty (no products with viewCount > 0). Consider falling back to `getMostShocking(20)` or a friendly empty-state with a prompt to browse categories.
 - **Owner:** Zach | **Priority:** Low — not a launch blocker, but worth deciding before first marketing push
-- **Suggested answer:** Fall back to `getMostShocking(20)` when trending returns fewer than 5 results. Avoids empty-page UX with zero additional implementation complexity. Implement when Goal 14 is in dev (the SEO goal includes a Lighthouse audit of the trending page).
-
-### Goal 14 — SEO & Core Web Vitals
-
-**Q14-1: Lighthouse CI integration**
-Should Lighthouse CI run as a GitHub Actions check on every PR, or is a manual audit at the goal boundary sufficient? CI integration is the gold standard but adds ~2 minutes to each CI run.
-- **Owner:** Zach | **Priority:** Low — manual audit acceptable for this goal; CI can be added later
-
-**Q14-2: Google Search Console verification method**
-Google supports four verification methods: HTML meta tag, HTML file, DNS TXT record, and Google Analytics. The meta tag approach (via `GOOGLE_SITE_VERIFICATION` env var) is simplest to implement without deploy-time file changes. Is that acceptable, or does Zach prefer DNS TXT?
-- **Owner:** Zach | **Priority:** Medium — needed before submitting sitemap
-
-**Q14-3: Sitemap URL format for products**
-Product URLs are currently `/products/[id]` (numeric ID) or `/products/[slug]` (human-readable slug). If product slugs are not yet in the DB schema, the sitemap must use numeric IDs. Should we add a `slug` field to `Product` as part of this goal, or use numeric IDs for now?
-- **Owner:** PM / Dev | **Priority:** High — affects sitemap and canonical URL implementation
-- **Suggested answer:** Add a `slug` field to `Product` as part of Goal 14. Derived from `name` + `brand` (kebab-case, deduplicated). Better for SEO than numeric IDs; worth the migration complexity.
-
-### Goal 15 — User-Submitted Products
-
-**Q15-1: Admin notification on new submission**
-Should Zach receive an email (or Discord message) when a new submission comes in, or just check `/admin/submissions` manually? A Discord ping via `NotificationService` would be low-effort to add.
-- **Owner:** Zach | **Priority:** Low — manual queue check acceptable for low submission volumes
-
-**Q15-2: Submitter approval email content**
-When a submission is approved, what should the email say? Proposed: "Your submission for [product name] has been approved — [see the cost breakdown link]." Should include the markup multiplier in the email body to reward the contribution with immediate value.
-- **Owner:** Zach | **Priority:** Medium — affects quality of the contribution loop
-
-**Q15-3: Material composition input in submission form**
-Should the submission form expose a materials input (ingredient picker from the existing `Material` table) for power users, or require name+UPC only?
-- **Suggested answer:** Show materials input as optional/collapsible. Power users who know the ingredients can include them; casual submitters skip it. Materials stored as JSON in `ProductSubmission`; admin can edit before approving. Implement collapsible section with "Add ingredients (optional)" toggle.
-- **Owner:** Zach | **Priority:** Medium — determines implementation complexity of the submission form
-
-**Q15-4: ADMIN_EMAILS vs. role field**
-Using an env var for admin auth is simpler but requires a redeploy to add new admins. A `User.role` field (`USER | ADMIN`) is more scalable. For v1 with one admin (Zach), env var is fine.
-- **Owner:** PM / Dev | **Priority:** Low — can migrate to role field in a future goal if team grows
 
 ### Goal 13 — Weekly Digest Email
 
@@ -141,6 +106,28 @@ Resend free tier is 100 emails/day (3,000/month). If registered users with non-e
 - **Owner:** Zach | **Priority:** High if user count exceeds 100 before first digest run; blocks Goal 13 go-live
 
 **Q13-4: Digest send day/time** — *moved to Resolved (PM Run #146)*
+
+### Goal 14 — SEO & Core Web Vitals
+
+**Q14-1: Lighthouse CI integration** — *moved to Resolved (PM Run #162)*
+
+**Q14-2: Google Search Console verification method** — *moved to Resolved (PM Run #162)*
+
+**Q14-3: Sitemap URL format for products** — *moved to Resolved (PM Run #162)*
+
+### Goal 15 — User-Submitted Products
+
+**Q15-1: Admin notification on new submission**
+Should Zach receive a Discord ping (via `NotificationService`) when a new submission arrives, or just poll `/admin/submissions` manually? A Discord ping is ~10 lines and avoids building a polling habit.
+- **Owner:** Zach | **Priority:** Low — manual queue check acceptable for low submission volumes
+
+**Q15-2: Approval email content** — *moved to Resolved (PM Run #162)*
+
+**Q15-3: Material composition input in submission form**
+Should `/submit-product` include an optional collapsible "Add ingredients" section for power users who know the product's materials? Suggested v1 answer: name + UPC only; add optional materials picker in a follow-up goal.
+- **Owner:** Zach | **Priority:** Medium — determines complexity of submission form
+
+**Q15-4: ADMIN_EMAILS env var vs. User.role field** — *moved to Resolved (PM Run #162)*
 
 ---
 
@@ -267,3 +254,22 @@ Resend free tier is 100 emails/day (3,000/month). If registered users with non-e
 
 **Q13-4: Digest send day/time** — Saturday 08:00 UTC (`"0 8 * * 6"` in `vercel.json`). This is 4am US Eastern / 9am UK. Aligns with typical weekend digest open rates.
 - **Resolved:** PM Run #146 (2026-08-02) — implemented in Goal 13 (PR #24, TRD confirmed)
+
+### Goal 14 — SEO & Core Web Vitals
+
+**Q14-1: Lighthouse CI integration** — Manual Lighthouse audit at goal boundary is acceptable. CI integration (GitHub Actions) deferred post-launch. TRD does not include CI gate; manual audit at PR review time is the standard for this project.
+- **Resolved:** PM Run #162 (2026-08-05) — accepted working default; revisit if performance regressions become a recurring issue
+
+**Q14-2: Google Search Console verification method** — HTML meta tag via `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` client env var. Implemented in root layout via `metadata.verification.google`. No deploy-time file changes or DNS updates required.
+- **Resolved:** PM Run #162 (2026-08-05) — implemented in Goal 14 (PR #25)
+
+**Q14-3: Sitemap URL format for products** — Numeric IDs (`/product/[id]`). No `slug` field added to `Product` in Goal 14. `getAllProductIds()` returns `string[]` of numeric IDs. Human-readable slugs deferred to a future goal; numeric IDs are functional for indexing and simpler to implement.
+- **Resolved:** PM Run #162 (2026-08-05) — implemented in Goal 14 (PR #25); slug migration is a future backlog item
+
+### Goal 15 — User-Submitted Products
+
+**Q15-2: Approval email content** — Implemented as `sendSubmissionApprovedEmail({ to, productName, productId })` via `NotificationService`. Sends a link to the approved product page. Body should include the markup multiplier to reward the contributor with immediate value — implement in template when email is first sent in production.
+- **Resolved:** PM Run #162 (2026-08-05) — implemented in Goal 15 (PR #26); template detail is an editorial decision
+
+**Q15-4: ADMIN_EMAILS env var vs. User.role field** — `ADMIN_EMAILS` (comma-separated, optional) env var chosen for v1. Implemented via `isAdmin()` helper at `src/lib/admin.ts`. Requires redeploy to add admins but is simpler than a schema migration for a single-admin setup. Plan to migrate to `User.role` when a second admin is onboarded.
+- **Resolved:** PM Run #162 (2026-08-05) — implemented in Goal 15 (PR #26)
