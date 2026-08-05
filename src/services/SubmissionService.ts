@@ -13,7 +13,7 @@
 import { SubmissionStatus } from "@prisma/client";
 import { prisma } from "@/lib/db";
 import { estimateCost } from "@/services/CostEstimationService";
-import { sendSubmissionApprovedEmail } from "@/services/NotificationService";
+import { sendSubmissionApprovedEmail, postDiscordAlert } from "@/services/NotificationService";
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
@@ -109,6 +109,12 @@ export async function createSubmission(
       submittedBy: { select: { id: true, email: true, name: true } },
     },
   });
+
+  // Notify admin via Discord #alerts (fire-and-forget; no-op if bot token absent)
+  void postDiscordAlert(
+    "1494231981800820836",
+    `📬 New product submission: ${input.name} (${input.upc}) — review at /admin/submissions`
+  );
 
   return row as SubmissionRow;
 }
