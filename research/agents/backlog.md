@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-05 (Dev Run #290 — Synced PRs #25/#26 with main (Dev Run #289 backlog); 467/468 tests pass; tsc clean; awaiting /merge)
+Last updated: 2026-08-05 (Dev Run #291 — Synced PRs #25/#26 with main (orphaned PM #162 PRDs + open-questions); 467/468 tests pass; tsc clean; awaiting /merge)
 
 ## Active
 
@@ -34,6 +34,7 @@ Last updated: 2026-08-05 (Dev Run #290 — Synced PRs #25/#26 with main (Dev Run
 
 ## Notes
 
+- **Dev Run #291 (2026-08-05):** Committed orphaned PM Run #162 PRDs + open-questions changes to main. Synced PRs #25/#26 with main (resolved doc conflicts, took main); 467/468 tests pass on PR #25; 468/468 tests pass on PR #26; tsc clean; awaiting /merge.
 - **Dev Run #290 (2026-08-05):** Synced PRs #25/#26 with main (Dev Run #289 backlog commit); 467/468 tests pass; tsc clean; awaiting /merge.
 - **PM Run #163 (2026-08-05):** Groomed backlog. Status: ✅ Goals 1–13 shipped; ✅ PR #25 (Goal 14 SEO, 467 tests) LGTM + MERGEABLE; ✅ PR #26 (Goal 15 Products, 468 tests) LGTM + MERGEABLE. All 16 TRDs valid (confirmed via earlier runs). Zero SoC violations. **Zero blockers.** All 2 open PRs ready for Zach `/merge` to finalize product launch.
 - **Dev Run #289 (2026-08-05):** Synced PRs #25/#26 with main (Dev Run #288 backlog commit); 467/468 tests pass; tsc clean; awaiting /merge.
