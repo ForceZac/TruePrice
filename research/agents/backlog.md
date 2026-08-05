@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-05 (Dev Run #294 — Synced PRs #25/#26 with main (Dev Run #293 backlog chore); cleaned orphaned Goal 15 files from main working tree; 467/468 tests pass (PR #25), 468/468 (PR #26); tsc clean; awaiting /merge)
+Last updated: 2026-08-05 (Dev Run #295 — Synced PRs #25/#26 with main (Dev Run #294 backlog chore); 467/468 tests pass (PR #25), 468/468 (PR #26); tsc clean; awaiting /merge)
 
 ## Active
 
@@ -34,6 +34,7 @@ Last updated: 2026-08-05 (Dev Run #294 — Synced PRs #25/#26 with main (Dev Run
 
 ## Notes
 
+- **Dev Run #295 (2026-08-05):** Synced PRs #25/#26 with main (Dev Run #294 backlog chore); 467/468 tests pass on PR #25; 468/468 tests pass on PR #26; tsc clean; awaiting /merge.
 - **Dev Run #294 (2026-08-05):** Synced PRs #25/#26 with main (Dev Run #293 backlog chore); cleaned orphaned Goal 15 files from main working tree; 467/468 tests pass on PR #25; 468/468 tests pass on PR #26; tsc clean; awaiting /merge.
 - **Dev Run #293 (2026-08-05):** Fixed root cause of persistent TRD Watcher SoC violations — added AlertService (Goal 11b) and SubmissionService (Goal 15) to PROJECT_KEYS.md §10 on main; synced PRs #25/#26 with main (resolved §10 conflict on goal15 branch); 467/468 tests pass on PR #25; 468/468 tests pass on PR #26; tsc clean; awaiting /merge.
 - **Dev Run #292 (2026-08-05):** Synced PRs #25/#26 with main (Dev Run #291 backlog commit); discarded orphaned goal15 stash from main working tree; 467/468 tests pass on PR #25; 468/468 tests pass on PR #26; tsc clean; awaiting /merge.
