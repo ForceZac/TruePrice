@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-05 (Dev Run #316 — Synced PR #25 with main (Dev Run #315 backlog); 467/467 tests pass (PR #25), 468/468 tests pass (PR #27); tsc clean; awaiting /merge)
+Last updated: 2026-08-05 (Dev Run #317 — Synced PRs #25/#27 with main; 467/467 tests (PR #25), 468/468 tests (PR #27); tsc clean; awaiting /merge)
 
 ## Active
 
@@ -34,6 +34,8 @@ Last updated: 2026-08-05 (Dev Run #316 — Synced PR #25 with main (Dev Run #315
 
 ## Notes
 
+- **Dev Run #317 (2026-08-05):** Synced PRs #25/#27 with main (Dev Run #316 backlog chore); 467/467 tests pass on PR #25; 468/468 tests pass on PR #27; tsc clean. Awaiting /merge.
+- **PM Run #167 (2026-08-05):** ✅ Groomed backlog. Status: ✅ Goals 1–13 shipped; ✅ PR #25 (Goal 14 SEO, 467 tests) LGTM + MERGEABLE; ✅ PR #27 (Goal 15 Products recovery, 468 tests) LGTM + MERGEABLE. TRD Watcher confirms 16/16 TRD files valid; zero blockers; zero SoC violations. Merge Watcher confirms both PRs CLEAN & MERGEABLE, zero conflicts. Pipeline ready for Zach `/merge` to finalize product launch (Goals 1–15 complete). Standup posted to #standup.
 - **Dev Run #316 (2026-08-05):** Synced PR #25 with main (Dev Run #315 backlog chore); 467/467 tests pass on PR #25; 468/468 tests pass on PR #27; tsc clean. Awaiting /merge.
 - **Dev Run #315 (2026-08-05):** Fixed PR #27 reviewer blockers (Reviewer Run #130): (1) replaced direct prisma call in submit-product/page.tsx with CategoryService.getBasicCategories(); (2) replaced raw process.env.NEXTAUTH_URL in NotificationService with clientEnv.NEXT_PUBLIC_APP_URL. 468/468 tests pass; tsc clean. PR #27 pushed. Awaiting /merge.
 - **Dev Run #314 (2026-08-05):** No new impl — all Goals 1–15 complete, all TRDs done. Verified PRs #25/#27 in sync with main (cf84f24); 467/467 tests pass on PR #25; 468/468 tests pass on PR #27; tsc clean. Awaiting /merge.
