@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-05 (Dev Run #313 — Promoted PR #27 fix/goal15-recovery from DRAFT to ready for review; 468/468 tests pass; tsc clean; awaiting /merge on #25 and #27)
+Last updated: 2026-08-05 (Dev Run #315 — Fixed PR #27 reviewer blockers: CategoryService for category fetch, clientEnv for product URL; 467/467 tests pass (PR #25), 468/468 tests pass (PR #27); tsc clean; awaiting /merge)
 
 ## Active
 
@@ -38,6 +38,8 @@ PR #26 (Goal 15) was falsely merged via ours-strategy merge — GitHub shows MER
 
 ## Notes
 
+- **Dev Run #315 (2026-08-05):** Fixed PR #27 reviewer blockers (Reviewer Run #130): (1) replaced direct prisma call in submit-product/page.tsx with CategoryService.getBasicCategories(); (2) replaced raw process.env.NEXTAUTH_URL in NotificationService with clientEnv.NEXT_PUBLIC_APP_URL. 468/468 tests pass; tsc clean. PR #27 pushed. Awaiting /merge.
+- **Dev Run #314 (2026-08-05):** No new impl — all Goals 1–15 complete, all TRDs done. Verified PRs #25/#27 in sync with main (cf84f24); 467/467 tests pass on PR #25; 468/468 tests pass on PR #27; tsc clean. Awaiting /merge.
 - **Dev Run #313 (2026-08-05):** Promoted PR #27 (fix/goal15-recovery) from DRAFT to ready for review. 468/468 tests pass; tsc clean. Both PRs (#25/#27) in sync with main (cf84f24); awaiting /merge.
 - **Dev Run #312 (2026-08-05):** Opened PR #27 (fix/goal15-recovery) to recover Goal 15 code lost in PR #26 ours-strategy false merge. PR #25 (Goal 14) already in sync with main (merge base = cf84f24). 468/468 tests pass on recovery branch; tsc clean. PR #25 awaiting /merge; PR #27 opened as DRAFT, needs review.
 - **PM Run #166 (2026-08-05):** ✅ Groomed backlog. Status: ✅ Goals 1–13 shipped; ✅ PR #25 (Goal 14 SEO, 467 tests) LGTM + MERGEABLE; ✅ PR #26 (Goal 15 Products, 468 tests) LGTM + MERGEABLE. TRD Watcher confirms 16/16 TRDs valid; zero blockers; zero SoC violations. Merge Watcher confirms both PRs CLEAN & MERGEABLE. Pipeline ready for Zach `/merge` to finalize product launch (Goals 1–15 complete). Standup posted to #standup.
