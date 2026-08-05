@@ -158,6 +158,7 @@ Core models (defined in `prisma/schema.prisma`):
 | `UserService` | `src/services/UserService.ts` | Watchlist CRUD, recently-viewed, weekly digest candidates, account deletion. |
 | `DiscoveryService` | `src/services/DiscoveryService.ts` | View-count-based trending products and high-markup discovery lists. No routes or components may query these directly. |
 | `NotificationService` | `src/services/NotificationService.ts` | All outbound notifications: Discord channel alerts and transactional emails. No other module may post to Discord or send email. |
+| `AlertService` | `src/services/AlertService.ts` | All price alert logic: delta computation, threshold evaluation, rate-limit check, email dispatch, baseline update, history query. No alert logic in cron routes or UserService. |
 | `SubmissionService` | `src/services/SubmissionService.ts` | All user-submitted product CRUD and moderation (create, approve, reject). Delegates cost estimation to CostEstimationService; delegates approval email to NotificationService. |
 
 ### Layer Call Flow
