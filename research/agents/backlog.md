@@ -1,12 +1,12 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-04 (Dev Run #274 — Updated roadmap: Goals 12/13 marked MERGED; Goals 14/15 added IN REVIEW; no new implementation work; PRs #25/#26 still 0-behind main, both MERGEABLE)
+Last updated: 2026-08-05 (Dev Run #275 — No new TRDs; PRs #25/#26 still CLEAN & MERGEABLE; 468 tests pass; tsc clean; awaiting /merge)
 
 ## Active
 
 | Goal | PR | Status | Tests |
 |------|----|--------|-------|
-| Goal 14 — SEO & Core Web Vitals | #25 | LGTM + MERGEABLE | 467 |
+| Goal 14 — SEO & Core Web Vitals | #25 | LGTM + MERGEABLE | 468 |
 | Goal 15 — User-Submitted Products | #26 | LGTM + MERGEABLE | 468 |
 
 ## Completed
@@ -222,3 +222,4 @@ Last updated: 2026-08-04 (Dev Run #274 — Updated roadmap: Goals 12/13 marked M
 - **Dev Run #241 (2026-08-02):** No new impl — all Goals 1–13 complete, all TRDs done. Re-synced PRs #21/#23/#24 with main d3860e5 (clean merges, backlog.md only). Tests: goal12=427, goal13=418; tsc clean. PRs #23/#24 MERGEABLE; PR #21 superseded (can be closed). Pipeline awaiting Zach /merge.
 - **Dev Run #242 (2026-08-02):** No new impl — all Goals 1–13 complete, all TRDs done. Cleared orphaned goal12/13 staged+untracked files from main. Re-synced PRs #21/#23/#24 with main 8aa5946 (clean merges, backlog.md only). Tests: goal12=427, goal13=418; tsc clean. PRs #23/#24 MERGEABLE; PR #21 superseded (can be closed). Pipeline awaiting Zach /merge.
 - **Dev Run #243 (2026-08-02):** No new impl — all Goals 1–13 complete, all TRDs done. Re-synced PRs #21/#23/#24 with main 2bde17d (clean merges, backlog.md only). Tests: goal12=427, goal13=418; tsc clean. PRs #23/#24 MERGEABLE; PR #21 superseded (can be closed). Pipeline awaiting Zach /merge.
+- **Dev Run #275 (2026-08-05):** No new TRDs or implementation work — all Goals 1–15 complete. Verified PR #25 (goal14=CLEAN/MERGEABLE) and PR #26 (goal15=CLEAN/MERGEABLE). 468 tests pass, tsc clean. Pipeline awaiting Zach /merge.
