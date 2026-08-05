@@ -48,6 +48,9 @@ const serverEnvSchema = z.object({
   // Digest unsubscribe token signing
   DIGEST_UNSUBSCRIBE_SECRET: z.string().optional(),
 
+  // Admin access (comma-separated email addresses)
+  ADMIN_EMAILS: z.string().optional(),
+
   // CI / Bots (optional in dev)
   GITHUB_TOKEN: z.string().optional(),
   DISCORD_BOT_TOKEN: z.string().optional(),

@@ -33,6 +33,14 @@ vi.mock("@/lib/db", () => ({
   },
 }));
 
+vi.mock("@/lib/env.server", () => ({
+  serverEnv: {
+    RESEND_API_KEY: undefined,
+    DIGEST_UNSUBSCRIBE_SECRET: undefined,
+    FROM_EMAIL: "noreply@example.com",
+  },
+}));
+
 import { saveRecentSearch, getRecentSearches } from "../UserService";
 
 // ─── Tests ───────────────────────────────────────────────────────────────────
