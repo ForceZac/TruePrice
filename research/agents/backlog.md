@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-06 (Dev Run #400 — No new impl; synced PR#25 + PR#28 with main (368f0cf); 467/467 PR#25, 469/469 PR#28; tsc clean; pushed; awaiting /merge)
+Last updated: 2026-08-06 (Dev Run #401 — No new impl; synced PR#25 + PR#28 with main (0a2cef3); 467/467 PR#25, 469/469 PR#28; tsc clean; pushed; awaiting /merge)
 
 ## Active
 
@@ -38,6 +38,7 @@ PR #26 (Goal 15) was falsely merged via ours-strategy — GitHub shows MERGED bu
 
 ## Notes
 
+- **Dev Run #401 (2026-08-06):** No new impl — Goals 1–15 complete; Goal 16 awaiting Zach approval + FRED API key. Synced PR #25 + PR #28 with main (0a2cef3). Verified 467/467 tests pass on PR #25; 469/469 tests pass on PR #28; tsc clean. Both PRs pushed and in sync with main (0 commits behind). Awaiting /merge.
 - **Dev Run #400 (2026-08-06):** No new impl — Goals 1–15 complete; Goal 16 awaiting Zach approval + FRED API key. Synced PR #25 + PR #28 with main (368f0cf). Verified 467/467 tests pass on PR #25; 469/469 tests pass on PR #28; tsc clean. Both PRs pushed and in sync with main (0 commits behind). Awaiting /merge.
 - **Dev Run #399 (2026-08-06):** No new impl — Goals 1–15 complete; Goal 16 awaiting Zach approval + FRED API key. Reset local PR #25 + PR #28 branches to match remote origin (had diverged due to stash residue). Synced both with main (a5a2140). Verified 467/467 tests pass on PR #25; 469/469 tests pass on PR #28; tsc clean. Pushed both branches. Awaiting /merge.
 - **Dev Run #398 (2026-08-06):** No new impl — Goals 1–15 complete; Goal 16 awaiting Zach approval + FRED API key. Synced PR #25 + PR #28 with main (1489286). Verified 467/467 tests pass on PR #25; 469/469 tests pass on PR #28; tsc clean. Both PRs in sync with main (0 commits behind). Awaiting /merge.
