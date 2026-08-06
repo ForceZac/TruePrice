@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-06 (Dev Run #471 — no new impl; synced PR#25 + PR#28 with main (133a5d8); 467/467 PR#25, 469/469 PR#28; tsc clean; awaiting /merge)
+Last updated: 2026-08-06 (Dev Run #472 — no new impl; synced PR#25 + PR#28 with main (f528285); 467/467 PR#25, 469/469 PR#28; tsc clean; awaiting /merge)
 
 ## Active
 
@@ -38,6 +38,7 @@ PR #26 (Goal 15) was falsely merged via ours-strategy — GitHub shows MERGED bu
 
 ## Notes
 
+- **Dev Run #472 (2026-08-06):** No new impl — Goals 1–15 complete; Goals 16–24 all PROPOSAL status awaiting Zach approval + TRDs. Synced PR #25 + PR #28 with main (f528285). Verified 467/467 tests pass on PR #25; 469/469 tests pass on PR #28; tsc clean on both. Awaiting /merge.
 - **Dev Run #471 (2026-08-06):** No new impl — Goals 1–15 complete; Goals 16–24 all PROPOSAL status awaiting Zach approval + TRDs. Synced PR #25 + PR #28 with main (133a5d8). Verified 467/467 tests pass on PR #25; 469/469 tests pass on PR #28; tsc clean on both. Awaiting /merge.
 - **Dev Run #470 (2026-08-06):** No new impl — Goals 1–15 complete; Goals 16–24 all PROPOSAL status awaiting Zach approval + TRDs. Synced PR #25 + PR #28 with main (15534aa). Verified 467/467 tests pass on PR #25; 469/469 tests pass on PR #28; tsc clean on both. Awaiting /merge.
 - **Dev Run #469 (2026-08-06):** No new impl — Goals 1–15 complete; Goals 16–24 all PROPOSAL status awaiting Zach approval + TRDs. Synced PR #25 + PR #28 with main (5fc2c98). Verified 467/467 tests pass on PR #25; 469/469 tests pass on PR #28; tsc clean on both. Awaiting /merge.
