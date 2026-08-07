@@ -10,10 +10,12 @@ import { useBarcodeLookup } from "@/hooks/useProductLookup";
 export default function ScanPage() {
   const router = useRouter();
   const [scanError, setScanError] = useState<string | null>(null);
+  const [notFoundBarcode, setNotFoundBarcode] = useState<string | null>(null);
   const lookup = useBarcodeLookup();
 
   async function handleScan(barcode: string) {
     setScanError(null);
+    setNotFoundBarcode(null);
 
     const result = await lookup.mutateAsync(barcode).catch((err: Error) => {
       setScanError(err.message ?? "Lookup failed");
@@ -25,7 +27,7 @@ export default function ScanPage() {
     if (result.found && result.product) {
       router.push(`/product/${result.product.id}`);
     } else {
-      setScanError(`No product found for barcode ${barcode}. Try searching manually.`);
+      setNotFoundBarcode(barcode);
     }
   }
 
@@ -60,6 +62,33 @@ export default function ScanPage() {
       {scanError && (
         <div className="rounded-lg bg-destructive/10 px-4 py-3 text-sm text-destructive">
           {scanError}
+        </div>
+      )}
+
+      {notFoundBarcode && (
+        <div className="rounded-lg border border-border bg-card px-5 py-4 flex flex-col gap-3 text-center">
+          <p className="text-sm font-medium text-foreground">
+            No product found for barcode <span className="font-mono">{notFoundBarcode}</span>
+          </p>
+          <p className="text-xs text-muted-foreground">
+            Don&apos;t see it in our catalog? Help us add it.
+          </p>
+          <Link
+            href={`/submit-product?upc=${encodeURIComponent(notFoundBarcode)}`}
+            className="inline-block rounded-md bg-primary text-primary-foreground text-sm font-medium px-4 py-2 hover:bg-primary/90 transition"
+          >
+            Submit this product →
+          </Link>
+          <button
+            type="button"
+            className="text-xs text-muted-foreground underline underline-offset-4"
+            onClick={() => {
+              setNotFoundBarcode(null);
+              setScanError(null);
+            }}
+          >
+            Scan another barcode
+          </button>
         </div>
       )}
     </main>
