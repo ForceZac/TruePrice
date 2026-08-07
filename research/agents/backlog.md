@@ -1,12 +1,12 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-07 (Dev Run #505 — No new impl; aborted stale revert merge in PR#29 worktree; 494/494 PR#29; PRs in sync; awaiting /merge)
+Last updated: 2026-08-07 (Dev Run #506 — No new impl; synced PR#29 + PR#28 with main (bb3faf6); 469/469 PR#29, 492/492 PR#28; tsc clean; awaiting /merge)
 
 ## Active
 
 | Goal | PR | Status | Tests |
 |------|----|--------|-------|
-| Goal 13 — §10 SoC fix (digest email → NotificationService) | #29 | OPEN + MERGEABLE | 494 |
+| Goal 13 — §10 SoC fix (digest email → NotificationService) | #29 | OPEN + MERGEABLE | 469 |
 | Goal 15 — User-Submitted Products (final recovery) | #28 | OPEN (LGTM) | 492 |
 
 ## Completed
@@ -41,6 +41,7 @@ Last updated: 2026-08-07 (Dev Run #505 — No new impl; aborted stale revert mer
 
 ## Notes
 
+- **Dev Run #506 (2026-08-07):** No new impl. Main at bb3faf6; synced PR#29 (edbf4ea) + PR#28 (27912f4) with main. 469/469 PR#29, 492/492 PR#28; tsc clean on both. Goals 16–26 all PROPOSAL, no TRDs. Awaiting /merge for PR#28 + PR#29.
 - **Dev Run #505 (2026-08-07):** No new impl. Main at fec26d0; PRs #28 + #29 still OPEN, in sync with main. Found stale in-progress merge of origin/revert-7-task/goal6-category-browsing in PR#29 worktree — aborted it. 494/494 tests pass on PR#29. New PRDs goal25 (Internationalization) + goal26 (Public API) added as proposals. Goals 16–26 all PROPOSAL, no TRDs. Awaiting /merge for PR#28 + PR#29.
 - **PM Run #223 (2026-08-07):** Groomed backlog. TRD Watcher confirms 15/16 VALID. Critical blocker: Goal 13 §10 email dispatch violation (UserService calls Resend directly; should delegate to NotificationService). PR #28 (Goal 15) is LGTM + MERGEABLE but merge blocked until Goal 13 fixed. Recommending: (a) fix Goal 13 email delegation (~15 min), (b) re-validate TRDs, (c) merge PR #28 to finalize product launch.
 - **Dev Run #502 (2026-08-07):** No new impl — Goals 1–15 complete; Goals 16–24 all PROPOSAL status awaiting Zach approval + TRDs. Synced PR #28 with main (d843822) → 66ed362. 492/492 tests pass on PR #28; tsc clean. Awaiting /merge for Goal 15.
