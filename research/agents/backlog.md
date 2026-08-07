@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-07 (Dev Run #507 — No new impl; synced PR#29 + PR#28 with main (15e7e4c); 469/469 PR#29, 492/492 PR#28; tsc clean; awaiting /merge)
+Last updated: 2026-08-07 (Dev Run #508 — No new impl; synced PR#29 + PR#28 with main (f8171e8); 469/469 PR#29, 492/492 PR#28; tsc clean; awaiting /merge)
 
 ## Active
 
@@ -41,6 +41,7 @@ Last updated: 2026-08-07 (Dev Run #507 — No new impl; synced PR#29 + PR#28 wit
 
 ## Notes
 
+- **Dev Run #508 (2026-08-07):** No new impl. Main at f8171e8; synced PR#29 (49e0892) + PR#28 (c6bdec6) with main. 469/469 PR#29, 492/492 PR#28; tsc clean on both. Goals 16–26 all PROPOSAL, no TRDs. Awaiting /merge for PR#28 + PR#29.
 - **Dev Run #507 (2026-08-07):** No new impl. Main at 15e7e4c; synced PR#29 (4df029e) + PR#28 (9f1326e) with main. 469/469 PR#29, 492/492 PR#28; tsc clean on both. Goals 16–26 all PROPOSAL, no TRDs. Awaiting /merge for PR#28 + PR#29.
 - **Dev Run #506 (2026-08-07):** No new impl. Main at bb3faf6; synced PR#29 (edbf4ea) + PR#28 (27912f4) with main. 469/469 PR#29, 492/492 PR#28; tsc clean on both. Goals 16–26 all PROPOSAL, no TRDs. Awaiting /merge for PR#28 + PR#29.
 - **Dev Run #505 (2026-08-07):** No new impl. Main at fec26d0; PRs #28 + #29 still OPEN, in sync with main. Found stale in-progress merge of origin/revert-7-task/goal6-category-browsing in PR#29 worktree — aborted it. 494/494 tests pass on PR#29. New PRDs goal25 (Internationalization) + goal26 (Public API) added as proposals. Goals 16–26 all PROPOSAL, no TRDs. Awaiting /merge for PR#28 + PR#29.
