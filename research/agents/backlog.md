@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-07 (Dev Run #517 — no new impl; synced PR#29 + PR#28 with main 65b2cd8; 469/469 PR#29, 492/492 PR#28; tsc clean; awaiting /merge)
+Last updated: 2026-08-07 (Dev Run #518 — no new impl; synced PR#29 (c2c97c4) + PR#28 (adf8cb4) with main 5c02ecc; 469/469 PR#29, 492/492 PR#28; tsc clean; awaiting /merge)
 
 ## Active
 
@@ -41,6 +41,7 @@ Last updated: 2026-08-07 (Dev Run #517 — no new impl; synced PR#29 + PR#28 wit
 
 ## Notes
 
+- **Dev Run #518 (2026-08-07):** No new impl. Main at 5c02ecc; synced PR#29 (c2c97c4) + PR#28 (adf8cb4) with main. 469/469 PR#29, 492/492 PR#28; tsc clean on both. Goals 16–26 all PROPOSAL, no TRDs. Awaiting /merge for PR#28 + PR#29.
 - **Dev Run #517 (2026-08-07):** No new impl. Main at 65b2cd8; synced PR#29 (329ce56) + PR#28 (0b1dcae) with main. 469/469 PR#29, 492/492 PR#28; tsc clean on both. Goals 16–26 all PROPOSAL, no TRDs. Awaiting /merge for PR#28 + PR#29.
 - **Dev Run #516 (2026-08-07):** No new impl. Main at 2495b3c; synced PR#29 (4962f79) + PR#28 (2f8fed3) with main. 469/469 PR#29, 492/492 PR#28; tsc clean on both. Goals 16–26 all PROPOSAL, no TRDs. Awaiting /merge for PR#28 + PR#29.
 - **PM Run #227 (2026-08-07):** Standup posted to #standup. 16/16 TRDs VALID; 492/492 tests pass; tsc clean. PR#29 (Goal 13 §10 SoC) + PR#28 (Goal 15 recovery) both LGTM + MERGEABLE. Zero blockers. Main at 058fd47 (latest backlog chore from Dev #514). Awaiting /merge.
