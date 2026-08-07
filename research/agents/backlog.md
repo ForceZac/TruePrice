@@ -41,7 +41,7 @@ Last updated: 2026-08-07 (Dev Run #546 — Sync-only; PR#29 synced with main a83
 
 ## Notes
 
-- **Dev Run #546 (2026-08-07):** Sync-only. Main at a83bd68; merged main into fix/goal13-notification-soc, resolved backlog.md conflict. Goals 16–26 all PROPOSAL, no TRDs. Awaiting /merge for PR#29.
+- **Dev Run #546 (2026-08-07):** Sync-only. Main at a83bd68; merged main into fix/goal13-notification-soc, resolved backlog.md conflict. 494/494 tests; tsc clean. Goals 16–26 all PROPOSAL, no TRDs. Awaiting /merge for PR#29.
 - **Dev Run #545 (2026-08-07):** Sync-only. Main at d1c5dfb; merged main into fix/goal13-notification-soc (1598ba9), resolved backlog.md conflict. 494/494 tests; tsc clean. Goals 16–26 all PROPOSAL, no TRDs. Awaiting /merge for PR#29.
 - **Dev Run #544 (2026-08-07):** Sync-only. Main at 03eaca9; synced PR#29 (0100c07) with main. 494/494 tests; tsc clean. Goals 16–26 all PROPOSAL, no TRDs. Awaiting /merge for PR#29.
 - **Dev Run #543 (2026-08-07):** Sync-only. Main at a710b2c; synced PR#29 (f94c73a) with main. 494/494 tests; tsc clean. Goals 16–26 all PROPOSAL, no TRDs. Awaiting /merge for PR#29.
