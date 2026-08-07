@@ -42,6 +42,37 @@ export async function postDiscordAlert(
   }
 }
 
+// ─── Email ─────────────────────────────────────────────────────────────────────
+
+export interface DigestEmailParams {
+  from: string;
+  to: string;
+  subject: string;
+  html: string;
+  text: string;
+}
+
+/**
+ * Sends a transactional digest email via Resend.
+ * No-op when RESEND_API_KEY is not configured.
+ * Throws on Resend API errors — callers should handle per-user.
+ */
+export async function sendDigestEmail(params: DigestEmailParams): Promise<void> {
+  if (!env.RESEND_API_KEY) {
+    console.warn("[NotificationService] RESEND_API_KEY not set — skipping digest email");
+    return;
+  }
+  const { Resend } = await import("resend");
+  const resend = new Resend(env.RESEND_API_KEY);
+  await resend.emails.send({
+    from: params.from,
+    to: params.to,
+    subject: params.subject,
+    html: params.html,
+    text: params.text,
+  });
+}
+
 /**
  * Sends a product submission approval email to the submitter via Resend.
  * No-op if RESEND_API_KEY is not set.
