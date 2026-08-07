@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-07 (Dev Run #535 — No new impl; synced PR#29 (48ca554) + PR#28 (f6cb140) with main 1dba15f; 469/469 PR#29, 492/492 PR#28; tsc clean; awaiting /merge)
+Last updated: 2026-08-07 (Dev Run #536 — No new impl; synced PR#29 (2d9e768) + PR#28 (99a8429) with main 5cc79a5; 469/469 PR#29, 492/492 PR#28; tsc clean; awaiting /merge)
 
 ## Active
 
@@ -41,6 +41,7 @@ Last updated: 2026-08-07 (Dev Run #535 — No new impl; synced PR#29 (48ca554) +
 
 ## Notes
 
+- **Dev Run #536 (2026-08-07):** No new impl. Main at 5cc79a5; synced PR#29 (2d9e768) + PR#28 (99a8429) with main. 469/469 PR#29, 492/492 PR#28; tsc clean on both. Goals 16–26 all PROPOSAL, no TRDs. Awaiting /merge for PR#28 + PR#29.
 - **Dev Run #535 (2026-08-07):** No new impl. Main at 1dba15f; synced PR#29 (48ca554) + PR#28 (f6cb140) with main. 469/469 PR#29, 492/492 PR#28; tsc clean on both. Goals 16–26 all PROPOSAL, no TRDs. Awaiting /merge for PR#28 + PR#29.
 - **Dev Run #534 (2026-08-07):** No new impl. Main at 04a8c13; synced PR#29 (881ada4) + PR#28 (4042355) with main. 469/469 PR#29, 492/492 PR#28; tsc clean on both. Goals 16–26 all PROPOSAL, no TRDs. Awaiting /merge for PR#28 + PR#29.
 - **Dev Run #533 (2026-08-07):** No new impl. Main at 4b2e594; synced PR#29 (4b845f5) + PR#28 (9a11063) with main. 469/469 PR#29, 492/492 PR#28; tsc clean on both. Goals 16–26 all PROPOSAL, no TRDs. Awaiting /merge for PR#28 + PR#29.
