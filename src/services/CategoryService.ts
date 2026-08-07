@@ -200,6 +200,18 @@ export async function getCategoryProducts(
 }
 
 /**
+ * Returns all categories with only id, name, and slug — lightweight list
+ * for use in form dropdowns and similar UI.
+ */
+export async function getBasicCategories(): Promise<{ id: string; name: string; slug: string }[]> {
+  const categories = await prisma.productCategory.findMany({
+    select: { id: true, name: true, slug: true },
+    orderBy: { name: "asc" },
+  });
+  return categories;
+}
+
+/**
  * Returns all category slugs — used by generateStaticParams and sitemap.
  */
 export async function getAllCategorySlugs(): Promise<string[]> {
