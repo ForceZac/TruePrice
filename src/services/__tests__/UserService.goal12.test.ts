@@ -5,6 +5,18 @@
  */
 import { describe, it, expect, vi, beforeEach } from "vitest";
 
+// ─── Env mock ─────────────────────────────────────────────────────────────────
+
+vi.mock("@/lib/env.server", () => ({
+  serverEnv: {
+    DATABASE_URL: "postgresql://test:test@localhost/test",
+    NODE_ENV: "test",
+    RE_ESTIMATION_TTL_DAYS: 7,
+    DIGEST_UNSUBSCRIBE_SECRET: "test-secret",
+    FROM_EMAIL: "digest@trueprice.app",
+  },
+}));
+
 // ─── Prisma mock ─────────────────────────────────────────────────────────────
 
 const { mockUserFindUnique, mockUserUpdate } = vi.hoisted(() => ({

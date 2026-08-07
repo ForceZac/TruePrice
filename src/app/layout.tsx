@@ -19,10 +19,15 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const siteVerification = clientEnv.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
+
 export const metadata: Metadata = {
   title: "TruePrice — What Products Actually Cost",
   description:
     "Discover the real cost of any product — raw materials, labor, and overhead — so you know exactly how much of a markup you're paying.",
+  ...(siteVerification && {
+    verification: { google: siteVerification },
+  }),
 };
 
 export default function RootLayout({

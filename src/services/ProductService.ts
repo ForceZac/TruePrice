@@ -494,6 +494,15 @@ export async function getProductWithBreakdown(id: string): Promise<ProductWithBr
 // ─────────────────────────────────────────────────────────────────────────────
 
 /**
+ * Return all product IDs — used by the sitemap route to enumerate product pages.
+ * Lightweight: SELECT id only, no joins.
+ */
+export async function getAllProductIds(): Promise<string[]> {
+  const rows = await prisma.product.findMany({ select: { id: true } });
+  return rows.map((r) => r.id);
+}
+
+/**
  * Get a single cached product by internal ID.
  */
 export async function getProductById(id: string): Promise<ProductResult | null> {

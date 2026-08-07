@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import { getProductById } from "@/services/ProductService";
+import { getProductById, getProductWithBreakdown } from "@/services/ProductService";
 import { clientEnv as env } from "@/lib/env.client";
 import { auth } from "@/lib/auth";
 import { ProductPageClient } from "./ProductPageClient";
@@ -10,6 +10,7 @@ import { AddToCompareButton } from "@/components/atoms/AddToCompareButton";
 import { SaveButton } from "@/components/atoms/SaveButton";
 import { CompareTray } from "@/components/molecules/CompareTray";
 import { AdSlot } from "@/components/atoms/AdSlot";
+import { JsonLd } from "@/components/atoms/JsonLd";
 import type { ProductResult } from "@/lib/api";
 
 interface ProductPageProps {
@@ -27,12 +28,14 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
   const title = `${product.name} — TruePrice`;
   const description = `See what ${product.name} actually costs to make — raw materials, labor, and overhead. True cost revealed by TruePrice.`;
   const url = `${env.NEXT_PUBLIC_APP_URL}/product/${id}`;
-
   const ogImageUrl = `${env.NEXT_PUBLIC_APP_URL}/api/og/product/${id}`;
 
   return {
     title,
     description,
+    alternates: {
+      canonical: url,
+    },
     openGraph: {
       title,
       description,
@@ -52,7 +55,11 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
 
 export default async function ProductPage({ params }: ProductPageProps) {
   const { id } = await params;
-  const [product, session] = await Promise.all([getProductById(id), auth()]);
+  const [product, session, productWithBreakdown] = await Promise.all([
+    getProductById(id),
+    auth(),
+    getProductWithBreakdown(id),
+  ]);
 
   if (!product) {
     notFound();
@@ -77,6 +84,45 @@ export default async function ProductPage({ params }: ProductPageProps) {
     { label: product.name, href: `/product/${id}` },
   ];
 
+  // Build Product JSON-LD
+  const latestBreakdown = productWithBreakdown?.costBreakdowns?.[0] ?? null;
+  const productJsonLd: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.name,
+    ...(product.brand && { brand: { "@type": "Brand", name: product.brand } }),
+    ...(product.description && { description: product.description }),
+    ...(product.imageUrl && { image: product.imageUrl }),
+    url: canonicalUrl,
+    ...(product.retailPriceCents != null && {
+      offers: {
+        "@type": "Offer",
+        priceCurrency: "USD",
+        price: (product.retailPriceCents / 100).toFixed(2),
+        availability: "https://schema.org/InStock",
+      },
+    }),
+    ...(latestBreakdown && {
+      additionalProperty: [
+        {
+          "@type": "PropertyValue",
+          name: "manufacturingCost",
+          value: (latestBreakdown.totalCostCents / 100).toFixed(2),
+          unitCode: "USD",
+        },
+        ...(latestBreakdown.markupPercent != null
+          ? [
+              {
+                "@type": "PropertyValue",
+                name: "markupMultiplier",
+                value: (1 + latestBreakdown.markupPercent / 100).toFixed(2),
+              },
+            ]
+          : []),
+      ],
+    }),
+  };
+
   // Map ServiceResult → API-level ProductResult shape expected by the client component.
   // retailPriceCents is passed through so the stats row can show the retail price.
   const productForClient: ProductResult & { retailPriceCents?: number | null } = {
@@ -97,6 +143,8 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
   return (
     <main className="flex flex-col min-h-screen px-4 py-10 max-w-2xl mx-auto w-full gap-6">
+      <JsonLd data={productJsonLd} />
+
       {/* Breadcrumb */}
       <Breadcrumb items={breadcrumbItems} baseUrl={env.NEXT_PUBLIC_APP_URL} />
 
@@ -108,6 +156,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
             alt={product.name}
             width={96}
             height={96}
+            priority
             className="rounded-xl object-contain bg-muted shrink-0"
           />
         ) : (
