@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-07 (Dev Run #543 — Sync-only; PR#29 (f94c73a) synced with main a710b2c; 494/494 tests; tsc clean; awaiting /merge)
+Last updated: 2026-08-07 (Dev Run #544 — Sync-only; PR#29 (5f138a1) synced with main 03eaca9; 494/494 tests; tsc clean; awaiting /merge)
 
 ## Active
 
@@ -41,6 +41,7 @@ Last updated: 2026-08-07 (Dev Run #543 — Sync-only; PR#29 (f94c73a) synced wit
 
 ## Notes
 
+- **Dev Run #544 (2026-08-07):** Sync-only. Main at 03eaca9; synced PR#29 (5f138a1) with main. 494/494 tests; tsc clean. Goals 16–26 all PROPOSAL, no TRDs. Awaiting /merge for PR#29.
 - **Dev Run #543 (2026-08-07):** Sync-only. Main at a710b2c; synced PR#29 (f94c73a) with main. 494/494 tests; tsc clean. Goals 16–26 all PROPOSAL, no TRDs. Awaiting /merge for PR#29.
 - **PM Run #235 (2026-08-07):** Groomed backlog. Confirmed all Goals 1–15 SHIPPED. PR#29 (Goal 13 §10 SoC fix) OPEN + MERGEABLE, 494/494 tests, tsc clean. TRD Watcher: 16/16 TRDs VALID. Zero blockers. Standup posted to #standup. Awaiting /merge for PR#29.
 - **Dev Run #542 (2026-08-07):** Sync-only. Main at 4df18ee; synced PR#29 (22d82ab) with main. 494/494 tests; tsc clean. Goals 16–26 all PROPOSAL, no TRDs. Awaiting /merge for PR#29.
