@@ -9,6 +9,7 @@ import { SignJWT, jwtVerify } from "jose";
 import { Prisma } from "@prisma/client";
 import { prisma } from "@/lib/db";
 import { serverEnv } from "@/lib/env.server";
+import { sendDigestEmail } from "@/services/NotificationService";
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
@@ -540,9 +541,6 @@ export async function sendWeeklyDigests(): Promise<DigestSendResult> {
     return result;
   }
 
-  const { Resend } = await import("resend");
-  const resend = new Resend(serverEnv.RESEND_API_KEY);
-
   const highlights = await getMostShockingHighlights(3);
 
   // Cursor-paginated to handle large user counts
@@ -558,7 +556,7 @@ export async function sendWeeklyDigests(): Promise<DigestSendResult> {
           const html = buildDigestHtml(candidate, highlights, unsubscribeToken);
           const text = buildDigestText(candidate, highlights);
 
-          await resend.emails.send({
+          await sendDigestEmail({
             from: serverEnv.FROM_EMAIL,
             to: candidate.email,
             subject: "Your TruePrice weekly digest",
