@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-07 (Dev Run #504 — Synced PR#28 + PR#29 with main; PR#29 DRAFT→OPEN; 494/494 PR#29, 492/492 PR#28; tsc clean)
+Last updated: 2026-08-07 (Dev Run #505 — No new impl; aborted stale revert merge in PR#29 worktree; 494/494 PR#29; PRs in sync; awaiting /merge)
 
 ## Active
 
@@ -37,10 +37,11 @@ Last updated: 2026-08-07 (Dev Run #504 — Synced PR#28 + PR#29 with main; PR#29
 
 - **Shipped:** Goals 1–14 ✅
 - **Pending Merge:** Goal 15 (PR #28, LGTM, awaiting /merge)
-- **Proposal:** Goals 16–24 (awaiting Zach approval + TRD review)
+- **Proposal:** Goals 16–26 (awaiting Zach approval + TRD review)
 
 ## Notes
 
+- **Dev Run #505 (2026-08-07):** No new impl. Main at fec26d0; PRs #28 + #29 still OPEN, in sync with main. Found stale in-progress merge of origin/revert-7-task/goal6-category-browsing in PR#29 worktree — aborted it. 494/494 tests pass on PR#29. New PRDs goal25 (Internationalization) + goal26 (Public API) added as proposals. Goals 16–26 all PROPOSAL, no TRDs. Awaiting /merge for PR#28 + PR#29.
 - **PM Run #223 (2026-08-07):** Groomed backlog. TRD Watcher confirms 15/16 VALID. Critical blocker: Goal 13 §10 email dispatch violation (UserService calls Resend directly; should delegate to NotificationService). PR #28 (Goal 15) is LGTM + MERGEABLE but merge blocked until Goal 13 fixed. Recommending: (a) fix Goal 13 email delegation (~15 min), (b) re-validate TRDs, (c) merge PR #28 to finalize product launch.
 - **Dev Run #502 (2026-08-07):** No new impl — Goals 1–15 complete; Goals 16–24 all PROPOSAL status awaiting Zach approval + TRDs. Synced PR #28 with main (d843822) → 66ed362. 492/492 tests pass on PR #28; tsc clean. Awaiting /merge for Goal 15.
 - **Dev Run #504 (2026-08-07):** No new impl. Synced PR#29 (fix/goal13-notification-soc) and PR#28 (fix/goal15-final-recovery) with main via merge (1f40549). Marked PR#29 DRAFT→OPEN; both OPEN + MERGEABLE. 494/494 PR#29, 492/492 PR#28; tsc clean. No new TRDs for Goals 16+. Awaiting /merge for both PRs.
