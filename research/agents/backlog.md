@@ -1,13 +1,13 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-07 (Dev Run #503 — Fix Goal 13 §10 SoC; PR #29 opened; 494/494 tests; tsc clean)
+Last updated: 2026-08-07 (Dev Run #504 — Synced PR#28 + PR#29 with main; PR#29 DRAFT→OPEN; 494/494 PR#29, 492/492 PR#28; tsc clean)
 
 ## Active
 
 | Goal | PR | Status | Tests |
 |------|----|--------|-------|
-| Goal 13 — §10 SoC fix (digest email → NotificationService) | #29 | draft | 494 |
-| Goal 15 — User-Submitted Products (final recovery) | #28 | LGTM + MERGEABLE | 492 |
+| Goal 13 — §10 SoC fix (digest email → NotificationService) | #29 | OPEN + MERGEABLE | 494 |
+| Goal 15 — User-Submitted Products (final recovery) | #28 | OPEN (LGTM) | 492 |
 
 ## Completed
 
@@ -43,12 +43,9 @@ Last updated: 2026-08-07 (Dev Run #503 — Fix Goal 13 §10 SoC; PR #29 opened; 
 
 - **PM Run #223 (2026-08-07):** Groomed backlog. TRD Watcher confirms 15/16 VALID. Critical blocker: Goal 13 §10 email dispatch violation (UserService calls Resend directly; should delegate to NotificationService). PR #28 (Goal 15) is LGTM + MERGEABLE but merge blocked until Goal 13 fixed. Recommending: (a) fix Goal 13 email delegation (~15 min), (b) re-validate TRDs, (c) merge PR #28 to finalize product launch.
 - **Dev Run #502 (2026-08-07):** No new impl — Goals 1–15 complete; Goals 16–24 all PROPOSAL status awaiting Zach approval + TRDs. Synced PR #28 with main (d843822) → 66ed362. 492/492 tests pass on PR #28; tsc clean. Awaiting /merge for Goal 15.
+- **Dev Run #504 (2026-08-07):** No new impl. Synced PR#29 (fix/goal13-notification-soc) and PR#28 (fix/goal15-final-recovery) with main via merge (1f40549). Marked PR#29 DRAFT→OPEN; both OPEN + MERGEABLE. 494/494 PR#29, 492/492 PR#28; tsc clean. No new TRDs for Goals 16+. Awaiting /merge for both PRs.
 - **Dev Run #501 (2026-08-07):** Goal 14 code confirmed already on main (landed in chore d2cf1dc, Dev Run #483). Rebase of PR #25 dropped all commits as upstream — PR auto-closed. PR #28 rebased cleanly onto main (442d022) → abe929d. 492/492 tests pass on PR #28; tsc clean. Awaiting /merge for Goal 15.
 
 ## TRD Validation (Latest)
 
-**15/16 VALID** — 1 CRITICAL §10 violation:
-- Goal 13 email dispatch not delegated to NotificationService
-- Blocks PR #28 merge
-- Recommended fix: Add NotificationService.sendDigestEmail() + update UserService delegation
-- Effort: ~15 minutes
+**Fix shipped in PR #29** — §10 violation resolved (sendDigestEmail added to NotificationService; UserService delegates). TRD Watcher should confirm 16/16 VALID after PR #29 merges.
