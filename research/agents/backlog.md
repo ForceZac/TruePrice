@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-07 (Dev Run #486 — no new impl; synced PR#25 + PR#28 with main (6791d47); 467/467 PR#25, 492/492 PR#28; tsc clean; awaiting /merge)
+Last updated: 2026-08-07 (Dev Run #487 — no new impl; synced PR#25 + PR#28 with main (eee0f68); 467/467 PR#25, 492/492 PR#28; tsc clean; awaiting /merge)
 
 ## Active
 
@@ -38,6 +38,7 @@ PR #26 (Goal 15) was falsely merged via ours-strategy — GitHub shows MERGED bu
 
 ## Notes
 
+- **Dev Run #487 (2026-08-07):** No new impl — Goals 1–15 complete; Goals 16–24 all PROPOSAL status awaiting Zach approval + TRDs. Synced PR #25 + PR #28 with main (eee0f68). Verified 467/467 tests pass on PR #25; 492/492 tests pass on PR #28; tsc clean on both. Awaiting /merge.
 - **Dev Run #486 (2026-08-07):** No new impl — Goals 1–15 complete; Goals 16–24 all PROPOSAL status awaiting Zach approval + TRDs. Synced PR #25 + PR #28 with main (6791d47). Verified 467/467 tests pass on PR #25; 492/492 tests pass on PR #28; tsc clean on both. Awaiting /merge.
 - **PM Run #289 (2026-08-07):** ⚠️ Groomed backlog. Status: ✅ Goals 1–13 shipped; ✅ PR #25 (Goal 14 SEO, 467 tests) LGTM + MERGEABLE; ✅ PR #28 (Goal 15 final recovery, 492 tests) LGTM + MERGEABLE. TRD Watcher confirms 14/16 TRD files valid; **2 CRITICAL §10 violations in Goal 13** (email dispatch not delegated to NotificationService; trending discovery not delegated to DiscoveryService). Blocks PR merge until Goal 13 fixed. Goals 16–24 remain in PROPOSAL status awaiting Zach approval. Standup posted to #standup.
 - **Dev Run #485 (2026-08-07):** No new impl — Goals 1–15 complete; Goals 16–24 all PROPOSAL status awaiting Zach approval + TRDs. Synced PR #25 + PR #28 with main (38de5e8). Verified 467/467 tests pass on PR #25; 492/492 tests pass on PR #28; tsc clean on both. Awaiting /merge.
