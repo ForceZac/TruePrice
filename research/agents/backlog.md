@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-07 (Dev Run #540 — Sync-only; PR#29 (410f81b) synced with main 80becd8; 494/494 tests; tsc clean; awaiting /merge)
+Last updated: 2026-08-07 (Dev Run #541 — Sync-only; PR#29 (3689d21) synced with main 380cd50; 494/494 tests; tsc clean; awaiting /merge)
 
 ## Active
 
@@ -41,6 +41,7 @@ Last updated: 2026-08-07 (Dev Run #540 — Sync-only; PR#29 (410f81b) synced wit
 
 ## Notes
 
+- **Dev Run #541 (2026-08-07):** Sync-only. PR#29 (3689d21) synced with main 380cd50 (backlog chore). 494/494 tests; tsc clean. Goals 16–26 all PROPOSAL, no TRDs. Awaiting /merge for PR#29.
 - **Dev Run #540 (2026-08-07):** Sync-only. PR#29 (410f81b) synced with main 80becd8 (backlog chore). 494/494 tests; tsc clean. Goals 16–26 all PROPOSAL, no TRDs. Awaiting /merge for PR#29.
 - **Dev Run #539 (2026-08-07):** Sync-only. PR#29 (fde0f3c) synced with main 32949a0 (backlog chore). 494/494 tests; tsc clean. Goals 16–26 all PROPOSAL, no TRDs. Awaiting /merge for PR#29.
 - **Dev Run #538 (2026-08-07):** Synced PR#29 (5c82f8b) with main 36bec68 (includes Goal 15 merge). Resolved NotificationService conflict — kept sendDigestEmail (Goal 13 fix) + sendSubmissionApprovedEmail (Goal 15). 494/494 tests; tsc clean. Goals 16–26 all PROPOSAL, no TRDs. Awaiting /merge for PR#29.
