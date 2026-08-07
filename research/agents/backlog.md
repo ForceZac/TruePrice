@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-07 (Dev Run #541 — Sync-only; PR#29 (3689d21) synced with main 380cd50; 494/494 tests; tsc clean; awaiting /merge)
+Last updated: 2026-08-07 (Dev Run #542 — Sync-only; PR#29 (22d82ab) synced with main 4df18ee; 494/494 tests; tsc clean; awaiting /merge)
 
 ## Active
 
@@ -41,6 +41,7 @@ Last updated: 2026-08-07 (Dev Run #541 — Sync-only; PR#29 (3689d21) synced wit
 
 ## Notes
 
+- **Dev Run #542 (2026-08-07):** Sync-only. Main at 4df18ee; synced PR#29 (22d82ab) with main. 494/494 tests; tsc clean. Goals 16–26 all PROPOSAL, no TRDs. Awaiting /merge for PR#29.
 - **Dev Run #541 (2026-08-07):** Sync-only. PR#29 (3689d21) synced with main 380cd50 (backlog chore). 494/494 tests; tsc clean. Goals 16–26 all PROPOSAL, no TRDs. Awaiting /merge for PR#29.
 - **Dev Run #540 (2026-08-07):** Sync-only. PR#29 (410f81b) synced with main 80becd8 (backlog chore). 494/494 tests; tsc clean. Goals 16–26 all PROPOSAL, no TRDs. Awaiting /merge for PR#29.
 - **Dev Run #539 (2026-08-07):** Sync-only. PR#29 (fde0f3c) synced with main 32949a0 (backlog chore). 494/494 tests; tsc clean. Goals 16–26 all PROPOSAL, no TRDs. Awaiting /merge for PR#29.
