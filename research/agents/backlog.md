@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-07 (Dev Run #548 — Sync-only; PR#29 (251bf49) synced with main 75d7d48; 494/494 tests; tsc clean; awaiting /merge)
+Last updated: 2026-08-07 (Dev Run #552 — Sync-only; PR#29 (483dfc8) in sync with main 2c6b28e; 494/494 tests; tsc clean; awaiting /merge)
 
 ## Active
 
@@ -41,6 +41,10 @@ Last updated: 2026-08-07 (Dev Run #548 — Sync-only; PR#29 (251bf49) synced wit
 
 ## Notes
 
+- **Dev Run #552 (2026-08-07):** Sync-only. Main at 2c6b28e; PR#29 (483dfc8) already in sync — no new commits on main. 494/494 tests; tsc clean. Goals 16–26 all PROPOSAL, no TRDs. Awaiting /merge for PR#29.
+- **Dev Run #551 (2026-08-07):** Sync-only. Main at 2c6b28e; PR#29 (792f4c9) already in sync — no new commits on main. 494/494 tests; tsc clean. Goals 16–26 all PROPOSAL, no TRDs. Awaiting /merge for PR#29.
+- **Dev Run #550 (2026-08-07):** Sync-only. PR#29 (50e6831) already in sync with main 2c6b28e (0 behind). 494/494 tests; tsc clean. Goals 16–26 all PROPOSAL, no TRDs. Awaiting /merge for PR#29.
+- **Dev Run #549 (2026-08-07):** Sync-only. Main at 2c6b28e; merged main into fix/goal13-notification-soc (a9fd350), resolved backlog.md conflict. 494/494 tests; tsc clean. Goals 16–26 all PROPOSAL, no TRDs. Awaiting /merge for PR#29.
 - **Dev Run #548 (2026-08-07):** Sync-only. Main at 75d7d48; merged main into fix/goal13-notification-soc (251bf49), resolved backlog.md conflict. 494/494 tests; tsc clean. Goals 16–26 all PROPOSAL, no TRDs. Awaiting /merge for PR#29.
 - **Dev Run #547 (2026-08-07):** Sync-only. Main at ed1e01e; merged main into fix/goal13-notification-soc (729c774), resolved backlog.md conflict. 494/494 tests; tsc clean. Goals 16–26 all PROPOSAL, no TRDs. Awaiting /merge for PR#29.
 - **Dev Run #546 (2026-08-07):** Sync-only. Main at a83bd68; merged main into fix/goal13-notification-soc, resolved backlog.md conflict. 494/494 tests; tsc clean. Goals 16–26 all PROPOSAL, no TRDs. Awaiting /merge for PR#29.
@@ -48,6 +52,7 @@ Last updated: 2026-08-07 (Dev Run #548 — Sync-only; PR#29 (251bf49) synced wit
 - **Dev Run #545 (2026-08-07):** Sync-only. Main at d1c5dfb; merged main into fix/goal13-notification-soc (1598ba9), resolved backlog.md conflict. 494/494 tests; tsc clean. Goals 16–26 all PROPOSAL, no TRDs. Awaiting /merge for PR#29.
 - **Dev Run #544 (2026-08-07):** Sync-only. Main at 03eaca9; synced PR#29 (0100c07) with main. 494/494 tests; tsc clean. Goals 16–26 all PROPOSAL, no TRDs. Awaiting /merge for PR#29.
 - **Dev Run #543 (2026-08-07):** Sync-only. Main at a710b2c; synced PR#29 (f94c73a) with main. 494/494 tests; tsc clean. Goals 16–26 all PROPOSAL, no TRDs. Awaiting /merge for PR#29.
+- **PM Run #235 (2026-08-07):** Groomed backlog. Confirmed all Goals 1–15 SHIPPED. PR#29 (Goal 13 §10 SoC fix) OPEN + MERGEABLE, 494/494 tests, tsc clean. TRD Watcher: 16/16 TRDs VALID. Zero blockers. Standup posted to #standup. Awaiting /merge for PR#29.
 - **Dev Run #542 (2026-08-07):** Sync-only. Main at 4df18ee; synced PR#29 (22d82ab) with main. 494/494 tests; tsc clean. Goals 16–26 all PROPOSAL, no TRDs. Awaiting /merge for PR#29.
 - **PM Run #234 (2026-08-07):** Groomed backlog. Confirmed all Goals 1–15 SHIPPED. PR#29 (Goal 13 §10 SoC fix) OPEN + MERGEABLE, 494/494 tests, tsc clean. TRD Watcher: 16/16 TRDs VALID. Zero blockers. Standup posted to #standup. Awaiting /merge for PR#29.
 - **Dev Run #541 (2026-08-07):** Sync-only. PR#29 (3689d21) synced with main 380cd50 (backlog chore). 494/494 tests; tsc clean. Goals 16–26 all PROPOSAL, no TRDs. Awaiting /merge for PR#29.
