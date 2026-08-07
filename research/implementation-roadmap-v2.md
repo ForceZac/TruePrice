@@ -16,6 +16,7 @@ Goal 1 (Scaffold)
 │           │       └── Goal 8 (Data Expansion)
 │           │           └── Goal 10 (User Accounts)
 │           │               └── Goal 11b (Price Alerts) ← also needs Goal 11a
+│           │                   └── Goal 15 (User Submissions) ← also needs Goal 3, Goal 8
 │           ├── Goal 9 (Comparison & Social)
 │           │   └── Goal 14 (SEO & Core Web Vitals) ← also needs Goal 5, Goal 6
 │           ├── Goal 11a (Save as Image)

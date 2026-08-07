@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-07 (Dev Run #496 — no new impl; synced PR#25 with main (74fe46e); 467/467 PR#25, 492/492 PR#28; tsc clean; awaiting /merge)
+Last updated: 2026-08-07 (Dev Run #497 — no new impl; PR#25 in sync with main (73813cb), 0 behind; PR#28 in sync with main, 0 behind; 467/467 PR#25, 492/492 PR#28; tsc clean; awaiting /merge)
 
 ## Active
 
@@ -35,6 +35,7 @@ PR #26 (Goal 15) was falsely merged via ours-strategy — GitHub shows MERGED bu
 | docs: add TRDs + roadmap (Goals 11a/11b/12/13) | #21 | 2026-08-04 | d6f3e66 |
 | Goal 12 — Enhanced Search & Discovery | #23 | 2026-08-04 | 5c2e259 |
 | Goal 13 — Weekly Digest Email | #24 | 2026-08-04 | 55d2011 |
+| Goal 14 — SEO & Core Web Vitals | #25 | pending | (draft PR open) |
 
 ## Notes
 
