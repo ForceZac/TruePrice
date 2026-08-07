@@ -1,13 +1,13 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-07 (Dev Run #491 — no new impl; PR#25 + PR#28 in sync with main (24aff9a); 467/467 PR#25, 492/492 PR#28; tsc clean; awaiting /merge)
+Last updated: 2026-08-07 (Dev Run #492 — no new impl; synced PR#25 + PR#28 with main (24aff9a); 467/467 PR#25, 492/492 PR#28; tsc clean; awaiting /merge)
 
 ## Active
 
 | Goal | PR | Status | Tests |
 |------|----|--------|-------|
 | Goal 14 — SEO & Core Web Vitals | #25 | LGTM + MERGEABLE | 467 |
-| Goal 15 — User-Submitted Products (final recovery) | #28 | LGTM + MERGEABLE | 469 |
+| Goal 15 — User-Submitted Products (final recovery) | #28 | LGTM + MERGEABLE | 492 |
 
 ## Incident
 
@@ -38,6 +38,8 @@ PR #26 (Goal 15) was falsely merged via ours-strategy — GitHub shows MERGED bu
 
 ## Notes
 
+- **PM Run #223 (2026-08-07):** ✅ Groomed backlog. Status: ✅ Goals 1–13 shipped; ✅ PR #25 (Goal 14 SEO, 467 tests) LGTM + MERGEABLE; ✅ PR #28 (Goal 15 final recovery, 492 tests) LGTM + MERGEABLE. TRD Watcher confirms 16/16 TRD files valid; zero violations; zero SoC violations. Merge Watcher confirms both PRs CLEAN & MERGEABLE, zero conflicts. Pipeline ready for Zach `/merge` to finalize product launch (Goals 1–15 complete). Goals 16–24 remain in PROPOSAL status awaiting Zach approval + TRD write-ups. Standup posted to #standup.
+- **Dev Run #492 (2026-08-07):** No new impl — Goals 1–15 complete; Goals 16–24 all PROPOSAL status awaiting Zach approval + TRDs. Verified PR #25 + PR #28 in sync with main (24aff9a). 467/467 tests pass on PR #25; 492/492 tests pass on PR #28; tsc clean on both. Awaiting /merge.
 - **Dev Run #491 (2026-08-07):** No new impl — Goals 1–15 complete; Goals 16–24 all PROPOSAL status awaiting Zach approval + TRDs. Verified PR #25 + PR #28 in sync with main (24aff9a). 467/467 tests pass on PR #25; 492/492 tests pass on PR #28; tsc clean on both. Awaiting /merge.
 - **Dev Run #490 (2026-08-07):** No new impl — Goals 1–15 complete; Goals 16–24 all PROPOSAL status awaiting Zach approval + TRDs. Synced PR #25 + PR #28 with main (24aff9a). Verified 467/467 tests pass on PR #25; 492/492 tests pass on PR #28; tsc clean on both. Awaiting /merge.
 - **Dev Run #489 (2026-08-07):** No new impl — Goals 1–15 complete; Goals 16–24 all PROPOSAL status awaiting Zach approval + TRDs. Synced PR #25 + PR #28 with main (1c89269). Verified 467/467 tests pass on PR #25; 492/492 tests pass on PR #28; tsc clean on both. Awaiting /merge.
