@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-07 (Dev Run #508 — No new impl; synced PR#29 + PR#28 with main (f8171e8); 469/469 PR#29, 492/492 PR#28; tsc clean; awaiting /merge)
+Last updated: 2026-08-07 (Dev Run #509 — No new impl; synced PR#29 + PR#28 with main a2453f5; 469/469 PR#29, 492/492 PR#28; tsc clean; awaiting /merge)
 
 ## Active
 
@@ -41,6 +41,8 @@ Last updated: 2026-08-07 (Dev Run #508 — No new impl; synced PR#29 + PR#28 wit
 
 ## Notes
 
+- **PM Run #225 (2026-08-07):** TRD Watcher confirms 16/16 TRDs VALID (100%); zero blocking violations. Goal 13 fix (email SoC) verified. PR#29 (LGTM, 469/469 tests) + PR#28 (LGTM, 492/492 tests) both MERGEABLE. No blockers. Awaiting /merge command.
+- **Dev Run #509 (2026-08-07):** No new impl. Main at a2453f5; synced PR#29 (166c585) + PR#28 (4a1a9df) with main. 469/469 PR#29, 492/492 PR#28; tsc clean on both. Goals 16–26 all PROPOSAL, no TRDs. Awaiting /merge for PR#28 + PR#29.
 - **Dev Run #508 (2026-08-07):** No new impl. Main at f8171e8; synced PR#29 (49e0892) + PR#28 (c6bdec6) with main. 469/469 PR#29, 492/492 PR#28; tsc clean on both. Goals 16–26 all PROPOSAL, no TRDs. Awaiting /merge for PR#28 + PR#29.
 - **Dev Run #507 (2026-08-07):** No new impl. Main at 15e7e4c; synced PR#29 (4df029e) + PR#28 (9f1326e) with main. 469/469 PR#29, 492/492 PR#28; tsc clean on both. Goals 16–26 all PROPOSAL, no TRDs. Awaiting /merge for PR#28 + PR#29.
 - **Dev Run #506 (2026-08-07):** No new impl. Main at bb3faf6; synced PR#29 (edbf4ea) + PR#28 (27912f4) with main. 469/469 PR#29, 492/492 PR#28; tsc clean on both. Goals 16–26 all PROPOSAL, no TRDs. Awaiting /merge for PR#28 + PR#29.
@@ -52,4 +54,4 @@ Last updated: 2026-08-07 (Dev Run #508 — No new impl; synced PR#29 + PR#28 wit
 
 ## TRD Validation (Latest)
 
-**Fix shipped in PR #29** — §10 violation resolved (sendDigestEmail added to NotificationService; UserService delegates). TRD Watcher should confirm 16/16 VALID after PR #29 merges.
+✅ **16/16 TRDs VALID** — All standards met. §10 violation fixed in PR#29 (sendDigestEmail delegated to NotificationService). Zero blocking issues. Ready for merge.
