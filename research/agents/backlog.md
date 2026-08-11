@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-11 (Dev Run #578 — Sync-only; PR#29 (33d3207) in sync with main 2c6b28e; 494/494 tests; tsc clean; awaiting /merge)
+Last updated: 2026-08-11 (Dev Run #579 — Sync-only; PR#29 (007e778) in sync with main 2c6b28e; 494/494 tests; tsc clean; awaiting /merge)
 
 ## Active
 
