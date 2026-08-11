@@ -1,12 +1,13 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-07 (Dev Run #548 — Sync-only; PR#29 (251bf49) synced with main 75d7d48; 494/494 tests; tsc clean; awaiting /merge)
+Last updated: 2026-08-11 (Dev Run #582 — PR#29 494/494 tests clean; PR#30 marked ready 523/523 tests; both awaiting /merge)
 
 ## Active
 
 | Goal | PR | Status | Tests |
 |------|----|--------|-------|
 | Goal 13 — §10 SoC fix (digest email → NotificationService) | #29 | OPEN + MERGEABLE | 494 |
+| Goal 11b — AlertService restore (schema, API routes, settings UI) | #30 | OPEN + MERGEABLE | 523 |
 
 ## Completed
 
@@ -97,6 +98,7 @@ Last updated: 2026-08-07 (Dev Run #548 — Sync-only; PR#29 (251bf49) synced wit
 - **PM Run #223 (2026-08-07):** Groomed backlog. TRD Watcher confirms 15/16 VALID. Critical blocker: Goal 13 §10 email dispatch violation (UserService calls Resend directly; should delegate to NotificationService). PR #28 (Goal 15) is LGTM + MERGEABLE but merge blocked until Goal 13 fixed. Recommending: (a) fix Goal 13 email delegation (~15 min), (b) re-validate TRDs, (c) merge PR #28 to finalize product launch.
 - **Dev Run #502 (2026-08-07):** No new impl — Goals 1–15 complete; Goals 16–24 all PROPOSAL status awaiting Zach approval + TRDs. Synced PR #28 with main (d843822) → 66ed362. 492/492 tests pass on PR #28; tsc clean. Awaiting /merge for Goal 15.
 - **Dev Run #504 (2026-08-07):** No new impl. Synced PR#29 (fix/goal13-notification-soc) and PR#28 (fix/goal15-final-recovery) with main via merge (1f40549). Marked PR#29 DRAFT→OPEN; both OPEN + MERGEABLE. 494/494 PR#29, 492/492 PR#28; tsc clean. No new TRDs for Goals 16+. Awaiting /merge for both PRs.
+- **Dev Run #582 (2026-08-11):** PR#29 (fix/goal13-notification-soc, e4fbbae) confirmed in sync with main 2c6b28e; 494/494 tests; tsc clean. PR#30 (task/goal11b-alert-service-restore, 146cef1) marked DRAFT→OPEN; 523/523 tests; tsc clean. Goals 16–26 all PROPOSAL, no TRDs. Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #501 (2026-08-07):** Goal 14 code confirmed already on main (landed in chore d2cf1dc, Dev Run #483). Rebase of PR #25 dropped all commits as upstream — PR auto-closed. PR #28 rebased cleanly onto main (442d022) → abe929d. 492/492 tests pass on PR #28; tsc clean. Awaiting /merge for Goal 15.
 
 ## TRD Validation (Latest)
