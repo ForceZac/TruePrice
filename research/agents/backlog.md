@@ -1,12 +1,13 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-07 (Dev Run #548 — Sync-only; PR#29 (251bf49) synced with main 75d7d48; 494/494 tests; tsc clean; awaiting /merge)
+Last updated: 2026-08-12 (PM Run #246 — Groomed backlog; all Goals 1–15 SHIPPED; PR#29 + PR#30 MERGEABLE; 16/16 TRDs VALID; zero blockers)
 
 ## Active
 
 | Goal | PR | Status | Tests |
 |------|----|--------|-------|
 | Goal 13 — §10 SoC fix (digest email → NotificationService) | #29 | OPEN + MERGEABLE | 494 |
+| Goal 11b — AlertService restore (price alert schema + API) | #30 | OPEN + MERGEABLE | 525 |
 
 ## Completed
 
@@ -36,11 +37,12 @@ Last updated: 2026-08-07 (Dev Run #548 — Sync-only; PR#29 (251bf49) synced wit
 ## Roadmap Status
 
 - **Shipped:** Goals 1–15 ✅
-- **Pending Merge:** Goal 13 §10 SoC fix (PR #29, MERGEABLE, 494/494 tests, awaiting /merge)
-- **Proposal:** Goals 16–26 (awaiting Zach approval + TRD review)
+- **Pending Merge:** Goal 13 SoC fix (PR #29, 494/494) + Goal 11b AlertService (PR #30, 525/525) — both MERGEABLE
+- **Proposal:** Goals 16–31 (awaiting Zach approval + TRD review)
 
 ## Notes
 
+- **PM Run #246 (2026-08-12):** Groomed backlog. Confirmed all Goals 1–15 SHIPPED. PR#29 (Goal 13 §10 SoC fix) + PR#30 (Goal 11b AlertService restore) both OPEN + MERGEABLE (494/494 + 525/525 tests). TRD Watcher: 16/16 TRDs VALID. Zero blockers. Standup posted to #standup. Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #548 (2026-08-07):** Sync-only. Main at 75d7d48; merged main into fix/goal13-notification-soc (251bf49), resolved backlog.md conflict. 494/494 tests; tsc clean. Goals 16–26 all PROPOSAL, no TRDs. Awaiting /merge for PR#29.
 - **Dev Run #547 (2026-08-07):** Sync-only. Main at ed1e01e; merged main into fix/goal13-notification-soc (729c774), resolved backlog.md conflict. 494/494 tests; tsc clean. Goals 16–26 all PROPOSAL, no TRDs. Awaiting /merge for PR#29.
 - **Dev Run #546 (2026-08-07):** Sync-only. Main at a83bd68; merged main into fix/goal13-notification-soc, resolved backlog.md conflict. 494/494 tests; tsc clean. Goals 16–26 all PROPOSAL, no TRDs. Awaiting /merge for PR#29.
