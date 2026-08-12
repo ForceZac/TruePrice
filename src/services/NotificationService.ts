@@ -73,6 +73,37 @@ export async function sendDigestEmail(params: DigestEmailParams): Promise<void> 
   });
 }
 
+// ─── Alert email ────────────────────────────────────────────────────────────────
+
+export interface AlertEmailParams {
+  from: string;
+  to: string;
+  subject: string;
+  html: string;
+}
+
+/**
+ * Sends a price alert email via Resend.
+ * No-op when RESEND_API_KEY is not configured — logs instead.
+ * Throws on Resend API errors — callers should handle per-user.
+ */
+export async function sendAlertEmail(params: AlertEmailParams): Promise<void> {
+  if (!env.RESEND_API_KEY) {
+    console.log(
+      `[NotificationService] RESEND_API_KEY not set — skipping alert email to ${params.to}`
+    );
+    return;
+  }
+  const { Resend } = await import("resend");
+  const resend = new Resend(env.RESEND_API_KEY);
+  await resend.emails.send({
+    from: params.from,
+    to: params.to,
+    subject: params.subject,
+    html: params.html,
+  });
+}
+
 /**
  * Sends a product submission approval email to the submitter via Resend.
  * No-op if RESEND_API_KEY is not set.

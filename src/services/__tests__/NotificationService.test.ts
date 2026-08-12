@@ -22,7 +22,7 @@ vi.mock("resend", () => ({
   },
 }));
 
-import { postDiscordAlert, sendDigestEmail } from "@/services/NotificationService";
+import { postDiscordAlert, sendDigestEmail, sendAlertEmail } from "@/services/NotificationService";
 
 describe("NotificationService", () => {
   beforeEach(() => {
@@ -145,5 +145,46 @@ describe("sendDigestEmail", () => {
         text: "Hi",
       })
     ).rejects.toThrow("Resend API error");
+  });
+});
+
+// ─── sendAlertEmail ───────────────────────────────────────────────────────────
+
+describe("sendAlertEmail", () => {
+  beforeEach(() => {
+    mockResendSend.mockResolvedValue({ data: { id: "msg-2" }, error: null });
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+  });
+
+  it("calls resend.emails.send with the correct params", async () => {
+    await sendAlertEmail({
+      from: "alerts@trueprice.app",
+      to: "user@example.com",
+      subject: "Price alert: Widget cost changed",
+      html: "<p>Alert</p>",
+    });
+
+    expect(mockResendSend).toHaveBeenCalledOnce();
+    expect(mockResendSend).toHaveBeenCalledWith({
+      from: "alerts@trueprice.app",
+      to: "user@example.com",
+      subject: "Price alert: Widget cost changed",
+      html: "<p>Alert</p>",
+    });
+  });
+
+  it("throws when resend.emails.send rejects", async () => {
+    mockResendSend.mockRejectedValue(new Error("Resend alert error"));
+    await expect(
+      sendAlertEmail({
+        from: "alerts@trueprice.app",
+        to: "user@example.com",
+        subject: "Price alert",
+        html: "<p>Hi</p>",
+      })
+    ).rejects.toThrow("Resend alert error");
   });
 });

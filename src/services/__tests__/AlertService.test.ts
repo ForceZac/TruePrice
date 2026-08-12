@@ -35,19 +35,20 @@ vi.mock("@/services/CostEstimationService", () => ({
   getCachedBreakdown: mockGetCachedBreakdown,
 }));
 
-// ─── resend mock (package not installed in test env) ─────────────────────────
+// ─── NotificationService mock ─────────────────────────────────────────────────
 
-vi.mock("resend", () => ({
-  Resend: vi.fn(() => ({
-    emails: { send: vi.fn().mockResolvedValue({ id: "email-id" }) },
-  })),
+const { mockSendAlertEmail } = vi.hoisted(() => ({
+  mockSendAlertEmail: vi.fn(),
+}));
+
+vi.mock("@/services/NotificationService", () => ({
+  sendAlertEmail: mockSendAlertEmail,
 }));
 
 // ─── env mock ─────────────────────────────────────────────────────────────────
 
 vi.mock("@/lib/env.server", () => ({
   serverEnv: {
-    RESEND_API_KEY: undefined,
     FROM_EMAIL: "digest@trueprice.app",
     ALERT_FROM_EMAIL: undefined,
   },
@@ -93,6 +94,7 @@ beforeEach(() => {
   vi.clearAllMocks();
   mockSavedProductUpdate.mockResolvedValue({});
   mockAlertLogCreate.mockResolvedValue({});
+  mockSendAlertEmail.mockResolvedValue(undefined);
   // $transaction(ops[]) — resolve each operation in the array
   mockTransaction.mockImplementation((ops: Promise<unknown>[]) => Promise.all(ops));
 });

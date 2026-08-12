@@ -15,6 +15,7 @@
 import { prisma } from "@/lib/db";
 import { serverEnv as env } from "@/lib/env.server";
 import { getCachedBreakdown } from "@/services/CostEstimationService";
+import { sendAlertEmail } from "@/services/NotificationService";
 import { VALID_THRESHOLDS, type AlertThreshold } from "@/lib/alert-constants";
 
 export { VALID_THRESHOLDS, type AlertThreshold };
@@ -132,15 +133,6 @@ export async function checkWatchlistAlerts(): Promise<AlertCheckResult> {
   let alertsSkipped = 0;
   const usersChecked = users.length;
 
-  // Lazily initialise Resend only if key is present
-  let resend: import("resend").Resend | null = null;
-  if (env.RESEND_API_KEY) {
-    const { Resend } = await import("resend");
-    resend = new Resend(env.RESEND_API_KEY);
-  }
-
-  const fromEmail = env.ALERT_FROM_EMAIL ?? env.FROM_EMAIL;
-
   for (const user of users) {
     const threshold = resolveThreshold(user.alertThresholdPct);
 
@@ -205,11 +197,11 @@ export async function checkWatchlistAlerts(): Promise<AlertCheckResult> {
         }),
       ]);
 
-      // Send email
-      if (resend && user.email) {
+      // Send email via NotificationService (sole email-sending module per §10)
+      if (user.email) {
         try {
-          await resend.emails.send({
-            from: fromEmail,
+          await sendAlertEmail({
+            from: env.ALERT_FROM_EMAIL ?? env.FROM_EMAIL,
             to: user.email,
             subject: `Price alert: ${sp.product.name} cost changed`,
             html: buildAlertHtml({
@@ -227,10 +219,6 @@ export async function checkWatchlistAlerts(): Promise<AlertCheckResult> {
             err
           );
         }
-      } else if (!resend) {
-        console.log(
-          `[AlertService] RESEND_API_KEY not set — would alert userId=${user.id} product="${sp.product.name}" delta=${deltaPercent.toFixed(1)}%`
-        );
       }
 
       alertsFired++;
