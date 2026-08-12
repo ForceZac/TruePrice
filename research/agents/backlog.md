@@ -1,13 +1,13 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-12 (Dev Run #585 — fixed §10 SoC violation in AlertService: delegate email to NotificationService.sendAlertEmail(); removed tracked .merge-watcher-state; PR#30 (902003c) 525/525 tests; tsc clean; awaiting /merge)
+Last updated: 2026-08-12 (Dev Run #586 — Sync-only; PR#29 (e4fbbae) 494/494 tests; PR#30 (a4ffc79) 525/525 tests; both in sync with main 2c6b28e; tsc clean; awaiting /merge)
 
 ## Active
 
 | Goal | PR | Status | Tests |
 |------|----|--------|-------|
 | Goal 13 — §10 SoC fix (digest email → NotificationService) | #29 | OPEN + MERGEABLE | 494 |
-| Goal 11b — AlertService restore (schema, API routes, settings UI) | #30 | OPEN + MERGEABLE | 523 |
+| Goal 11b — AlertService restore (schema, API routes, settings UI) | #30 | OPEN + MERGEABLE | 525 |
 
 ## Completed
 
