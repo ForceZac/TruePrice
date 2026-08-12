@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-12 (Dev Run #624 — Sync-only; PR#29 (3a95139) 494/494; PR#30 (12242e8) 525/525; synced with main d66efce; tsc clean; awaiting /merge)
+Last updated: 2026-08-12 — Dev Run #625 (sync-only; PR#29 (e087aaa) 494/494; PR#30 (1b33d8f) 525/525; synced with main ea90f9d; tsc clean; awaiting /merge)
 
 ## Active
 
@@ -42,6 +42,8 @@ Last updated: 2026-08-12 (Dev Run #624 — Sync-only; PR#29 (3a95139) 494/494; P
 
 ## Notes
 
+- **Dev Run #625 (2026-08-12):** Sync-only. Merged main (ea90f9d) into PR#29 (e087aaa) and PR#30 (1b33d8f); clean auto-merge. 494/494 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
+- **PM Run #250 (2026-08-12):** Groomed backlog. Goals 1–15 all SHIPPED. PR#29 (Goal 13 §10 SoC fix) + PR#30 (Goal 11b AlertService restore) both OPEN + MERGEABLE (494/494 + 525/525 tests; tsc clean). TRD Watcher Run #392 confirms 16/16 TRDs VALID (100% tech stack + SoC compliance). Zero blockers. Goals 16–31 all PROPOSAL (awaiting Zach approval + TRD review). Main at d66efce. Standup posted to #standup. Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #624 (2026-08-12):** Sync-only. Merged main (d66efce) into PR#29 (3a95139) and PR#30 (12242e8); clean auto-merge. 494/494 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #623 (2026-08-12):** Sync-only. Merged main (d3ad972) into PR#29 (aac9d7d) and PR#30 (377e2f1); clean auto-merge. 494/494 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #622 (2026-08-12):** Sync-only. Aborted stale mid-merge (fix/goal11b-to-main into main — never committed). Merged main (b4afd39) into PR#29 (d19e554) and PR#30 (5099fee); clean auto-merge. 494/494 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
