@@ -1,13 +1,13 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-12 — Dev Run #663 (sync-only; PR#29 (bfea9b8) 494/494; PR#30 (81cf39e) 525/525; main at 9d380de; tsc clean; awaiting /merge)
+Last updated: 2026-08-12 — Dev Run #664 (sync-only; PR#29 (bfea9b8) 494/494; PR#30 (23b526e) 525/525; main at 9d380de; tsc clean; awaiting /merge)
 
 ## Active
 
 | Goal | PR | Status | Tests |
 |------|----|--------|-------|
 | Goal 13 — §10 SoC fix (digest email → NotificationService) | #29 (bfea9b8) | OPEN + MERGEABLE | 494 |
-| Goal 11b — AlertService restore (price alert schema + API) | #30 (81cf39e) | OPEN + MERGEABLE | 525 |
+| Goal 11b — AlertService restore (price alert schema + API) | #30 (23b526e) | OPEN + MERGEABLE | 525 |
 
 ## Completed
 
@@ -42,6 +42,7 @@ Last updated: 2026-08-12 — Dev Run #663 (sync-only; PR#29 (bfea9b8) 494/494; P
 
 ## Notes
 
+- **Dev Run #664 (2026-08-12):** Sync-only. Main at 9d380de (unchanged). PR#29 (bfea9b8) 494/494 tests; tsc clean. PR#30 (23b526e) 525/525 tests; tsc clean. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #663 (2026-08-12):** Sync-only. Aborted stale mid-merge on main (never committed). Main at 9d380de (no new commits). PR#29 (bfea9b8) 494/494 tests; tsc clean. PR#30 (81cf39e) 525/525 tests; tsc clean. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #662 (2026-08-12):** Sync-only. Main still at 43bb557 (no new commits). PR#29 (fe2c276) 494/494 tests; tsc clean. PR#30 (0d0f91f) 525/525 tests; tsc clean. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #661 (2026-08-12):** Sync-only. Main still at 43bb557 (no new commits). PR#29 (d6b37d3) 494/494 tests; tsc clean. PR#30 (60c0dc9) 525/525 tests; tsc clean. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
