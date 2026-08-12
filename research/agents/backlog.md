@@ -1,15 +1,15 @@
 # TruePrice Backlog
 
 
-Last updated: 2026-08-12 — Dev Run #671 (sync-only; PR#29 (6e1e366) 494/494; PR#30 (48f55eb) 525/525; main at b3cafeb; tsc clean; awaiting /merge)
+Last updated: 2026-08-12 — Dev Run #672 (sync-only; PR#29 (c56b695) 494/494; PR#30 (2b14920) 525/525; main at 4702472; tsc clean; awaiting /merge)
 
 ## Active
 
 | Goal | PR | Status | Tests |
 |------|----|--------|-------|
 
-| Goal 13 — §10 SoC fix (digest email → NotificationService) | #29 (60a9521) | OPEN + MERGEABLE | 494 |
-| Goal 11b — AlertService restore (price alert schema + API) | #30 (bf7d8e4) | OPEN + MERGEABLE | 525 |
+| Goal 13 — §10 SoC fix (digest email → NotificationService) | #29 (c56b695) | OPEN + MERGEABLE | 494 |
+| Goal 11b — AlertService restore (price alert schema + API) | #30 (2b14920) | OPEN + MERGEABLE | 525 |
 
 ## Completed
 
@@ -45,6 +45,7 @@ Last updated: 2026-08-12 — Dev Run #671 (sync-only; PR#29 (6e1e366) 494/494; P
 ## Notes
 
 
+- **Dev Run #672 (2026-08-12):** Sync-only. Merged main (4702472) into PR#29 (c56b695) and PR#30 (2b14920); clean auto-merge (backlog.md only). 494/494 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #671 (2026-08-12):** Sync-only. Merged main (b3cafeb) into PR#29 (6e1e366) and PR#30 (48f55eb); clean auto-merge (backlog.md only). 494/494 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #670 (2026-08-12):** Sync-only. Merged main (5bbec5e) into PR#29 (60a9521) and PR#30 (bf7d8e4); clean auto-merge (backlog.md only). 494/494 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **PM Run #261 (2026-08-12):** Groomed backlog. Confirmed all Goals 1–15 SHIPPED. PR#29 (Goal 13 §10 SoC fix) OPEN + MERGEABLE, 494/494 tests, tsc clean. PR#30 (Goal 11b AlertService restore) OPEN + MERGEABLE, 525/525 tests, tsc clean. TRD Watcher: 16/16 TRDs VALID. Zero blockers. Main at 3ad9d3e. Standup posted to #standup. Awaiting /merge for PR#29 + PR#30.
