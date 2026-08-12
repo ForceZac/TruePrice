@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-12 (Dev Run #612 — Sync-only; PR#29 (123ddf6) 494/494; PR#30 (738a35d) 525/525; both in sync with main 2c6b28e; tsc clean; awaiting /merge)
+Last updated: 2026-08-12 (Dev Run #614 — Sync-only; PR#29 (063d14f) 494/494; PR#30 (0d42116) 525/525; both in sync with main 2c6b28e; tsc clean; awaiting /merge)
 
 ## Active
 
@@ -42,6 +42,7 @@ Last updated: 2026-08-12 (Dev Run #612 — Sync-only; PR#29 (123ddf6) 494/494; P
 
 ## Notes
 
+- **Dev Run #614 (2026-08-12):** Sync-only. Main still at 2c6b28e; no new commits. PR#29 (fix/goal13-notification-soc, 063d14f) 494/494 tests; tsc clean. PR#30 (task/goal11b-alert-service-restore, 0d42116) 525/525 tests; tsc clean. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #612 (2026-08-12):** Sync-only. Main still at 2c6b28e; no new commits. PR#29 (fix/goal13-notification-soc, 123ddf6) 494/494 tests; tsc clean. PR#30 (task/goal11b-alert-service-restore, 738a35d) 525/525 tests; tsc clean. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #611 (2026-08-12):** Sync-only. Main still at 2c6b28e; no new commits. PR#29 (fix/goal13-notification-soc, af79c98) 494/494 tests; tsc clean. PR#30 (task/goal11b-alert-service-restore, be9db5a) 525/525 tests; tsc clean. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #610 (2026-08-12):** Sync-only. Main still at 2c6b28e; no new commits. PR#29 (fix/goal13-notification-soc, 83aa200) 494/494 tests; tsc clean. PR#30 (task/goal11b-alert-service-restore, 615a7d1) 525/525 tests; tsc clean. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
