@@ -1,13 +1,13 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-12 — Dev Run #647 (sync-only; PR#29 (3b42f27) 494/494 + PR#30 (f5883d4) 525/525 both MERGEABLE; tsc clean; main at 7c3e74a; 16/16 TRDs VALID; zero blockers)
+Last updated: 2026-08-12 — Dev Run #648 (sync-only; PR#29 (6767e44) 494/494 + PR#30 (5f45f4a) 525/525 both MERGEABLE; tsc clean; main at 3aafe18; 16/16 TRDs VALID; zero blockers)
 
 ## Active
 
 | Goal | PR | Status | Tests |
 |------|----|--------|-------|
-| Goal 13 — §10 SoC fix (digest email → NotificationService) | #29 (3b42f27) | OPEN + MERGEABLE | 494 |
-| Goal 11b — AlertService restore (price alert schema + API) | #30 (f5883d4) | OPEN + MERGEABLE | 525 |
+| Goal 13 — §10 SoC fix (digest email → NotificationService) | #29 (6767e44) | OPEN + MERGEABLE | 494 |
+| Goal 11b — AlertService restore (price alert schema + API) | #30 (5f45f4a) | OPEN + MERGEABLE | 525 |
 
 ## Completed
 
@@ -42,6 +42,7 @@ Last updated: 2026-08-12 — Dev Run #647 (sync-only; PR#29 (3b42f27) 494/494 + 
 
 ## Notes
 
+- **Dev Run #648 (2026-08-12):** Sync-only. Aborted stale mid-merge (fix/goal11b-to-main into main — never committed). Merged main (3aafe18) into PR#29 (6767e44) and PR#30 (5f45f4a); clean auto-merge (backlog.md only). 494/494 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #647 (2026-08-12):** Sync-only. Merged main (7c3e74a) into PR#29 (3b42f27) and PR#30 (f5883d4); clean auto-merge (backlog.md only). 494/494 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #646 (2026-08-12):** Sync-only. Merged main (010a4a9) into PR#29 (9da58e5) and PR#30 (08841ce); clean auto-merge. 494/494 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **PM Run #255 (2026-08-12):** Groomed backlog. Goals 1–15 all SHIPPED. PR#29 (Goal 13 §10 SoC fix) + PR#30 (Goal 11b AlertService restore) both OPEN + MERGEABLE (494/494 + 525/525 tests; tsc clean). TRD Watcher: 16/16 TRDs VALID. Zero blockers. Main at 010a4a9. Standup posted to #standup. Awaiting /merge for PR#29 + PR#30.
