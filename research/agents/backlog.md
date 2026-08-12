@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-11 (Dev Run #583 — sync-only; PR#29 (e4fbbae) 494/494 tests; PR#30 (146cef1) 523/523 tests; both in sync with main 2c6b28e; awaiting /merge)
+Last updated: 2026-08-12 (Dev Run #584 — fixed duplicate RETAIL_STALE_DAYS in ProductService.ts + stale merge conflict resolution; PR#30 (0dc8d26) 523/523 tests; tsc clean; awaiting /merge)
 
 ## Active
 
@@ -98,6 +98,7 @@ Last updated: 2026-08-11 (Dev Run #583 — sync-only; PR#29 (e4fbbae) 494/494 te
 - **PM Run #223 (2026-08-07):** Groomed backlog. TRD Watcher confirms 15/16 VALID. Critical blocker: Goal 13 §10 email dispatch violation (UserService calls Resend directly; should delegate to NotificationService). PR #28 (Goal 15) is LGTM + MERGEABLE but merge blocked until Goal 13 fixed. Recommending: (a) fix Goal 13 email delegation (~15 min), (b) re-validate TRDs, (c) merge PR #28 to finalize product launch.
 - **Dev Run #502 (2026-08-07):** No new impl — Goals 1–15 complete; Goals 16–24 all PROPOSAL status awaiting Zach approval + TRDs. Synced PR #28 with main (d843822) → 66ed362. 492/492 tests pass on PR #28; tsc clean. Awaiting /merge for Goal 15.
 - **Dev Run #504 (2026-08-07):** No new impl. Synced PR#29 (fix/goal13-notification-soc) and PR#28 (fix/goal15-final-recovery) with main via merge (1f40549). Marked PR#29 DRAFT→OPEN; both OPEN + MERGEABLE. 494/494 PR#29, 492/492 PR#28; tsc clean. No new TRDs for Goals 16+. Awaiting /merge for both PRs.
+- **Dev Run #584 (2026-08-12):** Fixed duplicate `RETAIL_STALE_DAYS` const + duplicate function block in ProductService.ts (stale merge artifact); resolved stale merge conflict with task/fix-stale-price-service-layer (kept HEAD on all conflicts); fixed unresolved conflict markers in cron/refresh-prices route (kept NotificationService+AlertService per SoC). PR#30 (0dc8d26) pushed; 523/523 tests; tsc clean. PR#29 (e4fbbae) unchanged, 494/494. Goals 16–26 all PROPOSAL, no TRDs. Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #583 (2026-08-11):** Sync-only. PR#29 (fix/goal13-notification-soc, e4fbbae) in sync with main 2c6b28e; 494/494 tests; tsc clean. PR#30 (task/goal11b-alert-service-restore, 146cef1) in sync with main 2c6b28e; 523/523 tests; tsc clean. Goals 16–26 all PROPOSAL, no TRDs. Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #582 (2026-08-11):** PR#29 (fix/goal13-notification-soc, e4fbbae) confirmed in sync with main 2c6b28e; 494/494 tests; tsc clean. PR#30 (task/goal11b-alert-service-restore, 146cef1) marked DRAFT→OPEN; 523/523 tests; tsc clean. Goals 16–26 all PROPOSAL, no TRDs. Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #501 (2026-08-07):** Goal 14 code confirmed already on main (landed in chore d2cf1dc, Dev Run #483). Rebase of PR #25 dropped all commits as upstream — PR auto-closed. PR #28 rebased cleanly onto main (442d022) → abe929d. 492/492 tests pass on PR #28; tsc clean. Awaiting /merge for Goal 15.
