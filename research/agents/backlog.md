@@ -1,13 +1,13 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-12 — Dev Run #643 (sync-only; PR#29 (a1fe033) 494/494 + PR#30 (74723f4) 525/525 both MERGEABLE; tsc clean; main at 6294b12; 16/16 TRDs VALID; zero blockers)
+Last updated: 2026-08-12 — Dev Run #644 (sync-only; PR#29 (83b607a) 494/494 + PR#30 (ebc37dd) 525/525 both MERGEABLE; tsc clean; main at 2b6beb6; 16/16 TRDs VALID; zero blockers)
 
 ## Active
 
 | Goal | PR | Status | Tests |
 |------|----|--------|-------|
-| Goal 13 — §10 SoC fix (digest email → NotificationService) | #29 (a1fe033) | OPEN + MERGEABLE | 494 |
-| Goal 11b — AlertService restore (price alert schema + API) | #30 (74723f4) | OPEN + MERGEABLE | 525 |
+| Goal 13 — §10 SoC fix (digest email → NotificationService) | #29 (83b607a) | OPEN + MERGEABLE | 494 |
+| Goal 11b — AlertService restore (price alert schema + API) | #30 (ebc37dd) | OPEN + MERGEABLE | 525 |
 
 ## Completed
 
@@ -42,6 +42,7 @@ Last updated: 2026-08-12 — Dev Run #643 (sync-only; PR#29 (a1fe033) 494/494 + 
 
 ## Notes
 
+- **Dev Run #644 (2026-08-12):** Sync-only. Merged main (2b6beb6) into PR#29 (83b607a) and PR#30 (ebc37dd); clean auto-merge (backlog.md only). 494/494 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #643 (2026-08-12):** Sync-only. Merged main (6294b12) into PR#29 (a1fe033) and PR#30 (74723f4); clean auto-merge (backlog.md only). 494/494 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #642 (2026-08-12):** Sync-only. Aborted stale mid-merge (623d1e4 into main — never committed). Merged main (92f8c9e) into PR#29 (e5c6abb) and PR#30 (e919a65); clean auto-merge (backlog.md only). 494/494 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #641 (2026-08-12):** Sync-only. Aborted stale mid-merge (origin/task/fix-stale-price-service-layer into main — never committed). Merged main (50d6108) into PR#29 (9c5e52b) and PR#30 (b4b29a7); clean auto-merge (backlog.md only). 494/494 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
