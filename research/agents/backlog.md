@@ -1,15 +1,15 @@
 # TruePrice Backlog
 
 
-Last updated: 2026-08-12 — Dev Run #667 (sync-only; PR#29 (733cf1d) 494/494; PR#30 (8601803) 525/525; main at 140189c; tsc clean; awaiting /merge)
+Last updated: 2026-08-12 — Dev Run #668 (sync-only; PR#29 (2dfcaeb) 494/494; PR#30 (71f4586) 525/525; main at 5350b9e; tsc clean; awaiting /merge)
 
 ## Active
 
 | Goal | PR | Status | Tests |
 |------|----|--------|-------|
 
-| Goal 13 — §10 SoC fix (digest email → NotificationService) | #29 (733cf1d) | OPEN + MERGEABLE | 494 |
-| Goal 11b — AlertService restore (price alert schema + API) | #30 (8601803) | OPEN + MERGEABLE | 525 |
+| Goal 13 — §10 SoC fix (digest email → NotificationService) | #29 (2dfcaeb) | OPEN + MERGEABLE | 494 |
+| Goal 11b — AlertService restore (price alert schema + API) | #30 (71f4586) | OPEN + MERGEABLE | 525 |
 
 ## Completed
 
@@ -45,6 +45,7 @@ Last updated: 2026-08-12 — Dev Run #667 (sync-only; PR#29 (733cf1d) 494/494; P
 ## Notes
 
 
+- **Dev Run #668 (2026-08-12):** Sync-only. Aborted stale merge on main working tree (never committed). Merged main (5350b9e) into PR#29 (2dfcaeb) and PR#30 (71f4586); resolved backlog.md conflict. 494/494 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #667 (2026-08-12):** Sync-only. Merged main (140189c) into PR#29 (733cf1d) and PR#30 (8601803); clean auto-merge (backlog.md only). 494/494 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #666 (2026-08-12):** Sync-only. Main still at 9d380de (no new commits). PR#29 (7b2b262) 494/494 tests carry-forward; tsc clean. PR#30 (c93bd74) 525/525 tests carry-forward; tsc clean. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #662 (2026-08-12):** Sync-only. Main still at 43bb557 (no new commits). PR#29 (fe2c276) 494/494 tests; tsc clean. PR#30 (0d0f91f) 525/525 tests; tsc clean. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
