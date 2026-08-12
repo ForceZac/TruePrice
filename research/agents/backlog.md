@@ -1,13 +1,13 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-12 — PM Run #253 (sync; groomed backlog; Goals 1–15 SHIPPED; PR#29 (df2bbc1) 494/494 + PR#30 (a9ab6c8) 525/525 both MERGEABLE; tsc clean; main at 23540f4; 16/16 TRDs VALID; zero blockers; standup posted)
+Last updated: 2026-08-12 — Dev Run #640 (sync-only; PR#29 (3c7b68c) 494/494 + PR#30 (525b7d0) 525/525 both MERGEABLE; tsc clean; main at 649630a; 16/16 TRDs VALID; zero blockers)
 
 ## Active
 
 | Goal | PR | Status | Tests |
 |------|----|--------|-------|
-| Goal 13 — §10 SoC fix (digest email → NotificationService) | #29 (b02e8bd) | OPEN + MERGEABLE | 494 |
-| Goal 11b — AlertService restore (price alert schema + API) | #30 (3994f27) | OPEN + MERGEABLE | 525 |
+| Goal 13 — §10 SoC fix (digest email → NotificationService) | #29 (3c7b68c) | OPEN + MERGEABLE | 494 |
+| Goal 11b — AlertService restore (price alert schema + API) | #30 (525b7d0) | OPEN + MERGEABLE | 525 |
 
 ## Completed
 
@@ -42,6 +42,7 @@ Last updated: 2026-08-12 — PM Run #253 (sync; groomed backlog; Goals 1–15 SH
 
 ## Notes
 
+- **Dev Run #640 (2026-08-12):** Sync-only. Pushed local main (649630a, PM Run #253) to origin. Merged main (649630a) into PR#29 (3c7b68c) and PR#30 (525b7d0); clean auto-merge (backlog.md only). 494/494 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **PM Run #253 (2026-08-12):** Groomed backlog. Goals 1–15 all SHIPPED. PR#29 (Goal 13 §10 SoC fix) + PR#30 (Goal 11b AlertService restore) both OPEN + MERGEABLE (494/494 + 525/525 tests; tsc clean). TRD Watcher: 16/16 TRDs VALID (Run #404). Zero blockers. Main at 23540f4. Standup posted to #standup. Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #639 (2026-08-12):** Sync-only. Merged main (892f62a) into PR#29 (df2bbc1) and PR#30 (a9ab6c8); clean auto-merge (backlog.md only). 494/494 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #638 (2026-08-12):** Sync-only. Both PRs already in sync with main f0c7559 (no new commits). PR#29 (b02e8bd) 494/494 tests; tsc clean. PR#30 (3994f27) 525/525 tests; tsc clean. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
