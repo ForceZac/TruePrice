@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-12 — Dev Run #639 (sync-only; PR#29 (df2bbc1) 494/494 + PR#30 (a9ab6c8) 525/525 both MERGEABLE; tsc clean; main at 892f62a; awaiting /merge)
+Last updated: 2026-08-12 — PM Run #253 (sync; groomed backlog; Goals 1–15 SHIPPED; PR#29 (df2bbc1) 494/494 + PR#30 (a9ab6c8) 525/525 both MERGEABLE; tsc clean; main at 23540f4; 16/16 TRDs VALID; zero blockers; standup posted)
 
 ## Active
 
@@ -42,6 +42,7 @@ Last updated: 2026-08-12 — Dev Run #639 (sync-only; PR#29 (df2bbc1) 494/494 + 
 
 ## Notes
 
+- **PM Run #253 (2026-08-12):** Groomed backlog. Goals 1–15 all SHIPPED. PR#29 (Goal 13 §10 SoC fix) + PR#30 (Goal 11b AlertService restore) both OPEN + MERGEABLE (494/494 + 525/525 tests; tsc clean). TRD Watcher: 16/16 TRDs VALID (Run #404). Zero blockers. Main at 23540f4. Standup posted to #standup. Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #639 (2026-08-12):** Sync-only. Merged main (892f62a) into PR#29 (df2bbc1) and PR#30 (a9ab6c8); clean auto-merge (backlog.md only). 494/494 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #638 (2026-08-12):** Sync-only. Both PRs already in sync with main f0c7559 (no new commits). PR#29 (b02e8bd) 494/494 tests; tsc clean. PR#30 (3994f27) 525/525 tests; tsc clean. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #637 (2026-08-12):** Sync-only. Aborted stale mid-merge on main (never committed). Main still at c264dd0; PR#29 (6a032c9) 494/494 tests; tsc clean. PR#30 (c15b9ee) 525/525 tests; tsc clean. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
