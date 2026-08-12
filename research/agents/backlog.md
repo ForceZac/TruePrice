@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-12 (Dev Run #602 — Sync-only; PR#29 (e69fe01) 494/494; PR#30 (992464b) 525/525; both in sync with main 2c6b28e; tsc clean; no new TRDs (Goals 16–31 all PROPOSAL); awaiting /merge)
+Last updated: 2026-08-12 (Dev Run #603 — Sync-only; PR#29 (4c64510) 494/494; PR#30 (992464b) 525/525; both in sync with main 2c6b28e; tsc clean; no new TRDs (Goals 16–31 all PROPOSAL); awaiting /merge)
 
 ## Active
 
@@ -41,6 +41,7 @@ Last updated: 2026-08-12 (Dev Run #602 — Sync-only; PR#29 (e69fe01) 494/494; P
 
 ## Notes
 
+- **Dev Run #603 (2026-08-12):** Sync-only. Main still at 2c6b28e; no new commits. PR#29 (4c64510) 494/494 tests; tsc clean. PR#30 (992464b) 525/525 tests; tsc clean. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #602 (2026-08-12):** Sync-only. Main still at 2c6b28e; no new commits. PR#29 (e69fe01) 494/494 tests; tsc clean. PR#30 (992464b) 525/525 tests; tsc clean. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #601 (2026-08-12):** Sync-only. Main still at 2c6b28e; no new commits. PR#29 (41839ba) 494/494 tests; tsc clean. PR#30 (992464b) 525/525 tests; tsc clean. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #581 (2026-08-11):** Sync-only. Main at 2c6b28e; PR#29 (e3d90e2) already in sync with main — 0 behind. 494/494 tests; tsc clean. Goals 16–27 all PROPOSAL, no TRDs. Awaiting /merge for PR#29.
