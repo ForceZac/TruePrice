@@ -1,6 +1,6 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-12 (Dev Run #607 — Sync-only; Main 2c6b28e; PR#29 (5f19eca) 494/494; PR#30 (2ce00de) 525/525; both in sync with main; tsc clean; awaiting /merge; Goals 16–31 all PROPOSAL)
+Last updated: 2026-08-12 (PM Run #244 — Groomed backlog; Main 2c6b28e; PR#29 (3ac6671) 494/494; PR#30 (5a92322) 525/525; both MERGEABLE; 16/16 TRDs VALID; zero blockers; standup posted)
 
 ## Active
 
@@ -41,6 +41,8 @@ Last updated: 2026-08-12 (Dev Run #607 — Sync-only; Main 2c6b28e; PR#29 (5f19e
 
 ## Notes
 
+- **PM Run #244 (2026-08-12):** Groomed backlog. Confirmed all Goals 1–15 SHIPPED. PR#29 (Goal 13 §10 SoC fix) OPEN + MERGEABLE, 494/494 tests, tsc clean. PR#30 (Goal 11b AlertService restore) OPEN + MERGEABLE, 525/525 tests, tsc clean. TRD Watcher: 16/16 TRDs VALID (Run #378). Zero blockers. Standup posted to #standup. Awaiting /merge for PR#29 + PR#30.
+- **Dev Run #608 (2026-08-12):** Sync-only. Main still at 2c6b28e; no new commits. PR#29 (fix/goal13-notification-soc, 3ac6671) 494/494 tests; tsc clean. PR#30 (task/goal11b-alert-service-restore, c9397c8) 525/525 tests; tsc clean. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #607 (2026-08-12):** Sync-only. Main still at 2c6b28e; no new commits. PR#29 (fix/goal13-notification-soc, 5f19eca) 494/494 tests; tsc clean. PR#30 (task/goal11b-alert-service-restore, 2ce00de) 525/525 tests; tsc clean. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #606 (2026-08-12):** Sync-only. Aborted stale mid-merge (check-pr-25 into PR#30); resolved ProductService.ts conflict (kept HEAD). Main still at 2c6b28e; no new commits. PR#29 (fix/goal13-notification-soc, 78aeda6) 494/494 tests; tsc clean. PR#30 (task/goal11b-alert-service-restore, 62b7ecf) 525/525 tests; tsc clean. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #605 (2026-08-12):** Sync-only. Main still at 2c6b28e; no new commits. PR#29 (7788f95) 494/494 tests; tsc clean. PR#30 (2631f0b) 525/525 tests; tsc clean. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
