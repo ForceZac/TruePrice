@@ -1,6 +1,6 @@
 # Open Questions Parking Lot
 
-Last updated: 2026-08-06 (PM Run #214)
+Last updated: 2026-08-12 (PM Run #242)
 
 This file replaces the missing PROJECT_KEYS.md section 13. All unresolved product decisions go here. Answered questions are moved to the **Resolved** section below.
 
