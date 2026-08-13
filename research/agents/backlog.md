@@ -1,7 +1,7 @@
 # TruePrice Backlog
 
 
-Last updated: 2026-08-13 — Dev Run #729 (sync-only; PR#29 (64df14f) 525/525; PR#30 (1e56626) 525/525; main at 4d766b8; tsc clean; awaiting /merge)
+Last updated: 2026-08-13 — Dev Run #730 (sync-only; PR#29 (1b05153) 525/525; PR#30 (6b3ecda) 525/525; main at 9830dbd; tsc clean; awaiting /merge)
 
 ## Active
 
@@ -44,6 +44,7 @@ Last updated: 2026-08-13 — Dev Run #729 (sync-only; PR#29 (64df14f) 525/525; P
 
 ## Notes
 
+- **Dev Run #730 (2026-08-13):** Sync-only. Merged main (9830dbd) into PR#29 (1b05153) and PR#30 (6b3ecda); clean auto-merge (backlog.md only). 525/525 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #729 (2026-08-13):** Sync-only. Merged main (4d766b8) into PR#29 (64df14f) and PR#30 (1e56626); clean auto-merge (backlog.md only). 525/525 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **PM Run #295 (2026-08-13):** Groomed backlog. Goals 1–15 all SHIPPED. PR#29 (Goal 13 §10 SoC fix, 82ef107) + PR#30 (Goal 11b AlertService restore, 774a148) both OPEN + MERGEABLE. Tests: 525/525 on both. TypeScript: clean. TRD Watcher: 16/16 TRDs VALID (Run #568); 100% tech stack + SoC compliance; zero issues. Merge Watcher: 0 conflicts (Run #569); main at d7f3ab3. Reviewer: carry-forward LGTM (Run #515). Zero blockers. Phase 1 complete — awaiting /merge authorization for PR#29 + PR#30. Standup posted to #standup.
 - **Dev Run #728 (2026-08-13):** Sync-only. Merged main (d7f3ab3) into PR#29 (82ef107) and PR#30 (774a148); clean auto-merge (backlog.md only). 525/525 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
