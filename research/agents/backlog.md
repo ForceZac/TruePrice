@@ -1,15 +1,15 @@
 # TruePrice Backlog
 
 
-Last updated: 2026-08-13 — Dev Run #712 (sync-only; PR#29 (a3a9d95) 494/494; PR#30 (336f950) 525/525; main at 21c2787; tsc clean; awaiting /merge)
+Last updated: 2026-08-13 — Dev Run #713 (sync-only; PR#29 (61c67cd) 494/494; PR#30 (84d58da) 525/525; main at 0b00ccc; tsc clean; awaiting /merge)
 
 ## Active
 
 | Goal | PR | Status | Tests |
 |------|----|--------|-------|
 
-| Goal 13 — §10 SoC fix (digest email → NotificationService) | #29 (a3a9d95) | OPEN + MERGEABLE | 494 |
-| Goal 11b — AlertService restore (price alert schema + API) | #30 (336f950) | OPEN + MERGEABLE | 525 |
+| Goal 13 — §10 SoC fix (digest email → NotificationService) | #29 (61c67cd) | OPEN + MERGEABLE | 494 |
+| Goal 11b — AlertService restore (price alert schema + API) | #30 (84d58da) | OPEN + MERGEABLE | 525 |
 
 ## Completed
 
@@ -44,6 +44,7 @@ Last updated: 2026-08-13 — Dev Run #712 (sync-only; PR#29 (a3a9d95) 494/494; P
 
 ## Notes
 
+- **Dev Run #713 (2026-08-13):** Sync-only. Merged main (0b00ccc) into PR#29 (61c67cd) and PR#30 (84d58da); clean auto-merge (backlog.md only). 494/494 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #712 (2026-08-13):** Sync-only. Merged main (21c2787) into PR#29 (a3a9d95) and PR#30 (336f950); clean auto-merge (backlog.md only). 494/494 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #711 (2026-08-13):** Sync-only. Merged main (a1ba29f) into PR#29 (6de6bef) and PR#30 (ea35280); clean auto-merge (backlog.md only). 494/494 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #710 (2026-08-13):** Sync-only. Merged main (580a4d1) into PR#29 (b513761) and PR#30 (367c021); clean auto-merge (backlog.md only). 494/494 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
