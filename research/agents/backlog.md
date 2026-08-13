@@ -1,15 +1,15 @@
 # TruePrice Backlog
 
 
-Last updated: 2026-08-13 — Dev Run #689 (sync-only; PR#29 (fddcab7) 494/494; PR#30 (07aff94) 525/525; main at 89d476d; tsc clean; awaiting /merge)
+Last updated: 2026-08-13 — Dev Run #690 (sync-only; PR#29 (7aa57b5) 494/494; PR#30 (d965d6c) 525/525; main at 15d511d; tsc clean; awaiting /merge)
 
 ## Active
 
 | Goal | PR | Status | Tests |
 |------|----|--------|-------|
 
-| Goal 13 — §10 SoC fix (digest email → NotificationService) | #29 (87541cf) | OPEN + MERGEABLE | 494 |
-| Goal 11b — AlertService restore (price alert schema + API) | #30 (c8756ad) | OPEN + MERGEABLE | 525 |
+| Goal 13 — §10 SoC fix (digest email → NotificationService) | #29 (7aa57b5) | OPEN + MERGEABLE | 494 |
+| Goal 11b — AlertService restore (price alert schema + API) | #30 (d965d6c) | OPEN + MERGEABLE | 525 |
 
 ## Completed
 
@@ -44,6 +44,7 @@ Last updated: 2026-08-13 — Dev Run #689 (sync-only; PR#29 (fddcab7) 494/494; P
 
 ## Notes
 
+- **Dev Run #690 (2026-08-13):** Sync-only. Aborted stale mid-merge on main (never committed). Merged main (15d511d) into PR#29 (7aa57b5) and PR#30 (d965d6c); clean auto-merge (backlog.md only). 494/494 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #689 (2026-08-13):** Sync-only. Merged main (89d476d) into PR#29 (fddcab7) and PR#30 (07aff94); clean auto-merge (backlog.md only). 494/494 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #688 (2026-08-13):** Sync-only. Merged main (a4c349e) into PR#29 (879c88a) and PR#30 (f676db0); clean auto-merge (backlog.md only). 494/494 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #687 (2026-08-13):** Sync-only. Aborted stale mid-merge (origin/task/fix-stale-price-service-layer into main — never committed). Merged main (1e51527) into PR#29 (87541cf) and PR#30 (c8756ad); clean auto-merge (backlog.md only). 494/494 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
