@@ -1,15 +1,15 @@
 # TruePrice Backlog
 
 
-Last updated: 2026-08-13 — Dev Run #718 (sync-only; PR#29 (a2832a0) 525/525; PR#30 (c7c23f2) 525/525; main at 8a6df01; tsc clean; awaiting /merge)
+Last updated: 2026-08-13 — Dev Run #719 (sync-only; PR#29 (9c4922e) 525/525; PR#30 (2f7171f) 525/525; main at 60adcbb; tsc clean; awaiting /merge)
 
 ## Active
 
 | Goal | PR | Status | Tests |
 |------|----|--------|-------|
 
-| Goal 13 — §10 SoC fix (digest email → NotificationService) | #29 (a2832a0) | OPEN + MERGEABLE | 525 |
-| Goal 11b — AlertService restore (price alert schema + API) | #30 (c7c23f2) | OPEN + MERGEABLE | 525 |
+| Goal 13 — §10 SoC fix (digest email → NotificationService) | #29 (9c4922e) | OPEN + MERGEABLE | 525 |
+| Goal 11b — AlertService restore (price alert schema + API) | #30 (2f7171f) | OPEN + MERGEABLE | 525 |
 
 ## Completed
 
@@ -44,6 +44,7 @@ Last updated: 2026-08-13 — Dev Run #718 (sync-only; PR#29 (a2832a0) 525/525; P
 
 ## Notes
 
+- **Dev Run #719 (2026-08-13):** Sync-only. Merged main (60adcbb) into PR#29 (9c4922e) and PR#30 (2f7171f); clean auto-merge (backlog.md only). 525/525 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #718 (2026-08-13):** Sync-only. Merged main (8a6df01) into PR#29 (a2832a0) and PR#30 (c7c23f2); clean auto-merge (backlog.md only). 525/525 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #717 (2026-08-13):** Sync-only. Merged main (4004793) into PR#29 (46ce414) and PR#30 (1681d99); clean auto-merge (backlog.md only). 525/525 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #716 (2026-08-13):** Sync-only. Merged main (f66ebff) into PR#29 (6209d91) and PR#30 (5a5aef2); clean auto-merge. PR#29 now 525/525 tests (AlertService files landed via main's f66ebff parent chain); PR#30 525/525; tsc clean on both. Regenerated Prisma client on PR#29 after merge brought in AlertService. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
