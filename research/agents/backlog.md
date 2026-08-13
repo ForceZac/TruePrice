@@ -1,7 +1,7 @@
 # TruePrice Backlog
 
 
-Last updated: 2026-08-13 — Dev Run #690 (sync-only; PR#29 (7aa57b5) 494/494; PR#30 (d965d6c) 525/525; main at 15d511d; tsc clean; awaiting /merge)
+Last updated: 2026-08-13 — Dev Run #691 (sync-only; PR#29 (1093da4) 494/494; PR#30 (00aec8d) 525/525; main at 7d1fd71; tsc clean; awaiting /merge)
 
 ## Active
 
@@ -44,6 +44,7 @@ Last updated: 2026-08-13 — Dev Run #690 (sync-only; PR#29 (7aa57b5) 494/494; P
 
 ## Notes
 
+- **Dev Run #691 (2026-08-13):** Sync-only. Merged main (7d1fd71) into PR#29 (1093da4) and PR#30 (00aec8d); clean auto-merge (backlog.md only). 494/494 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #690 (2026-08-13):** Sync-only. Aborted stale mid-merge on main (never committed). Merged main (15d511d) into PR#29 (7aa57b5) and PR#30 (d965d6c); clean auto-merge (backlog.md only). 494/494 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #689 (2026-08-13):** Sync-only. Merged main (89d476d) into PR#29 (fddcab7) and PR#30 (07aff94); clean auto-merge (backlog.md only). 494/494 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #688 (2026-08-13):** Sync-only. Merged main (a4c349e) into PR#29 (879c88a) and PR#30 (f676db0); clean auto-merge (backlog.md only). 494/494 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
