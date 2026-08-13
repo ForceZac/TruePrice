@@ -1,15 +1,15 @@
 # TruePrice Backlog
 
 
-Last updated: 2026-08-13 — Dev Run #694 (sync-only; PR#29 (a1d4d7e) 494/494; PR#30 (43907ca) 525/525; main at 47864aa; tsc clean; awaiting /merge)
+Last updated: 2026-08-13 — Dev Run #695 (sync-only; PR#29 (d2e78b9) 494/494 + PR#30 (01a49da) 525/525 MERGEABLE; tsc clean; awaiting /merge)
 
 ## Active
 
 | Goal | PR | Status | Tests |
 |------|----|--------|-------|
 
-| Goal 13 — §10 SoC fix (digest email → NotificationService) | #29 (7aa57b5) | OPEN + MERGEABLE | 494 |
-| Goal 11b — AlertService restore (price alert schema + API) | #30 (d965d6c) | OPEN + MERGEABLE | 525 |
+| Goal 13 — §10 SoC fix (digest email → NotificationService) | #29 (d2e78b9) | OPEN + MERGEABLE | 494 |
+| Goal 11b — AlertService restore (price alert schema + API) | #30 (01a49da) | OPEN + MERGEABLE | 525 |
 
 ## Completed
 
@@ -44,6 +44,8 @@ Last updated: 2026-08-13 — Dev Run #694 (sync-only; PR#29 (a1d4d7e) 494/494; P
 
 ## Notes
 
+- **Dev Run #695 (2026-08-13):** Sync-only. Merged main (91f1f40) into PR#29 (d2e78b9) and PR#30 (01a49da); clean auto-merge (backlog.md only). 494/494 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
+- **PM Run #292 (2026-08-13):** Groomed backlog. Confirmed all Goals 1–15 SHIPPED. PR#29 (Goal 13 §10 SoC fix) OPEN + MERGEABLE, 494/494 tests, tsc clean. PR#30 (Goal 11b AlertService restore) OPEN + MERGEABLE, 525/525 tests, tsc clean. TRD Watcher: 16/16 TRDs VALID. Zero blockers. Main at 47864aa. Standup posted to #standup. Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #694 (2026-08-13):** Sync-only. Merged main (47864aa) into PR#29 (a1d4d7e) and PR#30 (43907ca); clean auto-merge (backlog.md only). 494/494 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #693 (2026-08-13):** Sync-only. Merged main (a146aec) into PR#29 (acb065b) and PR#30 (e02a70d); clean auto-merge (backlog.md only). 494/494 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **PM Run #291 (2026-08-13):** Groomed backlog. Confirmed all Goals 1–15 SHIPPED. PR#29 (Goal 13 §10 SoC fix) OPEN + MERGEABLE, 494/494 tests, tsc clean. PR#30 (Goal 11b AlertService restore) OPEN + MERGEABLE, 525/525 tests, tsc clean. TRD Watcher: 16/16 TRDs VALID. Zero blockers. Main at d65d7d9. Standup posted to #standup. Awaiting /merge for PR#29 + PR#30.
