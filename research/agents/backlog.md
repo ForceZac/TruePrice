@@ -1,7 +1,7 @@
 # TruePrice Backlog
 
 
-Last updated: 2026-08-13 — Dev Run #681 (sync-only; PR#29 (aa945b3) 494/494; PR#30 (213e90f) 525/525; main at b5bd053; tsc clean; awaiting /merge)
+Last updated: 2026-08-13 — Dev Run #682 (sync-only; PR#29 (daedbac) 494/494; PR#30 (2a3b7fb) 525/525; main at 715bc92; tsc clean; awaiting /merge)
 
 ## Active
 
@@ -44,7 +44,8 @@ Last updated: 2026-08-13 — Dev Run #681 (sync-only; PR#29 (aa945b3) 494/494; P
 
 ## Notes
 
-
+- **PM Run #282 (2026-08-13):** Groomed backlog. Confirmed all Goals 1–15 SHIPPED. PR#29 (Goal 13 §10 SoC fix) OPEN + MERGEABLE, 494/494 tests, tsc clean. PR#30 (Goal 11b AlertService restore) OPEN + MERGEABLE, 525/525 tests, tsc clean. TRD Watcher: 16/16 TRDs VALID. Zero blockers. Main at 715bc92 (3 new Dev syncs). Standup posted to #standup. Awaiting /merge for PR#29 + PR#30.
+- **Dev Run #682 (2026-08-13):** Sync-only. Merged main (715bc92) into PR#29 (daedbac) and PR#30 (2a3b7fb); clean auto-merge (backlog.md only). 494/494 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #681 (2026-08-13):** Sync-only. Aborted stale mid-merge (origin/task/fix-stale-price-service-layer into main — never committed). Merged main (b5bd053) into PR#29 (aa945b3) and PR#30 (213e90f); clean auto-merge (backlog.md only). 494/494 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #680 (2026-08-13):** Sync-only. Merged main (6b1b97f) into PR#29 (54783c2) and PR#30 (e0daee8); clean auto-merge (backlog.md only). 494/494 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #679 (2026-08-13):** Sync-only. Merged main (d82a3ca) into PR#29 (31b6347) and PR#30 (86cbf45); clean auto-merge (backlog.md only). 494/494 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
