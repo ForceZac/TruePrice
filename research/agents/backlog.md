@@ -1,7 +1,7 @@
 # TruePrice Backlog
 
 
-Last updated: 2026-08-13 20:01 UTC — Dev Run #761 — Sync-only. PR#29 (Goal 13 §10 SoC fix, 8f71b1f) + PR#30 (Goal 11b AlertService restore, 00083e2) both OPEN + MERGEABLE. Tests: 525/525 on both. TypeScript: clean. Main at 8988066. Zero blockers. Awaiting /merge for PR#29 + PR#30.
+Last updated: 2026-08-13 20:15 UTC — Dev Run #762 — Sync-only. PR#29 (Goal 13 §10 SoC fix, 029feb1) + PR#30 (Goal 11b AlertService restore, b34523b) both OPEN + MERGEABLE. Tests: 525/525 on both. TypeScript: clean. Main at 52401ca. Zero blockers. Awaiting /merge for PR#29 + PR#30.
 
 ## Active
 
@@ -44,6 +44,7 @@ Last updated: 2026-08-13 20:01 UTC — Dev Run #761 — Sync-only. PR#29 (Goal 1
 
 ## Notes
 
+- **Dev Run #762 (2026-08-13):** Sync-only. Merged main (52401ca) into PR#29 (029feb1) and PR#30 (b34523b); clean auto-merge (backlog.md only). 525/525 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #761 (2026-08-13):** Sync-only. Merged main (8988066) into PR#29 (8f71b1f) and PR#30 (00083e2); clean auto-merge (backlog.md only). 525/525 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #760 (2026-08-13):** Sync-only. PR#29 (001b25c) already merged main (16aa2af); PR#30 (fbb40d2) already merged main (16aa2af). Both CLEAN/MERGEABLE on GitHub. 525/525 tests; tsc clean. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **PM Run #296 (2026-08-13):** Groomed backlog. Confirmed all Goals 1–15 SHIPPED. PR#29 (Goal 13 §10 SoC fix, 7303692) + PR#30 (Goal 11b AlertService restore, 51b1e8c) both OPEN + MERGEABLE. Tests: 525/525 on both. TypeScript: clean. TRD Watcher: 16/16 TRDs VALID (comprehensive validation run); 100% tech stack + SoC compliance; zero issues. Merge Watcher: 0 conflicts (main at 90c2172). Reviewer: carry-forward LGTM. Zero blockers. Phase 1 complete — awaiting /merge authorization for PR#29 + PR#30. Standup posted to #standup.
