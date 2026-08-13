@@ -316,17 +316,6 @@ export async function searchProducts(
   }));
 }
 
-/**
- * Increment the viewCount of a product by 1.
- * Silently no-ops if the product does not exist.
- */
-export async function incrementViewCount(productId: string): Promise<void> {
-  await prisma.product.updateMany({
-    where: { id: productId },
-    data: { viewCount: { increment: 1 } },
-  });
-}
-
 // ─── Retail price refresh helpers ────────────────────────────────────────────
 
 const RETAIL_STALE_DAYS = 30;
@@ -488,6 +477,19 @@ export async function getProductWithBreakdown(id: string): Promise<ProductWithBr
         select: { totalCostCents: true, retailPriceCents: true, markupPercent: true },
       },
     },
+  });
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+
+/**
+ * Increment the viewCount of a product by 1.
+ * Silently no-ops if the product does not exist.
+ */
+export async function incrementViewCount(productId: string): Promise<void> {
+  await prisma.product.updateMany({
+    where: { id: productId },
+    data: { viewCount: { increment: 1 } },
   });
 }
 

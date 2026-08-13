@@ -3,8 +3,10 @@ import { redirect } from "next/navigation";
 import Link from "next/link";
 import { auth, signOut } from "@/lib/auth";
 import { getDigestPreferences } from "@/services/UserService";
+import { getAlertSettings } from "@/services/AlertService";
 import { DeleteAccountButton } from "@/components/molecules/DeleteAccountButton";
 import { DigestToggle } from "@/components/molecules/DigestToggle";
+import { AlertSettingsForm } from "@/components/molecules/AlertSettingsForm";
 
 export const metadata: Metadata = {
   title: "Account Settings — TruePrice",
@@ -20,6 +22,10 @@ export default async function SettingsPage() {
 
   const digestPrefs = session.user.id
     ? await getDigestPreferences(session.user.id)
+    : null;
+
+  const alertSettings = session.user.id
+    ? await getAlertSettings(session.user.id)
     : null;
 
   return (
@@ -73,6 +79,12 @@ export default async function SettingsPage() {
         <h2 className="font-semibold">Email Preferences</h2>
         <DigestToggle initialEnabled={digestPrefs?.digestEnabled ?? true} />
       </section>
+
+      {/* Price alert settings */}
+      <AlertSettingsForm
+        initialThresholdPct={alertSettings?.alertThresholdPct ?? null}
+        initialAlertsEnabled={alertSettings?.alertsEnabled ?? true}
+      />
 
       {/* Danger zone */}
       <section className="flex flex-col gap-4 rounded-lg border border-destructive/40 bg-destructive/5 p-6">
