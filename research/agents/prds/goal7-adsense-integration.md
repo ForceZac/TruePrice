@@ -104,12 +104,12 @@ This goal closes the gap: add the policy/legal pages, wire up AdSense auto-ads, 
 
 ## Open Questions
 
-1. **AdSense account:** Has Zach already created a Google AdSense account and obtained a publisher ID (`ca-pub-XXXXXXXX`)? If not, the account needs to be created and the site submitted for review before any ads serve. There's a review lag (typically 1–4 weeks).
+1. **AdSense account:** ⏳ Zach action required — create a Google AdSense account and obtain `ca-pub-XXXXXXXX`. Site was submitted for review post-Goal 7 merge. No resolution from the agent side. Tracked as Q7-1.
 
-2. **Ad unit IDs:** Auto-ads don't require unit IDs, but manual ad units do. These are created in the AdSense dashboard. Should the manual units be wired up for launch (requires IDs now) or should we launch with auto-ads only and add manual units after AdSense approves?
+2. **Ad unit IDs:** ✅ Resolved — launch with auto-ads only. Manual ad unit IDs can be added to the `AdSlot` components after AdSense approval without a code change (env vars `NEXT_PUBLIC_ADSENSE_SLOT_BANNER` and `NEXT_PUBLIC_ADSENSE_SLOT_SIDEBAR` are already wired up per PROJECT_KEYS.md section 7).
 
-3. **Privacy Policy authorship:** Should the Privacy Policy be written by Zach (reviewed for accuracy) or drafted here and reviewed? Key question: does TruePrice store any user data beyond standard server logs? (Answer determines what the policy needs to disclose.)
+3. **Privacy Policy scope:** ✅ Resolved — as of Goal 10 (User Accounts), TruePrice begins storing user PII (email, name, OAuth tokens). The Privacy Policy at `/privacy` must be updated before Goal 10 ships to disclose: (a) email address collected for authentication, (b) Google OAuth data (profile info), (c) watchlist data stored server-side. For Goals 1–9 (no user accounts), TruePrice stores no user PII beyond standard server logs + AdSense cookies; the current policy is accurate. Tracked as Q7-3 — Zach to review updated policy before Goal 10 launch.
 
-4. **Consent banner scope:** EU/UK detection via `x-vercel-ip-country` header requires Vercel's Edge Network. Is the site deployed on Vercel with edge middleware enabled, or is another detection approach needed?
+4. **Consent banner scope:** ✅ Resolved — Vercel Edge Network provides `x-vercel-ip-country` header. The site is deployed on Vercel, so `CookieConsent.tsx` can use this header in middleware or a server component to detect EU/UK visitors reliably.
 
-5. **CLS budget on product page:** The cost breakdown chart + ad unit below it needs careful layout to avoid pushing content. Should the ad slot have a fixed reserved height before the script loads, or use a skeleton/placeholder?
+5. **CLS budget:** ✅ Resolved — `AdSlot` component uses a fixed `min-height` wrapper (`min-h-[90px]` for banner, `min-h-[250px]` for rectangle) that reserves space before the AdSense script loads, preventing CLS. Confirmed implemented in PR #12.

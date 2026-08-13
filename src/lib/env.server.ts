@@ -41,9 +41,10 @@ const serverEnvSchema = z.object({
   GOOGLE_CLIENT_ID: z.string().optional(),
   GOOGLE_CLIENT_SECRET: z.string().optional(),
 
-  // Email (Resend) — weekly digest
+  // Email (Resend) — weekly digest + price alerts
   RESEND_API_KEY: z.string().optional(),
   FROM_EMAIL: z.string().default("digest@trueprice.app"),
+  ALERT_FROM_EMAIL: z.string().optional(), // defaults to FROM_EMAIL if unset
 
   // Digest unsubscribe token signing
   DIGEST_UNSUBSCRIBE_SECRET: z.string().optional(),

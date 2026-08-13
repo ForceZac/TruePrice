@@ -1,6 +1,7 @@
 import { type NextRequest } from "next/server";
 import { fetchPrices, detectStalePrices } from "@/services/CommodityService";
 import { postDiscordAlert } from "@/services/NotificationService";
+import { checkWatchlistAlerts } from "@/services/AlertService";
 import { serverEnv as env } from "@/lib/env.server";
 
 /**
@@ -45,12 +46,23 @@ export async function GET(request: NextRequest) {
       void postDiscordAlert(alertsChannelId, alertMsg);
     }
 
+    // ── Price alert check ─────────────────────────────────────────────────
+    // Re-estimate costs for all watchlisted products and fire alerts where
+    // the change exceeds each user's configured threshold.
+    let alertResult = { usersChecked: 0, alertsFired: 0, alertsSkipped: 0 };
+    try {
+      alertResult = await checkWatchlistAlerts();
+    } catch (alertErr) {
+      console.error("[cron/refresh-prices] Alert check failed:", alertErr);
+    }
+
     return Response.json({
       ok: true,
       refreshed: count,
       staleCount,
       elapsedMs: elapsed,
       timestamp: startedAt.toISOString(),
+      alerts: alertResult,
     });
   } catch (err) {
     console.error("[cron/refresh-prices] Error:", err);
