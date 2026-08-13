@@ -1,7 +1,7 @@
 # TruePrice Backlog
 
 
-Last updated: 2026-08-13 — Dev Run #680 (sync-only; PR#29 (54783c2) 494/494; PR#30 (e0daee8) 525/525; main at 6b1b97f; tsc clean; awaiting /merge)
+Last updated: 2026-08-13 — Dev Run #681 (sync-only; PR#29 (aa945b3) 494/494; PR#30 (213e90f) 525/525; main at b5bd053; tsc clean; awaiting /merge)
 
 ## Active
 
@@ -45,6 +45,7 @@ Last updated: 2026-08-13 — Dev Run #680 (sync-only; PR#29 (54783c2) 494/494; P
 ## Notes
 
 
+- **Dev Run #681 (2026-08-13):** Sync-only. Aborted stale mid-merge (origin/task/fix-stale-price-service-layer into main — never committed). Merged main (b5bd053) into PR#29 (aa945b3) and PR#30 (213e90f); clean auto-merge (backlog.md only). 494/494 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #680 (2026-08-13):** Sync-only. Merged main (6b1b97f) into PR#29 (54783c2) and PR#30 (e0daee8); clean auto-merge (backlog.md only). 494/494 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #679 (2026-08-13):** Sync-only. Merged main (d82a3ca) into PR#29 (31b6347) and PR#30 (86cbf45); clean auto-merge (backlog.md only). 494/494 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #678 (2026-08-12):** Sync-only. Merged main (e799123) into PR#29 (088686e) and PR#30 (25a1f5f); clean auto-merge (backlog.md only). 494/494 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
