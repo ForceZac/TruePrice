@@ -15,6 +15,7 @@ import { getCategoryDescription } from "@/data/category-descriptions";
 import { CategoryProductCard } from "@/components/molecules/ProductCard";
 import { CategoryMarkupFilter } from "@/components/molecules/CategoryMarkupFilter";
 import { getTrendingIds } from "@/services/DiscoveryService";
+import { JsonLd } from "@/components/atoms/JsonLd";
 import { env } from "@/lib/env";
 
 export const revalidate = 3600;
@@ -40,21 +41,27 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
   const title = `${category.name} — True Manufacturing Costs | TruePrice`;
   const description = getCategoryDescription(slug);
   const url = `${env.NEXT_PUBLIC_APP_URL}/category/${slug}`;
+  const ogImageUrl = `${env.NEXT_PUBLIC_APP_URL}/api/og/category/${slug}`;
 
   return {
     title,
     description,
+    alternates: {
+      canonical: url,
+    },
     openGraph: {
       title,
       description,
       url,
       siteName: "TruePrice",
       type: "website",
+      images: [{ url: ogImageUrl, width: 1200, height: 630, alt: title }],
     },
     twitter: {
-      card: "summary",
+      card: "summary_large_image",
       title,
       description,
+      images: [ogImageUrl],
     },
   };
 }
@@ -84,6 +91,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
 
   const description = getCategoryDescription(slug);
   const appUrl = env.NEXT_PUBLIC_APP_URL;
+  const canonicalUrl = `${appUrl}/category/${slug}`;
 
   // JSON-LD: ItemList of top products
   const itemListElements = products
@@ -96,13 +104,23 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
       name: p.name,
     }));
 
-  const jsonLd = {
+  const itemListJsonLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",
     name: `${category.name} — TruePrice`,
     description,
     numberOfItems: itemListElements.length,
     itemListElement: itemListElements,
+  };
+
+  // JSON-LD: CollectionPage
+  const collectionPageJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: `${category.name} — True Manufacturing Costs | TruePrice`,
+    description,
+    url: canonicalUrl,
+    numberOfItems: category.productCount,
   };
 
   const hasEstimates = products.some((p) => p.markupPercent !== null);
@@ -112,12 +130,8 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
 
   return (
     <main className="flex flex-col min-h-screen px-4 py-10 max-w-4xl mx-auto w-full gap-8">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
-        }}
-      />
+      <JsonLd data={itemListJsonLd} />
+      <JsonLd data={collectionPageJsonLd} />
 
       {/* Breadcrumb */}
       <nav aria-label="Breadcrumb">

@@ -18,6 +18,9 @@ const clientEnvSchema = z.object({
   // Set these after AdSense account is approved — placeholder strings won't serve real ads.
   NEXT_PUBLIC_ADSENSE_SLOT_PRODUCT: z.string().optional(),
   NEXT_PUBLIC_ADSENSE_SLOT_CATEGORY: z.string().optional(),
+  // Google Search Console HTML-meta verification token (Q14-2).
+  // Set this to the value from Google Search Console → "HTML tag" verification method.
+  NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION: z.string().optional(),
 });
 
 const _clientEnv = clientEnvSchema.safeParse({
@@ -25,6 +28,7 @@ const _clientEnv = clientEnvSchema.safeParse({
   NEXT_PUBLIC_ADSENSE_CLIENT: process.env.NEXT_PUBLIC_ADSENSE_CLIENT,
   NEXT_PUBLIC_ADSENSE_SLOT_PRODUCT: process.env.NEXT_PUBLIC_ADSENSE_SLOT_PRODUCT,
   NEXT_PUBLIC_ADSENSE_SLOT_CATEGORY: process.env.NEXT_PUBLIC_ADSENSE_SLOT_CATEGORY,
+  NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
 });
 
 if (!_clientEnv.success) {

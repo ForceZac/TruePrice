@@ -54,9 +54,13 @@ vi.mock("@/services/CostEstimationService", () => ({
   estimateCost: mockEstimateCost,
 }));
 
-const { mockSendApprovalEmail } = vi.hoisted(() => ({ mockSendApprovalEmail: vi.fn() }));
+const { mockSendApprovalEmail, mockPostDiscordAlert } = vi.hoisted(() => ({
+  mockSendApprovalEmail: vi.fn(),
+  mockPostDiscordAlert: vi.fn(),
+}));
 vi.mock("@/services/NotificationService", () => ({
   sendSubmissionApprovedEmail: mockSendApprovalEmail,
+  postDiscordAlert: mockPostDiscordAlert,
 }));
 
 import {
@@ -104,6 +108,7 @@ beforeEach(() => {
   vi.resetAllMocks();
   mockEstimateCost.mockResolvedValue(undefined);
   mockSendApprovalEmail.mockResolvedValue(undefined);
+  mockPostDiscordAlert.mockResolvedValue(undefined);
 });
 
 // ─── createSubmission ─────────────────────────────────────────────────────────
@@ -186,6 +191,19 @@ describe("createSubmission", () => {
 
     const result = await createSubmission("user-1", { ...VALID_INPUT, upc: "12345678901234" });
     expect(result.upc).toBe("12345678901234");
+  });
+
+  it("posts a Discord alert to #alerts after a successful submission", async () => {
+    mockProductFindUnique.mockResolvedValue(null);
+    mockSubmissionCount.mockResolvedValue(0);
+    mockSubmissionCreate.mockResolvedValue(MOCK_SUBMISSION_ROW);
+
+    await createSubmission("user-1", VALID_INPUT);
+
+    expect(mockPostDiscordAlert).toHaveBeenCalledWith(
+      "1494231981800820836",
+      expect.stringContaining(VALID_INPUT.name)
+    );
   });
 });
 
