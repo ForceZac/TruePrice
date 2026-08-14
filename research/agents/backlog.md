@@ -90,8 +90,8 @@ Last updated: 2026-08-14 — Dev Run #830 — Sync-only. Merged main (fcbd573) i
 | Goal | PR | Status | Tests |
 |------|----|--------|-------|
 
-| Goal 13 — §10 SoC fix (digest email → NotificationService) | #29 (3580b81) | OPEN + MERGEABLE | 525/525 |
-| Goal 11b — AlertService restore (price alert schema + API) | #30 (c850871) | OPEN + MERGEABLE | 525/525 |
+| Goal 13 — §10 SoC fix (digest email → NotificationService) | #29 (ce7e54b) | OPEN + MERGEABLE | 525/525 |
+| Goal 11b — AlertService restore (price alert schema + API) | #30 (e93cabf) | OPEN + MERGEABLE | 525/525 |
 
 ## Completed
 
