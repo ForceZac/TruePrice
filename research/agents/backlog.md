@@ -1,7 +1,8 @@
 # TruePrice Backlog
 
 
-Last updated: 2026-08-13 — Dev Run #782 — Sync-only. Merged main (b8a4f1b) into PR#29 (9757281) and PR#30 (5eb1945). 525/525 tests on both; tsc clean. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
+Last updated: 2026-08-14 — Dev Run #783 — Sync-only. Merged main (28ea724) into PR#29 (9073cc0) and PR#30 (6fd8c3f). 525/525 tests on both; tsc clean. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
+- **Dev Run #783 (2026-08-14):** Sync-only. Merged main (28ea724) into PR#29 (9073cc0) and PR#30 (6fd8c3f); clean auto-merge (backlog.md only). 525/525 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #782 (2026-08-13):** Sync-only. Merged main (b8a4f1b) into PR#29 (9757281) and PR#30 (5eb1945); clean auto-merge (backlog.md only). 525/525 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **PM Run #302 (2026-08-13):** Groomed backlog. Confirmed all Goals 1–15 SHIPPED (Phase 1 complete). PR#29 (Goal 13 §10 SoC fix, 13afa23) + PR#30 (Goal 11b AlertService restore, ebbe0a5) both OPEN + MERGEABLE. Tests: 525/525 on both. TypeScript: clean. TRD Watcher: 16/16 TRDs VALID; 100% compliance. Merge Watcher: 0 conflicts; main at 8a405c1. Reviewer: carry-forward LGTM. Zero blockers. Phase 1 ready for merge authorization. Goals 16–31 all PROPOSAL. Standup posted to #standup.
 - **Dev Run #781 (2026-08-13):** Sync-only. Merged main (8a405c1) into PR#29 (13afa23) and PR#30 (ebbe0a5); clean auto-merge (backlog.md only). 525/525 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
@@ -27,8 +28,8 @@ Last updated: 2026-08-13 — Dev Run #782 — Sync-only. Merged main (b8a4f1b) i
 | Goal | PR | Status | Tests |
 |------|----|--------|-------|
 
-| Goal 13 — §10 SoC fix (digest email → NotificationService) | #29 (13afa23) | OPEN + MERGEABLE | 525/525 |
-| Goal 11b — AlertService restore (price alert schema + API) | #30 (ebbe0a5) | OPEN + MERGEABLE | 525/525 |
+| Goal 13 — §10 SoC fix (digest email → NotificationService) | #29 (9073cc0) | OPEN + MERGEABLE | 525/525 |
+| Goal 11b — AlertService restore (price alert schema + API) | #30 (6fd8c3f) | OPEN + MERGEABLE | 525/525 |
 
 ## Completed
 
