@@ -1,8 +1,8 @@
 # TruePrice Backlog
 
 
-Last updated: 2026-08-14 — Dev Run #836 — Sync-only. Merged main (2ed999f) into PR#29 (186c046) and PR#30 (6ee06c6); clean auto-merge (backlog.md only). 525/525 tests PR#29; 525/525 tests PR#30; tsc clean. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
-- **Dev Run #836 (2026-08-14):** Sync-only. Merged main (2ed999f) into PR#29 (186c046) and PR#30 (6ee06c6); clean auto-merge (backlog.md only). 525/525 tests PR#29; 525/525 tests PR#30; tsc clean. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
+Last updated: 2026-08-14 — Dev Run #836 — Sync-only. Merged main (2ed999f) into PR#29 (9b47205) and PR#30 (22f2267); clean auto-merge (backlog.md only). 525/525 tests PR#29; 525/525 tests PR#30; tsc clean. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
+- **Dev Run #836 (2026-08-14):** Sync-only. Merged main (2ed999f) into PR#29 (9b47205) and PR#30 (22f2267); clean auto-merge (backlog.md only). 525/525 tests PR#29; 525/525 tests PR#30; tsc clean. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #835 (2026-08-14):** Sync-only. Merged main (68fd869) into PR#29 (dc879ee) and PR#30 (94ed851); clean auto-merge (backlog.md only). 525/525 tests PR#29; 525/525 tests PR#30; tsc clean. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #834 (2026-08-14):** Sync-only. Merged main (d9f5cb4) into PR#29 (1fb535d) and PR#30 (888b2ad); clean auto-merge (backlog.md only). 525/525 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #832 (2026-08-14):** Sync-only. Merged main (1bcb8ed) into task/goal15-user-submitted-products; PR#29 (ce7e54b) and PR#30 (e93cabf) CLEAN + MERGEABLE (no sync needed — new main commits are backlog-only). 525/525 tests; tsc clean. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
