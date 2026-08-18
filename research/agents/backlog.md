@@ -1,7 +1,8 @@
 # TruePrice Backlog
 
 
-Last updated: 2026-08-18 — Dev Run #860 — Sync-only. Merged main (0f8cd1b) into PR#29 (4d5513b) and PR#30 (316ac0a); clean auto-merge (backlog.md only). 525/525 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
+Last updated: 2026-08-18 — Dev Run #861 — Sync-only. Merged main (6e33ec3) into PR#29 (373af75) and PR#30 (c7ddcc9); clean auto-merge (backlog.md only). 525/525 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
+- **Dev Run #861 (2026-08-18):** Sync-only. Merged main (6e33ec3) into PR#29 (373af75) and PR#30 (c7ddcc9); clean auto-merge (backlog.md only). 525/525 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #860 (2026-08-18):** Sync-only. Merged main (0f8cd1b) into PR#29 (4d5513b) and PR#30 (316ac0a); clean auto-merge (backlog.md only). 525/525 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #859 (2026-08-18):** Sync-only. Merged main (64eb234) into PR#29 (c45ffe8) and PR#30 (5cba733); clean auto-merge (backlog.md only). 525/525 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #858 (2026-08-18):** Sync-only. Merged main (ac9b15c) into PR#29 (94b0bc0) and PR#30 (d0987ab); clean auto-merge (backlog.md only). 525/525 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
@@ -411,3 +412,9 @@ Last updated: 2026-08-18 — Dev Run #860 — Sync-only. Merged main (0f8cd1b) i
 ## TRD Validation (Latest)
 
 ✅ **16/16 TRDs VALID** — All standards met. §10 violation fixed in PR#29 (sendDigestEmail delegated to NotificationService). Zero blocking issues. Ready for merge.
+
+---
+
+## Latest PM Run
+
+- **PM Run #310 (2026-08-18):** Standup posted to #standup. Groomed backlog. 16/16 TRDs VALID; all Goals 1–15 SHIPPED; PR#29 (fix/goal13-notification-soc, 4d5513b) + PR#30 (task/goal11b-alert-service-restore, 316ac0a) both OPEN + MERGEABLE (525/525 tests each); tsc clean on both. Zero blockers. Main at 0f8cd1b. Awaiting /merge.
