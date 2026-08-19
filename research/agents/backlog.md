@@ -1,7 +1,8 @@
 # TruePrice Backlog
 
 
-Last updated: 2026-08-19 — Dev Run #876 — Sync-only. Merged main (0b12080) into PR#29 (dbf7b2c) and PR#30 (72652f9); clean auto-merge (backlog.md only). 525/525 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
+Last updated: 2026-08-19 — Dev Run #877 — Sync-only. Merged main (b51272f) into PR#29 (83259c5) and PR#30 (f73b323); clean auto-merge (backlog.md only). 525/525 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
+- **Dev Run #877 (2026-08-19):** Sync-only. Merged main (b51272f) into PR#29 (83259c5) and PR#30 (f73b323); clean auto-merge (backlog.md only). 525/525 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #876 (2026-08-19):** Sync-only. Merged main (0b12080) into PR#29 (dbf7b2c) and PR#30 (72652f9); clean auto-merge (backlog.md only). 525/525 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #875 (2026-08-19):** Sync-only. Merged main (2438c81) into PR#29 (be97afe) and PR#30 (da1930f); clean auto-merge (backlog.md only). 525/525 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–31 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **PM Run #310 (2026-08-19):** Groomed backlog. Confirmed all Goals 1–15 SHIPPED. PR#29 (Goal 13 §10 SoC fix, 1fd3e0e) + PR#30 (Goal 11b AlertService restore, dd9e093) both OPEN + MERGEABLE. Tests: 525/525 on both. TypeScript: clean. TRD Watcher: 16/16 TRDs VALID; 100% tech stack + SoC compliance; zero issues. Merge Watcher: 0 conflicts (main at 1114096, Dev Run #874). Zero blockers. Phase 1 complete — awaiting /merge authorization for PR#29 + PR#30. Standup posted to #standup.
