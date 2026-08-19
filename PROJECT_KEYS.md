@@ -234,5 +234,5 @@ See `research/implementation-roadmap-v2.md` for full goal dependency graph and s
 | Goal 11b — Price Alerts | `trds/goal11b-price-alerts.md` | ✅ Merged (PR #20) |
 | Goal 12 — Enhanced Search & Discovery | `trds/goal12-enhanced-search-discovery.md` | ✅ Merged (PR #23, 2026-08-04) |
 | Goal 13 — Weekly Digest Email | `trds/goal13-weekly-digest-email.md` | ✅ Merged (PR #24, 2026-08-04) |
-| Goal 14 — SEO & Core Web Vitals | `prds/goal14-seo-performance.md` | 📋 PRD written — TRD pending |
-| Goal 15 — User-Submitted Products | `prds/goal15-user-submitted-products.md` | 📋 PRD written — TRD pending |
+| Goal 14 — SEO & Core Web Vitals | `trds/goal14-seo-performance.md` | ✅ Merged (PR #26) |
+| Goal 15 — User-Submitted Products | `trds/goal15-user-submitted-products.md` | ✅ Merged (PR #27) |
