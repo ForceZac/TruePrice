@@ -1,6 +1,7 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-20 — Dev Run #1024 — Sync-only. PR#30 (task/goal11b-alert-service-restore, 9152d88) synced with main (ab00188); 525/525 tests; tsc clean. Awaiting /merge for PR#30.
+Last updated: 2026-08-20 — Dev Run #1025 — Sync-only. PR#30 (task/goal11b-alert-service-restore, 4ca5ba7) synced with main (ebaed8f); 525/525 tests; tsc clean. Awaiting /merge for PR#30.
+- **Dev Run #1025 (2026-08-20):** Sync-only. Merged main (ebaed8f) into PR#30 (task/goal11b-alert-service-restore, 4ca5ba7); 525/525 tests; tsc clean. No new TRDs (Goals 16–37 all PROPOSAL). Awaiting /merge for PR#30.
 - **Dev Run #1024 (2026-08-20):** Sync-only. Merged main (ab00188) into PR#30 (task/goal11b-alert-service-restore, 9152d88); 525/525 tests; tsc clean. No new TRDs (Goals 16–37 all PROPOSAL). Awaiting /merge for PR#30.
 - **Dev Run #1023 (2026-08-20):** Sync-only. PR#29 (fix/goal13-notification-soc) CLOSED — code diff vs main is empty (changes already in main). Merged main (31c9c2f) into PR#30 (task/goal11b-alert-service-restore, 3cbb7b4); 525/525 tests; tsc clean. No new TRDs (Goals 16–37 all PROPOSAL). Awaiting /merge for PR#30.
 - **PM Run #1023 (2026-08-20):** Groomed backlog. Phase 1 (Goals 1–15) 100% COMPLETE. PR#29 (fix/goal13-notification-soc, 4f2b42d) + PR#30 (task/goal11b-alert-service-restore, e4337e1) both OPEN + MERGEABLE (525/525 tests each); tsc clean on both. Main at d6302a0 (Dev Run #1021). All 16 TRDs VALID (100% SoC + tech compliance). Zero conflicts detected by merge watcher. Zero blockers. Phase 1 ready for merge authorization. Goals 16–37 all PROPOSAL pending Zach approval + TRD validation. Standup posted to #standup.
