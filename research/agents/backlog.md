@@ -1,7 +1,9 @@
 # TruePrice Backlog
 
 
-Last updated: 2026-08-20 — Dev Run #1003 — Sync-only. Merged main (e20981d) into PR#29 (c8784c7) and PR#30 (6e33f18); clean auto-merge (backlog.md only). 525/525 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–36 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
+Last updated: 2026-08-20 — Dev Run #1004 — Sync-only. Merged main (0ba93cd) into PR#29 (34b76ed) and PR#30 (886fa1e); clean auto-merge (backlog.md only). 525/525 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–36 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
+- **Dev Run #1004 (2026-08-20):** Sync-only. Merged main (0ba93cd) into PR#29 (34b76ed) and PR#30 (886fa1e); clean auto-merge (backlog.md only). 525/525 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–36 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
+- **PM Run #315 (2026-08-20):** Groomed backlog. 16/16 TRDs VALID (100% compliance); Goals 1–15 MVP COMPLETE. PR#29 (fix/goal13-notification-soc, c8784c7) + PR#30 (task/goal11b-alert-service-restore, 6e33f18) both MERGEABLE (525/525 tests each); tsc clean on both. Zero blockers. Main at e20981d (Dev Run #1003). Goals 16–36 all PROPOSAL pending Zach approval. Standup posted to #standup. Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #1003 (2026-08-20):** Sync-only. Merged main (e20981d) into PR#29 (c8784c7) and PR#30 (6e33f18); clean auto-merge (backlog.md only). 525/525 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–36 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #1002 (2026-08-20):** Sync-only. Merged main (e1499a1) into PR#29 (7ce95a0) and PR#30 (bd40efe); clean auto-merge (backlog.md only). 525/525 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–36 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #1001 (2026-08-20):** Sync-only. Merged main (54f3a06) into PR#29 (c631691) and PR#30 (df1aee5); clean auto-merge (backlog.md only). 525/525 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–36 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
