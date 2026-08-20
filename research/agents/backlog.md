@@ -1,7 +1,8 @@
 # TruePrice Backlog
 
 
-Last updated: 2026-08-20 — Dev Run #994 — Sync-only. Merged main (eb213aa) into PR#29 (1fadaa7) and PR#30 (cc9b384); clean auto-merge (backlog.md only). 525/525 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–36 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
+Last updated: 2026-08-20 — Dev Run #995 — Sync-only. Merged main (65ecdb2) into PR#29 (6f02d8c) and PR#30 (ab22a35); clean auto-merge (backlog.md only). 525/525 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–36 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
+- **Dev Run #995 (2026-08-20):** Sync-only. Merged main (65ecdb2) into PR#29 (6f02d8c) and PR#30 (ab22a35); clean auto-merge (backlog.md only). 525/525 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–36 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #994 (2026-08-20):** Sync-only. Merged main (eb213aa) into PR#29 (1fadaa7) and PR#30 (cc9b384); clean auto-merge (backlog.md only). 525/525 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–36 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #993 (2026-08-20):** Sync-only. Merged main (642c8c0) into PR#29 (c0cac9e) and PR#30 (93c0651); clean auto-merge (backlog.md only). 525/525 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–36 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #992 (2026-08-20):** Sync-only. Merged main (8bae31b) into PR#29 (492846c) and PR#30 (227a851); clean auto-merge (backlog.md + .merge-watcher-state only). 525/525 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–36 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
@@ -587,5 +588,7 @@ Last updated: 2026-08-20 — Dev Run #994 — Sync-only. Merged main (eb213aa) i
 ---
 
 ## Latest PM Run
+
+- **PM Run #313 (2026-08-20):** Groomed backlog. 16/16 TRDs VALID (100% compliance); Phase 1 (Goals 1–15) COMPLETE & READY FOR MERGE. PR#29 (fix/goal13-notification-soc, 446f9a8) + PR#30 (task/goal11b-alert-service-restore, 6de105a) both OPEN + MERGEABLE; 525/525 tests on both; tsc clean; zero conflicts. Main at e6ac699. Dev Run #990 (sync-only) merged main into both PRs cleanly. Standup posted to #standup. Phase 2 (Goals 16–31) all PROPOSAL pending Zach approval. Awaiting /merge authorization for PR#29 + PR#30.
 
 - **PM Run #312 (2026-08-19):** Groomed backlog. 16/16 TRDs VALID (100% compliance); Goals 1–15 MVP COMPLETE. PR#29 (fix/goal13-notification-soc, 3fb7249) + PR#30 (task/goal11b-alert-service-restore, 6bffa87) both MERGEABLE (525/525 tests each); tsc clean on both. Zero blockers. Main at 26b3f41. Standup posted to #standup. Goals 16–31 all PROPOSAL pending Zach approval. Awaiting /merge for PR#29 + PR#30.
