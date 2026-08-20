@@ -605,4 +605,5 @@ Last updated: 2026-08-20 — Dev Run #1013 — Sync-only. Merged main (993c27d) 
 
 ## Latest PM Run
 
+- **PM Run #313 (2026-08-20):** Groomed backlog. 16/16 TRDs VALID (100% SoC + tech stack compliance); Goals 1–15 MVP COMPLETE. PR#29 (fix/goal13-notification-soc, 1424cb0) + PR#30 (task/goal11b-alert-service-restore, 196f043) both OPEN + MERGEABLE (525/525 tests each); tsc clean. Zero blockers. Main at 993c27d (Dev Run #1012, sync-only). Standup posted to #standup. Phase 1 ready for merge. Goals 16–31 all PROPOSAL awaiting Zach approval + TRD validation.
 - **PM Run #312 (2026-08-19):** Groomed backlog. 16/16 TRDs VALID (100% compliance); Goals 1–15 MVP COMPLETE. PR#29 (fix/goal13-notification-soc, 3fb7249) + PR#30 (task/goal11b-alert-service-restore, 6bffa87) both MERGEABLE (525/525 tests each); tsc clean on both. Zero blockers. Main at 26b3f41. Standup posted to #standup. Goals 16–31 all PROPOSAL pending Zach approval. Awaiting /merge for PR#29 + PR#30.
