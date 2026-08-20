@@ -1,6 +1,7 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-20 — Dev Run #1033 — Sync-only. Merged main (e497071) into PR#30 (task/goal11b-alert-service-restore, a3040d0); 525/525 tests; tsc clean. No new TRDs (Goals 16–37 all PROPOSAL). Awaiting /merge for PR#30.
+Last updated: 2026-08-20 — Dev Run #1034 — Sync-only. Merged main (220a3b0) into PR#30 (task/goal11b-alert-service-restore, cd747da); 525/525 tests; tsc clean. No new TRDs (Goals 16–37 all PROPOSAL). Awaiting /merge for PR#30.
+- **Dev Run #1034 (2026-08-20):** Sync-only. Merged main (220a3b0) into PR#30 (task/goal11b-alert-service-restore, cd747da); 525/525 tests; tsc clean. No new TRDs (Goals 16–37 all PROPOSAL). Awaiting /merge for PR#30.
 - **Dev Run #1033 (2026-08-20):** Sync-only. Merged main (e497071) into PR#30 (task/goal11b-alert-service-restore, a3040d0); 525/525 tests; tsc clean. No new TRDs (Goals 16–37 all PROPOSAL). Awaiting /merge for PR#30.
 - **Dev Run #1032 (2026-08-20):** Sync-only. Merged main (ab3d22d) into PR#30 (task/goal11b-alert-service-restore, 8ca1238); 525/525 tests; tsc clean. No new TRDs (Goals 16–37 all PROPOSAL). Awaiting /merge for PR#30.
 - **Dev Run #1031 (2026-08-20):** Sync-only. Merged main (31cc717) into PR#30 (task/goal11b-alert-service-restore, 66f497d); 525/525 tests; tsc clean. No new TRDs (Goals 16–37 all PROPOSAL). Awaiting /merge for PR#30.
