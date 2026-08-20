@@ -1,6 +1,8 @@
 # TruePrice Backlog
 
-Last updated: 2026-08-20 — Dev Run #1029 — Sync-only. PR#30 (task/goal11b-alert-service-restore, 203e3fb) already up to date with origin/main (269afc5); 525/525 tests; tsc clean. No new TRDs (Goals 16–37 all PROPOSAL). Awaiting /merge for PR#30.
+Last updated: 2026-08-20 — Dev Run #1031 — Sync-only. Merged main (31cc717) into PR#30 (task/goal11b-alert-service-restore, 66f497d); 525/525 tests; tsc clean. No new TRDs (Goals 16–37 all PROPOSAL). Awaiting /merge for PR#30.
+- **Dev Run #1031 (2026-08-20):** Sync-only. Merged main (31cc717) into PR#30 (task/goal11b-alert-service-restore, 66f497d); 525/525 tests; tsc clean. No new TRDs (Goals 16–37 all PROPOSAL). Awaiting /merge for PR#30.
+- **Dev Run #1030 (2026-08-20):** Sync-only. PR#30 (task/goal11b-alert-service-restore, 203e3fb) already up to date with origin/main (269afc5); 525/525 tests; tsc clean. No new TRDs (Goals 16–37 all PROPOSAL). Awaiting /merge for PR#30.
 - **Dev Run #1029 (2026-08-20):** Sync-only. PR#30 (task/goal11b-alert-service-restore, 203e3fb) already up to date with origin/main (269afc5); 525/525 tests; tsc clean. No new TRDs (Goals 16–37 all PROPOSAL). Awaiting /merge for PR#30.
 - **PM Run #317 (2026-08-20):** Groomed backlog. 16/16 TRDs VALID (100% compliance); Goals 1–15 MVP COMPLETE. PR#30 (task/goal11b-alert-service-restore, 203e3fb) OPEN + MERGEABLE (525/525 tests); tsc clean. Zero blockers. Main at 3eafccf (Dev Run #1028). Goals 16–37 all PROPOSAL. Standup posted to #standup.
 - **Dev Run #1028 (2026-08-20):** Sync-only. PR#30 (task/goal11b-alert-service-restore, 203e3fb) already up to date with origin/main (269afc5); 525/525 tests; tsc clean. No new TRDs (Goals 16–37 all PROPOSAL). Awaiting /merge for PR#30.
