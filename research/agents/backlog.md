@@ -1,8 +1,8 @@
 # TruePrice Backlog
 
 
-Last updated: 2026-08-20 — Dev Run #971 — Sync-only. Merged main (2adbeb7) into PR#29 (093d3d9) and PR#30 (20386f0); clean auto-merge (backlog.md only). 525/525 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–36 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
-- **Dev Run #971 (2026-08-20):** Sync-only. Merged main (2adbeb7) into PR#29 (093d3d9) and PR#30 (20386f0); clean auto-merge (backlog.md only). 525/525 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–36 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
+Last updated: 2026-08-20 — Dev Run #971 — Sync-only. Merged main (053fcb0) into PR#29 (827a655) and PR#30 (4974f6e); clean auto-merge (backlog.md only). 525/525 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–36 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
+- **Dev Run #971 (2026-08-20):** Sync-only. Merged main (053fcb0) into PR#29 (827a655) and PR#30 (4974f6e); clean auto-merge (backlog.md only). 525/525 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–36 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #970 (2026-08-20):** Sync-only. Merged main (abd5a43) into PR#29 (d8ab5a6) and PR#30 (174c5ad); clean auto-merge (backlog.md only). 525/525 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–34 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #969 (2026-08-20):** Sync-only. Merged main (ae6a9cb) into PR#29 (11831f3) and PR#30 (6bc9f41); clean auto-merge (backlog.md only). 525/525 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–34 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
 - **Dev Run #968 (2026-08-20):** Sync-only. Merged main (17ac354) into PR#29 (d5b31ff) and PR#30 (21d5f5c); clean auto-merge (backlog.md + .merge-watcher-state only). 525/525 tests PR#29; 525/525 tests PR#30; tsc clean on both. No new TRDs (Goals 16–34 all PROPOSAL). Awaiting /merge for PR#29 + PR#30.
